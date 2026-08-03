@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -47,7 +46,6 @@
             border-radius: 6px;
             border: 3px solid #031a12;
         }
-
         /* Ocultar barra de scroll en el menú de navegación para celulares */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -56,7 +54,6 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-
         /* Animaciones exclusivas */
         .pulse-mint {
             box-shadow: 0 0 0 0 rgba(12, 242, 167, 0.7);
@@ -66,7 +63,6 @@
             70% { box-shadow: 0 0 0 15px rgba(12, 242, 167, 0); }
             100% { box-shadow: 0 0 0 0 rgba(12, 242, 167, 0); }
         }
-
         /* Cristal de menta translúcido */
         .mint-glass {
             background: rgba(3, 26, 18, 0.85);
@@ -74,7 +70,6 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(12, 242, 167, 0.2);
         }
-
         @media (max-width: 400px) {
             .hide-on-tiny {
                 display: none !important;
@@ -83,7 +78,6 @@
     </style>
 </head>
 <body class="bg-brand-dark text-brand-light font-sans selection:bg-brand-mint selection:text-brand-dark overflow-y-auto overflow-x-hidden">
-
     <div id="tour-overlay" class="fixed inset-0 bg-brand-dark/90 z-[100] hidden flex-col items-center justify-center p-6 transition-all duration-500">
         <div class="bg-brand-medium border-2 border-brand-mint p-8 rounded-3xl max-w-md w-full text-center space-y-6 shadow-[0_0_50px_rgba(12,242,167,0.3)]">
             <div class="w-16 h-16 bg-brand-mint text-brand-dark rounded-full flex items-center justify-center text-3xl mx-auto animate-bounce">
@@ -99,7 +93,6 @@
             </div>
         </div>
     </div>
-
     <div id="qr-modal" class="fixed inset-0 bg-brand-dark/90 z-[110] hidden flex-col items-center justify-center p-6 transition-all duration-500">
         <div class="bg-brand-medium border-2 border-brand-mint p-6 rounded-3xl max-w-xs w-full text-center space-y-4 shadow-[0_0_50px_rgba(12,242,167,0.3)] relative">
             <button onclick="toggleQRModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
@@ -113,8 +106,6 @@
             <p class="text-[10px] text-brand-mint font-semibold uppercase tracking-widest">www.ecocolon.org</p>
         </div>
     </div>
-
-
     <section id="inicio" class="relative min-h-screen pb-20 px-4 md:px-16 flex flex-col justify-between overflow-hidden">
        
         <div id="hero-carousel" class="absolute inset-0 w-full h-full z-0">
@@ -132,11 +123,9 @@
                 </video>
             </div>
         </div>
-
         <div class="absolute inset-0 bg-brand-dark/15 z-10 pointer-events-none"></div>
         <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-mint/10 rounded-full blur-[120px] pointer-events-none z-10"></div>
         <div class="absolute bottom-20 right-0 w-96 h-96 bg-brand-mint/15 rounded-full blur-[150px] pointer-events-none z-10"></div>
-
         <nav class="relative z-20 w-full max-w-6xl mx-auto pt-3 px-3 sm:px-6">
             <div class="mint-glass rounded-2xl sm:rounded-3xl px-3 sm:px-6 py-3 flex flex-row items-center justify-between gap-2 shadow-[0_15px_35px_rgba(0,0,0,0.6)]">
                
@@ -146,7 +135,6 @@
                     </div>
                     <span class="font-bold text-[10px] sm:text-sm tracking-[0.15em] sm:tracking-[0.25em] uppercase text-white hide-on-tiny">ECO<span class="text-brand-mint">COLÓN</span></span>
                 </div>
-
                 <div class="flex flex-row items-center gap-3 sm:gap-4 md:gap-6 overflow-x-auto no-scrollbar py-1">
                     
                     <div class="relative flex items-center bg-brand-dark/50 border border-brand-mint/30 focus-within:border-brand-mint rounded-full px-2 py-1 text-xs shrink-0 transition-all duration-300">
@@ -156,13 +144,12 @@
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
-
-                    <a href="#inicio" class="text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Inicio</a>
+                    <a href="index.html" class="text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-brand-mint transition-colors whitespace-nowrap">Inicio</a>
+                    <a href="catalogo.html" class="text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Catálogo</a>
                     <a href="#plantas" class="text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Plantas</a>
                     <a href="#monumentos" class="text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Monumentos</a>
                     <a href="#equipo" class="text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Equipo</a>
                 </div>
-
                 <div class="flex items-center gap-2 shrink-0">
                     <div class="relative group">
                         <button onclick="toggleQRModal()" class="px-3 py-1.5 sm:py-2 bg-brand-medium border border-brand-mint/30 text-brand-mint rounded-full hover:bg-brand-mint hover:text-brand-dark transition-all duration-300 text-xs sm:text-sm">
@@ -175,14 +162,12 @@
                             </div>
                         </div>
                     </div>
-
                     <button onclick="startTour()" class="pulse-mint px-3 sm:px-5 py-1.5 sm:py-2 bg-brand-mint text-brand-dark font-extrabold text-[9px] sm:text-[10px] uppercase tracking-wider sm:tracking-widest rounded-full hover:bg-white transition-all duration-300">
                         <i class="fa-solid fa-route mr-1 sm:mr-1.5 animate-pulse"></i> Iniciar
                     </button>
                 </div>
             </div>
         </nav>
-
         <div class="relative z-20 max-w-7xl mx-auto w-full my-auto pt-12">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                
@@ -194,17 +179,18 @@
                     <h1 class="text-5xl md:text-8xl font-black leading-none text-white tracking-tighter mt-6">
                         Paseo <span class="font-serif italic font-light text-brand-mint">Colón</span>
                     </h1>
-
                     <p class="text-xs sm:text-sm text-white font-black max-w-lg leading-relaxed mt-2">
                         Te damos la bienvenida a una experiencia digital única. Explora la riqueza natural e histórica del Paseo Colón desde la comodidad de tu pantalla, recorriendo cada rincón botánico y monumental a tu propio ritmo.
                     </p>
+                    <div class="mt-8 flex gap-4">
+                        <a href="catalogo.html" class="px-8 py-4 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-widest rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_30px_rgba(12,242,167,0.3)]">
+                            Explorar Catálogo Completo
+                        </a>
+                    </div>
                 </div>
-
             </div>
         </div>
     </section>
-
-
     <section id="plantas" class="py-32 bg-brand-light text-brand-dark relative z-10 rounded-t-[4rem] shadow-[-10px_0_40px_rgba(0,0,0,0.15)]">
         <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-16">
            
@@ -219,7 +205,6 @@
                     Hemos catalogado los árboles más representativos y plantas ornamentales de las avenidas y calles 1 a 16. Descubre la biodiversidad que coexiste en Colón.
                 </p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="plantas-grid">
                
                 <div class="searchable-card bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between h-full" data-aos="fade-right">
@@ -234,10 +219,9 @@
                     </div>
                     <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-medium">
                         <span>Ficha #01</span>
-                        <a href="#inicio" class="text-brand-mint bg-brand-dark hover:bg-brand-mint hover:text-brand-dark px-4 py-2 rounded-full transition-colors duration-300">Detalles</a>
+                        <a href="arbol-detalle.html" class="text-brand-mint bg-brand-dark hover:bg-brand-mint hover:text-brand-dark px-4 py-2 rounded-full transition-colors duration-300">Detalles</a>
                     </div>
                 </div>
-
                 <div class="searchable-card bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between h-full" data-aos="fade-left">
                     <div class="relative h-60 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Planta 2">
@@ -250,10 +234,9 @@
                     </div>
                     <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-medium">
                         <span>Ficha #02</span>
-                        <a href="#inicio" class="text-brand-mint bg-brand-dark hover:bg-brand-mint hover:text-brand-dark px-4 py-2 rounded-full transition-colors duration-300">Detalles</a>
+                        <a href="arbol-detalle.html" class="text-brand-mint bg-brand-dark hover:bg-brand-mint hover:text-brand-dark px-4 py-2 rounded-full transition-colors duration-300">Detalles</a>
                     </div>
                 </div>
-
                 <div class="searchable-card bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between h-full" data-aos="fade-right">
                     <div class="relative h-60 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="Planta 3">
@@ -266,20 +249,15 @@
                     </div>
                     <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-medium">
                         <span>Ficha #03</span>
-                        <a href="#inicio" class="text-brand-mint bg-brand-dark hover:bg-brand-mint hover:text-brand-dark px-4 py-2 rounded-full transition-colors duration-300">Detalles</a>
+                        <a href="arbol-detalle.html" class="text-brand-mint bg-brand-dark hover:bg-brand-mint hover:text-brand-dark px-4 py-2 rounded-full transition-colors duration-300">Detalles</a>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </section>
-
-
     <section id="monumentos" class="py-32 bg-brand-dark text-white relative overflow-hidden">
        
         <div class="absolute -right-40 top-1/4 w-[500px] h-[500px] bg-brand-mint/5 rounded-full blur-[100px] pointer-events-none"></div>
-
         <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-20">
            
             <div class="relative rounded-[2.5rem] overflow-hidden border-2 border-brand-mint/40 h-auto py-16 md:py-24 max-w-4xl mx-auto shadow-[0_0_60px_rgba(12,242,167,0.15)] bg-brand-medium/40 backdrop-blur-md" data-aos="fade-left">
@@ -300,13 +278,11 @@
                     <p class="text-brand-mint font-semibold text-sm max-w-xl leading-relaxed">
                         Estimulamos tu curiosidad combinando análisis técnico, biodiversidad regional y crónicas profundamente ligadas al alma de la comunidad colonense.
                     </p>
-
-                    <button onclick="startTour()" class="inline-flex items-center justify-center gap-3 px-10 py-4 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_35px_rgba(12,242,167,0.4)] hover:scale-105 mt-4">
-                        Explorar ahora <i class="fa-solid fa-power-off text-sm animate-pulse"></i>
-                    </button>
+                    <a href="catalogo.html" class="inline-flex items-center justify-center gap-3 px-10 py-4 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_35px_rgba(12,242,167,0.4)] hover:scale-105 mt-4">
+                        Ir al Catálogo <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
                 </div>
             </div>
-
             <div class="max-w-5xl mx-auto space-y-4">
                 <span class="block text-center text-[10px] font-extrabold uppercase tracking-widest text-brand-mint">REGISTRO VISUAL ECOLÓGICO</span>
                 
@@ -328,13 +304,11 @@
                     </div>
                 </div>
             </div>
-
             <div class="max-w-4xl mx-auto bg-brand-medium/20 rounded-[2.5rem] p-8 md:p-12 border border-brand-mint/20 space-y-10 flex flex-col items-center" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                 
                 <h3 class="text-2xl md:text-3xl font-black font-serif text-brand-mint text-center tracking-tight">
                     ¿Qué descubrirás en este Catálogo Digital?
                 </h3>
-
                 <div class="space-y-8 w-full">
                     <div class="flex flex-col sm:flex-row items-start gap-4 p-4 rounded-2xl hover:bg-brand-medium/30 transition-colors duration-300">
                         <div class="w-12 h-12 rounded-full bg-brand-mint text-brand-dark flex items-center justify-center text-xl shrink-0 shadow-lg">
@@ -345,7 +319,6 @@
                             <p class="text-slate-355 text-sm font-light leading-relaxed">Fichas de árboles e ingredientes naturales del suelo colonense que regulan el ecosistema urbano.</p>
                         </div>
                     </div>
-
                     <div class="flex flex-col sm:flex-row items-start gap-4 p-4 rounded-2xl hover:bg-brand-medium/30 transition-colors duration-300">
                         <div class="w-12 h-12 rounded-full bg-brand-mint text-brand-dark flex items-center justify-center text-xl shrink-0 shadow-lg">
                             <i class="fa-solid fa-building-columns"></i>
@@ -355,7 +328,6 @@
                             <p class="text-slate-355 text-sm font-light leading-relaxed">Explora interactivamente la ubicación exacta de las esculturas que decoran nuestro paseo principal.</p>
                         </div>
                     </div>
-
                     <div class="flex flex-col sm:flex-row items-start gap-4 p-4 rounded-2xl hover:bg-brand-medium/30 transition-colors duration-300">
                         <div class="w-12 h-12 rounded-full bg-brand-mint text-brand-dark flex items-center justify-center text-xl shrink-0 shadow-lg">
                             <i class="fa-solid fa-users"></i>
@@ -367,7 +339,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="max-w-4xl mx-auto relative rounded-[2.5rem] overflow-hidden border-2 border-brand-mint/30 h-auto min-h-[320px] flex flex-col items-center justify-center text-center p-8 md:p-12 shadow-[0_0_50px_rgba(12,242,167,0.15)]" data-aos="fade-up">
                 <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center"></div>
                 <div class="absolute inset-0 bg-brand-dark/50 backdrop-blur-[1px] z-0"></div>
@@ -380,13 +351,11 @@
                         Te damos la bienvenida a nuestro recorrido histórico interactivo. Te invitamos a descubrir la majestuosidad de los monumentos históricos de Colón, adentrándote en las crónicas y relatos auténticos que definieron el alma y herencia de esta gran región.
                     </p>
                     
-                    <a href="#inicio" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_30px_rgba(12,242,167,0.4)] hover:scale-105 mt-2">
+                    <a href="estatua-detalle.html" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_30px_rgba(12,242,167,0.4)] hover:scale-105 mt-2">
                         <i class="fa-solid fa-images text-sm"></i> Ver Monumentos
                     </a>
                 </div>
             </div>
-
-
             <div class="space-y-24 pt-10">
                
                 <div class="searchable-card grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" data-aos="fade-right">
@@ -401,9 +370,9 @@
                         <p class="text-slate-400 text-sm font-light leading-relaxed">
                             Una magnífica representación en bronce que conmemora el desembarco histórico. Se ubica como uno de los símbolos centrales de la ciudad de Colón y del paseo, conservando su estructura de mármol y base intacta.
                         </p>
+                        <a href="estatua-detalle.html" class="inline-block text-brand-mint font-bold text-xs uppercase tracking-wider hover:underline">Ver Ficha de la Estatua →</a>
                     </div>
                 </div>
-
                 <div class="searchable-card grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" data-aos="fade-left">
                     <div class="lg:col-span-6 lg:order-2">
                         <div class="rounded-[2.5rem] overflow-hidden border-4 border-brand-mint/20 aspect-video group">
@@ -416,15 +385,12 @@
                         <p class="text-slate-400 text-sm font-light leading-relaxed">
                             Escultura erigida para honrar a los próceres de nuestra patria y recordar la fecha fundamental de la soberanía. Sus placas de bronce narran hechos documentales clave de la época republicana.
                         </p>
+                        <a href="estatua-detalle.html" class="inline-block text-brand-mint font-bold text-xs uppercase tracking-wider hover:underline">Ver Ficha de la Estatua →</a>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </section>
-
-
     <section id="equipo" class="py-32 bg-brand-light text-brand-dark rounded-b-[4rem] relative z-10 shadow-[0_15px_40px_rgba(0,0,0,0.15)]">
         <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-16">
            
@@ -437,7 +403,6 @@
                     Estudiantes e investigadores dedicados al desarrollo, recolección de datos y diseño del catálogo.
                 </p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                
                 <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-right">
@@ -450,7 +415,6 @@
                     </div>
                     <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">MUESTREO BOTÁNICO</span>
                 </div>
-
                 <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-left">
                     <div class="space-y-4">
                         <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
@@ -461,7 +425,6 @@
                     </div>
                     <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">DESARROLLO DE INTERFAZ</span>
                 </div>
-
                 <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-right">
                     <div class="space-y-4">
                         <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
@@ -472,7 +435,6 @@
                     </div>
                     <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">HISTORIA Y ARCHIVO</span>
                 </div>
-
                 <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-left">
                     <div class="space-y-4">
                         <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
@@ -483,13 +445,9 @@
                     </div>
                     <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">MULTIMEDIA Y DRON</span>
                 </div>
-
             </div>
-
         </div>
     </section>
-
-
     <footer class="bg-brand-dark py-16 text-center text-xs text-slate-500 font-medium relative z-30">
         <div class="max-w-5xl mx-auto space-y-4 px-6">
             <div class="font-bold text-white text-base tracking-[0.25em] uppercase">ECO<span class="text-brand-mint">COLÓN</span></div>
@@ -497,12 +455,9 @@
             <p class="font-light tracking-wider text-slate-600">Diseñado con un enfoque de divulgación socioambiental de vanguardia para Calles 1 a 16.</p>
         </div>
     </footer>
-
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-
         // --- SISTEMA DEL CARRUSEL DE ENTRADA ---
         const slides = document.querySelectorAll('.hero-slide');
         let slideIndex = 0;
@@ -510,28 +465,22 @@
             slides[slideIndex].classList.replace('opacity-100', 'opacity-0');
             const oldVideo = slides[slideIndex].querySelector('video');
             if (oldVideo) { oldVideo.pause(); oldVideo.currentTime = 0; }
-
             slideIndex = (slideIndex + 1) % slides.length;
             slides[slideIndex].classList.replace('opacity-0', 'opacity-100');
             const nextVideo = slides[slideIndex].querySelector('video');
             if (nextVideo) { nextVideo.play().catch(e => console.log(e)); }
         }
         setInterval(playCarousel, 4000);
-
-
         // --- BUSCADOR DEL SITIO WEB EN TIEMPO REAL ---
         function performSearch() {
             const query = document.getElementById('site-search').value.toLowerCase().trim();
             const cards = document.querySelectorAll('.searchable-card');
             const clearBtn = document.getElementById('clear-search-btn');
-
             if (query === "") {
                 clearSearch();
                 return;
             }
-
             clearBtn.classList.remove('hidden');
-
             cards.forEach(card => {
                 const text = card.textContent.toLowerCase();
                 if (text.includes(query)) {
@@ -543,7 +492,6 @@
                 }
             });
         }
-
         // --- RESTAURAR VALORES DE BÚSQUEDA ---
         function clearSearch() {
             document.getElementById('site-search').value = "";
@@ -555,7 +503,6 @@
                 card.style.transform = "scale(1)";
             });
         }
-
         // --- INTERRUPTOR DEL MODAL QR (Para móviles) ---
         function toggleQRModal() {
             const modal = document.getElementById('qr-modal');
@@ -567,7 +514,6 @@
                 modal.classList.add('hidden');
             }
         }
-
         // --- SISTEMA DEL TOUR VIRTUAL ---
         let tourStep = 0;
         const tourSteps = [
@@ -576,19 +522,16 @@
             { text: "Baja para ver las Fichas Taxonómicas de árboles y plantas en un diseño impecable de tarjetas.", btnText: "Siguiente" },
             { text: "Finalmente, descubre la herencia de Colón con la galería de fotos reales de monumentos.", btnText: "Finalizar Tour" }
         ];
-
         function startTour() {
             tourStep = 0;
             document.getElementById('tour-overlay').classList.remove('hidden');
             document.getElementById('tour-overlay').classList.add('flex');
             updateTourStep();
         }
-
         function closeTour() {
             document.getElementById('tour-overlay').classList.remove('flex');
             document.getElementById('tour-overlay').classList.add('hidden');
         }
-
         function nextTourStep() {
             tourStep++;
             if (tourStep >= tourSteps.length) {
@@ -597,7 +540,6 @@
                 updateTourStep();
             }
         }
-
         function updateTourStep() {
             document.getElementById('tour-text').textContent = tourSteps[tourStep].text;
             const btn = document.getElementById('tour-next-btn');
