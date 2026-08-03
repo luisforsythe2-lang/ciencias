@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Socioambiental - EcoColón</title>
+    
+    <!-- TAILWIND CSS Y FONTAWESOME -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        science: {
+                            neon: '#22C55E',
+                            darkBg: '#020617',
+                            panel: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tab-active {
+            border-color: #22C55E;
+            color: white;
+            background-color: rgba(34, 197, 94, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white font-sans antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
+
+    <!-- NAV BAR COMPACTA -->
+    <header class="w-full border-b border-white/10 bg-black/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2 text-white hover:text-science-neon transition-colors">
+            <i class="fa-solid fa-arrow-left text-sm"></i>
+            <span class="text-xs font-bold uppercase tracking-widest">Volver al Inicio</span>
+        </a>
+        <div class="font-black text-science-neon tracking-normal text-sm">
+            ECO<span class="text-white">COLÓN</span>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="max-w-7xl mx-auto px-6 py-10 md:py-16 w-full space-y-12">
+
+        <!-- ENCABEZADO -->
+        <div class="space-y-2 border-b border-zinc-800 pb-6 text-center">
+            <h1 class="text-3xl md:text-5xl font-black uppercase text-white tracking-tight">
+                Catálogo Socioambiental
+            </h1>
+            <p class="text-zinc-400 text-sm md:text-base font-medium max-w-2xl mx-auto">
+                Explora el inventario completo de especies botánicas y monumentos históricos que forman parte del patrimonio ecológico y cultural de Colón.
+            </p>
+        </div>
+
+        <!-- SELECTOR DE PESTAÑAS (TABS) -->
+        <div class="flex justify-center border border-zinc-800 rounded-full p-1 max-w-sm mx-auto bg-black">
+            <button id="btn-arboles" onclick="showTab('arboles')" class="tab-active flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-zinc-400 transition-all hover:text-white">
+                <i class="fa-solid fa-tree"></i> Árboles
+            </button>
+            <button id="btn-estatuas" onclick="showTab('estatuas')" class="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-zinc-400 transition-all hover:text-white">
+                <i class="fa-solid fa-monument"></i> Estatuas
+            </button>
+        </div>
+
+        <!-- PANEL DE ÁRBOLES -->
+        <div id="panel-arboles" class="tab-panel space-y-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- ÁRBOLES - TARJETA 1 -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=600&q=80" alt="Árbol de Corotú" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Enterolobium cyclocarpum</span>
+                            <span>Paseo Marino</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Árbol de Corotú</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Árbol imponente de copa frondosa que brinda abundante sombra y sirve de refugio a diversas especies de aves urbanas.</p>
+                        <a href="arbol-detalle.html" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ÁRBOLES - TARJETA 2 -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80" alt="Guayacán Amarillo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Handroanthus chrysanthus</span>
+                            <span>Avenida Central</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Guayacán Amarillo</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Especie maderable nativa reconocida por su espectacular floración dorada que embellece la ciudad durante la transición seca.</p>
+                        <a href="arbol-detalle.html" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ÁRBOLES - TARJETA 3 -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=600&q=80" alt="Palma Real" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Roystonea regia</span>
+                            <span>Parque de la Juventud</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Palma Real</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Especie de gran porte y valor paisajístico, adaptable a entornos costeros y clave en la captura de dióxido de carbono.</p>
+                        <a href="arbol-detalle.html" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ÁRBOLES - TARJETA 4 -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80" alt="Caoba Nacional" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Swietenia macrophylla</span>
+                            <span>Paseo Washington</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Caoba Nacional</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Árbol de gran durabilidad y madera preciosa, representante fundamental de la flora neotropical en la región de Colón.</p>
+                        <a href="arbol-detalle.html" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PANEL DE ESTATUAS (9 ESTATUAS) -->
+        <div id="panel-estatuas" class="tab-panel space-y-10 hidden">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- 1. Cristo Redentor -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="./foto2.jpeg" alt="Monumento al Cristo Redentor" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Granito y Cemento</span>
+                            <span>Calle 1 Ave. Central</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Cristo Redentor</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Símbolo de paz y hospitalidad que vigila la entrada del Canal de Panamá al final de la Avenida Central.</p>
+                        <a href="estatua-detalle.html?id=cristo" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Club de Leones -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="./leon.jpeg" alt="Monumento al Club de Leones" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Estilo Art Déco</span>
+                            <span>Calle 1 Ave. Central</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Club de Leones</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Figura de un león sobre pedestal Art Déco que simboliza el liderazgo, la solidaridad y la vocación de servicio.</p>
+                        <a href="estatua-detalle.html?id=leones" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Monumento a la Madre -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="./madre.jpeg" alt="Monumento a la Madre" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Bronce Macizo</span>
+                            <span>Calle 1 Ave. Central</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Monumento a la Madre</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Escultura en bronce de una madre sosteniendo a su hijo, honrando el amor incondicional y la protección familiar.</p>
+                        <a href="estatua-detalle.html?id=madre" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. Cristóbal Colón -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="./colon2.jpeg" alt="Monumento a Cristóbal Colón" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Bronce y Mármol</span>
+                            <span>Calle 2 Ave. Central</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Cristóbal Colón</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Joya histórica donada por la Emperatriz Eugenia de Montijo en 1870 que simboliza el encuentro de dos mundos.</p>
+                        <a href="estatua-detalle.html?id=colon" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. Cacique Quibián -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="./ca2.jpeg" alt="Monumento al Cacique Quibián" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Bronce Esculpido</span>
+                            <span>Calle 3 Central</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Cacique Quibián</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Homenaje al líder originario Guaymí con su hacha en alto, representando la valentía y la soberanía indígena.</p>
+                        <a href="estatua-detalle.html?id=quibian" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6. Ferdinand de Lesseps -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="./canal.jpeg" alt="Busto de Ferdinand de Lesseps" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Bronce Decimonónico</span>
+                            <span>Casco Urbano</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Ferdinand de Lesseps</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Busto en honor al diplomático francés que lideró el primer esfuerzo de excavación del canal interoceánico.</p>
+                        <a href="estatua-detalle.html?id=lesseps" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 7. San Juan Bautista de La Salle -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="./salle1.jpeg" alt="San Juan Bautista de La Salle" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Arte Sacro en Bronce</span>
+                            <span>Paseo Público</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">San Juan Bautista de La Salle</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Conjunto de bronce del patrono de los educadores guiando a dos niños, resaltando el valor de la enseñanza.</p>
+                        <a href="estatua-detalle.html?id=lasalle" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 8. Plaza Sesquicentenario -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="./plaza.jpeg" alt="Plaza del Sesquicentenario" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Monumento Conmemorativo</span>
+                            <span>Paseo Marino</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Plaza Sesquicentenario</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Espacio público y monumento emblemático en conmemoración de la historia colonense y panameña.</p>
+                        <a href="estatua-detalle.html?id=sesquicentenario" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 9. Manuel Amador Guerrero (Prócer) -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
+                    <div class="h-52 overflow-hidden">
+                        <img src="./amador2.jpeg" alt="Prócer Manuel Amador Guerrero" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
+                            <span>Bronce Republicano</span>
+                            <span>Paseo Marino</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Manuel Amador Guerrero</h3>
+                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Tributo al primer presidente y prócer gestor de la Separación de Panamá en 1903.</p>
+                        <a href="estatua-detalle.html?id=procer" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER SIMPLE -->
+    <footer class="border-t border-zinc-900 bg-black py-6 px-6 text-center text-xs text-zinc-500 font-medium">
+        <p>&copy; 2026 Catálogo Socioambiental de Colón. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JS PARA EL FUNCIONAMIENTO DE LAS PESTAÑAS -->
+    <script>
+        function showTab(tabName) {
+            // Ocultar todos los paneles
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            
+            // Quitar clase activa de todos los botones
+            document.querySelectorAll('[id^="btn-"]').forEach(btn => {
+                btn.classList.remove('tab-active');
+            });
+            
+            // Mostrar el panel seleccionado y activar su botón
+            document.getElementById('panel-' + tabName).classList.remove('hidden');
+            document.getElementById('btn-' + tabName).classList.add('tab-active');
+        }
+    </script>
+
+</body>
+</html>
