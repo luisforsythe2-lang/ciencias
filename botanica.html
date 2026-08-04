@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del Árbol - EcoColón</title>
+    <title>Detalle Botánico - EcoColón</title>
     
     <!-- TAILWIND CSS Y FONTAWESOME -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,157 +26,280 @@
     </script>
 </head>
 <body class="bg-zinc-950 text-white font-sans antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
-
-    <!-- NAV BAR COMPACTA -->
+    <!-- HEADER / NAV -->
     <header class="w-full border-b border-white/10 bg-black/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-2 text-white hover:text-science-neon transition-colors">
+        <a href="catalogo.html" class="flex items-center gap-2 text-white hover:text-science-neon transition-colors">
             <i class="fa-solid fa-arrow-left text-sm"></i>
-            <span class="text-xs font-bold uppercase tracking-widest">Volver al Inicio</span>
+            <span class="text-xs font-bold uppercase tracking-widest">Volver al Catálogo</span>
         </a>
         <div class="font-black text-science-neon tracking-normal text-sm">
             ECO<span class="text-white">COLÓN</span>
         </div>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="max-w-7xl mx-auto px-6 py-10 md:py-16 w-full space-y-12">
-
-        <!-- ENCABEZADO DEL ÁRBOL -->
-        <div class="space-y-2 border-b border-zinc-800 pb-6">
-            <div class="flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest">
-                <i class="fa-solid fa-tree"></i> Especie Arbórea / Flora Urbana
-            </div>
-            <h1 id="tree-title" class="text-3xl md:text-6xl font-black uppercase text-white tracking-tight">
-                Árbol de Corotú (Guanacaste)
-            </h1>
-            <p class="text-zinc-400 text-sm md:text-base font-medium">
-                Ubicado en el Paseo Marino • Pulmón verde costero de Colón
-            </p>
-        </div>
-
-        <!-- SECCIÓN 1 Y 2: GALERÍA DE IMÁGENES E INFORMACIÓN DETALLADA -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            
-            <!-- GALERÍA INTERACTIVA (3 IMÁGENES + 1 PRINCIPAL) -->
-            <div class="lg:col-span-7 space-y-4">
-                <!-- Imagen Principal Grande -->
-                <div class="w-full h-[350px] md:h-[480px] rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative bg-zinc-900">
-                    <img id="main-image" src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=80" 
-                         alt="Imagen Principal del Árbol" 
-                         class="w-full h-full object-cover transition-all duration-500">
-                </div>
-
-                <!-- Miniaturas (Click para cambiar la principal) -->
-                <div class="grid grid-cols-3 gap-3 md:gap-4">
-                    <button onclick="changeImage(this.src)" class="h-24 md:h-28 rounded-2xl overflow-hidden border-2 border-science-neon focus:outline-none transition-all hover:opacity-80">
-                        <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="Vista general del árbol">
-                    </button>
-                    <button onclick="changeImage(this.src)" class="h-24 md:h-28 rounded-2xl overflow-hidden border-2 border-transparent hover:border-zinc-500 focus:outline-none transition-all hover:opacity-80">
-                        <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="Detalle de hojas y follaje">
-                    </button>
-                    <button onclick="changeImage(this.src)" class="h-24 md:h-28 rounded-2xl overflow-hidden border-2 border-transparent hover:border-zinc-500 focus:outline-none transition-all hover:opacity-80">
-                        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="Entorno natural">
-                    </button>
-                </div>
-            </div>
-
-            <!-- FICHA DE INFORMACIÓN -->
-            <div class="lg:col-span-5 bg-zinc-900/90 border border-zinc-800 p-6 md:p-8 rounded-3xl space-y-6 shadow-xl">
-                <h2 class="text-xl md:text-2xl font-bold text-white border-b border-zinc-800 pb-4">
-                    Perfil Botánico y Ecológico
-                </h2>
-
-                <div class="space-y-4 text-zinc-300 text-sm md:text-base leading-relaxed font-light">
-                    <p>
-                        El Corotú es un árbol majestuoso conocido por su amplia copa en forma de sombrilla, la cual proporciona una densa sombra vital en los espacios públicos y costeros de la provincia de Colón.
-                    </p>
-                    <p>
-                        Además de su imponente belleza paisajística, cumple un rol ecológico fundamental al albergar diversas especies de aves locales, fijar nutrientes en el suelo y mitigar el impacto de los vientos marinos.
-                    </p>
-                </div>
-
-                <!-- DATOS CLAVE (ÁRBOLES) -->
-                <div class="grid grid-cols-2 gap-4 pt-2">
-                    <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800/80">
-                        <span class="text-zinc-500 text-xs font-bold uppercase block">Nombre Científico</span>
-                        <span class="text-white font-bold text-sm italic">Enterolobium cyclocarpum</span>
-                    </div>
-                    <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800/80">
-                        <span class="text-zinc-500 text-xs font-bold uppercase block">Familia Botánica</span>
-                        <span class="text-white font-bold text-base">Fabaceae</span>
-                    </div>
-                    <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800/80">
-                        <span class="text-zinc-500 text-xs font-bold uppercase block">Rol Ecológico</span>
-                        <span class="text-science-neon font-bold text-base">Sombra y Refugio</span>
-                    </div>
-                    <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800/80">
-                        <span class="text-zinc-500 text-xs font-bold uppercase block">Ubicación</span>
-                        <span class="text-white font-bold text-base">Paseo Marino</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- SECCIÓN 3: MAPA CON UBICACIÓN EXACTA -->
-        <div class="space-y-6 pt-6">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight flex items-center gap-3">
-                        <i class="fa-solid fa-location-dot text-science-neon"></i> Ubicación del Espécimen
-                    </h2>
-                    <p class="text-zinc-400 text-sm mt-1">Localiza este árbol dentro del mapa de áreas verdes de Colón.</p>
-                </div>
-                <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 bg-science-neon hover:bg-emerald-600 text-black font-bold text-xs px-5 py-3 rounded-full transition-all">
-                    Abrir en Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-
-            <!-- Mapa Integrado (Iframe de Google Maps) -->
-            <div class="w-full h-80 md:h-[400px] rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative">
-                <iframe 
-                    class="w-full h-full filter grayscale contrast-125 invert-[0.9] hue-rotate-180" 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3937.102874138127!2d-79.9058!3d9.3598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMjEnMzUuMyJOIDc5wrA1NCcyMC45Ilc!5e0!3m2!1ses!2spa!4v1620000000000!5m2!1ses!2spa" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
-
+    <!-- CONTENIDO DINÁMICO -->
+    <main id="main-content" class="max-w-6xl mx-auto px-6 py-10 md:py-16 w-full space-y-10">
+        <!-- Inyección vía JavaScript -->
     </main>
 
-    <!-- FOOTER SIMPLE -->
+    <!-- FOOTER -->
     <footer class="border-t border-zinc-900 bg-black py-6 px-6 text-center text-xs text-zinc-500 font-medium">
         <p>&copy; 2026 Catálogo Socioambiental de Colón. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JS PARA CAMBIAR LAS FOTOS -->
+    <!-- BASE DE DATOS MAESTRA BLINDADA -->
     <script>
-        function changeImage(newSrc) {
-            const mainImg = document.getElementById('main-image');
+        const botanicaDB = {
+            "1": { name: "Almendro", sciName: "Terminalia catappa L.", family: "Combretaceae", desc: "Árbol frondoso de gran tamaño con ramas horizontales en pisos y excelente resistencia a la salinidad costera.", images: ["./almendro.jpeg", "./almendro1.jpeg", "./almendro2.jpeg"] },
+            "almendro": { name: "Almendro", sciName: "Terminalia catappa L.", family: "Combretaceae", desc: "Árbol frondoso de gran tamaño con ramas horizontales en pisos y excelente resistencia a la salinidad costera.", images: ["./almendro.jpeg", "./almendro1.jpeg", "./almendro2.jpeg"] },
             
-            // Efecto suave de cambio
-            mainImg.style.opacity = '0.3';
-            setTimeout(() => {
-                mainImg.src = newSrc;
-                mainImg.style.opacity = '1';
-            }, 150);
+            "2": { name: "Árbol Orquídea", sciName: "Bauhinia monandra", family: "Fabaceae", desc: "Arbolito de hojas bilobuladas con flores grandes rosadas y púrpuras muy vistosas.", images: ["./orquidea.jpeg"] },
+            "arbol-orquidea": { name: "Árbol Orquídea", sciName: "Bauhinia monandra", family: "Fabaceae", desc: "Arbolito de hojas bilobuladas con flores grandes rosadas y púrpuras muy vistosas.", images: ["./orquidea.jpeg"] },
+            
+            "3": { name: "Caracucha", sciName: "Plumeria rubra", family: "Apocynaceae", desc: "Arbusto o árbol pequeño de ramas suculentas y flores intensamente aromáticas.", images: ["./cara.jpg", "./cara1.jpeg", "./cara2.jpg", "./cara3.jpg", "./cara4.jpg", "./cara5.jpeg"] },
+            "caracucha": { name: "Caracucha", sciName: "Plumeria rubra", family: "Apocynaceae", desc: "Arbusto o árbol pequeño de ramas suculentas y flores intensamente aromáticas.", images: ["./cara.jpg", "./cara1.jpeg", "./cara2.jpg", "./cara3.jpg", "./cara4.jpg", "./cara5.jpeg"] },
+            
+            "4": { name: "Ficus", sciName: "Ficus kurzii King", family: "Moraceae", desc: "Árbol de porte majestuoso con denso follaje siempreverde y raíces aéreas.", images: ["./ficus.jpeg", "./ficus1.jpeg", "./ficus2.jpeg", "./ficus3.jpeg"] },
+            "ficus": { name: "Ficus", sciName: "Ficus kurzii King", family: "Moraceae", desc: "Árbol de porte majestuoso con denso follaje siempreverde y raíces aéreas.", images: ["./ficus.jpeg", "./ficus1.jpeg", "./ficus2.jpeg", "./ficus3.jpeg"] },
+            
+            "5": { name: "Flamboyán", sciName: "Delonix regia (bojer ex hook.) raf.", family: "Fabaceae", desc: "Árbol de copa extendida en sombrilla con espectacular floración roja-anaranjada.", images: ["./flamboyan.jpeg"] },
+            "flamboyan": { name: "Flamboyán", sciName: "Delonix regia (bojer ex hook.) raf.", family: "Fabaceae", desc: "Árbol de copa extendida en sombrilla con espectacular floración roja-anaranjada.", images: ["./flamboyan.jpeg"] },
+            
+            "6": { name: "Mamón Criollo", sciName: "Melicoccus bijugatus", family: "Sapindaceae", desc: "Árbol frutal de tronco fuerte que produce racimos de frutos globosos verdes de pulpa dulce.", images: ["./mamon.jpg", "./mamon1.jpg", "./mamon2.jpg", "./mamon3.jpg"] },
+            "mamon-criollo": { name: "Mamón Criollo", sciName: "Melicoccus bijugatus", family: "Sapindaceae", desc: "Árbol frutal de tronco fuerte que produce racimos de frutos globosos verdes de pulpa dulce.", images: ["./mamon.jpg", "./mamon1.jpg", "./mamon2.jpg", "./mamon3.jpg"] },
+            
+            "7": { name: "María", sciName: "Calophyllum inophyllum", family: "Calophyllaceae", desc: "Árbol perennifolio de hojas coriáceas verde oscuro y flores blancas muy perfumadas.", images: ["./maria.jpeg", "./maria1.jpeg", "./maria2.jpg", "./maria3.jpg", "./maria4.jpg", "./maria5.jpg"] },
+            "maria": { name: "María", sciName: "Calophyllum inophyllum", family: "Calophyllaceae", desc: "Árbol perennifolio de hojas coriáceas verde oscuro y flores blancas muy perfumadas.", images: ["./maria.jpeg", "./maria1.jpeg", "./maria2.jpg", "./maria3.jpg", "./maria4.jpg", "./maria5.jpg"] },
+            
+            "8": { name: "Nim / Neem", sciName: "Azadirachta indica A. Juss.", family: "Meliaceae", desc: "Árbol de rápido crecimiento resistente a la contaminación urbana y purificador ambiental.", images: ["./nim.jpg", "./nim1.jpg", "./nim2.jpg", "./nim3.jpg"] },
+            "nim": { name: "Nim / Neem", sciName: "Azadirachta indica A. Juss.", family: "Meliaceae", desc: "Árbol de rápido crecimiento resistente a la contaminación urbana y purificador ambiental.", images: ["./nim.jpg", "./nim1.jpg", "./nim2.jpg", "./nim3.jpg"] },
+            
+            "9": { name: "Astromelia", sciName: "Lagerstroemia speciosa (L.) Pers", family: "Lythraceae", desc: "Árbol mediano decorativo con vistosos racimos verticales de flores rizadas lila y rosado.", images: ["./astro.jpeg", "./astro1.jpeg", "./astro2.jpeg", "./astro3.jpeg"] },
+            "astromelia": { name: "Astromelia", sciName: "Lagerstroemia speciosa (L.) Pers", family: "Lythraceae", desc: "Árbol mediano decorativo con vistosos racimos verticales de flores rizadas lila y rosado.", images: ["./astro.jpeg", "./astro1.jpeg", "./astro2.jpeg", "./astro3.jpeg"] },
+            
+            "10": { name: "Bouquet de Novia Rojo", sciName: "Ixora coccinea L.", family: "Rubiaceae", desc: "Arbusto tupido de flores tubulares color rojo brillante agrupadas en esferas compactas.", images: ["./rojo.jpeg", "./rojo1.jpeg", "./rojo2.jpeg"] },
+            "ixora": { name: "Bouquet de Novia Rojo", sciName: "Ixora coccinea L.", family: "Rubiaceae", desc: "Arbusto tupido de flores tubulares color rojo brillante agrupadas en esferas compactas.", images: ["./rojo.jpeg", "./rojo1.jpeg", "./rojo2.jpeg"] },
+            
+            "12": { name: "Cativo", sciName: "Prioria copaifera", family: "Fabaceae", desc: "Árbol nativo de bosques tropicales húmedos característico de zonas cenagosas.", images: ["./placeholder.jpeg"] },
+            "cativo": { name: "Cativo", sciName: "Prioria copaifera", family: "Fabaceae", desc: "Árbol nativo de bosques tropicales húmedos característico de zonas cenagosas.", images: ["./placeholder.jpeg"] },
+            
+            "13": { name: "Clavellino", sciName: "Caesalpinia pulcherrima", family: "Fabaceae", desc: "Arbusto de flores rojas y amarillas con estambres largos que atraen polinizadores.", images: ["./clave.jpeg", "./clave1.jpeg", "./clave2.jpeg"] },
+            "clavellino": { name: "Clavellino", sciName: "Caesalpinia pulcherrima", family: "Fabaceae", desc: "Arbusto de flores rojas y amarillas con estambres largos que atraen polinizadores.", images: ["./clave.jpeg", "./clave1.jpeg", "./clave2.jpeg"] },
+            
+            "14": { name: "Ilang-Ilang", sciName: "Cananga odorata", family: "Annonaceae", desc: "Árbol de flores verdosas-amarillas de altísimo valor aromático y medicinal.", images: ["./llang.jpeg"] },
+            "ilang-ilang": { name: "Ilang-Ilang", sciName: "Cananga odorata", family: "Annonaceae", desc: "Árbol de flores verdosas-amarillas de altísimo valor aromático y medicinal.", images: ["./llang.jpeg", "./llang1.jpeg"] },
+            "ylang": { name: "Ilang-Ilang", sciName: "Cananga odorata", family: "Annonaceae", desc: "Árbol de flores verdosas-amarillas de altísimo valor aromático y medicinal.", images: ["./llang.jpeg", "./llang1.jpeg"] },
+            
+            "15": { name: "Guayacán Rosado", sciName: "Handroanthus sp", family: "Bignoniaceae", desc: "Árbol nativo frondoso con majestuosa floración rosada durante la época seca.", images: ["./numero7.jpeg"] },
+            "guayacan-rosado": { name: "Guayacán Rosado", sciName: "Handroanthus sp", family: "Bignoniaceae", desc: "Árbol nativo frondoso con majestuosa floración rosada durante la época seca.", images: ["./numero7.jpeg"] },
+            
+            "17": { name: "Frijolillo", sciName: "Clitoria fairchildiana R.A. Howard", family: "Fabaceae", desc: "Árbol frondoso de flores lilas péndulas que enriquece el suelo urbano.", images: ["./fijo.jpeg", "./fijo1.jpeg", "./fijo2.jpeg"] },
+            "frijolillo": { name: "Frijolillo", sciName: "Clitoria fairchildiana R.A. Howard", family: "Fabaceae", desc: "Árbol frondoso de flores lilas péndulas que enriquece el suelo urbano.", images: ["./fijo.jpeg", "./fijo1.jpeg", "./fijo2.jpeg"] },
+            
+            "18": { name: "Marañón Curat", sciName: "Anacardium occidentale", family: "Anacardiaceae", desc: "Árbol frutal tropical reconocido por su fruto característico y su pseudofruto carnoso.", images: ["./cortes.jpeg"] },
+            "maranon-curat": { name: "Marañón Curat", sciName: "Anacardium occidentale", family: "Anacardiaceae", desc: "Árbol frutal tropical reconocido por su fruto característico y su pseudofruto carnoso.", images: ["./cortes.jpeg"] },
+            
+            "20": { name: "Guaba de Mico", sciName: "Inga edulis", family: "Fabaceae", desc: "Árbol leguminoso de rápido crecimiento utilizado para dar sombra y restaurar suelos.", images: ["./inga.jpeg"] },
+            "guaba-de-mico": { name: "Guaba de Mico", sciName: "Inga edulis", family: "Fabaceae", desc: "Árbol leguminoso de rápido crecimiento utilizado para dar sombra y restaurar suelos.", images: ["./inga.jpeg"] },
+            
+            "21": { name: "Acacia Mangium", sciName: "Acacia mangium", family: "Fabaceae", desc: "Árbol robusto de rápido desarrollo adaptado a suelos tropicales ácidos.", images: ["./acacia.jpeg"] },
+            "acacia-mangium": { name: "Acacia Mangium", sciName: "Acacia mangium", family: "Fabaceae", desc: "Árbol robusto de rápido desarrollo adaptado a suelos tropicales ácidos.", images: ["./acacia.jpeg"] },
+            
+            "22": { name: "Leucaena", sciName: "Leucaena esculenta", family: "Fabaceae", desc: "Árbol de hojas finas plumosas y gran adaptabilidad ecológica.", images: ["./guaje.jpeg", "./guaje1.jpeg"] },
+            "leucaena": { name: "Leucaena", sciName: "Leucaena esculenta", family: "Fabaceae", desc: "Árbol de hojas finas plumosas y gran adaptabilidad ecológica.", images: ["./guaje.jpeg", "./guaje1.jpeg"] },
+            
+            "23": { name: "Sauce Llorón", sciName: "Syzygium syzygioides (Miq.) Merr. & L.M. Perry", family: "Bignoniaceae", desc: "Registro botánico de follaje denso y porte característico ubicado en el parque.", images: ["./lloron.jpeg"] },
+            "syzygium": { name: "Sauce Llorón", sciName: "Syzygium syzygioides (Miq.) Merr. & L.M. Perry", family: "Bignoniaceae", desc: "Registro botánico de follaje denso y porte característico ubicado en el parque.", images: ["./lloron.jpeg"] },
+            "sauce-lloron": { name: "Sauce Llorón", sciName: "Syzygium syzygioides (Miq.) Merr. & L.M. Perry", family: "Bignoniaceae", desc: "Registro botánico de follaje denso y porte característico ubicado en el parque.", images: ["./lloron.jpeg"] },
+            
+            "25": { name: "Flamboyán Dorado", sciName: "Peltophorum pterocarpum (DC.) Backer ex K.Heyne", family: "Fabaceae", desc: "Árbol imponente con erguidas pirámides de flores amarillo brillante.", images: ["./dorado.jpeg"] },
+            "flamboyan-dorado": { name: "Flamboyán Dorado", sciName: "Peltophorum pterocarpum (DC.) Backer ex K.Heyne", family: "Fabaceae", desc: "Árbol imponente con erguidas pirámides de flores amarillo brillante.", images: ["./dorado.jpeg"] },
+            
+            "29": { name: "Noni", sciName: "Morinda citrifolia L.", family: "Rubiaceae", desc: "Arbusto tropical de hojas anchas y frutos amarillentos rugosos de uso tradicional.", images: ["./noni.jpeg", "./noni1.jpg"] },
+            "noni": { name: "Noni", sciName: "Morinda citrifolia L.", family: "Rubiaceae", desc: "Arbusto tropical de hojas anchas y frutos amarillentos rugosos de uso tradicional.", images: ["./noni.jpeg", "./noni1.jpg"] },
+            
+            "30": { name: "Palma Amarilla", sciName: "Chrysalidocarpus lutescens H. Wendl", family: "Arecaceae", desc: "Palma multicaule de tallos anillados amarillos y frondas verdes curvadas.", images: ["./amarillo.jpeg"] },
+            "palma-amarilla": { name: "Palma Amarilla", sciName: "Chrysalidocarpus lutescens H. Wendl", family: "Arecaceae", desc: "Palma multicaule de tallos anillados amarillos y frondas verdes curvadas.", images: ["./amarillo.jpeg"] },
+            
+            "31": { name: "Palma Real", sciName: "Roystonea regia (Kunth) O.F. Cook", family: "Arecaceae", desc: "Palma elegante de tronco liso grisáceo y capitel verde de gran altura.", images: ["./real.jpeg"] },
+            "palma-real": { name: "Palma Real", sciName: "Roystonea regia (Kunth) O.F. Cook", family: "Arecaceae", desc: "Palma elegante de tronco liso grisáceo y capitel verde de gran altura.", images: ["./real.jpeg"] },
+            
+            "32": { name: "Corozo", sciName: "Acrocomia aculeata", family: "Arecaceae", desc: "Palma autóctona provista de espinas en su tronco y frutos ricos en aceites.", images: ["./corozo.jpeg"] },
+            "corozo": { name: "Corozo", sciName: "Acrocomia aculeata", family: "Arecaceae", desc: "Palma autóctona provista de espinas en su tronco y frutos ricos en aceites.", images: ["./corozo.jpeg"] },
+            
+            "33": { name: "Palma Abanico China", sciName: "Livistona chinensis (Jacq.) R.Br. ex Mart.", family: "Arecaceae", desc: "Palma de frondas en abanico con extremos de los folíolos caídos.", images: ["./china.jpeg", "./china2.jpeg", "./china3.jpeg"] },
+            "palma-china": { name: "Palma Abanico China", sciName: "Livistona chinensis (Jacq.) R.Br. ex Mart.", family: "Arecaceae", desc: "Palma de frondas en abanico con extremos de los folíolos caídos.", images: ["./china.jpeg", "./china2.jpeg", "./china3.jpeg"] },
+            
+            "34": { name: "Palma Cola de Pescado", sciName: "Caryota sp.", family: "Arecaceae", desc: "Palma exótica caracterizada por folíolos cortados en forma de aleta de pez.", images: ["./caryota.jpeg"] },
+            "palma-cola-de-pescado": { name: "Palma Cola de Pescado", sciName: "Caryota sp.", family: "Arecaceae", desc: "Palma exótica caracterizada por folíolos cortados en forma de aleta de pez.", images: ["./caryota.jpeg"] },
+            "caryota": { name: "Palma Cola de Pescado", sciName: "Caryota sp.", family: "Arecaceae", desc: "Palma exótica caracterizada por folíolos cortados en forma de aleta de pez.", images: ["./caryota.jpeg"] },
+            
+            "35": { name: "Palma de Navidad", sciName: "Veitchia merrillii (Becc.) H.E. Moore", family: "Arecaceae", desc: "Palma de porte medio con vistosos racimos de frutos rojo carmesí.", images: ["./navidad.jpeg"] },
+            "palma-de-navidad": { name: "Palma de Navidad", sciName: "Veitchia merrillii (Becc.) H.E. Moore", family: "Arecaceae", desc: "Palma de porte medio con vistosos racimos de frutos rojo carmesí.", images: ["./navidad.jpeg"] },
+            "adonidia": { name: "Palma de Navidad", sciName: "Veitchia merrillii (Becc.) H.E. Moore", family: "Arecaceae", desc: "Palma de porte medio con vistosos racimos de frutos rojo carmesí.", images: ["./navidad.jpeg"] },
+            
+            "36": { name: "Palma Bambú", sciName: "Rhapis sp.", family: "Arecaceae", desc: "Palma enana multicaule de tallos delgados tipo caña de bambú.", images: ["./bambu.jpeg"] },
+            "rhapis": { name: "Palma Bambú", sciName: "Rhapis sp.", family: "Arecaceae", desc: "Palma enana multicaule de tallos delgados tipo caña de bambú.", images: ["./bambu.jpeg"] },
 
-            // Resaltar borde de la miniatura seleccionada
-            const buttons = document.querySelectorAll('.grid-cols-3 button');
-            buttons.forEach(btn => {
-                const img = btn.querySelector('img');
-                if (img.src === newSrc) {
-                    btn.classList.add('border-science-neon');
-                    btn.classList.remove('border-transparent');
-                } else {
-                    btn.classList.remove('border-science-neon');
-                    btn.classList.add('border-transparent');
+            "37": { name: "Roble", sciName: "Tabebuia rosea", family: "Bignoniaceae", desc: "Árbol majestuoso de gran tamaño caracterizado por su hermosa floración rosada o blanca.", images: ["./rosea.jpg"] },
+            "roble": { name: "Roble", sciName: "Tabebuia rosea", family: "Bignoniaceae", desc: "Árbol majestuoso de gran tamaño caracterizado por su hermosa floración rosada o blanca.", images: ["./rosea.jpg"] }
+        };
+
+        // BÚSQUEDA BLINDADA CONTRA ERRORES
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            let rawId = params.get('id');
+
+            // CORRECCIÓN: Si no hay ID o está vacío, asignamos por defecto la planta "1" (Almendro)
+            if (!rawId || rawId.trim() === "") {
+                rawId = "1";
+            }
+
+            const queryKey = rawId.toString().trim();
+
+            const normalizeStr = (str) => {
+                return str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[-_\s]+/g, "").trim() : "";
+            };
+
+            const normalizedQuery = normalizeStr(queryKey);
+            let item = null;
+            const keys = Object.keys(botanicaDB);
+
+            if (normalizedQuery) {
+                let matchedKey = keys.find(k => normalizeStr(k) === normalizedQuery || normalizeStr(botanicaDB[k].name) === normalizedQuery);
+
+                if (!matchedKey) {
+                    matchedKey = keys.find(k => {
+                        const obj = botanicaDB[k];
+                        const nKey = normalizeStr(k);
+                        const nName = normalizeStr(obj.name);
+                        return nKey.includes(normalizedQuery) || normalizedQuery.includes(nKey) ||
+                                     nName.includes(normalizedQuery) || normalizedQuery.includes(nName);
+                    });
                 }
+
+                if (matchedKey) {
+                    item = botanicaDB[matchedKey];
+                }
+            }
+
+            const main = document.getElementById('main-content');
+
+            if (!item) {
+                main.innerHTML = `
+                    <div class="bg-zinc-900 border border-red-500/30 rounded-3xl p-8 md:p-12 text-center space-y-6 max-w-xl mx-auto my-12 shadow-2xl">
+                        <div class="w-16 h-16 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center mx-auto text-2xl border border-red-500/20">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <h1 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight">Planta no encontrada</h1>
+                            <p class="text-zinc-400 text-sm md:text-base leading-relaxed">
+                                No se encontró el registro para <code class="text-science-neon font-mono bg-black/60 px-2 py-1 rounded border border-zinc-800">id=${rawId || '(vacío)'}</code>.
+                            </p>
+                        </div>
+                        <div class="pt-2">
+                            <a href="catalogo.html" class="inline-flex items-center gap-2 bg-white text-black font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-2xl hover:bg-science-neon transition-colors shadow-lg">
+                                <i class="fa-solid fa-arrow-left"></i> Volver al Catálogo
+                            </a>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            let imgList = item.images && Array.isArray(item.images) && item.images.length > 0 
+                ? item.images.filter(img => img && img.trim() !== "") 
+                : [];
+            
+            let primaryImg = imgList.length > 0 ? imgList[0] : '';
+
+            let primaryDisplayHTML = primaryImg ? 
+                `<img id="main-product-img" src="${primaryImg}" alt="${item.name}" class="w-full h-full object-cover transition-opacity duration-300" onerror="this.style.display='none'; document.getElementById('img-error-fallback').style.display='flex';">
+                 <div id="img-error-fallback" style="display:none;" class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900 text-zinc-500 gap-2 p-4 text-center">
+                    <i class="fa-solid fa-image-slash text-3xl text-zinc-600"></i>
+                    <span class="text-xs font-mono">Imagen local no encontrada (${primaryImg})</span>
+                 </div>` :
+                `<div class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900 text-zinc-500 gap-2 p-4 text-center">
+                    <i class="fa-solid fa-image-slash text-3xl text-zinc-600"></i>
+                    <span class="text-xs font-mono">Sin imagen asignada</span>
+                 </div>`;
+
+            let galleryHTML = '';
+            if (imgList.length > 1) {
+                galleryHTML = `<div class="grid grid-cols-3 gap-3 pt-3">` + 
+                    imgList.map((img, index) => `
+                        <div onclick="cambiarImagenPrincipal('${img}', this)" 
+                             class="thumbnail-item rounded-2xl overflow-hidden border ${index === 0 ? 'border-science-neon ring-2 ring-science-neon/50' : 'border-zinc-800'} aspect-square bg-zinc-900 cursor-pointer transition-all hover:opacity-80 relative flex items-center justify-center">
+                            <img src="${img}" class="w-full h-full object-cover" onerror="this.style.display='none';">
+                        </div>
+                    `).join('') +
+                    `</div>`;
+            }
+
+            main.innerHTML = `
+                <div class="space-y-3">
+                    <h1 class="text-3xl md:text-5xl font-black uppercase text-white tracking-tight">
+                        ${item.name}
+                    </h1>
+                    <p class="text-zinc-400 text-lg italic font-serif">
+                        ${item.sciName}
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start pt-4">
+                    <div class="space-y-3">
+                        <div class="rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 aspect-[4/3] shadow-2xl relative">
+                            ${primaryDisplayHTML}
+                        </div>
+                        ${galleryHTML}
+                    </div>
+
+                    <div class="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-6 md:p-8 space-y-6">
+                        <h2 class="text-xl font-bold text-white border-b border-zinc-800 pb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-leaf text-science-neon"></i> Ficha Técnica Completa
+                        </h2>
+
+                        <p class="text-zinc-300 text-sm md:text-base font-light leading-relaxed">
+                            ${item.desc}
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-black/50 p-4 rounded-2xl border border-zinc-800">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">Nombre Científico</span>
+                                <span class="text-sm font-semibold text-white italic">${item.sciName}</span>
+                            </div>
+                            <div class="bg-black/50 p-4 rounded-2xl border border-zinc-800">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">Familia Botánica</span>
+                                <span class="text-sm font-semibold text-white">${item.family}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        function cambiarImagenPrincipal(imgSrc, element) {
+            const mainImg = document.getElementById('main-product-img');
+            const fallback = document.getElementById('img-error-fallback');
+            if (mainImg) {
+                mainImg.style.opacity = '0';
+                setTimeout(() => {
+                    mainImg.src = imgSrc;
+                    if(fallback) fallback.style.display = 'none';
+                    mainImg.style.display = 'block';
+                    mainImg.style.opacity = '1';
+                }, 150);
+            }
+
+            const thumbnails = document.querySelectorAll('.thumbnail-item');
+            thumbnails.forEach(thumb => {
+                thumb.classList.remove('border-science-neon', 'ring-2', 'ring-science-neon/50');
+                thumb.classList.add('border-zinc-800');
             });
+
+            element.classList.remove('border-zinc-800');
+            element.classList.add('border-science-neon', 'ring-2', 'ring-science-neon/50');
         }
     </script>
-
 </body>
 </html>
