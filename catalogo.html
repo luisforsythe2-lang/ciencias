@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo Socioambiental - EcoColón</title>
     
-    <!-- TAILWIND CSS Y FONTAWESOME -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -33,8 +32,6 @@
     </style>
 </head>
 <body class="bg-zinc-950 text-white font-sans antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
-
-    <!-- NAV BAR COMPACTA -->
     <header class="w-full border-b border-white/10 bg-black/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-2 text-white hover:text-science-neon transition-colors">
             <i class="fa-solid fa-arrow-left text-sm"></i>
@@ -44,11 +41,8 @@
             ECO<span class="text-white">COLÓN</span>
         </div>
     </header>
-
-    <!-- CONTENIDO PRINCIPAL -->
+    
     <main class="max-w-7xl mx-auto px-6 py-10 md:py-16 w-full space-y-12">
-
-        <!-- ENCABEZADO -->
         <div class="space-y-2 border-b border-zinc-800 pb-6 text-center">
             <h1 class="text-3xl md:text-5xl font-black uppercase text-white tracking-tight">
                 Catálogo Socioambiental
@@ -57,8 +51,7 @@
                 Explora el inventario completo de especies botánicas y monumentos históricos que forman parte del patrimonio ecológico y cultural de Colón.
             </p>
         </div>
-
-        <!-- SELECTOR DE PESTAÑAS (TABS) -->
+        
         <div class="flex justify-center border border-zinc-800 rounded-full p-1 max-w-sm mx-auto bg-black">
             <button id="btn-arboles" onclick="showTab('arboles')" class="tab-active flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-zinc-400 transition-all hover:text-white">
                 <i class="fa-solid fa-tree"></i> Árboles
@@ -67,280 +60,811 @@
                 <i class="fa-solid fa-monument"></i> Estatuas
             </button>
         </div>
-
-        <!-- PANEL DE ÁRBOLES -->
+        
+        <!-- Panel Árboles -->
         <div id="panel-arboles" class="tab-panel space-y-10">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- ÁRBOLES - TARJETA 1 -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=600&q=80" alt="Árbol de Corotú" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Enterolobium cyclocarpum</span>
-                            <span>Paseo Marino</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Almendro -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./almendro.jpeg" alt="Almendro" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Combretaceae</span>
+                            <span class="text-zinc-300">Terminalia catappa L.</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Árbol de Corotú</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Árbol imponente de copa frondosa que brinda abundante sombra y sirve de refugio a diversas especies de aves urbanas.</p>
-                        <a href="arbol-detalle.html" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Almendro</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol frondoso con ramas in pisos y hojas grandes que tornan rojas/amarillas. Brinda sombra densa y soporta salinidad.</p>
+                        <a href="botanica.html?id=almendro" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
                             Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-
-                <!-- ÁRBOLES - TARJETA 2 -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80" alt="Guayacán Amarillo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Handroanthus chrysanthus</span>
-                            <span>Avenida Central</span>
+                <!-- Árbol orquídea -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./orquidea.jpeg" alt="Árbol orquídea" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Fabaceae</span>
+                            <span class="text-zinc-300">Bauhinia monandra Kurz</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Guayacán Amarillo</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Especie maderable nativa reconocida por su espectacular floración dorada que embellece la ciudad durante la transición seca.</p>
-                        <a href="arbol-detalle.html" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Árbol orquídea</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Arbolito de hojas bilobuladas con forma de pezuña y grandes flores rosado-purpúreas con aspecto de orquídea.</p>
+                        <a href="botanica.html?id=orquidea" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
                             Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-
-                <!-- ÁRBOLES - TARJETA 3 -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=600&q=80" alt="Palma Real" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Roystonea regia</span>
-                            <span>Parque de la Juventud</span>
+                <!-- Caracucha -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./cara5.jpeg" alt="Caracucha" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Apocynaceae</span>
+                            <span class="text-zinc-300">Plumeria rubra L.</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Palma Real</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Especie de gran porte y valor paisajístico, adaptable a entornos costeros y clave en la captura de dióxido de carbono.</p>
-                        <a href="arbol-detalle.html" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Caracucha</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Arbusto suculento de flores muy fragantes de 5 pétalos. Planta ornamental altamente resistente al sol directo.</p>
+                        <a href="botanica.html?id=caracucha" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
                             Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-
-                <!-- ÁRBOLES - TARJETA 4 -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80" alt="Caoba Nacional" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Swietenia macrophylla</span>
-                            <span>Paseo Washington</span>
+                <!-- Ficus -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./ficus.jpeg" alt="Ficus" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Moraceae</span>
+                            <span class="text-zinc-300">Ficus kurzii King</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Caoba Nacional</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Árbol de gran durabilidad y madera preciosa, representante fundamental de la flora neotropical en la región de Colón.</p>
-                        <a href="arbol-detalle.html" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Ficus</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de gran porte con raíces aéreas y copa espesa verde oscura. Ayuda a reducir la temperatura urbana.</p>
+                        <a href="botanica.html?id=ficus" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
                             Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-
+                <!-- Flamboyán -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./flamboyan.jpeg" alt="Flamboyán" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Fabaceae</span>
+                            <span class="text-zinc-300">Delonix regia</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Flamboyán</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de copa en sombrilla extendida con follaje plumoso y espectacular floración masiva de color rojo-anaranjado.</p>
+                        <a href="botanica.html?id=flamboyan" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Mamón -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./mamon.jpg" alt="Mamón" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Sapindaceae</span>
+                            <span class="text-zinc-300">Melicoccus bijugatus</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Mamón</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol frutal tradicional de gran tamaño con copa tupida que produce racimos de frutos verdes con pulpa agridulce.</p>
+                        <a href="botanica.html?id=mamon" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- María -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./maria.jpeg" alt="María" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Calophyllaceae</span>
+                            <span class="text-zinc-300">Calophyllum inophyllum</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">María</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Especie robusta de hojas verde oscuro brillante y flores blancas aromáticas. Funciona como excelente barrera rompevientos.</p>
+                        <a href="botanica.html?id=maria" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Nim o Neem -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./nim2.jpg" alt="Nim o Neem" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Meliaceae</span>
+                            <span class="text-zinc-300">Azadirachta indica</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Nim / Neem</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de crecimiento rápido y copa densa. Funciona como repelente natural ecológico y tolera la contaminación.</p>
+                        <a href="botanica.html?id=neem" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Astromelia -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./astro.jpeg" alt="Astromelia" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Lythraceae</span>
+                            <span class="text-zinc-300">Lagerstroemia speciosa</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Astromelia</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol mediano reconocido por sus llamativas panículas florales de pétalos rizados en tonos rosa, lila y púrpura.</p>
+                        <a href="botanica.html?id=astromelia" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Bouquet de Novia -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./rojo.jpeg" alt="Bouquet de novia rojo" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Rubiaceae</span>
+                            <span class="text-zinc-300">Ixora coccinea L.</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Bouquet de Novia</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Arbusto bajo siempreverde con ramilletes globosos de flores tubulares color rojo vivo. Ideal para bordes de caminos.</p>
+                        <a href="botanica.html?id=ixora" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Clavellino -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./clave.jpeg" alt="Clavellino" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Fabaceae</span>
+                            <span class="text-zinc-300">Caesalpinia pulcherrima</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Clavellino</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Arbusto espinoso con flores en racimos amarillos y rojos de largos estambres que atraen colibríes y mariposas.</p>
+                        <a href="botanica.html?id=clavellino" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Ilang-Ilang -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./llang.jpeg" alt="Ilang-Ilang" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Annonaceae</span>
+                            <span class="text-zinc-300">Cananga odorata</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Ilang-Ilang</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol mediano de ramas péndulas y flores amarillentas de pétalos largos extremadamente aromáticos.</p>
+                        <a href="botanica.html?id=ylang" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Guayacán -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./numero7.jpeg" alt="Guayacán" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Bignoniaceae</span>
+                            <span class="text-zinc-300">Handroanthus sp.</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Guayacán</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de gran porte que pierde sus hojas para cubrirse totalmente de deslumbrantes flores acampanadas.</p>
+                        <a href="botanica.html?id=guayacan" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Frijolillo -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./fijo.jpeg" alt="Frijolillo" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Fabaceae</span>
+                            <span class="text-zinc-300">Clitoria fairchildiana</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Frijolillo</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de copa tupida y ancha con vistosas flores violetas péndulas. Ayuda al enriquecimiento de nitrógeno en el suelo.</p>
+                        <a href="botanica.html?id=frijolillo" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Guaje / Leucaena -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./guaje.jpeg" alt="Leucaena" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Fabaceae</span>
+                            <span class="text-zinc-300">Leucaena esculenta</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Guaje / Leucaena</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol mediano con hojas muy finas y flores en cabezuelas blancas globosas. Especie rústica de alta adaptabilidad.</p>
+                        <a href="botanica.html?id=leucaena" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Syzygium -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./lloron.jpeg" alt="Syzygium" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Myrtaceae</span>
+                            <span class="text-zinc-300">Syzygium syzygioides</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Syzygium</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de ramas delgadas péndulas y hojas aromáticas elípticas. Aporta una textura vegetal fina al paisaje.</p>
+                        <a href="botanica.html?id=syzygium" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Flamboyán Dorado -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./dorado.jpeg" alt="Flamboyán Dorado" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Fabaceae</span>
+                            <span class="text-zinc-300">Peltophorum pterocarpum</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Flamboyán Dorado</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol grande con copa en parasol y densas espigas de flores amarillo brillante que brindan amplia sombra.</p>
+                        <a href="botanica.html?id=flamboyan-dorado" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Noni -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./noni.jpeg" alt="Noni" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Rubiaceae</span>
+                            <span class="text-zinc-300">Morinda citrifolia L.</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Noni</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Arbusto de grandes hojas brillantes y frutos rugosos característicos. Reconocido por sus usos medicinales tradicionales.</p>
+                        <a href="botanica.html?id=noni" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Palma Amarilla -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./amarillo.jpeg" alt="Palma Amarilla" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Arecaceae</span>
+                            <span class="text-zinc-300">Dypsis lutescens</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Palma Amarilla</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma multicaule de troncos anillados verdosos y frondas amarillentas arqueadas. Especie ornamental muy elegante.</p>
+                        <a href="botanica.html?id=palma-amarilla" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Palma Real -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./real.jpeg" alt="Palma Real" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Arecaceae</span>
+                            <span class="text-zinc-300">Roystonea regia</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Palma Real</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma majestuosa de gran altura con tronco liso gris abultado y capitel verde prominente. Eje visual monumental.</p>
+                        <a href="botanica.html?id=palma-real" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Corozo -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./corozo.jpeg" alt="Corozo" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Arecaceae</span>
+                            <span class="text-zinc-300">Acrocomia aculeata</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Corozo</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma solitaria provista de espinas negras agudas en su tronco. De alto valor etnobotánico y atracción de fauna.</p>
+                        <a href="botanica.html?id=corozo" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Palma Abanico China -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./china.jpeg" alt="Palma Abanico China" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Arecaceae</span>
+                            <span class="text-zinc-300">Livistona chinensis</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Palma Abanico China</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma caracterizada por sus grandes hojas palmeadas en abanico cuyos extremos cuelgan con elegancia.</p>
+                        <a href="botanica.html?id=palma-china" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Cola de Pescado -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./caryota.jpeg" alt="Palma Cola de Pescado" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Arecaceae</span>
+                            <span class="text-zinc-300">Caryota sp.</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Cola de Pescado</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma única de hojas bipinnadas con folíolos cortados en forma de aleta de pez. Elemento botánico singular.</p>
+                        <a href="botanica.html?id=caryota" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Palma de Navidad -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./navidad.jpeg" alt="Palma de Navidad" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Arecaceae</span>
+                            <span class="text-zinc-300">Adonidia merrillii</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Palma de Navidad</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma pequeña de tronco anillado con vistosos racimos de frutos que se tornan rojo brillante a fin de año.</p>
+                        <a href="botanica.html?id=adonidia" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Palma Bambú -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./bambu.jpeg" alt="Palma Bambú" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Arecaceae</span>
+                            <span class="text-zinc-300">Rhapis sp.</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Palma Bambú</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma baja multicaule tipo caña de bambú con hojas digitadas verde oscuro. Prospera bajo sombra densa.</p>
+                        <a href="botanica.html?id=rhapis" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Roble de Sabana -->
+                <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                    <img src="./rosea.jpg" alt="Roble de Sabana" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="relative p-6 space-y-3 z-10">
+                        <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                            <span>Bignoniaceae</span>
+                            <span class="text-zinc-300">Tabebuia rosea</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Roble de Sabana</h3>
+                        <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol grande de floración rosada masiva al perder sus hojas. Símbolo forestal y de gran atractivo paisajístico.</p>
+                        <a href="botanica.html?id=roble" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- PANEL DE ESTATUAS (9 ESTATUAS) -->
-        <div id="panel-estatuas" class="tab-panel space-y-10 hidden">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- 1. Cristo Redentor -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="./foto2.jpeg" alt="Monumento al Cristo Redentor" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Granito y Cemento</span>
-                            <span>Calle 1 Ave. Central</span>
+        <!-- Panel Estatuas -->
+        <div id="panel-estatuas" class="tab-panel space-y-12 hidden">
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-6 md:p-8 space-y-4">
+                <div class="flex items-center gap-3 text-science-neon">
+                    <i class="fa-solid fa-landmark text-2xl"></i>
+                    <h2 class="text-xl md:text-2xl font-black uppercase tracking-tight text-white">Inventario de Monumentos y Próceres del Paseo del Centenario</h2>
+                </div>
+                <p class="text-zinc-300 text-xs md:text-sm leading-relaxed">
+                    <strong class="text-white">Ubicación:</strong> Paseo del Centenario (Avenida Central / Paseo Juan Demóstenes Arosemena), Ciudad de Colón, Panamá.<br>
+                    <strong class="text-white">Alcance:</strong> Documentación catalogada basada en las fotografías del conjunto monumental y cívico de Colón. El Paseo del Centenario constituye el principal corredor cívico-monumental de la provincia atlántica, con un conjunto escultórico dedicado a resaltar próceres de la separación de 1903, jefes de Estado, líderes sociales, bomberos mártires y movimientos cívicos de servicio.
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <h3 class="text-lg md:text-xl font-black uppercase tracking-wider text-science-neon border-l-4 border-science-neon pl-3">
+                    Monumentos y Estructuras Catalogadas
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Aminta Meléndez -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./aminta.jpeg" alt="Busto de Aminta Meléndez" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" onerror="this.src='./foto2.jpeg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Escultor: E. Ambullo (1954)</span>
+                                <span class="text-zinc-300">Paseo del Centenario</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Aminta Meléndez</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-3">(07/02/1886 – 29/04/1979). Prócer del Movimiento Separatista de 1903. Reconocida como 'El Alma de los Movimientos de Colón' y 'Correo de Gabinete' por su labor de mensajería estratégica entre Panamá y Colón.</p>
+                            <a href="estatua-detalle.html?id=aminta-melendez" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Cristo Redentor</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Símbolo de paz y hospitalidad que vigila la entrada del Canal de Panamá al final de la Avenida Central.</p>
-                        <a href="estatua-detalle.html?id=cristo" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
-                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                        </a>
+                    </div>
+                    <!-- Bomberos Mártires -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./obelisco-bomberos.jpeg" alt="Obelisco a los Bomberos Mártires de Colón" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" onerror="this.src='./foto2.jpeg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Obelisco Cívico</span>
+                                <span class="text-zinc-300">Paseo del Centenario</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Bomberos Mártires</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-3">Estructura de obelisco cívico con placa de honor en memoria de los camisas rojas caídos en servicio heroico y sacrificio por la comunidad colonense.</p>
+                            <a href="estatua-detalle.html?id=bomberos-martires" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- J. A. Remón Cantera -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./remon-cantera.jpeg" alt="Busto de José Antonio Remón Cantera" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" onerror="this.src='./foto2.jpeg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Presidente (1952-1955)</span>
+                                <span class="text-zinc-300">Paseo del Centenario</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">J. A. Remón Cantera</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-3">Presidente de Panamá. Impulsó el Tratado Remón-Eisenhower de 1955 para lograr reivindicaciones económicas del Canal de Panamá.</p>
+                            <a href="estatua-detalle.html?id=remon-cantera" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Juan D. Arosemena -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./arosemena.jpeg" alt="Busto del Dr. Juan Demóstenes Arosemena" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" onerror="this.src='./foto2.jpeg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Presidente (1936-1939)</span>
+                                <span class="text-zinc-300">Paseo del Centenario</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Juan D. Arosemena</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-3">Presidente de Panamá y Gobernador de Colón. Gran promotor educativo (Escuela Normal de Santiago) y da nombre oficial al paseo.</p>
+                            <a href="estatua-detalle.html?id=juan-demostenes-arosemena" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thelma King Harrison -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./thelma-king.jpeg" alt="Busto de Thelma King Harrison" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" onerror="this.src='./foto2.jpeg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Diputada (1921-1993)</span>
+                                <span class="text-zinc-300">Paseo del Centenario</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Thelma King Harrison</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-3">Primera mujer diputada por la provincia de Colón. Heroína soberana en las gestas patrióticas y defensora de los derechos populares.</p>
+                            <a href="estatua-detalle.html?id=thelma-king" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Felipito Salabarría -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./felipito-salabarria.jpeg" alt="Busto de Felipito Salabarría" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" onerror="this.src='./foto2.jpeg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Líder Popular</span>
+                                <span class="text-zinc-300">Paseo del Centenario</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Felipito Salabarría</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-3">Defensor de los derechos obreros y del pueblo colonense. Destacado dirigente social de base comunitaria.</p>
+                            <a href="estatua-detalle.html?id=felipito-salabarria" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Damas Leones -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./leon1.jpeg" alt="Monumento a las Damas Leones" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Acción Social</span>
+                                <span class="text-zinc-300">Paseo del Centenario</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Damas Leones</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-3">Reconocimiento a la labor humanitaria, obras de caridad y desarrollo social comunitario brindado por las Damas Leones en Colón.</p>
+                            <a href="estatua-detalle.html?id=damas-leones" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Kiwanis Club -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./kiwanis.jpeg" alt="Monumento Kiwanis Internacional" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" onerror="this.src='./foto2.jpeg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Organización Cívica</span>
+                                <span class="text-zinc-300">Paseo del Centenario</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Kiwanis Club</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-3">Monumento representativo del servicio cívico, enfocado en el desarrollo, bienestar, educación y protección de la niñez colonense.</p>
+                            <a href="estatua-detalle.html?id=kiwanis" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Libro Abierto -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./libro-abierto.jpeg" alt="Proyecto Libro Abierto" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" onerror="this.src='./foto2.jpeg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Instalación Cultural</span>
+                                <span class="text-zinc-300">Paseo del Centenario</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Libro Abierto</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-3">Iniciativa de biblioteca al aire libre, promoviendo la lectura y dinamizando el espacio peatonal a través de la participación ciudadana.</p>
+                            <a href="estatua-detalle.html?id=libro-abierto" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-
-                <!-- 2. Club de Leones -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="./leon.jpeg" alt="Monumento al Club de Leones" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Estilo Art Déco</span>
-                            <span>Calle 1 Ave. Central</span>
+            </div>
+            <!-- Tabla de Próceres -->
+            <div class="space-y-6 pt-6 border-t border-zinc-800">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <h3 class="text-lg md:text-xl font-black uppercase tracking-wider text-science-neon border-l-4 border-science-neon pl-3">
+                        Junta de Próceres de la Separación de 1903 (Placas Conmemorativas)
+                    </h3>
+                    <span class="text-xs text-zinc-400 font-mono bg-zinc-900 px-3 py-1 rounded-full border border-zinc-800">Parque 5 de Noviembre / Paseo del Centenario</span>
+                </div>
+                <p class="text-zinc-400 text-xs">Registro histórico de los próceres colonenses que consolidaron la independencia de Panamá el 5 de noviembre de 1903:</p>
+                
+                <div class="overflow-x-auto rounded-2xl border border-zinc-800 bg-zinc-900/60">
+                    <table class="w-full text-left text-xs text-zinc-300">
+                        <thead class="bg-zinc-900 text-science-neon uppercase font-bold text-[11px] tracking-wider border-b border-zinc-800">
+                            <tr>
+                                <th class="py-3 px-4">Prócer / Figura</th>
+                                <th class="py-3 px-4">Cargo / Rol</th>
+                                <th class="py-3 px-4">Vínculo e Importancia Histórica</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-zinc-800/60 font-light">
+                            <tr class="hover:bg-zinc-800/40">
+                                <td class="py-3 px-4 font-bold text-white">Porfirio Meléndez</td>
+                                <td class="py-3 px-4">Líder del Movimiento Separatista en Colón</td>
+                                <td class="py-3 px-4">Organizó la resistencia contra las tropas colombianas del Batallón Tiradores en Colón el 5 de noviembre de 1903.</td>
+                            </tr>
+                            <tr class="hover:bg-zinc-800/40">
+                                <td class="py-3 px-4 font-bold text-white">Carlos Clément</td>
+                                <td class="py-3 px-4">Prócer Separatista y Militar</td>
+                                <td class="py-3 px-4">Coordinó acciones clave para impedir el traslado de las tropas colombianas hacia la ciudad de Panamá.</td>
+                            </tr>
+                            <tr class="hover:bg-zinc-800/40">
+                                <td class="py-3 px-4 font-bold text-white">Orondaste L. Martínez</td>
+                                <td class="py-3 px-4">Miembro del Comité Separatista de Colón</td>
+                                <td class="py-3 px-4">Participó activamente en las negociaciones estratégicas y la consolidación de la gesta patriótica.</td>
+                            </tr>
+                            <tr class="hover:bg-zinc-800/40">
+                                <td class="py-3 px-4 font-bold text-white">Juan Antonio Henríquez</td>
+                                <td class="py-3 px-4">Prócer Civil</td>
+                                <td class="py-3 px-4">Colaboró decisivamente en la gestión logística de los movimientos revolucionarios de Colón.</td>
+                            </tr>
+                            <tr class="hover:bg-zinc-800/40">
+                                <td class="py-3 px-4 font-bold text-white">Próspero Pinel</td>
+                                <td class="py-3 px-4">Alcalde y Prócer de Colón</td>
+                                <td class="py-3 px-4">Firmante del Acta de Independencia en la ciudad de Colón, respaldando el nacimiento de la República.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Otros Monumentos -->
+            <div class="space-y-6 pt-6 border-t border-zinc-800">
+                <h3 class="text-lg md:text-xl font-black uppercase tracking-wider text-science-neon border-l-4 border-science-neon pl-3">
+                    Otros Monumentos Patrimoniales de la Ciudad de Colón
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cristo Redentor -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./foto2.jpeg" alt="Monumento al Cristo Redentor" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Granito y Cemento</span>
+                                <span class="text-zinc-300">Calle 1 y Ave. Central</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Cristo Redentor</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-2">Símbolo de paz y hospitalidad que vigila la entrada del Canal de Panamá al final de la Avenida Central.</p>
+                            <a href="estatua-detalle.html?id=cristo" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Club de Leones</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Figura de un león sobre pedestal Art Déco que simboliza el liderazgo, la solidaridad y la vocación de servicio.</p>
-                        <a href="estatua-detalle.html?id=leones" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
-                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                        </a>
+                    </div>
+                    <!-- Club de Leones -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./leon1.jpeg" alt="Monumento al Club de Leones" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Estilo Art Déco</span>
+                                <span class="text-zinc-300">Calle 1 y Ave. Central</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Club de Leones</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-2">Figura de un león sobre pedestal Art Déco que simboliza el liderazgo, la solidaridad y la vocación de servicio.</p>
+                            <a href="estatua-detalle.html?id=leones" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Monumento a la Madre -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./madre.jpeg" alt="Monumento a la Madre" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Bronce Macizo</span>
+                                <span class="text-zinc-300">Calle 1 y Ave. Central</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Monumento a la Madre</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-2">Escultura en bronce de una madre sosteniendo a su hijo, honrando el amor incondicional y la protección familiar.</p>
+                            <a href="estatua-detalle.html?id=madre" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Cristóbal Colón -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./colon2.jpeg" alt="Monumento al Cristóbal Colón" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Bronce y Mármol</span>
+                                <span class="text-zinc-300">Calle 2 y Ave. Central</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Cristóbal Colón</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-2">Joya histórica donada por la Emperatriz Eugenia de Montijo en 1870 que simboliza el encuentro de dos mundos.</p>
+                            <a href="estatua-detalle.html?id=colon" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Cacique Quibián -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./ca2.jpeg" alt="Monumento al Cacique Quibián" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Bronce Esculpido</span>
+                                <span class="text-zinc-300">Calle 3 y Ave. Central</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Cacique Quibián</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-2">Homenaje al líder originario Guaymí con seu hacha en alto, representando la valentía y la soberanía indígena.</p>
+                            <a href="estatua-detalle.html?id=quibian" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Ferdinand de Lesseps -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./canal2.jpeg" alt="Busto de Ferdinand de Lesseps" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Bronce Decimonónico</span>
+                                <span class="text-zinc-300">Calle 3 y Paseo Lesseps</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Ferdinand de Lesseps</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-2">Busto en honor al diplomático francés que lideró el primer esfuerzo de excavación del canal interoceánico.</p>
+                            <a href="estatua-detalle.html?id=lesseps" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- San Juan Bautista de La Salle -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./salle4.jpeg" alt="San Juan Bautista de La Salle" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Arte Sacro en Bronce</span>
+                                <span class="text-zinc-300">Calle 4 y Ave. Central</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">San Juan Bautista de La Salle</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-2">Conjunto de bronce del patrono de los educadores guiando a dos niños, resaltando el valor de la enseñanza.</p>
+                            <a href="estatua-detalle.html?id=lasalle" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Plaza Sesquicentenario -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./plaza3.jpeg" alt="Plaza del Sesquicentenario" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Monumento Conmemorativo</span>
+                                <span class="text-zinc-300">Calle 5 y Ave. Central</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Plaza Sesquicentenario</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-2">Espacio público y monumento emblemático en conmemoración de la historia colonense y panameña.</p>
+                            <a href="estatua-detalle.html?id=sesquicentenario" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Próceres de 1903 -->
+                    <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
+                        <img src="./amador1.jpeg" alt="Prócer de la Separación de 1903" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="relative p-6 space-y-3 z-10">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
+                                <span>Bronce Republicano</span>
+                                <span class="text-zinc-300">Calle 6 y 7, Ave. Amador G.</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Próceres de 1903</h3>
+                            <p class="text-zinc-300 text-xs font-light line-clamp-2">Ubicado en el histórico Parque 5 de Noviembre, en homenaje a los héroes de la gesta separatista.</p>
+                            <a href="estatua-detalle.html?id=procer" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1">
+                                Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-
-                <!-- 3. Monumento a la Madre -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="./madre.jpeg" alt="Monumento a la Madre" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Bronce Macizo</span>
-                            <span>Calle 1 Ave. Central</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Monumento a la Madre</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Escultura en bronce de una madre sosteniendo a su hijo, honrando el amor incondicional y la protección familiar.</p>
-                        <a href="estatua-detalle.html?id=madre" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
-                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 4. Cristóbal Colón -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="./colon2.jpeg" alt="Monumento a Cristóbal Colón" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Bronce y Mármol</span>
-                            <span>Calle 2 Ave. Central</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Cristóbal Colón</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Joya histórica donada por la Emperatriz Eugenia de Montijo en 1870 que simboliza el encuentro de dos mundos.</p>
-                        <a href="estatua-detalle.html?id=colon" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
-                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 5. Cacique Quibián -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="./ca2.jpeg" alt="Monumento al Cacique Quibián" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Bronce Esculpido</span>
-                            <span>Calle 3 Central</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Cacique Quibián</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Homenaje al líder originario Guaymí con su hacha en alto, representando la valentía y la soberanía indígena.</p>
-                        <a href="estatua-detalle.html?id=quibian" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
-                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 6. Ferdinand de Lesseps -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="./canal.jpeg" alt="Busto de Ferdinand de Lesseps" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Bronce Decimonónico</span>
-                            <span>Casco Urbano</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Ferdinand de Lesseps</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Busto en honor al diplomático francés que lideró el primer esfuerzo de excavación del canal interoceánico.</p>
-                        <a href="estatua-detalle.html?id=lesseps" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
-                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 7. San Juan Bautista de La Salle -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="./salle1.jpeg" alt="San Juan Bautista de La Salle" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Arte Sacro en Bronce</span>
-                            <span>Paseo Público</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">San Juan Bautista de La Salle</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Conjunto de bronce del patrono de los educadores guiando a dos niños, resaltando el valor de la enseñanza.</p>
-                        <a href="estatua-detalle.html?id=lasalle" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
-                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 8. Plaza Sesquicentenario -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="./plaza.jpeg" alt="Plaza del Sesquicentenario" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Monumento Conmemorativo</span>
-                            <span>Paseo Marino</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Plaza Sesquicentenario</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Espacio público y monumento emblemático en conmemoración de la historia colonense y panameña.</p>
-                        <a href="estatua-detalle.html?id=sesquicentenario" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
-                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 9. Manuel Amador Guerrero (Prócer) -->
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group shadow-lg transition-all hover:border-science-neon/50">
-                    <div class="h-52 overflow-hidden">
-                        <img src="./amador2.jpeg" alt="Prócer Manuel Amador Guerrero" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex items-center justify-between text-xs font-bold text-science-neon uppercase tracking-wider">
-                            <span>Bronce Republicano</span>
-                            <span>Paseo Marino</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight">Manuel Amador Guerrero</h3>
-                        <p class="text-zinc-400 text-sm font-light line-clamp-2">Tributo al primer presidente y prócer gestor de la Separación de Panamá en 1903.</p>
-                        <a href="estatua-detalle.html?id=procer" class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all">
-                            Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
             </div>
         </div>
-
     </main>
-
-    <!-- FOOTER SIMPLE -->
     <footer class="border-t border-zinc-900 bg-black py-6 px-6 text-center text-xs text-zinc-500 font-medium">
         <p>&copy; 2026 Catálogo Socioambiental de Colón. Todos los derechos reservados.</p>
     </footer>
-
-    <!-- JS PARA EL FUNCIONAMIENTO DE LAS PESTAÑAS -->
     <script>
         function showTab(tabName) {
-            // Ocultar todos los paneles
             document.querySelectorAll('.tab-panel').forEach(panel => {
                 panel.classList.add('hidden');
             });
             
-            // Quitar clase activa de todos los botones
             document.querySelectorAll('[id^="btn-"]').forEach(btn => {
                 btn.classList.remove('tab-active');
             });
             
-            // Mostrar el panel seleccionado y activar su botón
             document.getElementById('panel-' + tabName).classList.remove('hidden');
             document.getElementById('btn-' + tabName).classList.add('tab-active');
         }
     </script>
-
 </body>
 </html>
