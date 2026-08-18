@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Catálogo Socioambiental de Colón">
+    <title>Detalle del Monumento - EcoColón</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        science: {
+                            neon: '#22C55E',
+                            darkBg: '#020617',
+                            panel: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Filtros combinados para mejorar la nitidez, contraste y realce visual de las fotos */
+        .img-enhance {
+            filter: brightness(1.05) contrast(1.12) saturate(1.08) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+            image-rendering: auto;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            transition: filter 0.35s ease, transform 0.35s ease;
+        }
+
+        .img-enhance:hover {
+            filter: brightness(1.10) contrast(1.18) saturate(1.12) drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white font-sans antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
+
+    <header class="w-full border-b border-white/10 bg-black/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+        <a href="catalogo.html" class="flex items-center gap-2 text-white hover:text-science-neon transition-colors">
+            <i class="fa-solid fa-arrow-left text-sm"></i>
+            <span class="text-xs font-bold uppercase tracking-widest">Volver al Catálogo</span>
+        </a>
+        <div class="font-black text-science-neon tracking-normal text-sm">
+            ECO<span class="text-white">COLÓN</span>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-10 md:py-16 w-full space-y-12">
+
+        <div class="space-y-2 border-b border-zinc-800 pb-6">
+            <div class="flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest">
+                <i class="fa-solid fa-monument"></i> Monumento Histórico
+            </div>
+            <h1 id="statue-title" class="text-3xl md:text-6xl font-black uppercase text-white tracking-tight">
+                Cargando...
+            </h1>
+            <p id="statue-location" class="text-zinc-400 text-sm md:text-base font-medium">
+                Cargando ubicación...
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            
+            <div class="lg:col-span-7 space-y-4">
+                <div class="w-full h-[380px] md:h-[500px] rounded-3xl overflow-hidden border border-zinc-800/80 shadow-2xl relative bg-zinc-900 flex items-center justify-center p-2 group cursor-pointer" onclick="openModal()">
+                    <img id="main-image" src="" alt="Imagen Principal del Monumento" class="img-enhance w-full h-full object-contain transition-all duration-300" onerror="this.src='https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&q=80&w=800'">
+                    <div class="absolute bottom-4 right-4 bg-black/70 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full opacity-80 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                        <i class="fa-solid fa-expand"></i> Ampliar foto
+                    </div>
+                </div>
+
+                <div id="thumbs-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 md:gap-4"></div>
+            </div>
+
+            <div class="lg:col-span-5 bg-zinc-900/90 border border-zinc-800 p-6 md:p-8 rounded-3xl space-y-6 shadow-xl">
+                <h2 class="text-xl md:text-2xl font-bold text-white border-b border-zinc-800 pb-4">
+                    Detalles e Historia
+                </h2>
+
+                <div id="statue-description" class="space-y-4 text-zinc-300 text-sm md:text-base leading-relaxed font-light">
+                    <p>Cargando información...</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 pt-2">
+                    <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800/80">
+                        <span class="text-zinc-500 text-xs font-bold uppercase block mb-1">Inauguración</span>
+                        <span id="data-year" class="text-white font-bold text-base">---</span>
+                    </div>
+                    <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800/80">
+                        <span class="text-zinc-500 text-xs font-bold uppercase block mb-1">Material</span>
+                        <span id="data-material" class="text-white font-bold text-base">---</span>
+                    </div>
+                    <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800/80">
+                        <span class="text-zinc-500 text-xs font-bold uppercase block mb-1">Estatus</span>
+                        <span id="data-status" class="text-science-neon font-bold text-base">---</span>
+                    </div>
+                    <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800/80">
+                        <span class="text-zinc-500 text-xs font-bold uppercase block mb-1">Sector</span>
+                        <span id="data-sector" class="text-white font-bold text-base">---</span>
+                    </div>
+                    <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800/80">
+                        <span class="text-zinc-500 text-xs font-bold uppercase block mb-1">Impulsores</span>
+                        <span id="data-impulsores" class="text-white font-bold text-base">---</span>
+                    </div>
+                    <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800/80">
+                        <span class="text-zinc-500 text-xs font-bold uppercase block mb-1">Creadores</span>
+                        <span id="data-creadores" class="text-white font-bold text-base">---</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="space-y-6 pt-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight flex items-center gap-3">
+                        <i class="fa-solid fa-location-dot text-science-neon"></i> Ubicación Exacta
+                    </h2>
+                    <p class="text-zinc-400 text-sm mt-1">Encuentra este monumento directamente en tu recorrido por la ciudad.</p>
+                </div>
+            </div>
+
+            <div class="w-full h-80 md:h-[400px] rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative bg-zinc-900">
+                <iframe 
+                    id="map-iframe"
+                    class="w-full h-full" 
+                    src="" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="border-t border-zinc-900 bg-black py-6 px-6 text-center text-xs text-zinc-500 font-medium space-y-1">
+        <p>© 2026 Catálogo Socioambiental de Colón. Todos los derechos reservados.</p>
+        <p class="text-zinc-600">Creado por: <span class="text-zinc-400">Catálogo Socioambiental de Colón</span></p>
+    </footer>
+
+    <div id="image-modal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-4 cursor-pointer transition-all duration-300" onclick="closeModal()">
+        <button class="absolute top-6 right-6 text-white/70 hover:text-white text-2xl font-bold p-2">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="modal-img" class="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl" src="" alt="Vista ampliada">
+    </div>
+
+    <script>
+        const estatuasData = {
+            "cristo": {
+                titulo: "Monumento al Cristo Redentor",
+                ubicacion: "Paseo Marino • Calle 1 Ave. Central",
+                descripcion: "Con los brazos abiertos hacia el horizonte caribeño, el Cristo Redentor ubicado en calle 1 avenida central se alza no solo como un monumento, sino como el símbolo de la paz, la protección divina y la calurosa bienvenida que la provincia de Colón ofrece a cada marino y visitante.",
+                inauguracion: "1995",
+                material: "Mezcla de Granito",
+                estatus: "Fe y Paz",
+                sector: "Paseo Marino",
+                impulsores: "Alcaldía y Diócesis",
+                creadores: "Edgar Urriolas",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d405.58043270945154!2d-79.90397372020924!3d9.366057275800614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787087385677!5m2!1ses-419!2spa",
+                imagenes: ["./foto2.jpeg", "./foto3.jpeg"]
+            },
+            "leones": {
+                titulo: "Monumento al Club de Leones",
+                ubicacion: "Paseo Marino • Calle 1 Ave. Central",
+                descripcion: "El monumento destaca la figura de un león recostado sobre un pedestal de estilo Art Déco, ubicado en calle 1 avenida central simboliza los valores de la organización del Club de Leones: la fuerza, el liderazgo y el orgullo comunitario.",
+                inauguracion: "Mediados S. XX",
+                material: "Concreto y Piedra",
+                estatus: "Hito Institucional",
+                sector: "Paseo Marino",
+                impulsores: "Club de Leones",
+                creadores: "Taller Art Déco",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d286.78908993624765!2d-79.90389490160415!3d9.365553805372729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787087482444!5m2!1ses-419!2spa",
+                imagenes: ["./leon1.jpeg", "./leon.jpeg", "./leon2.jpeg"]
+            },
+            "madre": {
+                titulo: "Monumento a la Madre",
+                ubicacion: "Paseo Marino • Calle 1 Ave. Central",
+                descripcion: "Su creación se enfocó para honrar el origen mismo de la vida y la familia. Es una escultura en bronce de una madre sosteniendo con ternura a su hijo en brazos establecida en calle 1 de la avenida central.",
+                inauguracion: "1954",
+                material: "Bronce y Piedra",
+                estatus: "Patrimonio Cívico",
+                sector: "Paseo Marino",
+                impulsores: "Club Los Tigres",
+                creadores: "O. Méndez Pereira",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d286.7896839178401!2d-79.90372420686766!3d9.364834279501123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787087522825!5m2!1ses-419!2spa",
+                imagenes: ["./madre.jpeg", "./madre1.jpeg", "./madre3.jpeg", "./madre4.jpeg", "./madre5.jpeg"]
+            },
+            "colon": {
+                titulo: "Monumento a Cristóbal Colón",
+                ubicacion: "Paseo Colón • Calles 1 y 2 Ave. Central",
+                descripcion: "Esta joya histórica de bronce ubicada en calle 2 avenida central representa al navegante Cristóbal Colón protegiendo y guiando a una mujer indígena que simboliza a la América nativa.",
+                inauguracion: "1870",
+                material: "Bronce y Mármol",
+                estatus: "Patrimonio Histórico",
+                sector: "Paseo Colón",
+                impulsores: "Eugenia de Montijo",
+                creadores: "Vincenzo Vela",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d286.79040268788816!2d-79.90350933899806!3d9.363963516544306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787087577515!5m2!1ses-419!2spa",
+                imagenes: ["./colon.jpeg", "./colon1.jpeg", "./colon2.jpeg", "./colon3.jpeg"]
+            },
+            "quibian": {
+                titulo: "Monumento al Cacique Quibián",
+                ubicacion: "Paseo Marino • Calle 3 Central",
+                descripcion: "Es una escultura de bronce que representa al Cacique Quibián, el legendario líder indígena de la etnia Ngäbe que gobernaba la región a la llegada de los europeos, sosteniendo un hacha de piedra.",
+                inauguracion: "2003",
+                material: "Bronce Macizo",
+                estatus: "Héroe Nacional",
+                sector: "Calle 3 Central",
+                impulsores: "Gobierno y ZLC",
+                creadores: "Edgar Urriolas",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d286.7909528639591!2d-79.90336433967632!3d9.363296944640995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787087628426!5m2!1ses-419!2spa", 
+                imagenes: ["./ca.jpeg", "./ca1.jpeg", "./ca2.jpeg", "./ca3.jpeg"]
+            },
+            "lesseps": {
+                titulo: "Busto de Ferdinand de Lesseps",
+                ubicacion: "Casco Urbano • Colón",
+                descripcion: "Es una imponente escultura de bronce que representa la figura de Ferdinand de Lesseps, el célebre diplomático francés que lideró el intento del Canal Francés en Panamá desde 1880.",
+                inauguracion: "2003",
+                material: "Bronce y Piedra",
+                estatus: "Patrimonio Canalero",
+                sector: "Casco Urbano",
+                impulsores: "Comunidad Local",
+                creadores: "Escuela Francesa",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d286.7912053879999!2d-79.90316519581698!3d9.362990980599122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787087688365!5m2!1ses-419!2spa",
+                imagenes: ["./canal.jpeg", "./canal1.jpeg", "./canal2.jpeg", "./canal3.jpeg"]
+            },
+            "lasalle": {
+                titulo: "Monumento a San Juan Bautista de La Salle",
+                ubicacion: "Casco Urbano • Colón",
+                descripcion: "Escultura en bronce que representa al patrono de los educadores guiando a dos niños, simbolizando la luz del conocimiento, la fe y la vocación docente.",
+                inauguracion: "1951",
+                material: "Bronce Macizo",
+                estatus: "Hito Educativo",
+                sector: "Casco Urbano",
+                impulsores: "Exalumnos San José",
+                creadores: "Taller Arte Sacro",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d286.792009021841!2d-79.90287957182845!3d9.362017213063897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787087736137!5m2!1ses-419!2spa",
+                imagenes: ["./salle1.jpeg", "./salle2.jpeg", "./salle3.jpeg", "./salle4.jpeg"]
+            },
+            "sesquicentenario": {
+                titulo: "Plaza del Sesquicentenario",
+                ubicacion: "Casco Urbano • Calle 5",
+                descripcion: "Estructura arquitectónica conmemorativa con lápidas de mármol que honran a los ciudadanos más ilustres en la historia de la provincia de Colón (1852-2002).",
+                inauguracion: "2002",
+                material: "Concreto y Mármol",
+                estatus: "Patrimonio Urbano",
+                sector: "Casco Urbano",
+                impulsores: "Municipio Colón",
+                creadores: "Urbanistas Locales",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d202.79312575481327!2d-79.90259169630153!3d9.36107225745429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787087835902!5m2!1ses-419!2spa",
+                imagenes: ["./plaza.jpeg", "./plaza1.jpeg", "./plaza2.jpeg", "./plaza3.jpeg"]
+            },
+            "procer": {
+                titulo: "Busto del Prócer de 1903",
+                ubicacion: "Paseo Marino • Colón",
+                descripcion: "Tributo al patriotismo de la gesta del 5 de noviembre de 1903 en Colón.",
+                inauguracion: "Siglo XX",
+                material: "Bronce y Mármol",
+                estatus: "Hito Patriótico",
+                sector: "Paseo Marino",
+                impulsores: "Junta Cívica",
+                creadores: "Escultura Clásica",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d202.7942424984279!2d-79.90208895144755!3d9.359158109999516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787087883165!5m2!1ses-419!2spa",
+                imagenes: ["./amador.jpeg", "./amador1.jpeg", "./amador2.jpeg", "./amador3.jpeg"]
+            },
+            "libro": {
+                titulo: "Libro Abierto",
+                ubicacion: "Paseo del Centenario • Colón",
+                descripcion: "Monumento arquitectónico en forma de libro abierto que plasma los hitos históricos, los valores cívicos y la memoria literaria de la provincia de Colón.",
+                inauguracion: "Siglo XXI",
+                material: "Concreto y Placa Conmemorativa",
+                estatus: "Patrimonio Cultural",
+                sector: "Paseo del Centenario",
+                impulsores: "Municipio de Colón",
+                creadores: "Arquitectura Cívica",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3244.7109330701105!2d-79.90195899999999!3d9.358831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMjEnMzEuOCJOIDc5wrA1NCcwNy4xIlc!5e1!3m2!1ses-419!2spa!4v1787065907145!5m2!1ses-419!2spa",
+                imagenes: ["./libro.jpg", "./libro1.jpg", "./libro2.jpg"]
+            },           
+            "arias": {
+                titulo: "Francisco Arias Paredes",
+                ubicacion: "Paseo del Centenario • Colón",
+                descripcion: "Monumento y busto dedicado a Francisco Arias Paredes, ilustre figura de la política y la historia nacional, recordado por su incansable trayectoria cívica en el país.",
+                inauguracion: "Siglo XX",
+                material: "Bronce y Piedra",
+                estatus: "Prócer Nacional",
+                sector: "Paseo del Centenario",
+                impulsores: "Junta Cívica e Historiadores",
+                creadores: "Escultura Nacional",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d202.79480730948012!2d-79.90183139345281!3d9.358189851367102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787066134305!5m2!1ses-419!2spa",
+                imagenes: ["./paredes.jpg", "./paredes1.jpg", "./paredes2.jpg", "./paredes3.jpg"]
+            },
+            "bomberos": {
+                titulo: "Obelisco a los Bomberos Mártires de Colón",
+                ubicacion: "Paseo del Centenario • Colón",
+                descripcion: "Estructura de obelisco cívico con placa de honor en memoria de los camisas rojas caídos en cumplimiento del deber.",
+                inauguracion: "Mediados S. XX",
+                material: "Concreto y Placas Metálicas",
+                estatus: "Homenaje Cívico",
+                sector: "Paseo del Centenario",
+                impulsores: "Cuerpo de Bomberos de Colón",
+                creadores: "Cuerpo de Bomberos",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d202.79535093049168!2d-79.90154923009256!3d9.357257825154376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787066400640!5m2!1ses-419!2spa",
+                imagenes: ["./bomberos.jpg", "./bomberos1.jpg", "./bomberos2.jpg", "./bomberos3.jpg"]
+            },
+            "aminta": {
+                titulo: "Busto y Pedestal de Aminta Meléndez",
+                ubicacion: "Paseo del Centenario • Colón",
+                descripcion: "Reconocida como 'El Alma de los Movimientos de Colón' y 'Correo de Gabinete' por su labor de mensajería estratégica entre Panamá y Colón.",
+                inauguracion: "1954",
+                material: "Bronce y Granito",
+                estatus: "Prócer Separatista",
+                sector: "Paseo del Centenario",
+                impulsores: "Junta Cívica de Colón",
+                creadores: "E. Ambullo",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d202.79589646138314!2d-79.90126029766378!3d9.356322431992785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787066536172!5m2!1ses-419!2spa",
+                imagenes: ["./aminta.jpg", "./aminta1.jpg", "./aminta2.jpg"]
+            },
+            "mobiliario": {
+                titulo: "Mobiliario Urbano de Fomento Cultural: Estantería Abierta y Arte Público",
+                ubicacion: "Paseo del Centenario • Colón",
+                descripcion: "Instalación de diseño urbano destinada al fomento cultural, conformada por estanterías abiertas y piezas de arte público.",
+                inauguracion: "Siglo XXI",
+                material: "Metal y Concreto",
+                estatus: "Espacio Cultural",
+                sector: "Paseo del Centenario",
+                impulsores: "Fomento Artístico Local",
+                creadores: "Diseñadores Urbanos",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d202.79615211539024!2d-79.90115283447359!3d9.355884043601371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787066650746!5m2!1ses-419!2spa",
+                imagenes: ["./mobiliario.jpg"]
+            },
+            "arosemena": {
+                titulo: "Dr. Juan Demóstenes Arosemena",
+                ubicacion: "Paseo del Centenario • Colón",
+                descripcion: "Homenaje al Dr. Juan Demóstenes Arosemena, distinguido educador, político y Presidente de la República.",
+                inauguracion: "Siglo XX",
+                material: "Bronce y Mármol",
+                estatus: "Figura Presidencial",
+                sector: "Paseo del Centenario",
+                impulsores: "Gobierno Nacional",
+                creadores: "Escultura Clásica",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d202.7964562240138!2d-79.90095525971212!3d9.355362540065142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787066773078!5m2!1ses-419!2spa",
+                imagenes: ["./arosemena.jpg", "./arosemena1.jpg", "./arosemena2.jpg"]
+            },
+            "bazan": {
+                titulo: "Jose Dominador Bazan",
+                ubicacion: "Paseo del Centenario • Colón",
+                descripcion: "Monumento dedicado a Don José Dominador Bazán, figura clave del desarrollo político, social y comercial de la provincia de Colón.",
+                inauguracion: "Siglo XX",
+                material: "Bronce y Piedra",
+                estatus: "Líder Cívico",
+                sector: "Paseo del Centenario",
+                impulsores: "Fuerzas vivas de Colón",
+                creadores: "Taller Escultórico",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d202.79700158949635!2d-79.90067148638322!3d9.35442724276159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787066863613!5m2!1ses-419!2spa",
+                imagenes: ["./bazan.jpg", "./bazan1.jpg", "./bazan2.jpg"]
+
+            },
+            "thelma": {
+                titulo: "Thelma King Harrison",
+                ubicacion: "Paseo del Centenario • Colón",
+                descripcion: "Monumento en honor a Thelma King Harrison, destacada política, abogada y líder social colonense.",
+                inauguracion: "Siglo XXI",
+                material: "Bronce y Estructura Cívica",
+                estatus: "Líder Social e Histórica",
+                sector: "Paseo del Centenario",
+                impulsores: "Comunidad Colonense",
+                creadores: "Escultura Contemporánea",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d202.7975445358768!2d-79.90041045554001!3d9.353496002122712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787066924271!5m2!1ses-419!2spa",
+                imagenes: ["./king.jpg", "./king1.jpg", "./king2.jpg"]
+            },
+            "remon": {
+                titulo: "Jose Remon Antonio Cantera",
+                ubicacion: "Paseo del Centenario • Colón",
+                descripcion: "Monumento dedicado al Presidente José Antonio Remón Cantera, recordado por su lema 'Ni millones ni limosnas, queremos justicia'.",
+                inauguracion: "Siglo XX",
+                material: "Bronce y Mármol",
+                estatus: "Presidente de la República",
+                sector: "Paseo del Centenario",
+                impulsores: "Gobierno de Panamá",
+                creadores: "Escultura Conmemorativa",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d202.7981140048256!2d-79.90022065184604!3d9.352519172256809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787066981322!5m2!1ses-419!2spa",
+                imagenes: ["./cantera.jpg"]
+            },
+            "cruz": {
+                titulo: "Monumento a la Cruz",
+                ubicacion: "Paseo del Centenario • Colón",
+                descripcion: "Elevada cruz monumental de hormigón colocada sobre el paseo como símbolo cívico y espiritual de protección y memoria histórica.",
+                inauguracion: "Mediados S. XX",
+                material: "Hormigón Armado",
+                estatus: "Monumento Espiritual",
+                sector: "Paseo del Centenario",
+                impulsores: "Comunidad Religiosa y Cívica",
+                creadores: "Arquitectura Urbana",
+                mapaUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d202.79889401286945!2d-79.8998564904204!3d9.351181033240465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2spa!4v1787074028103!5m2!1ses-419!2spa",
+                imagenes: ["./cruz.jpg"]
+            }
+        };
+
+        let currentImages = [];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id') || 'cristo';
+            const data = estatuasData[id] || estatuasData['cristo'];
+
+            currentImages = data.imagenes || [];
+
+            document.getElementById('statue-title').textContent = data.titulo;
+            document.getElementById('statue-location').textContent = data.ubicacion;
+            document.getElementById('statue-description').innerHTML = `<p>${data.descripcion}</p>`;
+            document.getElementById('data-year').textContent = data.inauguracion;
+            document.getElementById('data-material').textContent = data.material;
+            document.getElementById('data-status').textContent = data.estatus;
+            document.getElementById('data-sector').textContent = data.sector;
+            document.getElementById('data-impulsores').textContent = data.impulsores;
+            document.getElementById('data-creadores').textContent = data.creadores;
+            document.getElementById('map-iframe').src = data.mapaUrl;
+
+            if (currentImages.length > 0) {
+                document.getElementById('main-image').src = currentImages[0];
+            }
+
+            const thumbsContainer = document.getElementById('thumbs-container');
+            thumbsContainer.innerHTML = '';
+
+            currentImages.forEach((imgSrc, index) => {
+                const btn = document.createElement('button');
+                btn.onclick = () => changeImage(index);
+                btn.className = `thumb-btn h-20 md:h-24 rounded-2xl overflow-hidden border-2 focus:outline-none transition-all hover:opacity-80 ${
+                    index === 0 ? 'border-science-neon' : 'border-transparent'
+                }`;
+
+                btn.innerHTML = `<img src="${imgSrc}" class="img-enhance w-full h-full object-cover" alt="Vista ${index + 1}" onerror="this.src='https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&q=80&w=200'">`;
+                thumbsContainer.appendChild(btn);
+            });
+        });
+
+        function changeImage(index) {
+            if (!currentImages[index]) return;
+
+            const mainImg = document.getElementById('main-image');
+            mainImg.style.opacity = '0.3';
+            
+            setTimeout(() => {
+                mainImg.src = currentImages[index];
+                mainImg.style.opacity = '1';
+            }, 150);
+
+            const buttons = document.querySelectorAll('#thumbs-container .thumb-btn');
+            buttons.forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.classList.add('border-science-neon');
+                    btn.classList.remove('border-transparent');
+                } else {
+                    btn.classList.remove('border-science-neon');
+                    btn.classList.add('border-transparent');
+                }
+            });
+        }
+
+        function openModal() {
+            const mainImgSrc = document.getElementById('main-image').src;
+            if (!mainImgSrc) return;
+            document.getElementById('modal-img').src = mainImgSrc;
+            const modal = document.getElementById('image-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    </script>
+</body>
+</html>
