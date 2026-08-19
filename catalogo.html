@@ -776,28 +776,25 @@
 <footer class="border-t border-zinc-900 bg-black py-6 px-6 text-center text-xs text-zinc-500 font-medium">
     <p>© 2026 Catálogo Socioambiental de Colón. Todos los derechos reservados.</p>
 </footer>
-
 <script>
-function showTab(tabName) {
-    // Ocultar todos los paneles de pestañas
-    document.querySelectorAll('.tab-panel').forEach(panel => {
-        panel.classList.add('hidden');
-    });
-    // Quitar la clase activa de todos los botones
-    document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
-        btn.classList.remove('tab-active');
-    });
-    // Mostrar el panel seleccionado y activar su botón
-    const targetPanel = document.getElementById('panel-' + tabName);
-    const targetBtn = document.getElementById('btn-' + tabName);
-    
-    if (targetPanel) {
-        targetPanel.classList.remove('hidden');
+  function showTab(tabName) {
+    const panelArboles = document.getElementById('panel-arboles');
+    const panelEstatuas = document.getElementById('panel-estatuas');
+    const btnArboles = document.getElementById('btn-arboles');
+    const btnEstatuas = document.getElementById('btn-estatuas');
+
+    if (tabName === 'arboles') {
+      if (panelArboles) panelArboles.classList.remove('hidden');
+      if (panelEstatuas) panelEstatuas.classList.add('hidden');
+      if (btnArboles) btnArboles.classList.add('tab-active');
+      if (btnEstatuas) btnEstatuas.classList.remove('tab-active');
+    } else if (tabName === 'estatuas') {
+      if (panelArboles) panelArboles.classList.add('hidden');
+      if (panelEstatuas) panelEstatuas.classList.remove('hidden');
+      if (btnArboles) btnArboles.classList.remove('tab-active');
+      if (btnEstatuas) btnEstatuas.classList.add('tab-active');
     }
-    if (targetBtn) {
-        targetBtn.classList.add('tab-active');
-    }
-}
+  }
 </script>
 </body>
 </html>
