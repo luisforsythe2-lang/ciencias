@@ -400,7 +400,7 @@
                         <p class="text-slate-200 text-xs md:text-sm font-bold leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                             Te damos la bienvenida a nuestro recorrido histórico interactivo. Te invitamos a descubrir la majestuosidad de los monumentos históricos de Colón, adentrándote en las crónicas que definieron nuestra herencia.
                         </p>
-                        <a href="./estatua-detalle.html" class="nav-dyn-link inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_30px_rgba(12,242,167,0.4)] hover:scale-105 mt-2">
+                        <a href= "./estatua-detalle.html" class="nav-dyn-link inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_30px_rgba(12,242,167,0.4)] hover:scale-105 mt-2">
                             <i class="fa-solid fa-images text-sm"></i> Ver Monumentos
                         </a>
                     </div>
@@ -602,437 +602,420 @@
     </footer>
     </footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
-        let homeOriginalContent = "";
-        document.addEventListener('DOMContentLoaded', () => {
-            const appContent = document.getElementById('app-content');
-            if (appContent) homeOriginalContent = appContent.innerHTML;
+<script>
+    AOS.init({ duration: 1000, once: true });
+    let homeOriginalContent = "";
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const appContent = document.getElementById('app-content');
+        if (appContent) homeOriginalContent = appContent.innerHTML;
+        bindDynamicLinks();
+        loadComments();
+        initTourPlayer();
+    });
+
+    // --- CARGADOR DINÁMICO DE PÁGINAS (SPA) ---
+    async function loadPage(url) {
+        const contentDiv = document.getElementById('app-content');
+        if (!contentDiv) return;
+        
+        contentDiv.innerHTML = `
+            <div class="min-h-screen flex flex-col items-center justify-center bg-brand-dark text-center p-6 space-y-4 notranslate">
+                <i class="fa-solid fa-circle-notch fa-spin text-5xl text-brand-mint"></i>
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-300">Cargando catálogo...</p>
+            </div>`;
+        try {
+            const cleanUrl = url.startsWith('./') ? url : `./${url}`;
+            const response = await fetch(cleanUrl);
+            if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+            
+            const htmlText = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlText, 'text/html');
+            
+            const newContent = doc.querySelector('main') ? doc.querySelector('main').innerHTML : doc.body.innerHTML;
+            contentDiv.innerHTML = newContent;
+            if (window.AOS) AOS.refresh();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
             bindDynamicLinks();
             loadComments();
             initTourPlayer();
-        });
-        // --- CARGADOR DINÁMICO DE PÁGINAS (SPA) ---
-        async function loadPage(url) {
-            const contentDiv = document.getElementById('app-content');
-            if (!contentDiv) return;
-           
-            contentDiv.innerHTML = `
-                <div class="min-h-screen flex flex-col items-center justify-center bg-brand-dark text-center p-6 space-y-4 notranslate">
-                    <i class="fa-solid fa-circle-notch fa-spin text-5xl text-brand-mint"></i>
-                    <p class="text-xs font-bold uppercase tracking-widest text-slate-300">Cargando catálogo...</p>
-                </div>`;
-            try {
-                const cleanUrl = url.startsWith('./') ? url : `./${url}`;
-                const response = await fetch(cleanUrl);
-                if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
-               
-                const htmlText = await response.text();
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(htmlText, 'text/html');
-               
-                const newContent = doc.querySelector('main') ? doc.querySelector('main').innerHTML : doc.body.innerHTML;
-                contentDiv.innerHTML = newContent;
-                if (window.AOS) AOS.refresh();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-               
-                bindDynamicLinks();
-                loadComments();
-                initTourPlayer();
-            } catch (error) {
-                console.warn("Fallo la carga dinámica via fetch, redirigiendo normalmente:", error);
-                window.location.href = url;
-            }
+        } catch (error) {
+            console.warn("Fallo la carga dinámica via fetch, redirigiendo normalmente:", error);
+            window.location.href = url;
         }
-        function resetToHome() {
-            if (homeOriginalContent) {
-                const appContent = document.getElementById('app-content');
-                if (appContent) appContent.innerHTML = homeOriginalContent;
-                if (window.AOS) AOS.refresh();
-                bindDynamicLinks();
-                loadComments();
-                initTourPlayer();
-            } else {
-                window.location.reload();
-            }
-        }
-        function bindDynamicLinks() {
-            document.querySelectorAll('.nav-dyn-link, a[href$=".html"]').forEach(link => {
-                link.onclick = (e) => {
-                    const pageUrl = link.getAttribute('href');
-                    if (pageUrl && pageUrl.endsWith('.html')) {
-                        e.preventDefault();
-                        loadPage(pageUrl);
-                    }
-                };
-            });
-        }
-        // --- SISTEMA DEL CARRUSEL DE ENTRADA ---
-        const slides = document.querySelectorAll('.hero-slide');
-        let slideIndex = 0;
-        function playCarousel() {
-            if (slides.length === 0) return;
-            slides[slideIndex].classList.replace('opacity-100', 'opacity-0');
-            const oldVideo = slides[slideIndex].querySelector('video');
-            if (oldVideo) { oldVideo.pause(); oldVideo.currentTime = 0; }
-            slideIndex = (slideIndex + 1) % slides.length;
-            slides[slideIndex].classList.replace('opacity-0', 'opacity-100');
-            const nextVideo = slides[slideIndex].querySelector('video');
-            if (nextVideo) { nextVideo.play().catch(e => console.log(e)); }
-        }
-        setInterval(playCarousel, 4000);
+    }
 
-        // --- BUSCADOR DEL SITIO WEB EN TIEMPO REAL (Blindado) ---
-        function performSearch() {
-            const searchInput = document.getElementById('site-search');
-            if (!searchInput) return;
-            const query = searchInput.value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.searchable-card');
-            const clearBtn = document.getElementById('clear-search-btn');
-            
-            if (query === "") {
-                clearSearch();
-                return;
-            }
-            if (clearBtn) clearBtn.classList.remove('hidden');
-            cards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                if (text.includes(query)) {
-                    card.style.display = "";
-                    card.style.opacity = "1";
-                } else {
-                    card.style.display = "none";
-                }
-            });
+    function resetToHome() {
+        if (homeOriginalContent) {
+            const appContent = document.getElementById('app-content');
+            if (appContent) appContent.innerHTML = homeOriginalContent;
+            if (window.AOS) AOS.refresh();
+            bindDynamicLinks();
+            loadComments();
+            initTourPlayer();
+        } else {
+            window.location.reload();
         }
-        function clearSearch() {
-            const input = document.getElementById('site-search');
-            if (input) input.value = "";
-            const clearBtn = document.getElementById('clear-search-btn');
-            if (clearBtn) clearBtn.classList.add('hidden');
-            const cards = document.querySelectorAll('.searchable-card');
-            cards.forEach(card => {
+    }
+
+    function bindDynamicLinks() {
+        document.querySelectorAll('.nav-dyn-link, a[href$=".html"]').forEach(link => {
+            link.onclick = (e) => {
+                const pageUrl = link.getAttribute('href');
+                if (pageUrl && pageUrl.endsWith('.html')) {
+                    e.preventDefault();
+                    loadPage(pageUrl);
+                }
+            };
+        });
+    }
+
+    // --- SISTEMA DEL CARRUSEL DE ENTRADA ---
+    const slides = document.querySelectorAll('.hero-slide');
+    let slideIndex = 0;
+    function playCarousel() {
+        if (slides.length === 0) return;
+        slides[slideIndex].classList.replace('opacity-100', 'opacity-0');
+        const oldVideo = slides[slideIndex].querySelector('video');
+        if (oldVideo) { oldVideo.pause(); oldVideo.currentTime = 0; }
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.replace('opacity-0', 'opacity-100');
+        const nextVideo = slides[slideIndex].querySelector('video');
+        if (nextVideo) { nextVideo.play().catch(e => console.log(e)); }
+    }
+    setInterval(playCarousel, 4000);
+
+    // --- BUSCADOR DEL SITIO WEB EN TIEMPO REAL (Blindado) ---
+    function performSearch() {
+        const searchInput = document.getElementById('site-search');
+        if (!searchInput) return;
+        const query = searchInput.value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.searchable-card');
+        const clearBtn = document.getElementById('clear-search-btn');
+        
+        if (query === "") {
+            clearSearch();
+            return;
+        }
+        if (clearBtn) clearBtn.classList.remove('hidden');
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            if (text.includes(query)) {
                 card.style.display = "";
                 card.style.opacity = "1";
-            });
-        }
-        function toggleQRModal() {
-            const modal = document.getElementById('qr-modal');
-            if (modal) {
-                modal.classList.toggle('hidden');
-                modal.classList.toggle('flex');
-            }
-        }
-
-        // --- SISTEMA DEL TOUR CON DESCRIPCIONES Y PANTALLA COMPLETA ---
-        const tourPlaylist = [
-            { id: 1, title: "Parada #1: Bienvenida al Paseo Colón", desc: "En este primer video iniciaremos el recorrido desde Calle 1, observando la estructura general del bulevar y el entorno arquitectónico de la avenida.", src: "./tour1.mp4" },
-            { id: 2, title: "Parada #2: Árboles Frondosos de Sombra", desc: "Aprenderás cómo los árboles frondosos regulan la temperatura ambiental en las aceras peatonales de Colón y brindan sombra vital.", src: "./tour2.mp4" },
-            { id: 3, title: "Parada #3: Muestra de Guayacán Real", desc: "Observaremos las características del Guayacán Real (Guaiacum officinale), su majestuosa floración y la firmeza de su madera nativa.", src: "./tour3.mp4" },
-            { id: 4, title: "Parada #4: Bulevar de las Palmeras", desc: "Recorreremos la sección alineada con Palmas Reales (Roystonea regia), identificando su rol de valor paisajístico y ornamental.", src: "./tour4.mp4" },
-            { id: 5, title: "Parada #5: Flora de Costa y Almácigo", desc: "Conoceremos la adaptación ecológica del Almácigo Silvestre y su corteza particular en ambientes tropicales costeros.", src: "./tour5.mp4" },
-            { id: 6, title: "Parada #6: Esculturas de Calle 3", desc: "Adentrándonos en Calle 3, analizaremos los monumentos históricos dedicados a Cristóbal Colón y su trascendencia histórica.", src: "./tour6.mp4" },
-            { id: 7, title: "Parada #7: Registros de la Centuria", desc: "Visualizaremos las placas y bustos conmemorativos que rinden tributo a las gestas de la soberanía nacional en la ciudad.", src: "./tour7.mp4" },
-            { id: 8, title: "Parada #8: Bulevar Central y Jardinería", desc: "Observaremos la distribución de la flora ornamental pequeña y arbustos situados a lo largo de las aceras centrales.", src: "./tour8.mp4" },
-            { id: 9, title: "Parada #9: Trayecto Intermedio Calle 11 a 14", desc: "Un paseo continuo por los tramos centrales del corredor que unen las áreas históricas con zonas comerciales históricas.", src: "./tour9.mp4" },
-            { id: 10, title: "Parada #10: Cierre del Recorrido en Calle 16", desc: "Llegamos al tramo final en Calle 16, contemplando una panorámica unificada que integra el valor natural y monumental de Colón.", src: "./tour10.mp4" }
-        ];
-
-        let currentTourIndex = 0;
-
-        function initTourPlayer() {
-            const player = document.getElementById('tour-player');
-            if (!player) return;
-            showTourDescription(0);
-        }
-
-        function showTourDescription(index) {
-            currentTourIndex = index;
-            const videoData = tourPlaylist[currentTourIndex];
-            const player = document.getElementById('tour-player');
-            const source = document.getElementById('tour-source');
-            const title = document.getElementById('tour-video-title');
-            const desc = document.getElementById('tour-video-desc');
-            const step = document.getElementById('tour-overlay-step');
-            const badge = document.getElementById('tour-badge');
-            const overlay = document.getElementById('video-overlay');
-            const outroOverlay = document.getElementById('tour-outro-overlay');
-
-            if (outroOverlay) outroOverlay.classList.add('hidden');
-
-            if (source && player) {
-                player.pause();
-                source.src = videoData.src;
-                player.load();
-
-                if (title) title.textContent = videoData.title;
-                if (desc) desc.textContent = videoData.desc;
-                if (step) step.textContent = `PARADA ${videoData.id} DE 10`;
-                if (badge) badge.textContent = `Parada ${videoData.id}/10`;
-
-                if (overlay) overlay.classList.remove('hidden');
-                updatePlayBtn(false);
-            }
-        }
-
-        function startCurrentVideo() {
-            const player = document.getElementById('tour-player');
-            const overlay = document.getElementById('video-overlay');
-            if (player) {
-                if (overlay) overlay.classList.add('hidden');
-                player.play().catch(e => console.log("Interacción necesaria"));
-                updatePlayBtn(true);
-            }
-        }
-
-        function toggleTourPlay() {
-            const player = document.getElementById('tour-player');
-            const overlay = document.getElementById('video-overlay');
-            if (!player) return;
-
-            if (player.paused) {
-                if (overlay) overlay.classList.add('hidden');
-                player.play();
-                updatePlayBtn(true);
             } else {
-                player.pause();
-                updatePlayBtn(false);
+                card.style.display = "none";
             }
-        }
+        });
+    }
 
-        function updatePlayBtn(isPlaying) {
-            const btn = document.getElementById('tour-play-btn');
-            if (btn) {
-                btn.innerHTML = isPlaying ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
-            }
-        }
+    function clearSearch() {
+        const input = document.getElementById('site-search');
+        if (input) input.value = "";
+        const clearBtn = document.getElementById('clear-search-btn');
+        if (clearBtn) clearBtn.classList.add('hidden');
+        const cards = document.querySelectorAll('.searchable-card');
+        cards.forEach(card => {
+            card.style.display = "";
+            card.style.opacity = "1";
+        });
+    }
 
-        function onTourVideoEnded() {
-            if (currentTourIndex < tourPlaylist.length - 1) {
-                showTourDescription(currentTourIndex + 1);
-            } else {
-                showTourOutro();
-            }
+    function toggleQRModal() {
+        const modal = document.getElementById('qr-modal');
+        if (modal) {
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
         }
+    }
 
-        function nextTourStep() {
-            if (currentTourIndex < tourPlaylist.length - 1) {
-                showTourDescription(currentTourIndex + 1);
-            } else {
-                showTourOutro();
-            }
-        }
+    // --- SISTEMA DEL TOUR CON DESCRIPCIONES Y PANTALLA COMPLETA ---
+    const tourPlaylist = [
+        { id: 1, title: "Parada #1: Bienvenida al Paseo Colón", desc: "En este primer video iniciaremos el recorrido desde Calle 1, observando la estructura general del bulevar y el entorno arquitectónico de la avenida.", src: "./tour1.mp4" },
+        { id: 2, title: "Parada #2: Árboles Frondosos de Sombra", desc: "Aprenderás cómo los árboles frondosos regulan la temperatura ambiental en las aceras peatonales de Colón y brindan sombra vital.", src: "./tour2.mp4" },
+        { id: 3, title: "Parada #3: Muestra de Guayacán Real", desc: "Observaremos las características del Guayacán Real (Guaiacum officinale), su majestuosa floración y la firmeza de su madera nativa.", src: "./tour3.mp4" },
+        { id: 4, title: "Parada #4: Bulevar de las Palmeras", desc: "Recorreremos la sección alineada con Palmas Reales (Roystonea regia), identificando su rol de valor paisajístico y ornamental.", src: "./tour4.mp4" },
+        { id: 5, title: "Parada #5: Flora de Costa y Almácigo", desc: "Conoceremos la adaptación ecológica del Almácigo Silvestre y su corteza particular en ambientes tropicales costeros.", src: "./tour5.mp4" },
+        { id: 6, title: "Parada #6: Esculturas de Calle 3", desc: "Adentrándonos en Calle 3, analizaremos los monumentos históricos dedicados a Cristóbal Colón y su trascendencia histórica.", src: "./tour6.mp4" },
+        { id: 7, title: "Parada #7: Registros de la Centuria", desc: "Visualizaremos las placas y bustos conmemorativos que rinden tributo a las gestas de la soberanía nacional en la ciudad.", src: "./tour7.mp4" },
+        { id: 8, title: "Parada #8: Bulevar Central y Jardinería", desc: "Observaremos la distribución de la flora ornamental pequeña y arbustos situados a lo largo de las aceras centrales.", src: "./tour8.mp4" },
+        { id: 9, title: "Parada #9: Trayecto Intermedio Calle 11 a 14", desc: "Un paseo continuo por los tramos centrales del corredor que unen las áreas históricas con zonas comerciales históricas.", src: "./tour9.mp4" },
+        { id: 10, title: "Parada #10: Cierre del Recorrido en Calle 16", desc: "Llegamos al tramo final en Calle 16, contemplando una panorámica unificada que integra el valor natural y monumental de Colón.", src: "./tour10.mp4" }
+    ];
 
-        function prevTourStep() {
-            if (currentTourIndex > 0) {
-                showTourDescription(currentTourIndex - 1);
-            }
-        }
+    let currentTourIndex = 0;
 
-        function showTourOutro() {
-            const player = document.getElementById('tour-player');
-            const outroOverlay = document.getElementById('tour-outro-overlay');
-            if (player) player.pause();
-            if (outroOverlay) outroOverlay.classList.remove('hidden');
+    function initTourPlayer() {
+        const player = document.getElementById('tour-player');
+        if (!player) return;
+        showTourDescription(0);
+    }
+
+    function showTourDescription(index) {
+        currentTourIndex = index;
+        const videoData = tourPlaylist[currentTourIndex];
+        const player = document.getElementById('tour-player');
+        const source = document.getElementById('tour-source');
+        const title = document.getElementById('tour-video-title');
+        const desc = document.getElementById('tour-video-desc');
+        const step = document.getElementById('tour-overlay-step');
+        const badge = document.getElementById('tour-badge');
+        const overlay = document.getElementById('video-overlay');
+        const outroOverlay = document.getElementById('tour-outro-overlay');
+
+        if (outroOverlay) outroOverlay.classList.add('hidden');
+
+        if (source && player) {
+            player.pause();
+            source.src = videoData.src;
+            player.load();
+
+            if (title) title.textContent = videoData.title;
+            if (desc) desc.textContent = videoData.desc;
+            if (step) step.textContent = `PARADA ${videoData.id} DE 10`;
+            if (badge) badge.textContent = `Parada ${videoData.id}/10`;
+
+            if (overlay) overlay.classList.remove('hidden');
             updatePlayBtn(false);
         }
+    }
 
-        function restartTour() {
-            showTourDescription(0);
+    function startCurrentVideo() {
+        const player = document.getElementById('tour-player');
+        const overlay = document.getElementById('video-overlay');
+        if (player) {
+            if (overlay) overlay.classList.add('hidden');
+            player.play().catch(e => console.log("Interacción necesaria"));
+            updatePlayBtn(true);
         }
+    }
 
-        function rewindTour(seconds) {
-            const player = document.getElementById('tour-player');
-            if (player) player.currentTime = Math.max(0, player.currentTime - seconds);
+    function toggleTourPlay() {
+        const player = document.getElementById('tour-player');
+        const overlay = document.getElementById('video-overlay');
+        if (!player) return;
+
+        if (player.paused) {
+            if (overlay) overlay.classList.add('hidden');
+            player.play();
+            updatePlayBtn(true);
+        } else {
+            player.pause();
+            updatePlayBtn(false);
         }
+    }
 
-        function forwardTour(seconds) {
-            const player = document.getElementById('tour-player');
-            if (player) player.currentTime = Math.min(player.duration || 0, player.currentTime + seconds);
+    function updatePlayBtn(isPlaying) {
+        const btn = document.getElementById('tour-play-btn');
+        if (btn) {
+            btn.innerHTML = isPlaying ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
         }
+    }
 
-        function updateTourProgress() {
-            const player = document.getElementById('tour-player');
-            const progressBar = document.getElementById('tour-progress-bar');
-            const timer = document.getElementById('tour-timer');
-            if (!player) return;
+    function onTourVideoEnded() {
+        if (currentTourIndex < tourPlaylist.length - 1) {
+            showTourDescription(currentTourIndex + 1);
+        } else {
+            showTourOutro();
+        }
+    }
 
-            if (player.duration) {
-                const pct = (player.currentTime / player.duration) * 100;
-                if (progressBar) progressBar.style.width = `${pct}%`;
-                if (timer) {
-                    timer.textContent = `${formatTime(player.currentTime)} / ${formatTime(player.duration)}`;
-                }
-            } else {
-                if (timer) timer.textContent = "00:00 / 00:00";
+    function nextTourStep() {
+        if (currentTourIndex < tourPlaylist.length - 1) {
+            showTourDescription(currentTourIndex + 1);
+        } else {
+            showTourOutro();
+        }
+    }
+
+    function prevTourStep() {
+        if (currentTourIndex > 0) {
+            showTourDescription(currentTourIndex - 1);
+        }
+    }
+
+    function showTourOutro() {
+        const player = document.getElementById('tour-player');
+        const outroOverlay = document.getElementById('tour-outro-overlay');
+        if (player) player.pause();
+        if (outroOverlay) outroOverlay.classList.remove('hidden');
+        updatePlayBtn(false);
+    }
+
+    function restartTour() {
+        showTourDescription(0);
+    }
+
+    function rewindTour(seconds) {
+        const player = document.getElementById('tour-player');
+        if (player) player.currentTime = Math.max(0, player.currentTime - seconds);
+    }
+
+    function forwardTour(seconds) {
+        const player = document.getElementById('tour-player');
+        if (player) player.currentTime = Math.min(player.duration || 0, player.currentTime + seconds);
+    }
+
+    function updateTourProgress() {
+        const player = document.getElementById('tour-player');
+        const progressBar = document.getElementById('tour-progress-bar');
+        const timer = document.getElementById('tour-timer');
+        if (!player) return;
+
+        if (player.duration) {
+            const pct = (player.currentTime / player.duration) * 100;
+            if (progressBar) progressBar.style.width = `${pct}%`;
+            if (timer) {
+                timer.textContent = `${formatTime(player.currentTime)} / ${formatTime(player.duration)}`;
             }
+        } else {
+            if (timer) timer.textContent = "00:00 / 00:00";
         }
+    }
 
-        function seekTourVideo(e) {
-            const player = document.getElementById('tour-player');
-            if (!player || !player.duration) return;
-            const rect = e.currentTarget.getBoundingClientRect();
-            const clickX = e.clientX - rect.left;
-            const pct = clickX / rect.width;
-            player.currentTime = pct * player.duration;
-        }
+    function seekTourVideo(e) {
+        const player = document.getElementById('tour-player');
+        if (!player || !player.duration) return;
+        const rect = e.currentTarget.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const pct = clickX / rect.width;
+        player.currentTime = pct * player.duration;
+    }
 
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
 
-        function toggleFullscreen() {
-            const container = document.getElementById('tour-container');
-            const icon = document.getElementById('fullscreen-icon');
-            if (!container) return;
-            
-            if (!document.fullscreenElement) {
-                if (container.requestFullscreen) {
-                    container.requestFullscreen();
-                } else if (container.webkitRequestFullscreen) {
-                    container.webkitRequestFullscreen();
-                } else if (container.msRequestFullscreen) {
-                    container.msRequestFullscreen();
-                }
-                if (icon) {
-                    icon.classList.remove('fa-expand');
-                    icon.classList.add('fa-compress');
-                }
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
-                if (icon) {
-                    icon.classList.remove('fa-compress');
-                    icon.classList.add('fa-expand');
-                }
+    function toggleFullscreen() {
+        const container = document.getElementById('tour-container');
+        const icon = document.getElementById('fullscreen-icon');
+        if (!container) return;
+        
+        if (!document.fullscreenElement) {
+            if (container.requestFullscreen) {
+                container.requestFullscreen();
+            } else if (container.webkitRequestFullscreen) {
+                container.webkitRequestFullscreen();
+            } else if (container.msRequestFullscreen) {
+                container.msRequestFullscreen();
             }
-        }
-
-        document.addEventListener('fullscreenchange', () => {
-            const icon = document.getElementById('fullscreen-icon');
-            if (!document.fullscreenElement && icon) {
+            if (icon) {
+                icon.classList.remove('fa-expand');
+                icon.classList.add('fa-compress');
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+            if (icon) {
                 icon.classList.remove('fa-compress');
                 icon.classList.add('fa-expand');
             }
-        });
-
-        // --- SISTEMA DE COMENTARIOS CON LOCALSTORAGE ---
-        const defaultComments = [
-            {
-                name: "María Fernández",
-                role: "Residente de Colón",
-                text: "Excelente iniciativa para resaltar la riqueza botánica e histórica de nuestro paseo.",
-                date: "15/08/2026"
-            },
-            {
-                name: "Carlos Gómez",
-                role: "Estudiante de Historia",
-                text: "Muy completa la información sobre los monumentos. Me sirvió mucho para mi investigación.",
-                date: "17/08/2026"
-            }
-        ];
-
-        function getStoredComments() {
-            const stored = localStorage.getItem('ecocolon_comments');
-            if (!stored) {
-                localStorage.setItem('ecocolon_comments', JSON.stringify(defaultComments));
-                return defaultComments;
-            }
-            return JSON.parse(stored);
         }
-
-        function loadComments() {
-            const container = document.getElementById('comments-container');
-            const countLabel = document.getElementById('comments-count');
-            if (!container) return;
-
-            const comments = getStoredComments();
-            if (countLabel) countLabel.textContent = comments.length;
-
-            if (comments.length === 0) {
-                container.innerHTML = '<p class="text-slate-400 text-sm italic">Aún no hay comentarios. ¡Sé el primero en comentar!</p>';
-                return;
-            }
-
-            container.innerHTML = comments.map(c => `
-                <div class="bg-brand-medium/30 border border-brand-mint/20 rounded-2xl p-5 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h4 class="font-extrabold text-white text-sm">${escapeHTML(c.name)}</h4>
-                            ${c.role ? `<span class="text-[10px] text-brand-mint font-semibold uppercase tracking-wider">${escapeHTML(c.role)}</span>` : ''}
-                        </div>
-                        <span class="text-[10px] text-slate-400 font-mono">${c.date}</span>
-                    </div>
-                    <p class="text-slate-300 text-xs md:text-sm font-light leading-relaxed">${escapeHTML(c.text)}</p>
-                </div>
-            `).join('');
-        }
-
-        function addComment(event) {
-            event.preventDefault();
-            const nameInput = document.getElementById('author-name');
-            const roleInput = document.getElementById('author-role');
-            const textInput = document.getElementById('comment-text');
-            if (!nameInput || !textInput) return;
-
-            const newComment = {
-                name: nameInput.value.trim(),
-                role: roleInput ? roleInput.value.trim() : '',
-                text: textInput.value.trim(),
-                date: new Date().toLocaleDateString('es-ES')
-            };
-
-            const comments = getStoredComments();
-            comments.unshift(newComment);
-            localStorage.setItem('ecocolon_comments', JSON.stringify(comments));
-
-            nameInput.value = '';
-            if (roleInput) roleInput.value = '';
-            textInput.value = '';
-
-            loadComments();
-        }
-
-        function escapeHTML(str) {
-            return str.replace(/[&<>'"]/g, 
-                tag => ({
-                    '&': '&amp;',
-                    '<': '&lt;',
-                    '>': '&gt;',
-                    "'": '&#39;',
-                    '"': '&quot;'
-                }[tag] || tag)
-            );
-        }
-    </script>
-
-    <!-- ESTILOS DE BLINDAJE ANTITRADUCTOR (Evita que Google rompa el diseño y el DOM) -->
-    <style>
-        html { margin-top: 0 !important; }
-        .goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame { display: none !important; visibility: hidden !important; }
-        body { top: 0 !important; position: static !important; }
-        .skiptranslate { display: none !important; }
-    </style>
-
-    <!-- Selector de Google Translate Blindado -->
-    <div id="google_translate_element" class="notranslate"></div>
-    <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-          pageLanguage: 'es', 
-          includedLanguages: 'en,es', 
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false
-      }, 'google_translate_element');
     }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</body>
-</html>
+
+    document.addEventListener('fullscreenchange', () => {
+        const icon = document.getElementById('fullscreen-icon');
+        if (!document.fullscreenElement && icon) {
+            icon.classList.remove('fa-compress');
+            icon.classList.add('fa-expand');
+        }
+    });
+
+    // --- SISTEMA DE COMENTARIOS CON LOCALSTORAGE ---
+    const defaultComments = [
+        {
+            name: "María Fernández",
+            role: "Residente de Colón",
+            text: "Excelente iniciativa para resaltar la riqueza botánica e histórica de nuestro paseo.",
+            date: "15/08/2026"
+        },
+        {
+            name: "Carlos Gómez",
+            role: "Estudiante de Historia",
+            text: "Muy completa la información sobre los monumentos. Me sirvió mucho para mi investigación.",
+            date: "17/08/2026"
+        }
+    ];
+
+    function getStoredComments() {
+        const stored = localStorage.getItem('ecocolon_comments');
+        if (!stored) {
+            localStorage.setItem('ecocolon_comments', JSON.stringify(defaultComments));
+            return defaultComments;
+        }
+        return JSON.parse(stored);
+    }
+
+    function loadComments() {
+        const container = document.getElementById('comments-container');
+        const countLabel = document.getElementById('comments-count');
+        if (!container) return;
+
+        const comments = getStoredComments();
+        if (countLabel) countLabel.textContent = comments.length;
+
+        if (comments.length === 0) {
+            container.innerHTML = '<p class="text-slate-400 text-sm italic">Aún no hay comentarios. ¡Sé el primero en comentar!</p>';
+            return;
+        }
+
+        container.innerHTML = comments.map(c => `
+            <div class="bg-brand-medium/30 border border-brand-mint/20 rounded-2xl p-5 space-y-2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="font-extrabold text-white text-sm">${escapeHTML(c.name)}</h4>
+                        ${c.role ? `<span class="text-[10px] text-brand-mint font-semibold uppercase tracking-wider">${escapeHTML(c.role)}</span>` : ''}
+                    </div>
+                    <span class="text-[10px] text-slate-400 font-mono">${c.date}</span>
+                </div>
+                <p class="text-slate-300 text-xs md:text-sm font-light leading-relaxed">${escapeHTML(c.text)}</p>
+            </div>
+        `).join('');
+    }
+
+    function addComment(event) {
+        event.preventDefault();
+        const nameInput = document.getElementById('author-name');
+        const roleInput = document.getElementById('author-role');
+        const textInput = document.getElementById('comment-text');
+        if (!nameInput || !textInput) return;
+
+        const newComment = {
+            name: nameInput.value.trim(),
+            role: roleInput ? roleInput.value.trim() : '',
+            text: textInput.value.trim(),
+            date: new Date().toLocaleDateString('es-ES')
+        };
+
+        const comments = getStoredComments();
+        comments.unshift(newComment);
+        localStorage.setItem('ecocolon_comments', JSON.stringify(comments));
+
+        nameInput.value = '';
+        if (roleInput) roleInput.value = '';
+        textInput.value = '';
+
+        loadComments();
+    }
+
+    function escapeHTML(str) {
+        return str.replace(/[&<>'"]/g, 
+            tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag] || tag)
+        );
+    }
+</script>
