@@ -50,16 +50,22 @@
             </p>
         </div>
 
-        <!-- Botones de Pestañas -->
-        <div class="flex justify-center border border-zinc-800 rounded-full p-1 max-w-sm mx-auto bg-black">
-            <button class="tab-active flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-zinc-400 transition-all hover:text-white" id="btn-arboles" onclick="showTab('arboles')">
-                <i class="fa-solid fa-tree"></i> Árboles
-            </button>
-            <button id="btn-estatuas" onclick="showTab('estatuas')" class="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-zinc-400 transition-all hover:text-white">
-                <i class="fa-solid fa-monument"></i> Estatuas
-            </button>
-        </div>
+      <script>
+document.addEventListener("DOMContentLoaded", function() {
+    window.showTab = function(tabName) {
+        const arbolesSec = document.getElementById('arboles-content');
+        const estatuasSec = document.getElementById('estatuas-content');
 
+        if (tabName === 'arboles') {
+            if (arbolesSec) arbolesSec.classList.remove('hidden');
+            if (estatuasSec) estatuasSec.classList.add('hidden');
+        } else if (tabName === 'estatuas') {
+            if (estatuasSec) estatuasSec.classList.remove('hidden');
+            if (arbolesSec) arbolesSec.classList.add('hidden');
+        }
+    };
+});
+</script>
         <!-- Panel Árboles -->
         <div class="tab-panel space-y-10" id="panel-arboles">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
