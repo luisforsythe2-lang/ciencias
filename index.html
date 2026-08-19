@@ -108,9 +108,11 @@
                     </button>
                 </div>
                 <a href="#inicio" onclick="resetToHome()" class="text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Inicio</a>
+                <a href="#tour" class="text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Tour</a>
                 <a href="./botanica.html" class="nav-dyn-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Plantas</a>
                 <a href="./catalogo.html" class="nav-dyn-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Monumentos</a>
                 <a href="#equipo" class="text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Equipo</a>
+                <a href="#comentarios" class="text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Comentarios</a>
             </div>
             <div class="flex items-center gap-2 shrink-0">
                 <div class="relative group">
@@ -123,6 +125,7 @@
     </nav>
     <!-- Contenedor Principal Adaptable -->
     <main id="app-content" class="pt-16">
+        <!-- 1. SECCIÓN INICIO -->
         <section id="inicio" class="relative min-h-screen pb-20 px-4 md:px-16 flex flex-col justify-between overflow-hidden">
             <div id="hero-carousel" class="absolute inset-0 w-full h-full z-0">
                 <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-1000">
@@ -158,6 +161,111 @@
                 </div>
             </div>
         </section>
+
+        <!-- 2. SECCIÓN TOUR INTERACTIVO DE VIDEOS (UBICADO DESPUÉS DE INICIO) -->
+        <section id="tour" class="py-24 bg-brand-dark text-white relative overflow-hidden border-t border-brand-mint/10">
+            <div class="absolute -right-40 top-1/4 w-[500px] h-[500px] bg-brand-mint/5 rounded-full blur-[100px] pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-6 md:px-16">
+                <div class="relative rounded-[2.5rem] overflow-hidden border-2 border-brand-mint/40 h-auto py-12 md:py-16 max-w-5xl mx-auto shadow-[0_0_60px_rgba(12,242,167,0.15)] bg-brand-medium/40 backdrop-blur-md" data-aos="fade-up">
+                    <div class="relative z-10 px-6 md:px-12 text-center space-y-6 flex flex-col items-center">
+                        <span class="text-brand-mint font-extrabold tracking-[0.25em] text-xs uppercase">TOUR VIRTUAL EN VIDEO</span>
+                        <h2 class="text-4xl md:text-5xl font-black font-serif text-white tracking-tight leading-tight max-w-2xl">
+                            Descubre la esencia de Colón <br> <span class="italic text-brand-mint">en un entorno unificado.</span>
+                        </h2>
+                        <div class="w-16 h-1 bg-brand-mint rounded-full"></div>
+                        <p class="text-slate-300 text-sm md:text-base font-light max-w-2xl leading-relaxed">
+                            Acompáñanos en este recorrido guiado de 10 paradas. Revisa la descripción de cada parada y avanza mediante el botón interactivo.
+                        </p>
+
+                        <!-- REPRODUCTOR INTERACTIVO CON PANTALLA COMPLETA Y DESCRIPCIONES -->
+                        <div id="tour-container" class="w-full max-w-4xl mx-auto mt-6 bg-black rounded-3xl overflow-hidden border border-brand-mint/30 shadow-2xl relative group">
+                            
+                            <!-- Contenedor del Video -->
+                            <div class="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
+                                <video id="tour-player" class="w-full h-full object-cover" ontimeupdate="updateTourProgress()" onended="onTourVideoEnded()">
+                                    <source id="tour-source" src="" type="video/mp4">
+                                    Tu navegador no soporta el reproductor de video.
+                                </video>
+
+                                <!-- Pantalla de Información / Descripción antes del Video -->
+                                <div id="video-overlay" class="absolute inset-0 bg-black/95 flex flex-col items-center justify-center p-6 text-center z-10 space-y-4">
+                                    <span id="tour-overlay-step" class="text-brand-mint text-xs font-black uppercase tracking-[0.2em]">PARADA 1 DE 10</span>
+                                    <h4 id="tour-video-title" class="text-xl md:text-3xl font-black text-white tracking-wide">Punto de Entrada</h4>
+                                    
+                                    <div class="bg-brand-medium/50 border border-brand-mint/30 p-4 rounded-2xl max-w-lg">
+                                        <p id="tour-video-desc" class="text-xs md:text-sm text-slate-300 leading-relaxed font-light">
+                                            Descripción previa del video...
+                                        </p>
+                                    </div>
+
+                                    <button onclick="startCurrentVideo()" class="mt-2 px-8 py-3.5 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.4)] flex items-center gap-2">
+                                        <i class="fa-solid fa-play"></i> Comenzar Video
+                                    </button>
+                                </div>
+
+                                <!-- Pantalla de Despedida Final -->
+                                <div id="tour-outro-overlay" class="absolute inset-0 bg-brand-dark/95 hidden flex-col items-center justify-center p-6 text-center z-20 space-y-4">
+                                    <div class="w-16 h-16 rounded-full bg-brand-mint/20 border-2 border-brand-mint text-brand-mint flex items-center justify-center text-3xl mb-2">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                    </div>
+                                    <h4 class="text-2xl md:text-3xl font-black text-white">¡Tour Finalizado con Éxito!</h4>
+                                    <p class="text-xs md:text-sm text-slate-300 max-w-lg font-light leading-relaxed">
+                                        ¡Felicidades por completar el recorrido! Has aprendido sobre la biodiversidad, la riqueza arbórea y los monumentos históricos que adornan la travesía desde Calle 1 a Calle 16.
+                                    </p>
+                                    <button onclick="restartTour()" class="mt-2 px-8 py-3.5 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.4)] flex items-center gap-2">
+                                        <i class="fa-solid fa-rotate-right"></i> Reiniciar Tour
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Barra de Controles Inferior -->
+                            <div class="bg-brand-dark/95 border-t border-brand-mint/20 p-4 space-y-3">
+                                
+                                <!-- Barra de Progreso Interactiva -->
+                                <div class="w-full bg-slate-800 h-2 rounded-full cursor-pointer relative overflow-hidden" onclick="seekTourVideo(event)">
+                                    <div id="tour-progress-bar" class="bg-brand-mint h-full w-0 transition-all duration-100"></div>
+                                </div>
+
+                                <div class="flex items-center justify-between gap-4 text-xs">
+                                    <!-- Botones de Control Principal -->
+                                    <div class="flex items-center gap-2 sm:gap-3">
+                                        <button onclick="prevTourStep()" class="p-2.5 rounded-full bg-brand-medium text-brand-mint hover:bg-brand-mint hover:text-brand-dark transition-all" title="Anterior">
+                                            <i class="fa-solid fa-backward-step"></i>
+                                        </button>
+                                        <button onclick="rewindTour(10)" class="p-2.5 rounded-full bg-brand-medium text-slate-300 hover:text-white transition-all" title="Atrasar 10s">
+                                            <i class="fa-solid fa-rotate-left"></i>
+                                        </button>
+                                        <button onclick="toggleTourPlay()" id="tour-play-btn" class="p-3.5 rounded-full bg-brand-mint text-brand-dark font-black hover:scale-105 transition-all" title="Play/Pausa">
+                                            <i class="fa-solid fa-play"></i>
+                                        </button>
+                                        <button onclick="forwardTour(10)" class="p-2.5 rounded-full bg-brand-medium text-slate-300 hover:text-white transition-all" title="Adelantar 10s">
+                                            <i class="fa-solid fa-rotate-right"></i>
+                                        </button>
+                                        <button onclick="nextTourStep()" class="p-2.5 rounded-full bg-brand-medium text-brand-mint hover:bg-brand-mint hover:text-brand-dark transition-all" title="Siguiente">
+                                            <i class="fa-solid fa-forward-step"></i>
+                                        </button>
+                                    </div>
+
+                                    <!-- Contador, Insignia y Botón Pantalla Completa -->
+                                    <div class="flex items-center gap-2 sm:gap-4">
+                                        <span id="tour-timer" class="font-mono text-slate-400 text-[11px] sm:text-xs">00:00 / 00:00</span>
+                                        <span id="tour-badge" class="bg-brand-medium border border-brand-mint/40 text-brand-mint text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+                                            Parada 1/10
+                                        </span>
+                                        <!-- BOTÓN PANTALLA COMPLETA -->
+                                        <button onclick="toggleFullscreen()" class="p-2.5 rounded-full bg-brand-medium text-brand-mint hover:bg-brand-mint hover:text-brand-dark transition-all" title="Pantalla Completa">
+                                            <i id="fullscreen-icon" class="fa-solid fa-expand"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SECCIÓN PLANTAS -->
         <section id="plantas" class="py-32 bg-brand-light text-brand-dark relative z-10 rounded-t-[4rem] shadow-[-10px_0_40px_rgba(0,0,0,0.15)]">
             <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-16">
                 <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8" data-aos="fade-down">
@@ -220,21 +328,10 @@
                 </div>
             </div>
         </section>
+
+        <!-- 4. SECCIÓN MONUMENTOS Y GALERÍA -->
         <section id="monumentos" class="py-32 bg-brand-dark text-white relative overflow-hidden">
-            <div class="absolute -right-40 top-1/4 w-[500px] h-[500px] bg-brand-mint/5 rounded-full blur-[100px] pointer-events-none"></div>
             <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-20">
-                <div class="relative rounded-[2.5rem] overflow-hidden border-2 border-brand-mint/40 h-auto py-16 md:py-24 max-w-4xl mx-auto shadow-[0_0_60px_rgba(12,242,167,0.15)] bg-brand-medium/40 backdrop-blur-md" data-aos="fade-left">
-                    <div class="relative z-10 px-8 md:px-16 text-center space-y-8 flex flex-col items-center">
-                        <span class="text-brand-mint font-extrabold tracking-[0.25em] text-xs uppercase">ECOCOLÓN INTERACTIVO</span>
-                        <h2 class="text-4xl md:text-5xl font-black font-serif text-white tracking-tight leading-tight max-w-2xl">
-                            Descubre la esencia de Colón <br> <span class="italic text-brand-mint">en un entorno unificado.</span>
-                        </h2>
-                        <div class="w-16 h-1 bg-brand-mint rounded-full"></div>
-                        <p class="text-slate-300 text-sm md:text-base font-light max-w-2xl leading-relaxed">
-                            Explora una experiencia digital inmersiva junto a EcoColón. Te presentamos un catálogo socioambiental intuitivo que integra registros botánicos minuciosos, geolocalización de monumentos históricos a nivel urbano y mucho más.
-                        </p>
-                    </div>
-                </div>
                 <div class="max-w-5xl mx-auto space-y-6">
                     <span class="block text-center text-[10px] font-extrabold uppercase tracking-widest text-brand-mint">REGISTRO VISUAL ECOLÓGICO</span>
                     <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
@@ -340,6 +437,8 @@
                 </div>
             </div>
         </section>
+
+        <!-- 5. SECCIÓN EQUIPO -->
         <section id="equipo" class="py-32 bg-brand-light text-brand-dark rounded-b-[4rem] relative z-10 shadow-[0_15px_40px_rgba(0,0,0,0.15)]">
             <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-16">
                 <div class="text-center space-y-4 max-w-3xl mx-auto" data-aos="fade-down">
@@ -450,6 +549,49 @@
                 </div>
             </div>
         </section>
+
+        <!-- 6. SECCIÓN DE COMENTARIOS -->
+        <section id="comentarios" class="py-24 bg-brand-dark text-white relative z-20">
+            <div class="max-w-4xl mx-auto px-6 space-y-12" data-aos="fade-up">
+                <div class="text-center space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-[0.25em] text-brand-mint">Participación Ciudadana</span>
+                    <h2 class="text-4xl md:text-5xl font-black font-serif text-white tracking-tight">Comentarios y Opiniones</h2>
+                    <p class="text-slate-400 text-xs md:text-sm max-w-lg mx-auto">Deja tu comentario sobre el proyecto o comparte tus vivencias en el Paseo Colón.</p>
+                </div>
+
+                <!-- Formulario de Comentario -->
+                <form id="comment-form" onsubmit="addComment(event)" class="bg-brand-medium/40 border border-brand-mint/20 rounded-[2rem] p-6 md:p-8 space-y-4 backdrop-blur-md">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="author-name" class="block text-xs font-bold text-brand-mint uppercase tracking-wider mb-2">Nombre</label>
+                            <input type="text" id="author-name" required placeholder="Tu nombre" class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors">
+                        </div>
+                        <div>
+                            <label for="author-role" class="block text-xs font-bold text-brand-mint uppercase tracking-wider mb-2">Rol o Ciudad (Opcional)</label>
+                            <input type="text" id="author-role" placeholder="Ej. Visitante, Residente Colón" class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="comment-text" class="block text-xs font-bold text-brand-mint uppercase tracking-wider mb-2">Comentario</label>
+                        <textarea id="comment-text" rows="4" required placeholder="Escribe tu mensaje aquí..." class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors"></textarea>
+                    </div>
+                    <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.3)]">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Publicar Comentario
+                    </button>
+                </form>
+
+                <!-- Lista de Comentarios Publicados -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-comments text-brand-mint"></i>
+                        Comentarios Guardados (<span id="comments-count">0</span>)
+                    </h3>
+                    <div id="comments-container" class="space-y-4">
+                        <!-- Se insertan dinámicamente los comentarios -->
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <footer class="bg-brand-dark py-16 text-center text-xs text-slate-500 font-medium relative z-30">
         <div class="max-w-5xl mx-auto space-y-4 px-6">
@@ -465,11 +607,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             homeOriginalContent = document.getElementById('app-content').innerHTML;
             bindDynamicLinks();
+            loadComments();
+            initTourPlayer();
         });
         // --- CARGADOR DINÁMICO DE PÁGINAS (SPA) ---
         async function loadPage(url) {
             const contentDiv = document.getElementById('app-content');
-            
+           
             contentDiv.innerHTML = `
                 <div class="min-h-screen flex flex-col items-center justify-center bg-brand-dark text-center p-6 space-y-4">
                     <i class="fa-solid fa-circle-notch fa-spin text-5xl text-brand-mint"></i>
@@ -479,17 +623,19 @@
                 const cleanUrl = url.startsWith('./') ? url : `./${url}`;
                 const response = await fetch(cleanUrl);
                 if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
-                
+               
                 const htmlText = await response.text();
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(htmlText, 'text/html');
-                
+               
                 const newContent = doc.querySelector('main') ? doc.querySelector('main').innerHTML : doc.body.innerHTML;
                 contentDiv.innerHTML = newContent;
                 if (window.AOS) AOS.refresh();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                
+               
                 bindDynamicLinks();
+                loadComments();
+                initTourPlayer();
             } catch (error) {
                 console.warn("Fallo la carga dinámica via fetch, redirigiendo normalmente:", error);
                 window.location.href = url;
@@ -500,6 +646,8 @@
                 document.getElementById('app-content').innerHTML = homeOriginalContent;
                 if (window.AOS) AOS.refresh();
                 bindDynamicLinks();
+                loadComments();
+                initTourPlayer();
             } else {
                 window.location.reload();
             }
@@ -565,6 +713,293 @@
             modal.classList.toggle('hidden');
             modal.classList.toggle('flex');
         }
+
+        // --- SISTEMA DEL TOUR CON DESCRIPCIONES Y PANTALLA COMPLETA ---
+        const tourPlaylist = [
+            { id: 1, title: "Parada #1: Bienvenida al Paseo Colón", desc: "En este primer video iniciaremos el recorrido desde Calle 1, observando la estructura general del bulevar y el entorno arquitectónico de la avenida.", src: "./tour1.mp4" },
+            { id: 2, title: "Parada #2: Árboles Frondosos de Sombra", desc: "Aprenderás cómo los árboles frondosos regulan la temperatura ambiental en las aceras peatonales de Colón y brindan sombra vital.", src: "./tour2.mp4" },
+            { id: 3, title: "Parada #3: Muestra de Guayacán Real", desc: "Observaremos las características del Guayacán Real (Guaiacum officinale), su majestuosa floración y la firmeza de su madera nativa.", src: "./tour3.mp4" },
+            { id: 4, title: "Parada #4: Bulevar de las Palmeras", desc: "Recorreremos la sección alineada con Palmas Reales (Roystonea regia), identificando su rol de valor paisajístico y ornamental.", src: "./tour4.mp4" },
+            { id: 5, title: "Parada #5: Flora de Costa y Almácigo", desc: "Conoceremos la adaptación ecológica del Almácigo Silvestre y su corteza particular en ambientes tropicales costeros.", src: "./tour5.mp4" },
+            { id: 6, title: "Parada #6: Esculturas de Calle 3", desc: "Adentrándonos en Calle 3, analizaremos los monumentos históricos dedicados a Cristóbal Colón y su trascendencia histórica.", src: "./tour6.mp4" },
+            { id: 7, title: "Parada #7: Registros de la Centuria", desc: "Visualizaremos las placas y bustos conmemorativos que rinden tributo a las gestas de la soberanía nacional en la ciudad.", src: "./tour7.mp4" },
+            { id: 8, title: "Parada #8: Bulevar Central y Jardinería", desc: "Observaremos la distribución de la flora ornamental pequeña y arbustos situados a lo largo de las aceras centrales.", src: "./tour8.mp4" },
+            { id: 9, title: "Parada #9: Trayecto Intermedio Calle 11 a 14", desc: "Un paseo continuo por los tramos centrales del corredor que unen las áreas históricas con zonas comerciales históricas.", src: "./tour9.mp4" },
+            { id: 10, title: "Parada #10: Cierre del Recorrido en Calle 16", desc: "Llegamos al tramo final en Calle 16, contemplando una panorámica unificada que integra el valor natural y monumental de Colón.", src: "./tour10.mp4" }
+        ];
+
+        let currentTourIndex = 0;
+
+        function initTourPlayer() {
+            const player = document.getElementById('tour-player');
+            if (!player) return;
+            showTourDescription(0);
+        }
+
+        function showTourDescription(index) {
+            currentTourIndex = index;
+            const videoData = tourPlaylist[currentTourIndex];
+            const player = document.getElementById('tour-player');
+            const source = document.getElementById('tour-source');
+            const title = document.getElementById('tour-video-title');
+            const desc = document.getElementById('tour-video-desc');
+            const step = document.getElementById('tour-overlay-step');
+            const badge = document.getElementById('tour-badge');
+            const overlay = document.getElementById('video-overlay');
+            const outroOverlay = document.getElementById('tour-outro-overlay');
+
+            if (outroOverlay) outroOverlay.classList.add('hidden');
+
+            if (source && player) {
+                player.pause();
+                source.src = videoData.src;
+                player.load();
+
+                if (title) title.textContent = videoData.title;
+                if (desc) desc.textContent = videoData.desc;
+                if (step) step.textContent = `PARADA ${videoData.id} DE 10`;
+                if (badge) badge.textContent = `Parada ${videoData.id}/10`;
+
+                if (overlay) overlay.classList.remove('hidden');
+                updatePlayBtn(false);
+            }
+        }
+
+        function startCurrentVideo() {
+            const player = document.getElementById('tour-player');
+            const overlay = document.getElementById('video-overlay');
+            if (player) {
+                if (overlay) overlay.classList.add('hidden');
+                player.play().catch(e => console.log("Interacción necesaria"));
+                updatePlayBtn(true);
+            }
+        }
+
+        function toggleTourPlay() {
+            const player = document.getElementById('tour-player');
+            const overlay = document.getElementById('video-overlay');
+            if (!player) return;
+
+            if (player.paused) {
+                if (overlay) overlay.classList.add('hidden');
+                player.play();
+                updatePlayBtn(true);
+            } else {
+                player.pause();
+                updatePlayBtn(false);
+            }
+        }
+
+        function updatePlayBtn(isPlaying) {
+            const btn = document.getElementById('tour-play-btn');
+            if (btn) {
+                btn.innerHTML = isPlaying ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
+            }
+        }
+
+        function onTourVideoEnded() {
+            if (currentTourIndex < tourPlaylist.length - 1) {
+                showTourDescription(currentTourIndex + 1);
+            } else {
+                showTourOutro();
+            }
+        }
+
+        function nextTourStep() {
+            if (currentTourIndex < tourPlaylist.length - 1) {
+                showTourDescription(currentTourIndex + 1);
+            } else {
+                showTourOutro();
+            }
+        }
+
+        function prevTourStep() {
+            if (currentTourIndex > 0) {
+                showTourDescription(currentTourIndex - 1);
+            }
+        }
+
+        function showTourOutro() {
+            const player = document.getElementById('tour-player');
+            const outroOverlay = document.getElementById('tour-outro-overlay');
+            if (player) player.pause();
+            if (outroOverlay) outroOverlay.classList.remove('hidden');
+            updatePlayBtn(false);
+        }
+
+        function restartTour() {
+            showTourDescription(0);
+        }
+
+        function rewindTour(seconds) {
+            const player = document.getElementById('tour-player');
+            if (player) player.currentTime = Math.max(0, player.currentTime - seconds);
+        }
+
+        function forwardTour(seconds) {
+            const player = document.getElementById('tour-player');
+            if (player) player.currentTime = Math.min(player.duration || 0, player.currentTime + seconds);
+        }
+
+        function updateTourProgress() {
+            const player = document.getElementById('tour-player');
+            const progressBar = document.getElementById('tour-progress-bar');
+            const timer = document.getElementById('tour-timer');
+            if (!player) return;
+
+            if (player.duration) {
+                const pct = (player.currentTime / player.duration) * 100;
+                if (progressBar) progressBar.style.width = `${pct}%`;
+                if (timer) {
+                    timer.textContent = `${formatTime(player.currentTime)} / ${formatTime(player.duration)}`;
+                }
+            } else {
+                if (timer) timer.textContent = "00:00 / 00:00";
+            }
+        }
+
+        function seekTourVideo(e) {
+            const player = document.getElementById('tour-player');
+            if (!player || !player.duration) return;
+            const rect = e.currentTarget.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const pct = clickX / rect.width;
+            player.currentTime = pct * player.duration;
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function toggleFullscreen() {
+            const container = document.getElementById('tour-container');
+            const icon = document.getElementById('fullscreen-icon');
+            
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                if (icon) {
+                    icon.classList.remove('fa-expand');
+                    icon.classList.add('fa-compress');
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                if (icon) {
+                    icon.classList.remove('fa-compress');
+                    icon.classList.add('fa-expand');
+                }
+            }
+        }
+
+        document.addEventListener('fullscreenchange', () => {
+            const icon = document.getElementById('fullscreen-icon');
+            if (!document.fullscreenElement && icon) {
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+            }
+        });
+
+        // --- SISTEMA DE COMENTARIOS CON LOCALSTORAGE ---
+        const defaultComments = [
+            {
+                name: "María Fernández",
+                role: "Residente de Colón",
+                text: "Excelente iniciativa para resaltar la riqueza botánica e histórica de nuestro paseo.",
+                date: "15/08/2026"
+            },
+            {
+                name: "Carlos Gómez",
+                role: "Estudiante de Historia",
+                text: "Muy completa la información sobre los monumentos. Me sirvió mucho para mi investigación.",
+                date: "17/08/2026"
+            }
+        ];
+
+        function getStoredComments() {
+            const stored = localStorage.getItem('ecocolon_comments');
+            if (!stored) {
+                localStorage.setItem('ecocolon_comments', JSON.stringify(defaultComments));
+                return defaultComments;
+            }
+            return JSON.parse(stored);
+        }
+
+        function loadComments() {
+            const container = document.getElementById('comments-container');
+            const countLabel = document.getElementById('comments-count');
+            if (!container) return;
+
+            const comments = getStoredComments();
+            if (countLabel) countLabel.textContent = comments.length;
+
+            if (comments.length === 0) {
+                container.innerHTML = '<p class="text-slate-400 text-sm italic">Aún no hay comentarios. ¡Sé el primero en comentar!</p>';
+                return;
+            }
+
+            container.innerHTML = comments.map(c => `
+                <div class="bg-brand-medium/30 border border-brand-mint/20 rounded-2xl p-5 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-white text-sm">${escapeHTML(c.name)}</h4>
+                            ${c.role ? `<span class="text-[10px] text-brand-mint font-semibold uppercase tracking-wider">${escapeHTML(c.role)}</span>` : ''}
+                        </div>
+                        <span class="text-[10px] text-slate-400 font-mono">${c.date}</span>
+                    </div>
+                    <p class="text-slate-300 text-xs md:text-sm font-light leading-relaxed">${escapeHTML(c.text)}</p>
+                </div>
+            `).join('');
+        }
+
+        function addComment(event) {
+            event.preventDefault();
+            const nameInput = document.getElementById('author-name');
+            const roleInput = document.getElementById('author-role');
+            const textInput = document.getElementById('comment-text');
+
+            const newComment = {
+                name: nameInput.value.trim(),
+                role: roleInput.value.trim(),
+                text: textInput.value.trim(),
+                date: new Date().toLocaleDateString('es-ES')
+            };
+
+            const comments = getStoredComments();
+            comments.unshift(newComment);
+            localStorage.setItem('ecocolon_comments', JSON.stringify(comments));
+
+            nameInput.value = '';
+            roleInput.value = '';
+            textInput.value = '';
+
+            loadComments();
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
     </script>
 </body>
 </html>
+
