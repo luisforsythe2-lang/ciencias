@@ -112,9 +112,8 @@
                 </div>
                 <a href="#inicio" onclick="resetToHome()" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Inicio</a>
                 <a href="#tour" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Tour</a>
-                <a href="#plantas" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Plantas</a>
-                <a href="#monumentos" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Monumentos</a>
-                <a href="#jugar" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Jugar</a>
+                <a href="botanica.html" class="nav-dyn-link nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Plantas</a>
+                <a href="estatua-detalle.html" class="nav-dyn-link nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Monumentos</a>                <a href="#jugar" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Jugar</a>
                 <a href="#equipo" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Equipo</a>
                 <a href="#comentarios" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Comentarios</a>
             </div>
@@ -1117,7 +1116,7 @@
         function toggleTourPlay() {
             const player = document.getElementById('tour-player');
             const overlay = document.getElementById('video-overlay');
-            if (!player) return;
+            if (!player) return
 
             if (player.paused) {
                 if (overlay) overlay.classList.add('hidden');
