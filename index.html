@@ -90,15 +90,16 @@
             <p class="text-[10px] text-brand-mint font-semibold uppercase tracking-widest">ciencias.onrender.com</p>
         </div>
     </div>
-
     <!-- Navegación Fija -->
     <nav class="fixed top-0 left-0 w-full z-50 pt-3 px-3 sm:px-6">
         <div class="mint-glass rounded-2xl sm:rounded-3xl px-3 sm:px-6 py-3 flex flex-row items-center justify-between gap-2 shadow-[0_15px_35px_rgba(0,0,0,0.6)] max-w-6xl mx-auto">
             <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
-                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-brand-mint flex items-center justify-center text-brand-dark font-black text-xs sm:text-base">
-                    C
-                </div>
-                <span class="font-bold text-[10px] sm:text-sm tracking-[0.15em] sm:tracking-[0.25em] uppercase text-white hide-on-tiny">ECO<span class="text-brand-mint">COLÓN</span></span>
+                <a href="index.html" class="flex items-center gap-1.5 sm:gap-3 group">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-brand-mint flex items-center justify-center text-brand-dark font-black text-xs sm:text-base group-hover:scale-105 transition-transform">
+                        C
+                    </div>
+                    <span class="font-bold text-[10px] sm:text-sm tracking-[0.15em] sm:tracking-[0.25em] uppercase text-white hide-on-tiny">ECO<span class="text-brand-mint">COLÓN</span></span>
+                </a>
             </div>
             <div class="flex flex-row items-center gap-3 sm:gap-4 md:gap-6 overflow-x-auto no-scrollbar py-1">
                 <div class="relative flex items-center bg-brand-dark/50 border border-brand-mint/30 focus-within:border-brand-mint rounded-full px-2 py-1 text-xs shrink-0 transition-all duration-300">
@@ -112,8 +113,9 @@
                 </div>
                 <a href="#inicio" onclick="resetToHome()" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Inicio</a>
                 <a href="#tour" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Tour</a>
-                <a href="botanica.html" class="nav-dyn-link nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Plantas</a>
-                <a href="estatua-detalle.html" class="nav-dyn-link nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Monumentos</a>                <a href="#jugar" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Jugar</a>
+                <a href="#plantas" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Plantas</a>
+                <a href="#monumentos" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Monumentos</a>
+                <a href="#jugar" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Jugar</a>
                 <a href="#equipo" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Equipo</a>
                 <a href="#comentarios" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Comentarios</a>
             </div>
@@ -126,7 +128,6 @@
             </div>
         </div>
     </nav>
-
     <!-- Contenedor Principal Adaptable -->
     <main id="app-content" class="pt-16">
         <!-- 1. SECCIÓN INICIO -->
@@ -165,7 +166,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 2. SECCIÓN TOUR INTERACTIVO DE VIDEOS -->
         <section id="tour" class="py-24 bg-brand-dark text-white relative overflow-hidden border-t border-brand-mint/10">
             <div class="absolute -right-40 top-1/4 w-[500px] h-[500px] bg-brand-mint/5 rounded-full blur-[100px] pointer-events-none"></div>
@@ -180,7 +180,6 @@
                         <p class="text-slate-300 text-sm md:text-base font-light max-w-2xl leading-relaxed">
                             Acompáñanos en este recorrido guiado de 10 paradas. Revisa la descripción de cada parada y avanza mediante el botón interactivo.
                         </p>
-
                         <!-- REPRODUCTOR INTERACTIVO -->
                         <div id="tour-container" class="w-full max-w-4xl mx-auto mt-6 bg-black rounded-3xl overflow-hidden border border-brand-mint/30 shadow-2xl relative group">
                             <div class="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
@@ -188,7 +187,6 @@
                                     <source id="tour-source" src="" type="video/mp4">
                                     Tu navegador no soporta el reproductor de video.
                                 </video>
-
                                 <div id="video-overlay" class="absolute inset-0 bg-black/95 flex flex-col items-center justify-center p-6 text-center z-10 space-y-4">
                                     <span id="tour-overlay-step" class="text-brand-mint text-xs font-black uppercase tracking-[0.2em]">PARADA 1 DE 10</span>
                                     <h4 id="tour-video-title" class="text-xl md:text-3xl font-black text-white tracking-wide">Punto de Entrada</h4>
@@ -198,12 +196,10 @@
                                             Descripción previa del video...
                                         </p>
                                     </div>
-
                                     <button onclick="startCurrentVideo()" class="mt-2 px-8 py-3.5 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.4)] flex items-center gap-2">
                                         <i class="fa-solid fa-play"></i> Comenzar Video
                                     </button>
                                 </div>
-
                                 <div id="tour-outro-overlay" class="absolute inset-0 bg-brand-dark/95 hidden flex-col items-center justify-center p-6 text-center z-20 space-y-4">
                                     <div class="w-16 h-16 rounded-full bg-brand-mint/20 border-2 border-brand-mint text-brand-mint flex items-center justify-center text-3xl mb-2">
                                         <i class="fa-solid fa-graduation-cap"></i>
@@ -217,12 +213,10 @@
                                     </button>
                                 </div>
                             </div>
-
                             <div class="bg-brand-dark/95 border-t border-brand-mint/20 p-4 space-y-3">
                                 <div class="w-full bg-slate-800 h-2 rounded-full cursor-pointer relative overflow-hidden" onclick="seekTourVideo(event)">
                                     <div id="tour-progress-bar" class="bg-brand-mint h-full w-0 transition-all duration-100"></div>
                                 </div>
-
                                 <div class="flex items-center justify-between gap-4 text-xs">
                                     <div class="flex items-center gap-2 sm:gap-3">
                                         <button onclick="prevTourStep()" class="p-2.5 rounded-full bg-brand-medium text-brand-mint hover:bg-brand-mint hover:text-brand-dark transition-all" title="Anterior">
@@ -241,7 +235,6 @@
                                             <i class="fa-solid fa-forward-step"></i>
                                         </button>
                                     </div>
-
                                     <div class="flex items-center gap-2 sm:gap-4">
                                         <span id="tour-timer" class="font-mono text-slate-400 text-[11px] sm:text-xs">00:00 / 00:00</span>
                                         <span id="tour-badge" class="bg-brand-medium border border-brand-mint/40 text-brand-mint text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
@@ -258,7 +251,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 3. SECCIÓN PLANTAS -->
         <section id="plantas" class="py-32 bg-brand-light text-brand-dark relative z-10 rounded-t-[4rem] shadow-[-10px_0_40px_rgba(0,0,0,0.15)]">
             <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-16">
@@ -274,7 +266,7 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="plantas-grid">
-                    <div class="searchable-card group bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-full" data-aos="fade-right">
+                    <a href="planta-detalle.html" class="nav-dyn-link searchable-card group bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-full" data-aos="fade-right">
                         <div class="relative h-64 overflow-hidden">
                             <img src="./numero7.jpeg" class="img-pro-card w-full h-full object-cover" alt="Planta 1">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -287,8 +279,9 @@
                         </div>
                         <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-medium">
                             <span>Ficha #01</span>
+                            <span class="text-brand-mint bg-brand-dark px-3 py-1 rounded-full text-[10px]">Ver Detalle <i class="fa-solid fa-arrow-right ml-1"></i></span>
                         </div>
-                    </div>
+                    </a>
                     <div class="searchable-card group bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-full" data-aos="fade-left">
                         <div class="relative h-64 overflow-hidden">
                             <img src="./corozo.jpeg" class="img-pro-card w-full h-full object-cover" alt="Planta 2">
@@ -322,7 +315,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 4. SECCIÓN MONUMENTOS Y GALERÍA -->
         <section id="monumentos" class="py-32 bg-brand-dark text-white relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-20">
@@ -431,7 +423,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 5. SECCIÓN JUGAR -->
         <section id="jugar" class="py-28 bg-brand-dark text-white relative z-20 border-t border-brand-mint/10">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-mint/5 rounded-full blur-[140px] pointer-events-none"></div>
@@ -448,7 +439,6 @@
                         Demuestra tus conocimientos sobre la flora, historia y monumentos del Paseo Colón en nuestro minijuego interactivo.
                     </p>
                 </div>
-
                 <!-- Contenedor / Marco del Juego -->
                 <div class="max-w-4xl mx-auto bg-brand-medium/40 border-2 border-brand-mint/30 rounded-[2.5rem] p-4 md:p-8 backdrop-blur-md shadow-[0_0_50px_rgba(12,242,167,0.15)] relative overflow-hidden">
                     <!-- Decoración visual tipo consola gamer -->
@@ -464,7 +454,6 @@
                             <span>LISTO PARA CONECTAR</span>
                         </div>
                     </div>
-
                     <!-- Pantalla Principal / Canvas / Iframe del Juego -->
                     <div id="game-container" class="w-full aspect-video bg-brand-dark/90 rounded-2xl border border-brand-mint/20 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group">
                         <div class="absolute inset-0 bg-[radial-gradient(#0cf2a7_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
@@ -487,7 +476,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Barra inferior de controles / footer del marco -->
                     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4 border-t border-brand-mint/20 text-xs text-slate-400">
                         <div class="flex items-center gap-3">
@@ -501,7 +489,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 6. SECCIÓN EQUIPO -->
         <section id="equipo" class="py-32 bg-brand-light text-brand-dark rounded-b-[4rem] relative z-10 shadow-[0_15px_40px_rgba(0,0,0,0.15)]">
             <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-16">
@@ -514,11 +501,9 @@
                         Estudiantes e investigadores dedicados al desarrollo, recolección de datos y diseño del catálogo.
                     </p>
                 </div>
-
                 <div class="max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden border-4 border-brand-medium/20 shadow-2xl" data-aos="fade-up">
                     <img src="./foto grupal.jpeg" alt="Foto del Equipo de Campo EcoColón" class="w-full h-auto object-cover">
                 </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-right">
                         <div class="space-y-4">
@@ -613,7 +598,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 7. SECCIÓN DE COMENTARIOS REVISADA -->
         <section id="comentarios" class="py-24 bg-brand-dark text-white relative z-20">
             <div class="max-w-4xl mx-auto px-6 space-y-12" data-aos="fade-up">
@@ -622,7 +606,6 @@
                     <h2 class="text-4xl md:text-5xl font-black font-serif text-white tracking-tight">Comentarios y Opiniones</h2>
                     <p class="text-slate-400 text-xs md:text-sm max-w-lg mx-auto">Deja tu comentario sobre el proyecto o comparte tus vivencias en el Paseo Colón.</p>
                 </div>
-
                 <!-- Formulario de Comentario -->
                 <form id="comment-form" onsubmit="handleCommentSubmit(event)" class="bg-brand-medium/40 border border-brand-mint/20 rounded-[2rem] p-6 md:p-8 space-y-4 backdrop-blur-md">
                     <input type="hidden" id="editing-comment-id" value="">
@@ -654,7 +637,6 @@
                         </button>
                     </div>
                 </form>
-
                 <!-- Lista de Comentarios Publicados -->
                 <div class="space-y-6">
                     <h3 class="text-xl font-bold text-white flex items-center gap-2">
@@ -668,7 +650,6 @@
             </div>
         </section>
     </main>
-
     <footer class="bg-brand-dark py-16 text-center text-xs text-slate-500 font-medium relative z-30">
         <div class="max-w-5xl mx-auto space-y-4 px-6">
             <div class="font-bold text-white text-base tracking-[0.25em] uppercase">ECO<span class="text-brand-mint">COLÓN</span></div>
@@ -676,14 +657,12 @@
             <p class="font-light tracking-wider text-slate-600">Diseñado con un enfoque de divulgación socioambiental de vanguardia para Calles 1 a 16.</p>
         </div>
     </footer>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <!-- SDK Firebase para Base de Datos Global Multidispositivo -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
         // CONFIGURACIÓN DE FIREBASE (Reemplazar con tus credenciales de proyecto)
         const firebaseConfig = {
             apiKey: "AIzaSyYourApiKeyHere",
@@ -693,17 +672,14 @@
             messagingSenderId: "123456789",
             appId: "1:123456789:web:abcdef123456"
         };
-
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-
         // Identificador de usuario guardado en navegador para saber cuáles son "mis" comentarios
         let myUserId = localStorage.getItem('ecocolon_user_id');
         if (!myUserId) {
             myUserId = 'user_' + Math.random().toString(36).substring(2, 9);
             localStorage.setItem('ecocolon_user_id', myUserId);
         }
-
         window.db = db;
         window.myUserId = myUserId;
         window.firestoreOps = { collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, serverTimestamp, query, orderBy };
@@ -711,29 +687,24 @@
         // Carga inicial
         initFirestoreComments();
     </script>
-
     <script>
         AOS.init({ duration: 1000, once: true });
         let homeOriginalContent = "";
-
         document.addEventListener('DOMContentLoaded', () => {
             homeOriginalContent = document.getElementById('app-content').innerHTML;
             bindDynamicLinks();
             initTourPlayer();
             initActiveNavObserver();
         });
-
         // --- SISTEMA DE NAVEGACIÓN ACTIVA (SCROLLSPY) ---
         function initActiveNavObserver() {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
-
             const observerOptions = {
                 root: null,
                 rootMargin: '-20% 0px -60% 0px',
                 threshold: 0
             };
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -750,10 +721,8 @@
                     }
                 });
             }, observerOptions);
-
             sections.forEach(section => observer.observe(section));
         }
-
         // --- SISTEMA BÚSQUEDA Y NAVEGACIÓN ---
         function handleSearchInput() {
             const input = document.getElementById('site-search');
@@ -764,21 +733,17 @@
                 clearBtn.classList.add('hidden');
             }
         }
-
         function handleSearchKey(event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
                 performSearch();
             }
         }
-
         function performSearch() {
             const query = document.getElementById('site-search').value.toLowerCase().trim();
             if (query === "") return;
-
             const sections = document.querySelectorAll('section[id]');
             let matchedSection = null;
-
             sections.forEach(section => {
                 const sectionId = section.id.toLowerCase();
                 const sectionText = section.textContent.toLowerCase();
@@ -786,28 +751,23 @@
                     if (!matchedSection) matchedSection = section;
                 }
             });
-
             if (matchedSection) {
                 matchedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
-
         function clearSearch() {
             const input = document.getElementById('site-search');
             if (input) input.value = "";
             const clearBtn = document.getElementById('clear-search-btn');
             if (clearBtn) clearBtn.classList.add('hidden');
         }
-
         function toggleQRModal() {
             const modal = document.getElementById('qr-modal');
             modal.classList.toggle('hidden');
             modal.classList.toggle('flex');
         }
-
         // --- MANEJO DINÁMICO DE COMENTARIOS ---
         let currentComments = [];
-
         function updateCharCount() {
             const textarea = document.getElementById('comment-text');
             const counter = document.getElementById('char-counter');
@@ -815,17 +775,14 @@
                 counter.textContent = `${textarea.value.length} / 500`;
             }
         }
-
         function initFirestoreComments() {
             if (!window.db || !window.firestoreOps) {
                 setTimeout(initFirestoreComments, 300);
                 return;
             }
-
             const { collection, onSnapshot, query, orderBy } = window.firestoreOps;
             const commentsRef = collection(window.db, "comentarios");
             const q = query(commentsRef, orderBy("timestamp", "desc"));
-
             onSnapshot(q, (snapshot) => {
                 currentComments = snapshot.docs.map(doc => ({
                     id: doc.id,
@@ -836,23 +793,18 @@
                 console.warn("Error leyendo la base de datos de comentarios:", error);
             });
         }
-
         function renderComments() {
             const container = document.getElementById('comments-container');
             const countLabel = document.getElementById('comments-count');
             if (!container) return;
-
             if (countLabel) countLabel.textContent = currentComments.length;
-
             if (currentComments.length === 0) {
                 container.innerHTML = '<p class="text-slate-400 text-sm italic text-center py-6">Aún no hay comentarios. ¡Sé el primero en publicar!</p>';
                 return;
             }
-
             container.innerHTML = currentComments.map(c => {
                 const isMine = c.userId === window.myUserId;
                 const formattedDate = c.timestamp ? new Date(c.timestamp.seconds * 1000).toLocaleDateString('es-ES') : 'Reciente';
-
                 return `
                 <div class="relative bg-brand-medium/30 border border-brand-mint/20 rounded-2xl p-5 space-y-3 transition-all hover:border-brand-mint/50">
                     <div class="flex items-start justify-between gap-4">
@@ -865,12 +817,10 @@
                         </div>
                         <span class="text-[10px] text-slate-400 font-mono">${formattedDate}</span>
                     </div>
-
                     <p class="text-slate-300 text-xs md:text-sm font-light leading-relaxed">
                         ${escapeHTML(c.text)}
                         ${c.edited ? '<span class="text-[10px] text-slate-400 italic font-mono ml-1.5">(editado)</span>' : ''}
                     </p>
-
                     ${isMine ? `
                         <div class="flex items-center gap-3 pt-2 border-t border-brand-mint/10 text-xs">
                             <button onclick="editComment('${c.id}')" class="text-brand-mint hover:underline flex items-center gap-1 text-[11px]">
@@ -884,24 +834,18 @@
                 </div>
             `}).join('');
         }
-
         async function handleCommentSubmit(event) {
             event.preventDefault();
-
             const nameInput = document.getElementById('author-name');
             const roleInput = document.getElementById('author-role');
             const textInput = document.getElementById('comment-text');
             const editIdInput = document.getElementById('editing-comment-id');
-
             const name = nameInput.value.trim();
             const role = roleInput.value.trim();
             const text = textInput.value.trim();
             const editId = editIdInput.value;
-
             if (!name || !text) return;
-
             const { collection, addDoc, doc, updateDoc, serverTimestamp } = window.firestoreOps;
-
             if (editId) {
                 // Modo Edición
                 const commentRef = doc(window.db, "comentarios", editId);
@@ -922,55 +866,43 @@
                     edited: false,
                     timestamp: serverTimestamp()
                 });
-
                 nameInput.value = '';
                 roleInput.value = '';
                 textInput.value = '';
                 updateCharCount();
             }
         }
-
         function editComment(id) {
             const comment = currentComments.find(c => c.id === id);
             if (!comment) return;
-
             document.getElementById('editing-comment-id').value = id;
             document.getElementById('author-name').value = comment.name;
             document.getElementById('author-role').value = comment.role || '';
             document.getElementById('comment-text').value = comment.text;
-
             const submitBtn = document.getElementById('submit-comment-btn');
             const cancelBtn = document.getElementById('cancel-edit-btn');
-
             if (submitBtn) submitBtn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Guardar Cambios';
             if (cancelBtn) cancelBtn.classList.remove('hidden');
-
             updateCharCount();
             document.getElementById('comment-form').scrollIntoView({ behavior: 'smooth' });
         }
-
         function cancelEdit() {
             document.getElementById('editing-comment-id').value = '';
             document.getElementById('author-name').value = '';
             document.getElementById('author-role').value = '';
             document.getElementById('comment-text').value = '';
-
             const submitBtn = document.getElementById('submit-comment-btn');
             const cancelBtn = document.getElementById('cancel-edit-btn');
-
             if (submitBtn) submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i> Publicar Comentario';
             if (cancelBtn) cancelBtn.classList.add('hidden');
-
             updateCharCount();
         }
-
         async function deleteComment(id) {
             if (confirm("¿Seguro que deseas eliminar este comentario? Desaparecerá para siempre.")) {
                 const { doc, deleteDoc } = window.firestoreOps;
                 await deleteDoc(doc(window.db, "comentarios", id));
             }
         }
-
         function escapeHTML(str) {
             if (!str) return '';
             return str.replace(/[&<>'"]/g, 
@@ -983,7 +915,6 @@
                 }[tag] || tag)
             );
         }
-
         // --- SPA CARGADOR Y CARRUSEL ---
         async function loadPage(url) {
             const contentDiv = document.getElementById('app-content');
@@ -1013,7 +944,6 @@
                 window.location.href = url;
             }
         }
-
         function resetToHome() {
             if (homeOriginalContent) {
                 document.getElementById('app-content').innerHTML = homeOriginalContent;
@@ -1025,11 +955,13 @@
                 window.location.reload();
             }
         }
-
         function bindDynamicLinks() {
             document.querySelectorAll('.nav-dyn-link, a[href$=".html"]').forEach(link => {
                 link.onclick = (e) => {
                     const pageUrl = link.getAttribute('href');
+                    if (pageUrl === 'index.html' || pageUrl === './index.html') {
+                        return; // Permite que el enlace a index.html funcione con naturalidad
+                    }
                     if (pageUrl && pageUrl.endsWith('.html')) {
                         e.preventDefault();
                         loadPage(pageUrl);
@@ -1037,7 +969,6 @@
                 };
             });
         }
-
         const slides = document.querySelectorAll('.hero-slide');
         let slideIndex = 0;
         function playCarousel() {
@@ -1051,7 +982,6 @@
             if (nextVideo) { nextVideo.play().catch(e => console.log(e)); }
         }
         setInterval(playCarousel, 4000);
-
         // --- SISTEMA DE TOUR VIRTUAL ---
         const tourPlaylist = [
             { id: 1, title: "Parada #1: Bienvenida al Paseo Colón", desc: "En este primer video iniciaremos el recorrido desde Calle 1, observando la estructura general del bulevar y el entorno arquitectónico de la avenida.", src: "./tour1.mp4" },
@@ -1065,15 +995,12 @@
             { id: 9, title: "Parada #9: Trayecto Intermedio Calle 11 a 14", desc: "Un paseo continuo por los tramos centrales del corredor que unen las áreas históricas con zonas comerciales históricas.", src: "./tour9.mp4" },
             { id: 10, title: "Parada #10: Cierre del Recorrido en Calle 16", desc: "Llegamos al tramo final en Calle 16, contemplando una panorámica unificada que integra el valor natural y monumental de Colón.", src: "./tour10.mp4" }
         ];
-
         let currentTourIndex = 0;
-
         function initTourPlayer() {
             const player = document.getElementById('tour-player');
             if (!player) return;
             showTourDescription(0);
         }
-
         function showTourDescription(index) {
             currentTourIndex = index;
             const videoData = tourPlaylist[currentTourIndex];
@@ -1085,24 +1012,19 @@
             const badge = document.getElementById('tour-badge');
             const overlay = document.getElementById('video-overlay');
             const outroOverlay = document.getElementById('tour-outro-overlay');
-
             if (outroOverlay) outroOverlay.classList.add('hidden');
-
             if (source && player) {
                 player.pause();
                 source.src = videoData.src;
                 player.load();
-
                 if (title) title.textContent = videoData.title;
                 if (desc) desc.textContent = videoData.desc;
                 if (step) step.textContent = `PARADA ${videoData.id} DE 10`;
                 if (badge) badge.textContent = `Parada ${videoData.id}/10`;
-
                 if (overlay) overlay.classList.remove('hidden');
                 updatePlayBtn(false);
             }
         }
-
         function startCurrentVideo() {
             const player = document.getElementById('tour-player');
             const overlay = document.getElementById('video-overlay');
@@ -1112,12 +1034,10 @@
                 updatePlayBtn(true);
             }
         }
-
         function toggleTourPlay() {
             const player = document.getElementById('tour-player');
             const overlay = document.getElementById('video-overlay');
-            if (!player) return
-
+            if (!player) return;
             if (player.paused) {
                 if (overlay) overlay.classList.add('hidden');
                 player.play();
@@ -1127,14 +1047,12 @@
                 updatePlayBtn(false);
             }
         }
-
         function updatePlayBtn(isPlaying) {
             const btn = document.getElementById('tour-play-btn');
             if (btn) {
                 btn.innerHTML = isPlaying ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
             }
         }
-
         function onTourVideoEnded() {
             if (currentTourIndex < tourPlaylist.length - 1) {
                 showTourDescription(currentTourIndex + 1);
@@ -1142,7 +1060,6 @@
                 showTourOutro();
             }
         }
-
         function nextTourStep() {
             if (currentTourIndex < tourPlaylist.length - 1) {
                 showTourDescription(currentTourIndex + 1);
@@ -1150,13 +1067,11 @@
                 showTourOutro();
             }
         }
-
         function prevTourStep() {
             if (currentTourIndex > 0) {
                 showTourDescription(currentTourIndex - 1);
             }
         }
-
         function showTourOutro() {
             const player = document.getElementById('tour-player');
             const outroOverlay = document.getElementById('tour-outro-overlay');
@@ -1164,27 +1079,22 @@
             if (outroOverlay) outroOverlay.classList.remove('hidden');
             updatePlayBtn(false);
         }
-
         function restartTour() {
             showTourDescription(0);
         }
-
         function rewindTour(seconds) {
             const player = document.getElementById('tour-player');
             if (player) player.currentTime = Math.max(0, player.currentTime - seconds);
         }
-
         function forwardTour(seconds) {
             const player = document.getElementById('tour-player');
             if (player) player.currentTime = Math.min(player.duration || 0, player.currentTime + seconds);
         }
-
         function updateTourProgress() {
             const player = document.getElementById('tour-player');
             const progressBar = document.getElementById('tour-progress-bar');
             const timer = document.getElementById('tour-timer');
             if (!player) return;
-
             if (player.duration) {
                 const pct = (player.currentTime / player.duration) * 100;
                 if (progressBar) progressBar.style.width = `${pct}%`;
@@ -1195,7 +1105,6 @@
                 if (timer) timer.textContent = "00:00 / 00:00";
             }
         }
-
         function seekTourVideo(e) {
             const player = document.getElementById('tour-player');
             if (!player || !player.duration) return;
@@ -1204,13 +1113,11 @@
             const pct = clickX / rect.width;
             player.currentTime = pct * player.duration;
         }
-
         function formatTime(seconds) {
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
-
         function toggleFullscreen() {
             const container = document.getElementById('tour-container');
             const icon = document.getElementById('fullscreen-icon');
@@ -1241,7 +1148,6 @@
                 }
             }
         }
-
         document.addEventListener('fullscreenchange', () => {
             const icon = document.getElementById('fullscreen-icon');
             if (!document.fullscreenElement && icon) {
