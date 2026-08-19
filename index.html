@@ -600,12 +600,14 @@
             <p class="font-light tracking-wider text-slate-600">Diseñado con un enfoque de divulgación socioambiental de vanguardia para Calles 1 a 16.</p>
         </div>
     </footer>
+    </footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
         let homeOriginalContent = "";
         document.addEventListener('DOMContentLoaded', () => {
-            homeOriginalContent = document.getElementById('app-content').innerHTML;
+            const appContent = document.getElementById('app-content');
+            if (appContent) homeOriginalContent = appContent.innerHTML;
             bindDynamicLinks();
             loadComments();
             initTourPlayer();
@@ -613,9 +615,10 @@
         // --- CARGADOR DINÁMICO DE PÁGINAS (SPA) ---
         async function loadPage(url) {
             const contentDiv = document.getElementById('app-content');
+            if (!contentDiv) return;
            
             contentDiv.innerHTML = `
-                <div class="min-h-screen flex flex-col items-center justify-center bg-brand-dark text-center p-6 space-y-4">
+                <div class="min-h-screen flex flex-col items-center justify-center bg-brand-dark text-center p-6 space-y-4 notranslate">
                     <i class="fa-solid fa-circle-notch fa-spin text-5xl text-brand-mint"></i>
                     <p class="text-xs font-bold uppercase tracking-widest text-slate-300">Cargando catálogo...</p>
                 </div>`;
@@ -643,7 +646,8 @@
         }
         function resetToHome() {
             if (homeOriginalContent) {
-                document.getElementById('app-content').innerHTML = homeOriginalContent;
+                const appContent = document.getElementById('app-content');
+                if (appContent) appContent.innerHTML = homeOriginalContent;
                 if (window.AOS) AOS.refresh();
                 bindDynamicLinks();
                 loadComments();
@@ -677,16 +681,20 @@
             if (nextVideo) { nextVideo.play().catch(e => console.log(e)); }
         }
         setInterval(playCarousel, 4000);
-        // --- BUSCADOR DEL SITIO WEB EN TIEMPO REAL ---
+
+        // --- BUSCADOR DEL SITIO WEB EN TIEMPO REAL (Blindado) ---
         function performSearch() {
-            const query = document.getElementById('site-search').value.toLowerCase().trim();
+            const searchInput = document.getElementById('site-search');
+            if (!searchInput) return;
+            const query = searchInput.value.toLowerCase().trim();
             const cards = document.querySelectorAll('.searchable-card');
             const clearBtn = document.getElementById('clear-search-btn');
+            
             if (query === "") {
                 clearSearch();
                 return;
             }
-            clearBtn.classList.remove('hidden');
+            if (clearBtn) clearBtn.classList.remove('hidden');
             cards.forEach(card => {
                 const text = card.textContent.toLowerCase();
                 if (text.includes(query)) {
@@ -710,8 +718,10 @@
         }
         function toggleQRModal() {
             const modal = document.getElementById('qr-modal');
-            modal.classList.toggle('hidden');
-            modal.classList.toggle('flex');
+            if (modal) {
+                modal.classList.toggle('hidden');
+                modal.classList.toggle('flex');
+            }
         }
 
         // --- SISTEMA DEL TOUR CON DESCRIPCIONES Y PANTALLA COMPLETA ---
@@ -876,6 +886,7 @@
         function toggleFullscreen() {
             const container = document.getElementById('tour-container');
             const icon = document.getElementById('fullscreen-icon');
+            if (!container) return;
             
             if (!document.fullscreenElement) {
                 if (container.requestFullscreen) {
@@ -969,10 +980,11 @@
             const nameInput = document.getElementById('author-name');
             const roleInput = document.getElementById('author-role');
             const textInput = document.getElementById('comment-text');
+            if (!nameInput || !textInput) return;
 
             const newComment = {
                 name: nameInput.value.trim(),
-                role: roleInput.value.trim(),
+                role: roleInput ? roleInput.value.trim() : '',
                 text: textInput.value.trim(),
                 date: new Date().toLocaleDateString('es-ES')
             };
@@ -982,7 +994,7 @@
             localStorage.setItem('ecocolon_comments', JSON.stringify(comments));
 
             nameInput.value = '';
-            roleInput.value = '';
+            if (roleInput) roleInput.value = '';
             textInput.value = '';
 
             loadComments();
@@ -1000,6 +1012,27 @@
             );
         }
     </script>
+
+    <!-- ESTILOS DE BLINDAJE ANTITRADUCTOR (Evita que Google rompa el diseño y el DOM) -->
+    <style>
+        html { margin-top: 0 !important; }
+        .goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame { display: none !important; visibility: hidden !important; }
+        body { top: 0 !important; position: static !important; }
+        .skiptranslate { display: none !important; }
+    </style>
+
+    <!-- Selector de Google Translate Blindado -->
+    <div id="google_translate_element" class="notranslate"></div>
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+          pageLanguage: 'es', 
+          includedLanguages: 'en,es', 
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+      }, 'google_translate_element');
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
-
