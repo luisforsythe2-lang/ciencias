@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoColón - Catálogo Exclusivo</title>
-   
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- ¡AQUÍ ESTÁ LA LÍNEA QUE FALTABA! -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    
     <script>
@@ -18,7 +21,7 @@
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#031a12',     // Verde Bosque Ultra Profundo
+                            dark: '#031a12',   // Verde Bosque Ultra Profundo
                             medium: '#073b2b',   // Verde Oliva/Selva
                             light: '#f4faf7',    // Blanco con matiz menta suave
                             mint: '#0cf2a7',     // Color Menta Eléctrico
@@ -33,6 +36,7 @@
             }
         }
     </script>
+</head>
     <style>
         /* Personalización de la barra de desplazamiento */
         ::-webkit-scrollbar {
