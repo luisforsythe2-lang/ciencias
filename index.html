@@ -656,36 +656,6 @@
             <p class="font-light tracking-wider text-slate-600">Diseñado con un enfoque de divulgación socioambiental de vanguardia para Calles 1 a 16.</p>
         </div>
     </footer>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- SDK Firebase para Base de Datos Global Multidispositivo -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-        // CONFIGURACIÓN DE FIREBASE (Reemplazar con tus credenciales de proyecto)
-        const firebaseConfig = {
-            apiKey: "AIzaSyYourApiKeyHere",
-            authDomain: "ecocolon-project.firebaseapp.com",
-            projectId: "ecocolon-project",
-            storageBucket: "ecocolon-project.appspot.com",
-            messagingSenderId: "123456789",
-            appId: "1:123456789:web:abcdef123456"
-        };
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        // Identificador de usuario guardado en navegador para saber cuáles son "mis" comentarios
-        let myUserId = localStorage.getItem('ecocolon_user_id');
-        if (!myUserId) {
-            myUserId = 'user_' + Math.random().toString(36).substring(2, 9);
-            localStorage.setItem('ecocolon_user_id', myUserId);
-        }
-        window.db = db;
-        window.myUserId = myUserId;
-        window.firestoreOps = { collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, serverTimestamp, query, orderBy };
-        
-        // Carga inicial
-        initFirestoreComments();
-    </script>
     <script>
         AOS.init({ duration: 1000, once: true });
         let homeOriginalContent = "";
@@ -831,7 +801,8 @@
                         </div>
                     ` : ''}
                 </div>
-            `}).join('');
+            `;
+            }).join('');
         }
         async function handleCommentSubmit(event) {
             event.preventDefault();
@@ -1154,6 +1125,20 @@
                 icon.classList.add('fa-expand');
             }
         });
+
+        // --- FUNCIÓN PARA CONTROLAR LAS PESTAÑAS (ÁRBOLES Y ESTATUAS) ---
+        function showTab(tabName) {
+            const arbolesSection = document.getElementById('arboles-content');
+            const estatuasSection = document.getElementById('estatuas-content');
+
+            if (tabName === 'arboles') {
+                if (arbolesSection) arbolesSection.style.display = 'block';
+                if (estatuasSection) estatuasSection.style.display = 'none';
+            } else if (tabName === 'estatuas') {
+                if (arbolesSection) arbolesSection.style.display = 'none';
+                if (estatuasSection) estatuasSection.style.display = 'block';
+            }
+        }
     </script>
 </body>
 </html>
