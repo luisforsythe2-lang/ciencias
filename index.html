@@ -9,9 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- ¡AQUÍ ESTÁ LA LÍNEA QUE FALTABA! -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- LIBRERÍAS BLINDADAS CONTRA CACHÉ -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css?v=2026" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js?v=2026"></script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    
@@ -36,7 +37,6 @@
             }
         }
     </script>
-</head>
     <style>
         /* Personalización de la barra de desplazamiento */
         ::-webkit-scrollbar {
@@ -661,7 +661,16 @@
         </div>
     </footer>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        // SCRIPT BLINDADO PARA INICIALIZAR AOS DE FORMA SEGURA
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 1000, once: true });
+            } else {
+                console.warn("AOS cargó con retraso o no disponible.");
+            }
+            window.myUserId = window.myUserId || 'user_' + Math.random().toString(36).substring(2, 9);
+        });
+
         let homeOriginalContent = "";
         document.addEventListener('DOMContentLoaded', () => {
             homeOriginalContent = document.getElementById('app-content').innerHTML;
@@ -934,7 +943,7 @@
                 link.onclick = (e) => {
                     const pageUrl = link.getAttribute('href');
                     if (pageUrl === 'index.html' || pageUrl === './index.html') {
-                        return; // Permite que el enlace a index.html funcione con naturalidad
+                        return;
                     }
                     if (pageUrl && pageUrl.endsWith('.html')) {
                         e.preventDefault();
@@ -1129,12 +1138,10 @@
                 icon.classList.add('fa-expand');
             }
         });
-
         // --- FUNCIÓN PARA CONTROLAR LAS PESTAÑAS (ÁRBOLES Y ESTATUAS) ---
         function showTab(tabName) {
             const arbolesSection = document.getElementById('arboles-content');
             const estatuasSection = document.getElementById('estatuas-content');
-
             if (tabName === 'arboles') {
                 if (arbolesSection) arbolesSection.style.display = 'block';
                 if (estatuasSection) estatuasSection.style.display = 'none';
