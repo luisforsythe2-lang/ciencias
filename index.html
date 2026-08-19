@@ -1,1624 +1,1255 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;es&quot; class=&quot;scroll-smooth&quot;&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-&lt;title&gt;EcoColón - Catálogo Exclusivo&lt;/title&gt;
-
-&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
-&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
-&lt;link
-href=&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;8
-00&amp;family=Playfair+Display:ital,wght@0,600;0,800;1,400&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-&lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
-&lt;link href=&quot;https://unpkg.com/aos@2.3.1/dist/aos.css&quot; rel=&quot;stylesheet&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-
-awesome/6.4.0/css/all.min.css&quot;&gt;
-
-&lt;script&gt;
-tailwind.config = {
-theme: {
-extend: {
-colors: {
-brand: {
-dark: &#39;#031a12&#39;, // Verde Bosque Ultra Profundo
-medium: &#39;#073b2b&#39;, // Verde Oliva/Selva
-light: &#39;#f4faf7&#39;, // Blanco con matiz menta suave
-mint: &#39;#0cf2a7&#39;, // Color Menta Eléctrico
-
-mintHover: &#39;#0ae09a&#39;
-}
-},
-fontFamily: {
-sans: [&#39;Plus Jakarta Sans&#39;, &#39;sans-serif&#39;],
-serif: [&#39;Playfair Display&#39;, &#39;serif&#39;]
-}
-}
-}
-}
-&lt;/script&gt;
-&lt;style&gt;
-/* Personalización de la barra de desplazamiento */
-::-webkit-scrollbar {
-width: 12px;
-}
-::-webkit-scrollbar-track {
-background: #031a12;
-}
-::-webkit-scrollbar-thumb {
-background: #0cf2a7;
-border-radius: 6px;
-border: 3px solid #031a12;
-}
-/* Ocultar barra de scroll en el menú de navegación para celulares */
-.no-scrollbar::-webkit-scrollbar {
-
-display: none;
-}
-.no-scrollbar {
--ms-overflow-style: none;
-scrollbar-width: none;
-}
-/* Cristal de menta translúcido */
-.mint-glass {
-background: rgba(3, 26, 18, 0.85);
-backdrop-filter: blur(16px);
--webkit-backdrop-filter: blur(16px);
-border: 1px solid rgba(12, 242, 167, 0.2);
-}
-/* Realce visual de imágenes */
-.img-pro-card {
-transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
-}
-.group:hover .img-pro-card {
-transform: scale(1.08);
-filter: brightness(1.08) contrast(1.05);
-}
-@media (max-width: 400px) {
-.hide-on-tiny {
-display: none !important;
-}
-}
-
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body class=&quot;bg-brand-dark text-brand-light font-sans selection:bg-brand-mint selection:text-
-brand-dark overflow-y-auto overflow-x-hidden&quot;&gt;
-&lt;div id=&quot;qr-modal&quot; class=&quot;fixed inset-0 bg-brand-dark/90 z-[110] hidden flex-col items-center
-justify-center p-6 transition-all duration-500&quot;&gt;
-&lt;div class=&quot;bg-brand-medium border-2 border-brand-mint p-6 rounded-3xl max-w-xs w-full
-text-center space-y-4 shadow-[0_0_50px_rgba(12,242,167,0.3)] relative&quot;&gt;
-&lt;button onclick=&quot;toggleQRModal()&quot; class=&quot;absolute top-4 right-4 text-slate-400 hover:text-
-white text-lg&quot;&gt;
-&lt;i class=&quot;fa-solid fa-xmark&quot;&gt;&lt;/i&gt;
-&lt;/button&gt;
-&lt;h3 class=&quot;text-lg font-extrabold text-white&quot;&gt;Escanea el Catálogo&lt;/h3&gt;
-&lt;p class=&quot;text-slate-300 text-xs&quot;&gt;Comparte fácilmente el acceso al catálogo ecológico.&lt;/p&gt;
-&lt;div class=&quot;bg-white p-4 rounded-2xl inline-block mx-auto&quot;&gt;
-&lt;img src=&quot;https://api.qrserver.com/v1/create-qr-
-code/?size=180&amp;data=https://ciencias.onrender.com&quot; class=&quot;w-40 h-40&quot; alt=&quot;Código QR
-EcoColón&quot;&gt;
-&lt;/div&gt;
-&lt;p class=&quot;text-[10px] text-brand-mint font-semibold uppercase tracking-
-widest&quot;&gt;ciencias.onrender.com&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Navegación Fija --&gt;
-&lt;nav class=&quot;fixed top-0 left-0 w-full z-50 pt-3 px-3 sm:px-6&quot;&gt;
-&lt;div class=&quot;mint-glass rounded-2xl sm:rounded-3xl px-3 sm:px-6 py-3 flex flex-row items-
-center justify-between gap-2 shadow-[0_15px_35px_rgba(0,0,0,0.6)] max-w-6xl mx-auto&quot;&gt;
-&lt;div class=&quot;flex items-center gap-1.5 sm:gap-3 shrink-0&quot;&gt;
-
-&lt;div class=&quot;w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-brand-mint flex items-
-center justify-center text-brand-dark font-black text-xs sm:text-base&quot;&gt;
-C
-&lt;/div&gt;
-&lt;span class=&quot;font-bold text-[10px] sm:text-sm tracking-[0.15em] sm:tracking-[0.25em]
-uppercase text-white hide-on-tiny&quot;&gt;ECO&lt;span class=&quot;text-brand-mint&quot;&gt;COLÓN&lt;/span&gt;&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;flex flex-row items-center gap-3 sm:gap-4 md:gap-6 overflow-x-auto no-
-scrollbar py-1&quot;&gt;
-&lt;div class=&quot;relative flex items-center bg-brand-dark/50 border border-brand-mint/30
-focus-within:border-brand-mint rounded-full px-2 py-1 text-xs shrink-0 transition-all duration-
-300&quot;&gt;
-&lt;button onclick=&quot;performSearch()&quot; class=&quot;text-brand-mint hover:text-white text-[10px]
-sm:text-xs mr-1 transition-colors&quot; title=&quot;Buscar&quot;&gt;
-&lt;i class=&quot;fa-solid fa-magnifying-glass&quot;&gt;&lt;/i&gt;
-&lt;/button&gt;
-&lt;input type=&quot;text&quot; id=&quot;site-search&quot; oninput=&quot;handleSearchInput()&quot;
-onkeydown=&quot;handleSearchKey(event)&quot; placeholder=&quot;Buscar...&quot; class=&quot;bg-transparent text-white
-placeholder-slate-400 font-medium outline-none w-14 sm:w-20 focus:w-24 sm:focus:w-32
-transition-all duration-300 text-[10px] sm:text-xs&quot;&gt;
-&lt;button onclick=&quot;clearSearch()&quot; class=&quot;hidden ml-1 text-slate-400 hover:text-white
-text-[10px]&quot; id=&quot;clear-search-btn&quot;&gt;
-&lt;i class=&quot;fa-solid fa-xmark&quot;&gt;&lt;/i&gt;
-&lt;/button&gt;
-&lt;/div&gt;
-&lt;a href=&quot;#inicio&quot; onclick=&quot;resetToHome()&quot; class=&quot;nav-link text-[10px] sm:text-xs font-
-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors
-whitespace-nowrap&quot;&gt;Inicio&lt;/a&gt;
-&lt;a href=&quot;#tour&quot; class=&quot;nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider
-sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap&quot;&gt;Tour&lt;/a&gt;
-
-&lt;a href=&quot;#plantas&quot; class=&quot;nav-link text-[10px] sm:text-xs font-bold uppercase tracking-
-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-
-nowrap&quot;&gt;Plantas&lt;/a&gt;
-&lt;a href=&quot;#monumentos&quot; class=&quot;nav-link text-[10px] sm:text-xs font-bold uppercase
-tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-
-nowrap&quot;&gt;Monumentos&lt;/a&gt;
-&lt;a href=&quot;#jugar&quot; class=&quot;nav-link text-[10px] sm:text-xs font-bold uppercase tracking-
-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap&quot;&gt;Jugar&lt;/a&gt;
-&lt;a href=&quot;#equipo&quot; class=&quot;nav-link text-[10px] sm:text-xs font-bold uppercase tracking-
-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-
-nowrap&quot;&gt;Equipo&lt;/a&gt;
-&lt;a href=&quot;#comentarios&quot; class=&quot;nav-link text-[10px] sm:text-xs font-bold uppercase
-tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-
-nowrap&quot;&gt;Comentarios&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class=&quot;flex items-center gap-2 shrink-0&quot;&gt;
-&lt;div class=&quot;relative group&quot;&gt;
-&lt;button onclick=&quot;toggleQRModal()&quot; class=&quot;px-3 py-1.5 sm:py-2 bg-brand-medium
-border border-brand-mint/30 text-brand-mint rounded-full hover:bg-brand-mint hover:text-
-brand-dark transition-all duration-300 text-xs sm:text-sm&quot;&gt;
-&lt;i class=&quot;fa-solid fa-qrcode&quot;&gt;&lt;/i&gt;
-&lt;/button&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/nav&gt;
-
-&lt;!-- Contenedor Principal Adaptable --&gt;
-&lt;main id=&quot;app-content&quot; class=&quot;pt-16&quot;&gt;
-&lt;!-- 1. SECCIÓN INICIO --&gt;
-
-&lt;section id=&quot;inicio&quot; class=&quot;relative min-h-screen pb-20 px-4 md:px-16 flex flex-col justify-
-between overflow-hidden&quot;&gt;
-&lt;div id=&quot;hero-carousel&quot; class=&quot;absolute inset-0 w-full h-full z-0&quot;&gt;
-&lt;div class=&quot;hero-slide absolute inset-0 opacity-100 transition-opacity duration-1000&quot;&gt;
-&lt;video class=&quot;w-full h-full object-cover object-center&quot; autoplay muted loop playsinline&gt;
-&lt;source src=&quot;./video1.mp4&quot; type=&quot;video/mp4&quot;&gt;
-&lt;/video&gt;
-&lt;/div&gt;
-&lt;div class=&quot;hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000&quot;&gt;
-&lt;img src=&quot;./foto1.jpg&quot; class=&quot;w-full h-full object-cover object-center&quot; alt=&quot;Naturaleza&quot;&gt;
-&lt;/div&gt;
-&lt;div class=&quot;hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000&quot;&gt;
-&lt;video class=&quot;w-full h-full object-cover object-center&quot; muted loop playsinline
-id=&quot;video-slide-2&quot;&gt;
-&lt;source src=&quot;./video2.mp4&quot; type=&quot;video/mp4&quot;&gt;
-&lt;/video&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;absolute inset-0 bg-brand-dark/25 z-10 pointer-events-none&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;absolute -top-40 -left-40 w-96 h-96 bg-brand-mint/10 rounded-full blur-[120px]
-pointer-events-none z-10&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;absolute bottom-20 right-0 w-96 h-96 bg-brand-mint/15 rounded-full blur-
-[150px] pointer-events-none z-10&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;relative z-20 max-w-7xl mx-auto w-full my-auto pt-24&quot;&gt;
-&lt;div class=&quot;grid grid-cols-1 lg:grid-cols-12 gap-16 items-center&quot;&gt;
-&lt;div class=&quot;lg:col-span-12&quot; data-aos=&quot;fade-right&quot;&gt;
-
-&lt;span class=&quot;inline-block px-4 py-1.5 rounded-full bg-brand-medium border border-
-brand-mint/20 text-brand-mint text-[10px] font-extrabold tracking-[0.25em] uppercase shadow-
-lg&quot;&gt;
-PROYECTO AMBIENTAL 2026
-&lt;/span&gt;
-&lt;h1 class=&quot;text-5xl md:text-8xl font-black leading-none text-white tracking-tighter
-mt-6 drop-shadow-md&quot;&gt;
-Paseo &lt;span class=&quot;font-serif italic font-light text-brand-mint&quot;&gt;Colón&lt;/span&gt;
-&lt;/h1&gt;
-&lt;p class=&quot;text-xs sm:text-sm text-white font-medium max-w-lg leading-relaxed mt-4
-drop-shadow&quot;&gt;
-Te damos la bienvenida a una experiencia digital única. Explora la riqueza natural e
-histórica del Paseo Colón desde la comodidad de tu pantalla, recorriendo cada rincón botánico y
-monumental a tu propio ritmo.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-
-&lt;!-- 2. SECCIÓN TOUR INTERACTIVO DE VIDEOS --&gt;
-&lt;section id=&quot;tour&quot; class=&quot;py-24 bg-brand-dark text-white relative overflow-hidden border-t
-border-brand-mint/10&quot;&gt;
-&lt;div class=&quot;absolute -right-40 top-1/4 w-[500px] h-[500px] bg-brand-mint/5 rounded-full
-blur-[100px] pointer-events-none&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;max-w-7xl mx-auto px-6 md:px-16&quot;&gt;
-&lt;div class=&quot;relative rounded-[2.5rem] overflow-hidden border-2 border-brand-mint/40 h-
-auto py-12 md:py-16 max-w-5xl mx-auto shadow-[0_0_60px_rgba(12,242,167,0.15)] bg-brand-
-medium/40 backdrop-blur-md&quot; data-aos=&quot;fade-up&quot;&gt;
-
-&lt;div class=&quot;relative z-10 px-6 md:px-12 text-center space-y-6 flex flex-col items-
-center&quot;&gt;
-&lt;span class=&quot;text-brand-mint font-extrabold tracking-[0.25em] text-xs
-uppercase&quot;&gt;TOUR VIRTUAL EN VIDEO&lt;/span&gt;
-&lt;h2 class=&quot;text-4xl md:text-5xl font-black font-serif text-white tracking-tight leading-
-tight max-w-2xl&quot;&gt;
-Descubre la esencia de Colón &lt;br&gt; &lt;span class=&quot;italic text-brand-mint&quot;&gt;en un
-entorno unificado.&lt;/span&gt;
-&lt;/h2&gt;
-&lt;div class=&quot;w-16 h-1 bg-brand-mint rounded-full&quot;&gt;&lt;/div&gt;
-&lt;p class=&quot;text-slate-300 text-sm md:text-base font-light max-w-2xl leading-relaxed&quot;&gt;
-Acompáñanos en este recorrido guiado de 10 paradas. Revisa la descripción de
-cada parada y avanza mediante el botón interactivo.
-&lt;/p&gt;
-
-&lt;!-- REPRODUCTOR INTERACTIVO --&gt;
-&lt;div id=&quot;tour-container&quot; class=&quot;w-full max-w-4xl mx-auto mt-6 bg-black rounded-3xl
-overflow-hidden border border-brand-mint/30 shadow-2xl relative group&quot;&gt;
-&lt;div class=&quot;relative aspect-video bg-black flex items-center justify-center overflow-
-hidden&quot;&gt;
-&lt;video id=&quot;tour-player&quot; class=&quot;w-full h-full object-cover&quot;
-ontimeupdate=&quot;updateTourProgress()&quot; onended=&quot;onTourVideoEnded()&quot;&gt;
-&lt;source id=&quot;tour-source&quot; src=&quot;&quot; type=&quot;video/mp4&quot;&gt;
-Tu navegador no soporta el reproductor de video.
-&lt;/video&gt;
-
-&lt;div id=&quot;video-overlay&quot; class=&quot;absolute inset-0 bg-black/95 flex flex-col items-
-center justify-center p-6 text-center z-10 space-y-4&quot;&gt;
-
-&lt;span id=&quot;tour-overlay-step&quot; class=&quot;text-brand-mint text-xs font-black
-uppercase tracking-[0.2em]&quot;&gt;PARADA 1 DE 10&lt;/span&gt;
-&lt;h4 id=&quot;tour-video-title&quot; class=&quot;text-xl md:text-3xl font-black text-white
-tracking-wide&quot;&gt;Punto de Entrada&lt;/h4&gt;
-
-&lt;div class=&quot;bg-brand-medium/50 border border-brand-mint/30 p-4 rounded-
-2xl max-w-lg&quot;&gt;
-&lt;p id=&quot;tour-video-desc&quot; class=&quot;text-xs md:text-sm text-slate-300 leading-
-relaxed font-light&quot;&gt;
-Descripción previa del video...
-&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;button onclick=&quot;startCurrentVideo()&quot; class=&quot;mt-2 px-8 py-3.5 bg-brand-mint
-text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white
-transition-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.4)] flex items-center gap-2&quot;&gt;
-&lt;i class=&quot;fa-solid fa-play&quot;&gt;&lt;/i&gt; Comenzar Video
-&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;div id=&quot;tour-outro-overlay&quot; class=&quot;absolute inset-0 bg-brand-dark/95 hidden
-flex-col items-center justify-center p-6 text-center z-20 space-y-4&quot;&gt;
-&lt;div class=&quot;w-16 h-16 rounded-full bg-brand-mint/20 border-2 border-brand-
-mint text-brand-mint flex items-center justify-center text-3xl mb-2&quot;&gt;
-&lt;i class=&quot;fa-solid fa-graduation-cap&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-&lt;h4 class=&quot;text-2xl md:text-3xl font-black text-white&quot;&gt;¡Tour Finalizado con
-Éxito!&lt;/h4&gt;
-
-&lt;p class=&quot;text-xs md:text-sm text-slate-300 max-w-lg font-light leading-
-relaxed&quot;&gt;
-¡Felicidades por completar el recorrido! Has aprendido sobre la
-biodiversidad, la riqueza arbórea y los monumentos históricos que adornan la travesía desde Calle
-1 a Calle 16.
-&lt;/p&gt;
-&lt;button onclick=&quot;restartTour()&quot; class=&quot;mt-2 px-8 py-3.5 bg-brand-mint text-
-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-
-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.4)] flex items-center gap-2&quot;&gt;
-&lt;i class=&quot;fa-solid fa-rotate-right&quot;&gt;&lt;/i&gt; Reiniciar Tour
-&lt;/button&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;bg-brand-dark/95 border-t border-brand-mint/20 p-4 space-y-3&quot;&gt;
-&lt;div class=&quot;w-full bg-slate-800 h-2 rounded-full cursor-pointer relative overflow-
-hidden&quot; onclick=&quot;seekTourVideo(event)&quot;&gt;
-&lt;div id=&quot;tour-progress-bar&quot; class=&quot;bg-brand-mint h-full w-0 transition-all
-duration-100&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;flex items-center justify-between gap-4 text-xs&quot;&gt;
-&lt;div class=&quot;flex items-center gap-2 sm:gap-3&quot;&gt;
-&lt;button onclick=&quot;prevTourStep()&quot; class=&quot;p-2.5 rounded-full bg-brand-
-medium text-brand-mint hover:bg-brand-mint hover:text-brand-dark transition-all&quot;
-title=&quot;Anterior&quot;&gt;
-&lt;i class=&quot;fa-solid fa-backward-step&quot;&gt;&lt;/i&gt;
-&lt;/button&gt;
-
-&lt;button onclick=&quot;rewindTour(10)&quot; class=&quot;p-2.5 rounded-full bg-brand-
-medium text-slate-300 hover:text-white transition-all&quot; title=&quot;Atrasar 10s&quot;&gt;
-&lt;i class=&quot;fa-solid fa-rotate-left&quot;&gt;&lt;/i&gt;
-&lt;/button&gt;
-&lt;button onclick=&quot;toggleTourPlay()&quot; id=&quot;tour-play-btn&quot; class=&quot;p-3.5
-rounded-full bg-brand-mint text-brand-dark font-black hover:scale-105 transition-all&quot;
-title=&quot;Play/Pausa&quot;&gt;
-&lt;i class=&quot;fa-solid fa-play&quot;&gt;&lt;/i&gt;
-&lt;/button&gt;
-&lt;button onclick=&quot;forwardTour(10)&quot; class=&quot;p-2.5 rounded-full bg-brand-
-medium text-slate-300 hover:text-white transition-all&quot; title=&quot;Adelantar 10s&quot;&gt;
-&lt;i class=&quot;fa-solid fa-rotate-right&quot;&gt;&lt;/i&gt;
-&lt;/button&gt;
-&lt;button onclick=&quot;nextTourStep()&quot; class=&quot;p-2.5 rounded-full bg-brand-
-medium text-brand-mint hover:bg-brand-mint hover:text-brand-dark transition-all&quot;
-title=&quot;Siguiente&quot;&gt;
-&lt;i class=&quot;fa-solid fa-forward-step&quot;&gt;&lt;/i&gt;
-&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;flex items-center gap-2 sm:gap-4&quot;&gt;
-&lt;span id=&quot;tour-timer&quot; class=&quot;font-mono text-slate-400 text-[11px] sm:text-
-xs&quot;&gt;00:00 / 00:00&lt;/span&gt;
-&lt;span id=&quot;tour-badge&quot; class=&quot;bg-brand-medium border border-brand-
-mint/40 text-brand-mint text-[10px] font-extrabold uppercase px-3 py-1 rounded-full&quot;&gt;
-Parada 1/10
-&lt;/span&gt;
-
-&lt;button onclick=&quot;toggleFullscreen()&quot; class=&quot;p-2.5 rounded-full bg-brand-
-medium text-brand-mint hover:bg-brand-mint hover:text-brand-dark transition-all&quot; title=&quot;Pantalla
-Completa&quot;&gt;
-&lt;i id=&quot;fullscreen-icon&quot; class=&quot;fa-solid fa-expand&quot;&gt;&lt;/i&gt;
-&lt;/button&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-
-&lt;!-- 3. SECCIÓN PLANTAS --&gt;
-&lt;section id=&quot;plantas&quot; class=&quot;py-32 bg-brand-light text-brand-dark relative z-10 rounded-t-
-[4rem] shadow-[-10px_0_40px_rgba(0,0,0,0.15)]&quot;&gt;
-&lt;div class=&quot;max-w-7xl mx-auto px-6 md:px-16 space-y-16&quot;&gt;
-&lt;div class=&quot;flex flex-col lg:flex-row lg:items-end justify-between gap-8&quot; data-aos=&quot;fade-
-down&quot;&gt;
-&lt;div class=&quot;space-y-4 max-w-2xl&quot;&gt;
-&lt;span class=&quot;text-xs font-bold uppercase tracking-[0.25em] text-brand-medium
-border-l-4 border-brand-mint pl-3&quot;&gt;Muestra Botánica&lt;/span&gt;
-&lt;h2 class=&quot;text-4xl md:text-6xl font-black font-serif text-brand-dark tracking-tight
-leading-tight&quot;&gt;
-Fichas Taxonómicas e &lt;span class=&quot;italic text-brand-medium&quot;&gt;Información
-Natural.&lt;/span&gt;
-&lt;/h2&gt;
-
-&lt;/div&gt;
-&lt;p class=&quot;text-slate-600 text-sm max-w-md font-medium leading-relaxed&quot;&gt;
-Hemos catalogado los árboles más representativos y plantas ornamentales de las
-avenidas y calles 1 a 16. Descubre la biodiversidad que coexiste en Colón.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;grid grid-cols-1 md:grid-cols-3 gap-8&quot; id=&quot;plantas-grid&quot;&gt;
-&lt;div class=&quot;searchable-card group bg-white border border-slate-100 rounded-[2rem]
-overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-
-between h-full&quot; data-aos=&quot;fade-right&quot;&gt;
-&lt;div class=&quot;relative h-64 overflow-hidden&quot;&gt;
-&lt;img src=&quot;./numero7.jpeg&quot; class=&quot;img-pro-card w-full h-full object-cover&quot;
-alt=&quot;Planta 1&quot;&gt;
-&lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-
-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300&quot;&gt;&lt;/div&gt;
-&lt;span class=&quot;absolute top-4 left-4 bg-brand-mint text-brand-dark text-[9px] font-
-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-md z-10&quot;&gt;Árbol
-Frondoso&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;p-8 space-y-4 flex-grow&quot;&gt;
-&lt;h3 class=&quot;text-2xl font-black text-brand-dark tracking-tight&quot;&gt;El Guayacán
-Real&lt;/h3&gt;
-&lt;p class=&quot;text-slate-500 text-xs font-semibold uppercase tracking-wider
-italic&quot;&gt;Guaiacum officinale&lt;/p&gt;
-&lt;p class=&quot;text-slate-600 text-sm font-light leading-relaxed&quot;&gt;Famoso por su
-llamativa floración de color azul violáceo y su madera extremadamente resistente, aportando
-sombra densa en las aceras del paseo.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-
-between text-xs font-bold text-brand-medium&quot;&gt;
-
-&lt;span&gt;Ficha #01&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;searchable-card group bg-white border border-slate-100 rounded-[2rem]
-overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-
-between h-full&quot; data-aos=&quot;fade-left&quot;&gt;
-&lt;div class=&quot;relative h-64 overflow-hidden&quot;&gt;
-&lt;img src=&quot;./corozo.jpeg&quot; class=&quot;img-pro-card w-full h-full object-cover&quot; alt=&quot;Planta
-2&quot;&gt;
-&lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-
-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300&quot;&gt;&lt;/div&gt;
-&lt;span class=&quot;absolute top-4 left-4 bg-brand-mint text-brand-dark text-[9px] font-
-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-md z-10&quot;&gt;Sombra y
-Estética&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;p-8 space-y-4 flex-grow&quot;&gt;
-&lt;h3 class=&quot;text-2xl font-black text-brand-dark tracking-tight&quot;&gt;El Almácigo
-Silvestre&lt;/h3&gt;
-&lt;p class=&quot;text-slate-500 text-xs font-semibold uppercase tracking-wider
-italic&quot;&gt;Bursera simaruba&lt;/p&gt;
-&lt;p class=&quot;text-slate-600 text-sm font-light leading-relaxed&quot;&gt;Conocido por su
-corteza rojiza que se descama fácilmente. Un árbol nativo muy adaptado a la costa y el calor, ideal
-para control ecológico urbano.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-
-between text-xs font-bold text-brand-medium&quot;&gt;
-&lt;span&gt;Ficha #02&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;searchable-card group bg-white border border-slate-100 rounded-[2rem]
-overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-
-between h-full&quot; data-aos=&quot;fade-right&quot;&gt;
-&lt;div class=&quot;relative h-64 overflow-hidden&quot;&gt;
-&lt;img src=&quot;./real.jpeg&quot; class=&quot;img-pro-card w-full h-full object-cover&quot; alt=&quot;Planta
-3&quot;&gt;
-&lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-
-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300&quot;&gt;&lt;/div&gt;
-&lt;span class=&quot;absolute top-4 left-4 bg-brand-mint text-brand-dark text-[9px] font-
-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-md z-10&quot;&gt;Palmera
-Ornamental&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;p-8 space-y-4 flex-grow&quot;&gt;
-&lt;h3 class=&quot;text-2xl font-black text-brand-dark tracking-tight&quot;&gt;Palma Real&lt;/h3&gt;
-&lt;p class=&quot;text-slate-500 text-xs font-semibold uppercase tracking-wider
-italic&quot;&gt;Roystonea regia&lt;/p&gt;
-&lt;p class=&quot;text-slate-600 text-sm font-light leading-relaxed&quot;&gt;Elemento
-característico de las avenidas y bulevares clásicos, con un tronco esbelto que llega a alcanzar más
-de veinte metros de altura.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-
-between text-xs font-bold text-brand-medium&quot;&gt;
-&lt;span&gt;Ficha #03&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-
-&lt;!-- 4. SECCIÓN MONUMENTOS Y GALERÍA --&gt;
-&lt;section id=&quot;monumentos&quot; class=&quot;py-32 bg-brand-dark text-white relative overflow-hidden&quot;&gt;
-&lt;div class=&quot;max-w-7xl mx-auto px-6 md:px-16 space-y-20&quot;&gt;
-&lt;div class=&quot;max-w-5xl mx-auto space-y-6&quot;&gt;
-&lt;span class=&quot;block text-center text-[10px] font-extrabold uppercase tracking-widest
-text-brand-mint&quot;&gt;REGISTRO VISUAL ECOLÓGICO&lt;/span&gt;
-&lt;div class=&quot;grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6&quot;&gt;
-&lt;div class=&quot;group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-
-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative&quot; data-aos=&quot;fade-right&quot;&gt;
-&lt;img src=&quot;./cara2.jpg&quot; class=&quot;img-pro-card w-full h-full object-cover&quot;
-alt=&quot;Guayacán Real&quot;&gt;
-&lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent
-to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end
-p-4&quot;&gt;
-&lt;span class=&quot;text-xs text-brand-mint font-bold&quot;&gt;Registro #01&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-
-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative&quot; data-aos=&quot;fade-left&quot;&gt;
-&lt;img src=&quot;./china2.jpeg&quot; class=&quot;img-pro-card w-full h-full object-cover&quot;
-alt=&quot;Almácigo Silvestre&quot;&gt;
-&lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent
-to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end
-p-4&quot;&gt;
-&lt;span class=&quot;text-xs text-brand-mint font-bold&quot;&gt;Registro #02&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-
-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative&quot; data-aos=&quot;fade-right&quot;&gt;
-
-&lt;img src=&quot;./rosea.jpg&quot; class=&quot;img-pro-card w-full h-full object-cover&quot; alt=&quot;Palma
-Real&quot;&gt;
-&lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent
-to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end
-p-4&quot;&gt;
-&lt;span class=&quot;text-xs text-brand-mint font-bold&quot;&gt;Registro #03&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-
-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative&quot; data-aos=&quot;fade-left&quot;&gt;
-&lt;img src=&quot;./noni.jpeg&quot; class=&quot;img-pro-card w-full h-full object-cover&quot; alt=&quot;Entorno
-Forestal&quot;&gt;
-&lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent
-to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end
-p-4&quot;&gt;
-&lt;span class=&quot;text-xs text-brand-mint font-bold&quot;&gt;Registro #04&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-
-brand-mint/30 h-32 sm:h-48 md:h-64 col-span-2 lg:col-span-1 shadow-xl relative&quot; data-aos=&quot;fade-
-right&quot;&gt;
-&lt;img src=&quot;./navidad.jpeg&quot; class=&quot;img-pro-card w-full h-full object-cover&quot;
-alt=&quot;Costa Tropical&quot;&gt;
-&lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent
-to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end
-p-4&quot;&gt;
-&lt;span class=&quot;text-xs text-brand-mint font-bold&quot;&gt;Registro #05&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;max-w-4xl mx-auto bg-brand-medium/20 rounded-[2.5rem] p-8 md:p-12
-border border-brand-mint/20 space-y-10 flex flex-col items-center&quot; data-aos=&quot;fade-up&quot;&gt;
-&lt;h3 class=&quot;text-2xl md:text-3xl font-black font-serif text-brand-mint text-center
-tracking-tight&quot;&gt;
-¿Qué descubrirás en este Catálogo Digital?
-&lt;/h3&gt;
-&lt;div class=&quot;space-y-8 w-full&quot;&gt;
-&lt;div class=&quot;flex flex-col sm:flex-row items-start gap-4 p-4 rounded-2xl hover:bg-
-brand-medium/30 transition-colors duration-300&quot;&gt;
-&lt;div class=&quot;w-12 h-12 rounded-full bg-brand-mint text-brand-dark flex items-
-center justify-center text-xl shrink-0 shadow-lg&quot;&gt;
-&lt;i class=&quot;fa-solid fa-leaf&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-&lt;div&gt;
-&lt;h4 class=&quot;text-lg font-extrabold text-white mb-1&quot;&gt;Botánica 100% de la
-Región&lt;/h4&gt;
-&lt;p class=&quot;text-slate-300 text-sm font-light leading-relaxed&quot;&gt;Fichas de árboles e
-ingredientes naturales del suelo colonense que regulan el ecosistema urbano.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;flex flex-col sm:flex-row items-start gap-4 p-4 rounded-2xl hover:bg-
-brand-medium/30 transition-colors duration-300&quot;&gt;
-&lt;div class=&quot;w-12 h-12 rounded-full bg-brand-mint text-brand-dark flex items-
-center justify-center text-xl shrink-0 shadow-lg&quot;&gt;
-&lt;i class=&quot;fa-solid fa-building-columns&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-&lt;div&gt;
-
-&lt;h4 class=&quot;text-lg font-extrabold text-white mb-1&quot;&gt;Entorno Urbano
-Inolvidable&lt;/h4&gt;
-&lt;p class=&quot;text-slate-300 text-sm font-light leading-relaxed&quot;&gt;Explora
-interactivamente la ubicación exacta de las esculturas que decoran nuestro paseo principal.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;max-w-4xl mx-auto relative rounded-[2.5rem] overflow-hidden border-2
-border-brand-mint/30 h-auto min-h-[320px] flex flex-col items-center justify-center text-center p-
-8 md:p-12 shadow-[0_0_50px_rgba(12,242,167,0.15)]&quot; data-aos=&quot;fade-up&quot;&gt;
-&lt;div class=&quot;absolute inset-0 bg-brand-dark/50 backdrop-blur-[1px] z-0&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;relative z-10 space-y-6 max-w-2xl flex flex-col items-center&quot;&gt;
-&lt;span class=&quot;text-brand-mint text-[10px] font-extrabold uppercase tracking-
-[0.25em]&quot;&gt;Patrimonio Histórico&lt;/span&gt;
-&lt;h3 class=&quot;text-2xl md:text-3xl font-black font-serif text-white tracking-
-tight&quot;&gt;Galería de Esculturas&lt;/h3&gt;
-&lt;p class=&quot;text-slate-200 text-xs md:text-sm font-bold leading-relaxed drop-shadow-
-[0_2px_4px_rgba(0,0,0,0.8)]&quot;&gt;
-Te damos la bienvenida a nuestro recorrido histórico interactivo. Te invitamos a
-descubrir la majestuosidad de los monumentos históricos de Colón, adentrándote en las crónicas
-que definieron nuestra herencia.
-&lt;/p&gt;
-&lt;a href=&quot;./estatua-detalle.html&quot; class=&quot;nav-dyn-link inline-flex items-center justify-
-center gap-3 px-8 py-4 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-
-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-
-[0_10px_30px_rgba(12,242,167,0.4)] hover:scale-105 mt-2&quot;&gt;
-&lt;i class=&quot;fa-solid fa-images text-sm&quot;&gt;&lt;/i&gt; Ver Monumentos
-&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;space-y-24 pt-10&quot;&gt;
-&lt;div class=&quot;searchable-card group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center&quot;
-data-aos=&quot;fade-right&quot;&gt;
-&lt;div class=&quot;lg:col-span-6 relative&quot;&gt;
-&lt;div class=&quot;rounded-[2.5rem] overflow-hidden border-4 border-brand-mint/20
-aspect-video shadow-2xl relative&quot;&gt;
-&lt;img src=&quot;./colon2.jpeg&quot; class=&quot;img-pro-card w-full h-full object-cover&quot;
-alt=&quot;Monumento Histórico de Piedra&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;lg:col-span-6 space-y-6&quot;&gt;
-&lt;span class=&quot;text-[10px] font-extrabold uppercase tracking-widest text-brand-mint
-bg-brand-medium border border-brand-mint/30 px-3 py-1.5 rounded-full&quot;&gt;Calle 3&lt;/span&gt;
-&lt;h3 class=&quot;text-3xl md:text-4xl font-extrabold text-white&quot;&gt;El Monumento de
-Cristóbal Colón&lt;/h3&gt;
-&lt;p class=&quot;text-slate-400 text-sm font-light leading-relaxed&quot;&gt;
-Una magnífica representación en bronce que conmemora el desembarco
-histórico. Se ubica como uno de los símbolos centrales de la ciudad de Colón.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;searchable-card group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center&quot;
-data-aos=&quot;fade-left&quot;&gt;
-&lt;div class=&quot;lg:col-span-6 lg:order-2&quot;&gt;
-&lt;div class=&quot;rounded-[2.5rem] overflow-hidden border-4 border-brand-mint/20
-aspect-video shadow-2xl relative&quot;&gt;
-&lt;img src=&quot;./imagen12.jpg&quot; class=&quot;img-pro-card w-full h-full object-cover&quot;
-alt=&quot;Plaza Monumental&quot;&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;lg:col-span-6 space-y-6&quot;&gt;
-&lt;span class=&quot;text-[10px] font-extrabold uppercase tracking-widest text-brand-mint
-bg-brand-medium border border-brand-mint/30 px-3 py-1.5 rounded-full&quot;&gt;Calle 11&lt;/span&gt;
-&lt;h3 class=&quot;text-3xl md:text-4xl font-extrabold text-white&quot;&gt;Busto Conmemorativo
-del Centenario&lt;/h3&gt;
-&lt;p class=&quot;text-slate-400 text-sm font-light leading-relaxed&quot;&gt;
-Escultura erigida para honrar a los próceres de nuestra patria y recordar la fecha
-fundamental de la soberanía.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-
-&lt;!-- 5. SECCIÓN JUGAR --&gt;
-&lt;section id=&quot;jugar&quot; class=&quot;py-28 bg-brand-dark text-white relative z-20 border-t border-
-brand-mint/10&quot;&gt;
-&lt;div class=&quot;absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]
-bg-brand-mint/5 rounded-full blur-[140px] pointer-events-none&quot;&gt;&lt;/div&gt;
-
-&lt;div class=&quot;max-w-6xl mx-auto px-6 space-y-12 relative z-10&quot; data-aos=&quot;fade-up&quot;&gt;
-&lt;div class=&quot;text-center space-y-4 max-w-2xl mx-auto&quot;&gt;
-&lt;span class=&quot;inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-medium
-border border-brand-mint/30 text-brand-mint text-[10px] font-extrabold tracking-[0.25em]
-uppercase shadow-lg&quot;&gt;
-
-&lt;i class=&quot;fa-solid fa-gamepad text-xs&quot;&gt;&lt;/i&gt; ZONA INTERACTIVA
-&lt;/span&gt;
-&lt;h2 class=&quot;text-4xl md:text-6xl font-black font-serif text-white tracking-tight&quot;&gt;
-Aprende &lt;span class=&quot;italic text-brand-mint&quot;&gt;Jugando&lt;/span&gt;
-&lt;/h2&gt;
-&lt;p class=&quot;text-slate-300 text-xs md:text-sm font-light leading-relaxed&quot;&gt;
-Demuestra tus conocimientos sobre la flora, historia y monumentos del Paseo Colón
-en nuestro minijuego interactivo.
-&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;!-- Contenedor / Marco del Juego --&gt;
-&lt;div class=&quot;max-w-4xl mx-auto bg-brand-medium/40 border-2 border-brand-mint/30
-rounded-[2.5rem] p-4 md:p-8 backdrop-blur-md shadow-[0_0_50px_rgba(12,242,167,0.15)]
-relative overflow-hidden&quot;&gt;
-&lt;!-- Decoración visual tipo consola gamer --&gt;
-&lt;div class=&quot;flex items-center justify-between pb-4 border-b border-brand-mint/20 mb-
-6 px-2&quot;&gt;
-&lt;div class=&quot;flex items-center gap-2&quot;&gt;
-&lt;span class=&quot;w-3 h-3 rounded-full bg-rose-500 inline-block&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;w-3 h-3 rounded-full bg-amber-500 inline-block&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;w-3 h-3 rounded-full bg-brand-mint inline-block&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;text-[10px] font-mono text-slate-400 ml-2 uppercase tracking-widest
-hidden sm:inline&quot;&gt;EcoColón Arcade v1.0&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;text-brand-mint text-xs font-mono font-bold flex items-center gap-2&quot;&gt;
-&lt;i class=&quot;fa-solid fa-signal text-[10px] animate-pulse&quot;&gt;&lt;/i&gt;
-
-&lt;span&gt;LISTO PARA CONECTAR&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Pantalla Principal / Canvas / Iframe del Juego --&gt;
-&lt;div id=&quot;game-container&quot; class=&quot;w-full aspect-video bg-brand-dark/90 rounded-2xl
-border border-brand-mint/20 flex flex-col items-center justify-center p-6 text-center relative
-overflow-hidden group&quot;&gt;
-&lt;div class=&quot;absolute inset-0 bg-[radial-gradient(#0cf2a7_1px,transparent_1px)]
-[background-size:16px_16px] opacity-10&quot;&gt;&lt;/div&gt;
-
-&lt;!-- Estado actual: Proximamente / Espacio reservado para tu juego --&gt;
-&lt;div class=&quot;relative z-10 space-y-5 max-w-md&quot;&gt;
-&lt;div class=&quot;w-20 h-20 rounded-3xl bg-brand-medium border-2 border-brand-mint
-text-brand-mint flex items-center justify-center text-3xl mx-auto shadow-
-[0_0_25px_rgba(12,242,167,0.3)] group-hover:scale-110 transition-transform duration-300&quot;&gt;
-&lt;i class=&quot;fa-solid fa-dice-d20&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-&lt;h3 class=&quot;text-2xl md:text-3xl font-black text-white tracking-wide&quot;&gt;
-¡El Minijuego está en camino!
-&lt;/h3&gt;
-&lt;p class=&quot;text-xs md:text-sm text-slate-300 font-light leading-relaxed&quot;&gt;
-Estamos finalizando el desarrollo del juego ecológico para esta sección. Pronto
-podrás jugar directamente desde esta pantalla.
-&lt;/p&gt;
-&lt;div class=&quot;pt-2&quot;&gt;
-&lt;button class=&quot;px-8 py-3 bg-brand-mint/20 border border-brand-mint text-
-brand-mint font-bold text-xs uppercase tracking-[0.2em] rounded-full cursor-not-allowed opacity-
-80 flex items-center gap-2 mx-auto&quot;&gt;
-
-&lt;i class=&quot;fa-solid fa-hourglass-half text-xs&quot;&gt;&lt;/i&gt; Próximamente
-&lt;/button&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Barra inferior de controles / footer del marco --&gt;
-&lt;div class=&quot;flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4
-border-t border-brand-mint/20 text-xs text-slate-400&quot;&gt;
-&lt;div class=&quot;flex items-center gap-3&quot;&gt;
-&lt;i class=&quot;fa-solid fa-gamepad text-brand-mint text-base&quot;&gt;&lt;/i&gt;
-&lt;span&gt;Compatible con Móviles y PC&lt;/span&gt;
-&lt;/div&gt;
-&lt;span class=&quot;text-[10px] font-mono text-brand-mint bg-brand-dark/60 px-3 py-1
-rounded-full border border-brand-mint/20&quot;&gt;
-Desarrollado para EcoColón
-&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-
-&lt;!-- 6. SECCIÓN EQUIPO --&gt;
-&lt;section id=&quot;equipo&quot; class=&quot;py-32 bg-brand-light text-brand-dark rounded-b-[4rem] relative
-z-10 shadow-[0_15px_40px_rgba(0,0,0,0.15)]&quot;&gt;
-&lt;div class=&quot;max-w-7xl mx-auto px-6 md:px-16 space-y-16&quot;&gt;
-&lt;div class=&quot;text-center space-y-4 max-w-3xl mx-auto&quot; data-aos=&quot;fade-down&quot;&gt;
-
-&lt;span class=&quot;text-xs font-bold uppercase tracking-[0.25em] text-brand-
-medium&quot;&gt;Investigación y Desarrollo&lt;/span&gt;
-&lt;h2 class=&quot;text-4xl md:text-6xl font-black font-serif text-brand-dark tracking-tight&quot;&gt;
-El Equipo de Campo
-&lt;/h2&gt;
-&lt;p class=&quot;text-slate-600 text-sm&quot;&gt;
-Estudiantes e investigadores dedicados al desarrollo, recolección de datos y diseño
-del catálogo.
-&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden border-4 border-
-brand-medium/20 shadow-2xl&quot; data-aos=&quot;fade-up&quot;&gt;
-&lt;img src=&quot;./foto grupal.jpeg&quot; alt=&quot;Foto del Equipo de Campo EcoColón&quot; class=&quot;w-full h-
-auto object-cover&quot;&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;grid grid-cols-1 md:grid-cols-3 gap-6&quot;&gt;
-&lt;div class=&quot;searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex
-flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all
-duration-300&quot; data-aos=&quot;fade-right&quot;&gt;
-&lt;div class=&quot;space-y-4&quot;&gt;
-&lt;div class=&quot;w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-
-center justify-center text-2xl&quot;&gt;
-&lt;i class=&quot;fa-solid fa-microscope&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-&lt;h4 class=&quot;text-2xl font-black text-brand-dark leading-tight&quot;&gt;Darlenys
-Mendoza&lt;/h4&gt;
-
-&lt;p class=&quot;text-slate-600 text-xs leading-relaxed font-light&quot;&gt;Responsable del
-levantamiento vegetal de las avenidas y catalogación botánica.&lt;/p&gt;
-&lt;/div&gt;
-&lt;span class=&quot;text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-
-50 px-3 py-1.5 rounded-full border border-slate-100 self-start&quot;&gt;MUESTREO BOTÁNICO&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex
-flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all
-duration-300&quot; data-aos=&quot;fade-up&quot;&gt;
-&lt;div class=&quot;space-y-4&quot;&gt;
-&lt;div class=&quot;w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-
-center justify-center text-2xl&quot;&gt;
-&lt;i class=&quot;fa-solid fa-code&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-&lt;h4 class=&quot;text-2xl font-black text-brand-dark leading-tight&quot;&gt;Ariel Donado&lt;/h4&gt;
-&lt;p class=&quot;text-slate-600 text-xs leading-relaxed font-light&quot;&gt;Especialista en
-arquitectura frontend, transiciones dinámicas y buscador predictivo.&lt;/p&gt;
-&lt;/div&gt;
-&lt;span class=&quot;text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-
-50 px-3 py-1.5 rounded-full border border-slate-100 self-start&quot;&gt;DESARROLLO DE INTERFAZ&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex
-flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all
-duration-300&quot; data-aos=&quot;fade-left&quot;&gt;
-&lt;div class=&quot;space-y-4&quot;&gt;
-&lt;div class=&quot;w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-
-center justify-center text-2xl&quot;&gt;
-&lt;i class=&quot;fa-solid fa-landmark&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-
-&lt;h4 class=&quot;text-2xl font-black text-brand-dark leading-tight&quot;&gt;Moisés Vargas&lt;/h4&gt;
-&lt;p class=&quot;text-slate-600 text-xs leading-relaxed font-light&quot;&gt;Historiador local a
-cargo de rastrear y digitalizar las actas de monumentos públicos.&lt;/p&gt;
-&lt;/div&gt;
-&lt;span class=&quot;text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-
-50 px-3 py-1.5 rounded-full border border-slate-100 self-start&quot;&gt;HISTORIA Y ARCHIVO&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex
-flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all
-duration-300&quot; data-aos=&quot;fade-right&quot;&gt;
-&lt;div class=&quot;space-y-4&quot;&gt;
-&lt;div class=&quot;w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-
-center justify-center text-2xl&quot;&gt;
-&lt;i class=&quot;fa-solid fa-camera-retro&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-&lt;h4 class=&quot;text-2xl font-black text-brand-dark leading-tight&quot;&gt;Aarón Forsythe&lt;/h4&gt;
-&lt;p class=&quot;text-slate-600 text-xs leading-relaxed font-light&quot;&gt;Responsable del
-registro fotográfico, edición de los videos e integración aérea.&lt;/p&gt;
-&lt;/div&gt;
-&lt;span class=&quot;text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-
-50 px-3 py-1.5 rounded-full border border-slate-100 self-start&quot;&gt;MULTIMEDIA Y DRON&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex
-flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all
-duration-300&quot; data-aos=&quot;fade-up&quot;&gt;
-&lt;div class=&quot;space-y-4&quot;&gt;
-&lt;div class=&quot;w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-
-center justify-center text-2xl&quot;&gt;
-&lt;i class=&quot;fa-solid fa-leaf&quot;&gt;&lt;/i&gt;
-
-&lt;/div&gt;
-&lt;h4 class=&quot;text-2xl font-black text-brand-dark leading-tight&quot;&gt;Mackeiry
-Arroyo&lt;/h4&gt;
-&lt;p class=&quot;text-slate-600 text-xs leading-relaxed font-light&quot;&gt;Investigadora botánica
-encargada de la clasificación biológica y documentación.&lt;/p&gt;
-&lt;/div&gt;
-&lt;span class=&quot;text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-
-50 px-3 py-1.5 rounded-full border border-slate-100 self-start&quot;&gt;INVESTIGACIÓN
-ECOLÓGICA&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex
-flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all
-duration-300&quot; data-aos=&quot;fade-left&quot;&gt;
-&lt;div class=&quot;space-y-4&quot;&gt;
-&lt;div class=&quot;w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-
-center justify-center text-2xl&quot;&gt;
-&lt;i class=&quot;fa-solid fa-map-location-dot&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-&lt;h4 class=&quot;text-2xl font-black text-brand-dark leading-tight&quot;&gt;Argimiro
-Fenton&lt;/h4&gt;
-&lt;p class=&quot;text-slate-600 text-xs leading-relaxed font-light&quot;&gt;Coordinador de
-geolocalización y mapas interactivos del paseo urbano.&lt;/p&gt;
-&lt;/div&gt;
-&lt;span class=&quot;text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-
-50 px-3 py-1.5 rounded-full border border-slate-100 self-start&quot;&gt;GEOLOCALIZACIÓN&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex
-flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all
-duration-300&quot; data-aos=&quot;fade-right&quot;&gt;
-&lt;div class=&quot;space-y-4&quot;&gt;
-
-&lt;div class=&quot;w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-
-center justify-center text-2xl&quot;&gt;
-&lt;i class=&quot;fa-solid fa-pen-nib&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-&lt;h4 class=&quot;text-2xl font-black text-brand-dark leading-tight&quot;&gt;Orlando
-Odreman&lt;/h4&gt;
-&lt;p class=&quot;text-slate-600 text-xs leading-relaxed font-light&quot;&gt;Redactor técnico y
-curador de textos e información patrimonial.&lt;/p&gt;
-&lt;/div&gt;
-&lt;span class=&quot;text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-
-50 px-3 py-1.5 rounded-full border border-slate-100 self-start&quot;&gt;DOCUMENTACIÓN&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex
-flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all
-duration-300&quot; data-aos=&quot;fade-up&quot;&gt;
-&lt;div class=&quot;space-y-4&quot;&gt;
-&lt;div class=&quot;w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-
-center justify-center text-2xl&quot;&gt;
-&lt;i class=&quot;fa-solid fa-layer-group&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-&lt;h4 class=&quot;text-2xl font-black text-brand-dark leading-tight&quot;&gt;Armando
-Bannar&lt;/h4&gt;
-&lt;p class=&quot;text-slate-600 text-xs leading-relaxed font-light&quot;&gt;Diseñador del sistema
-visual y estructuración de la experiencia de usuario.&lt;/p&gt;
-&lt;/div&gt;
-&lt;span class=&quot;text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-
-50 px-3 py-1.5 rounded-full border border-slate-100 self-start&quot;&gt;DISEÑO UX/UI&lt;/span&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex
-flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all
-duration-300&quot; data-aos=&quot;fade-left&quot;&gt;
-&lt;div class=&quot;space-y-4&quot;&gt;
-&lt;div class=&quot;w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-
-center justify-center text-2xl&quot;&gt;
-&lt;i class=&quot;fa-solid fa-database&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;
-&lt;h4 class=&quot;text-2xl font-black text-brand-dark leading-tight&quot;&gt;Junior Cedeño&lt;/h4&gt;
-&lt;p class=&quot;text-slate-600 text-xs leading-relaxed font-light&quot;&gt;Gestor de base de
-datos y optimización de contenido dinámico para la web.&lt;/p&gt;
-&lt;/div&gt;
-&lt;span class=&quot;text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-
-50 px-3 py-1.5 rounded-full border border-slate-100 self-start&quot;&gt;GESTIÓN DE DATOS&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-
-&lt;!-- 7. SECCIÓN DE COMENTARIOS REVISADA --&gt;
-&lt;section id=&quot;comentarios&quot; class=&quot;py-24 bg-brand-dark text-white relative z-20&quot;&gt;
-&lt;div class=&quot;max-w-4xl mx-auto px-6 space-y-12&quot; data-aos=&quot;fade-up&quot;&gt;
-&lt;div class=&quot;text-center space-y-3&quot;&gt;
-&lt;span class=&quot;text-xs font-bold uppercase tracking-[0.25em] text-brand-
-mint&quot;&gt;Participación Ciudadana&lt;/span&gt;
-&lt;h2 class=&quot;text-4xl md:text-5xl font-black font-serif text-white tracking-
-tight&quot;&gt;Comentarios y Opiniones&lt;/h2&gt;
-&lt;p class=&quot;text-slate-400 text-xs md:text-sm max-w-lg mx-auto&quot;&gt;Deja tu comentario
-sobre el proyecto o comparte tus vivencias en el Paseo Colón.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;!-- Formulario de Comentario --&gt;
-&lt;form id=&quot;comment-form&quot; onsubmit=&quot;handleCommentSubmit(event)&quot; class=&quot;bg-brand-
-medium/40 border border-brand-mint/20 rounded-[2rem] p-6 md:p-8 space-y-4 backdrop-blur-
-md&quot;&gt;
-&lt;input type=&quot;hidden&quot; id=&quot;editing-comment-id&quot; value=&quot;&quot;&gt;
-&lt;div class=&quot;grid grid-cols-1 md:grid-cols-2 gap-4&quot;&gt;
-&lt;div&gt;
-&lt;label for=&quot;author-name&quot; class=&quot;block text-xs font-bold text-brand-mint
-uppercase tracking-wider mb-2&quot;&gt;Nombre&lt;/label&gt;
-&lt;input type=&quot;text&quot; id=&quot;author-name&quot; required placeholder=&quot;Tu nombre&quot; class=&quot;w-
-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl px-4 py-3 text-sm text-white
-placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;
-&lt;label for=&quot;author-role&quot; class=&quot;block text-xs font-bold text-brand-mint uppercase
-tracking-wider mb-2&quot;&gt;
-Rol o Ciudad &lt;span class=&quot;text-slate-400 font-normal
-lowercase&quot;&gt;(opcional)&lt;/span&gt;
-&lt;/label&gt;
-&lt;input type=&quot;text&quot; id=&quot;author-role&quot; placeholder=&quot;Ej. Visitante, Residente Colón&quot;
-class=&quot;w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl px-4 py-3 text-sm text-
-white placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div&gt;
-&lt;div class=&quot;flex items-center justify-between mb-2&quot;&gt;
-
-&lt;label for=&quot;comment-text&quot; class=&quot;block text-xs font-bold text-brand-mint
-uppercase tracking-wider&quot;&gt;Comentario&lt;/label&gt;
-&lt;span id=&quot;char-counter&quot; class=&quot;text-[10px] text-slate-400 font-mono&quot;&gt;0 /
-500&lt;/span&gt;
-&lt;/div&gt;
-&lt;textarea id=&quot;comment-text&quot; rows=&quot;4&quot; maxlength=&quot;500&quot; required
-oninput=&quot;updateCharCount()&quot; placeholder=&quot;Escribe tu mensaje aquí (máximo 500 caracteres)...&quot;
-class=&quot;w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl p-4 text-sm text-white
-placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors&quot;&gt;&lt;/textarea&gt;
-&lt;/div&gt;
-&lt;div class=&quot;flex items-center gap-3&quot;&gt;
-&lt;button type=&quot;submit&quot; id=&quot;submit-comment-btn&quot; class=&quot;w-full sm:w-auto px-8 py-
-3.5 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full
-hover:bg-white transition-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.3)]&quot;&gt;
-&lt;i class=&quot;fa-solid fa-paper-plane mr-2&quot;&gt;&lt;/i&gt; Publicar Comentario
-&lt;/button&gt;
-&lt;button type=&quot;button&quot; id=&quot;cancel-edit-btn&quot; onclick=&quot;cancelEdit()&quot; class=&quot;hidden px-
-6 py-3.5 bg-slate-700 text-white font-bold text-xs uppercase tracking-[0.1em] rounded-full
-hover:bg-slate-600 transition-all&quot;&gt;
-Cancelar
-&lt;/button&gt;
-&lt;/div&gt;
-&lt;/form&gt;
-
-&lt;!-- Lista de Comentarios Publicados --&gt;
-&lt;div class=&quot;space-y-6&quot;&gt;
-&lt;h3 class=&quot;text-xl font-bold text-white flex items-center gap-2&quot;&gt;
-&lt;i class=&quot;fa-solid fa-comments text-brand-mint&quot;&gt;&lt;/i&gt;
-Comentarios Guardados (&lt;span id=&quot;comments-count&quot;&gt;0&lt;/span&gt;)
-
-&lt;/h3&gt;
-&lt;div id=&quot;comments-container&quot; class=&quot;space-y-4&quot;&gt;
-&lt;!-- Se cargan dinámicamente desde Firestore --&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-&lt;/main&gt;
-
-&lt;footer class=&quot;bg-brand-dark py-16 text-center text-xs text-slate-500 font-medium relative z-
-30&quot;&gt;
-&lt;div class=&quot;max-w-5xl mx-auto space-y-4 px-6&quot;&gt;
-&lt;div class=&quot;font-bold text-white text-base tracking-[0.25em] uppercase&quot;&gt;ECO&lt;span
-class=&quot;text-brand-mint&quot;&gt;COLÓN&lt;/span&gt;&lt;/div&gt;
-&lt;p class=&quot;font-bold text-slate-400 text-sm font-sans&quot;&gt;&amp;copy; 2026 Eco-Museo Colón. Todos
-los derechos reservados.&lt;/p&gt;
-&lt;p class=&quot;font-light tracking-wider text-slate-600&quot;&gt;Diseñado con un enfoque de divulgación
-socioambiental de vanguardia para Calles 1 a 16.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/footer&gt;
-
-&lt;script src=&quot;https://unpkg.com/aos@2.3.1/dist/aos.js&quot;&gt;&lt;/script&gt;
-
-&lt;!-- SDK Firebase para Base de Datos Global Multidispositivo --&gt;
-&lt;script type=&quot;module&quot;&gt;
-import { initializeApp } from &quot;https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js&quot;;
-
-import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc,
-serverTimestamp, query, orderBy } from &quot;https://www.gstatic.com/firebasejs/10.8.0/firebase-
-firestore.js&quot;;
-
-// CONFIGURACIÓN DE FIREBASE (Reemplazar con tus credenciales de proyecto)
-const firebaseConfig = {
-apiKey: &quot;AIzaSyYourApiKeyHere&quot;,
-authDomain: &quot;ecocolon-project.firebaseapp.com&quot;,
-projectId: &quot;ecocolon-project&quot;,
-storageBucket: &quot;ecocolon-project.appspot.com&quot;,
-messagingSenderId: &quot;123456789&quot;,
-appId: &quot;1:123456789:web:abcdef123456&quot;
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// Identificador de usuario guardado en navegador para saber cuáles son &quot;mis&quot; comentarios
-let myUserId = localStorage.getItem(&#39;ecocolon_user_id&#39;);
-if (!myUserId) {
-myUserId = &#39;user_&#39; + Math.random().toString(36).substring(2, 9);
-localStorage.setItem(&#39;ecocolon_user_id&#39;, myUserId);
-}
-
-window.db = db;
-window.myUserId = myUserId;
-
-window.firestoreOps = { collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc,
-serverTimestamp, query, orderBy };
-
-// Carga inicial
-initFirestoreComments();
-&lt;/script&gt;
-
-&lt;script&gt;
-AOS.init({ duration: 1000, once: true });
-let homeOriginalContent = &quot;&quot;;
-
-document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
-homeOriginalContent = document.getElementById(&#39;app-content&#39;).innerHTML;
-bindDynamicLinks();
-initTourPlayer();
-initActiveNavObserver();
-});
-
-// --- SISTEMA DE NAVEGACIÓN ACTIVA (SCROLLSPY) ---
-function initActiveNavObserver() {
-const sections = document.querySelectorAll(&#39;section[id]&#39;);
-const navLinks = document.querySelectorAll(&#39;.nav-link&#39;);
-
-const observerOptions = {
-root: null,
-rootMargin: &#39;-20% 0px -60% 0px&#39;,
-
-threshold: 0
-};
-
-const observer = new IntersectionObserver((entries) =&gt; {
-entries.forEach(entry =&gt; {
-if (entry.isIntersecting) {
-const currentId = entry.target.getAttribute(&#39;id&#39;);
-navLinks.forEach(link =&gt; {
-const href = link.getAttribute(&#39;href&#39;);
-if (href === `#${currentId}`) {
-link.classList.add(&#39;text-brand-mint&#39;);
-link.classList.remove(&#39;text-white&#39;);
-} else {
-link.classList.remove(&#39;text-brand-mint&#39;);
-}
-});
-}
-});
-}, observerOptions);
-
-sections.forEach(section =&gt; observer.observe(section));
-}
-
-// --- SISTEMA BÚSQUEDA Y NAVEGACIÓN ---
-function handleSearchInput() {
-const input = document.getElementById(&#39;site-search&#39;);
-
-const clearBtn = document.getElementById(&#39;clear-search-btn&#39;);
-if (input.value.trim() !== &quot;&quot;) {
-clearBtn.classList.remove(&#39;hidden&#39;);
-} else {
-clearBtn.classList.add(&#39;hidden&#39;);
-}
-}
-
-function handleSearchKey(event) {
-if (event.key === &#39;Enter&#39;) {
-event.preventDefault();
-performSearch();
-}
-}
-
-function performSearch() {
-const query = document.getElementById(&#39;site-search&#39;).value.toLowerCase().trim();
-if (query === &quot;&quot;) return;
-
-const sections = document.querySelectorAll(&#39;section[id]&#39;);
-let matchedSection = null;
-
-sections.forEach(section =&gt; {
-const sectionId = section.id.toLowerCase();
-const sectionText = section.textContent.toLowerCase();
-if (sectionId.includes(query) || sectionText.includes(query)) {
-
-if (!matchedSection) matchedSection = section;
-}
-});
-
-if (matchedSection) {
-matchedSection.scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;start&#39; });
-}
-}
-
-function clearSearch() {
-const input = document.getElementById(&#39;site-search&#39;);
-if (input) input.value = &quot;&quot;;
-const clearBtn = document.getElementById(&#39;clear-search-btn&#39;);
-if (clearBtn) clearBtn.classList.add(&#39;hidden&#39;);
-}
-
-function toggleQRModal() {
-const modal = document.getElementById(&#39;qr-modal&#39;);
-modal.classList.toggle(&#39;hidden&#39;);
-modal.classList.toggle(&#39;flex&#39;);
-}
-
-// --- MANEJO DINÁMICO DE COMENTARIOS ---
-let currentComments = [];
-
-function updateCharCount() {
-
-const textarea = document.getElementById(&#39;comment-text&#39;);
-const counter = document.getElementById(&#39;char-counter&#39;);
-if (textarea &amp;&amp; counter) {
-counter.textContent = `${textarea.value.length} / 500`;
-}
-}
-
-function initFirestoreComments() {
-if (!window.db || !window.firestoreOps) {
-setTimeout(initFirestoreComments, 300);
-return;
-}
-
-const { collection, onSnapshot, query, orderBy } = window.firestoreOps;
-const commentsRef = collection(window.db, &quot;comentarios&quot;);
-const q = query(commentsRef, orderBy(&quot;timestamp&quot;, &quot;desc&quot;));
-
-onSnapshot(q, (snapshot) =&gt; {
-currentComments = snapshot.docs.map(doc =&gt; ({
-id: doc.id,
-...doc.data()
-}));
-renderComments();
-}, (error) =&gt; {
-console.warn(&quot;Error leyendo la base de datos de comentarios:&quot;, error);
-});
-
-}
-
-function renderComments() {
-const container = document.getElementById(&#39;comments-container&#39;);
-const countLabel = document.getElementById(&#39;comments-count&#39;);
-if (!container) return;
-
-if (countLabel) countLabel.textContent = currentComments.length;
-
-if (currentComments.length === 0) {
-container.innerHTML = &#39;&lt;p class=&quot;text-slate-400 text-sm italic text-center py-6&quot;&gt;Aún no
-hay comentarios. ¡Sé el primero en publicar!&lt;/p&gt;&#39;;
-return;
-}
-
-container.innerHTML = currentComments.map(c =&gt; {
-const isMine = c.userId === window.myUserId;
-const formattedDate = c.timestamp ? new Date(c.timestamp.seconds *
-1000).toLocaleDateString(&#39;es-ES&#39;) : &#39;Reciente&#39;;
-
-return `
-&lt;div class=&quot;relative bg-brand-medium/30 border border-brand-mint/20 rounded-2xl p-5
-space-y-3 transition-all hover:border-brand-mint/50&quot;&gt;
-&lt;div class=&quot;flex items-start justify-between gap-4&quot;&gt;
-&lt;div&gt;
-&lt;h4 class=&quot;font-extrabold text-white text-sm flex items-center gap-2&quot;&gt;
-${escapeHTML(c.name)}
-
-${isMine ? &#39;&lt;span class=&quot;bg-brand-mint/20 text-brand-mint text-[9px] px-2 py-
-0.5 rounded-full border border-brand-mint/30 font-bold&quot;&gt;Tú&lt;/span&gt;&#39; : &#39;&#39;}
-&lt;/h4&gt;
-${c.role ? `&lt;span class=&quot;text-[10px] text-brand-mint font-semibold uppercase
-tracking-wider block mt-0.5&quot;&gt;${escapeHTML(c.role)}&lt;/span&gt;` : &#39;&#39;}
-&lt;/div&gt;
-&lt;span class=&quot;text-[10px] text-slate-400 font-mono&quot;&gt;${formattedDate}&lt;/span&gt;
-&lt;/div&gt;
-
-&lt;p class=&quot;text-slate-300 text-xs md:text-sm font-light leading-relaxed&quot;&gt;
-${escapeHTML(c.text)}
-${c.edited ? &#39;&lt;span class=&quot;text-[10px] text-slate-400 italic font-mono ml-
-1.5&quot;&gt;(editado)&lt;/span&gt;&#39; : &#39;&#39;}
-&lt;/p&gt;
-
-${isMine ? `
-&lt;div class=&quot;flex items-center gap-3 pt-2 border-t border-brand-mint/10 text-xs&quot;&gt;
-&lt;button onclick=&quot;editComment(&#39;${c.id}&#39;)&quot; class=&quot;text-brand-mint hover:underline
-flex items-center gap-1 text-[11px]&quot;&gt;
-&lt;i class=&quot;fa-solid fa-pen&quot;&gt;&lt;/i&gt; Editar
-&lt;/button&gt;
-&lt;button onclick=&quot;deleteComment(&#39;${c.id}&#39;)&quot; class=&quot;text-rose-400 hover:underline
-flex items-center gap-1 text-[11px]&quot;&gt;
-&lt;i class=&quot;fa-solid fa-trash&quot;&gt;&lt;/i&gt; Eliminar comentario
-&lt;/button&gt;
-&lt;/div&gt;
-` : &#39;&#39;}
-
-&lt;/div&gt;
-`}).join(&#39;&#39;);
-}
-
-async function handleCommentSubmit(event) {
-event.preventDefault();
-
-const nameInput = document.getElementById(&#39;author-name&#39;);
-const roleInput = document.getElementById(&#39;author-role&#39;);
-const textInput = document.getElementById(&#39;comment-text&#39;);
-const editIdInput = document.getElementById(&#39;editing-comment-id&#39;);
-
-const name = nameInput.value.trim();
-const role = roleInput.value.trim();
-const text = textInput.value.trim();
-const editId = editIdInput.value;
-
-if (!name || !text) return;
-
-const { collection, addDoc, doc, updateDoc, serverTimestamp } = window.firestoreOps;
-
-if (editId) {
-// Modo Edición
-const commentRef = doc(window.db, &quot;comentarios&quot;, editId);
-await updateDoc(commentRef, {
-name: name,
-
-role: role,
-text: text,
-edited: true
-});
-cancelEdit();
-} else {
-// Nuevo Comentario
-await addDoc(collection(window.db, &quot;comentarios&quot;), {
-name: name,
-role: role,
-text: text,
-userId: window.myUserId,
-edited: false,
-timestamp: serverTimestamp()
-});
-
-nameInput.value = &#39;&#39;;
-roleInput.value = &#39;&#39;;
-textInput.value = &#39;&#39;;
-updateCharCount();
-}
-}
-
-function editComment(id) {
-const comment = currentComments.find(c =&gt; c.id === id);
-if (!comment) return;
-
-document.getElementById(&#39;editing-comment-id&#39;).value = id;
-document.getElementById(&#39;author-name&#39;).value = comment.name;
-document.getElementById(&#39;author-role&#39;).value = comment.role || &#39;&#39;;
-document.getElementById(&#39;comment-text&#39;).value = comment.text;
-
-const submitBtn = document.getElementById(&#39;submit-comment-btn&#39;);
-const cancelBtn = document.getElementById(&#39;cancel-edit-btn&#39;);
-
-if (submitBtn) submitBtn.innerHTML = &#39;&lt;i class=&quot;fa-solid fa-check mr-2&quot;&gt;&lt;/i&gt; Guardar
-Cambios&#39;;
-if (cancelBtn) cancelBtn.classList.remove(&#39;hidden&#39;);
-
-updateCharCount();
-document.getElementById(&#39;comment-form&#39;).scrollIntoView({ behavior: &#39;smooth&#39; });
-}
-
-function cancelEdit() {
-document.getElementById(&#39;editing-comment-id&#39;).value = &#39;&#39;;
-document.getElementById(&#39;author-name&#39;).value = &#39;&#39;;
-document.getElementById(&#39;author-role&#39;).value = &#39;&#39;;
-document.getElementById(&#39;comment-text&#39;).value = &#39;&#39;;
-
-const submitBtn = document.getElementById(&#39;submit-comment-btn&#39;);
-const cancelBtn = document.getElementById(&#39;cancel-edit-btn&#39;);
-
-if (submitBtn) submitBtn.innerHTML = &#39;&lt;i class=&quot;fa-solid fa-paper-plane mr-2&quot;&gt;&lt;/i&gt; Publicar
-Comentario&#39;;
-if (cancelBtn) cancelBtn.classList.add(&#39;hidden&#39;);
-
-updateCharCount();
-}
-
-async function deleteComment(id) {
-if (confirm(&quot;¿Seguro que deseas eliminar este comentario? Desaparecerá para siempre.&quot;)) {
-const { doc, deleteDoc } = window.firestoreOps;
-await deleteDoc(doc(window.db, &quot;comentarios&quot;, id));
-}
-}
-
-function escapeHTML(str) {
-if (!str) return &#39;&#39;;
-return str.replace(/[&amp;&lt;&gt;&#39;&quot;]/g,
-tag =&gt; ({
-&#39;&amp;&#39;: &#39;&amp;amp;&#39;,
-&#39;&lt;&#39;: &#39;&amp;lt;&#39;,
-&#39;&gt;&#39;: &#39;&amp;gt;&#39;,
-&quot;&#39;&quot;: &#39;&amp;#39;&#39;,
-&#39;&quot;&#39;: &#39;&amp;quot;&#39;
-}[tag] || tag)
-);
-}
-
-// --- SPA CARGADOR Y CARRUSEL ---
-async function loadPage(url) {
-const contentDiv = document.getElementById(&#39;app-content&#39;);
-contentDiv.innerHTML = `
-&lt;div class=&quot;min-h-screen flex flex-col items-center justify-center bg-brand-dark text-
-center p-6 space-y-4&quot;&gt;
-&lt;i class=&quot;fa-solid fa-circle-notch fa-spin text-5xl text-brand-mint&quot;&gt;&lt;/i&gt;
-&lt;p class=&quot;text-xs font-bold uppercase tracking-widest text-slate-300&quot;&gt;Cargando
-catálogo...&lt;/p&gt;
-&lt;/div&gt;`;
-try {
-const cleanUrl = url.startsWith(&#39;./&#39;) ? url : `./${url}`;
-const response = await fetch(cleanUrl);
-if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
-
-const htmlText = await response.text();
-const parser = new DOMParser();
-const doc = parser.parseFromString(htmlText, &#39;text/html&#39;);
-
-const newContent = doc.querySelector(&#39;main&#39;) ? doc.querySelector(&#39;main&#39;).innerHTML :
-doc.body.innerHTML;
-contentDiv.innerHTML = newContent;
-if (window.AOS) AOS.refresh();
-window.scrollTo({ top: 0, behavior: &#39;smooth&#39; });
-
-bindDynamicLinks();
-
-initTourPlayer();
-initActiveNavObserver();
-} catch (error) {
-window.location.href = url;
-}
-}
-
-function resetToHome() {
-if (homeOriginalContent) {
-document.getElementById(&#39;app-content&#39;).innerHTML = homeOriginalContent;
-if (window.AOS) AOS.refresh();
-bindDynamicLinks();
-initTourPlayer();
-initActiveNavObserver();
-} else {
-window.location.reload();
-}
-}
-
-function bindDynamicLinks() {
-document.querySelectorAll(&#39;.nav-dyn-link, a[href$=&quot;.html&quot;]&#39;).forEach(link =&gt; {
-link.onclick = (e) =&gt; {
-const pageUrl = link.getAttribute(&#39;href&#39;);
-if (pageUrl &amp;&amp; pageUrl.endsWith(&#39;.html&#39;)) {
-e.preventDefault();
-loadPage(pageUrl);
-
-}
-};
-});
-}
-
-const slides = document.querySelectorAll(&#39;.hero-slide&#39;);
-let slideIndex = 0;
-function playCarousel() {
-if (slides.length === 0) return;
-slides[slideIndex].classList.replace(&#39;opacity-100&#39;, &#39;opacity-0&#39;);
-const oldVideo = slides[slideIndex].querySelector(&#39;video&#39;);
-if (oldVideo) { oldVideo.pause(); oldVideo.currentTime = 0; }
-slideIndex = (slideIndex + 1) % slides.length;
-slides[slideIndex].classList.replace(&#39;opacity-0&#39;, &#39;opacity-100&#39;);
-const nextVideo = slides[slideIndex].querySelector(&#39;video&#39;);
-if (nextVideo) { nextVideo.play().catch(e =&gt; console.log(e)); }
-}
-setInterval(playCarousel, 4000);
-
-// --- SISTEMA DE TOUR VIRTUAL ---
-const tourPlaylist = [
-{ id: 1, title: &quot;Parada #1: Bienvenida al Paseo Colón&quot;, desc: &quot;En este primer video iniciaremos
-el recorrido desde Calle 1, observando la estructura general del bulevar y el entorno
-arquitectónico de la avenida.&quot;, src: &quot;./tour1.mp4&quot; },
-{ id: 2, title: &quot;Parada #2: Árboles Frondosos de Sombra&quot;, desc: &quot;Aprenderás cómo los árboles
-frondosos regulan la temperatura ambiental en las aceras peatonales de Colón y brindan sombra
-vital.&quot;, src: &quot;./tour2.mp4&quot; },
-
-{ id: 3, title: &quot;Parada #3: Muestra de Guayacán Real&quot;, desc: &quot;Observaremos las
-características del Guayacán Real (Guaiacum officinale), su majestuosa floración y la firmeza de su
-madera nativa.&quot;, src: &quot;./tour3.mp4&quot; },
-{ id: 4, title: &quot;Parada #4: Bulevar de las Palmeras&quot;, desc: &quot;Recorreremos la sección alineada
-con Palmas Reales (Roystonea regia), identificando su rol de valor paisajístico y ornamental.&quot;, src:
-&quot;./tour4.mp4&quot; },
-{ id: 5, title: &quot;Parada #5: Flora de Costa y Almácigo&quot;, desc: &quot;Conoceremos la adaptación
-ecológica del Almácigo Silvestre y su corteza particular en ambientes tropicales costeros.&quot;, src:
-&quot;./tour5.mp4&quot; },
-{ id: 6, title: &quot;Parada #6: Esculturas de Calle 3&quot;, desc: &quot;Adentrándonos en Calle 3,
-analizaremos los monumentos históricos dedicados a Cristóbal Colón y su trascendencia
-histórica.&quot;, src: &quot;./tour6.mp4&quot; },
-{ id: 7, title: &quot;Parada #7: Registros de la Centuria&quot;, desc: &quot;Visualizaremos las placas y bustos
-conmemorativos que rinden tributo a las gestas de la soberanía nacional en la ciudad.&quot;, src:
-&quot;./tour7.mp4&quot; },
-{ id: 8, title: &quot;Parada #8: Bulevar Central y Jardinería&quot;, desc: &quot;Observaremos la distribución
-de la flora ornamental pequeña y arbustos situados a lo largo de las aceras centrales.&quot;, src:
-&quot;./tour8.mp4&quot; },
-{ id: 9, title: &quot;Parada #9: Trayecto Intermedio Calle 11 a 14&quot;, desc: &quot;Un paseo continuo por
-los tramos centrales del corredor que unen las áreas históricas con zonas comerciales históricas.&quot;,
-src: &quot;./tour9.mp4&quot; },
-{ id: 10, title: &quot;Parada #10: Cierre del Recorrido en Calle 16&quot;, desc: &quot;Llegamos al tramo final
-en Calle 16, contemplando una panorámica unificada que integra el valor natural y monumental
-de Colón.&quot;, src: &quot;./tour10.mp4&quot; }
-];
-
-let currentTourIndex = 0;
-
-function initTourPlayer() {
-const player = document.getElementById(&#39;tour-player&#39;);
-if (!player) return;
-showTourDescription(0);
-
-}
-
-function showTourDescription(index) {
-currentTourIndex = index;
-const videoData = tourPlaylist[currentTourIndex];
-const player = document.getElementById(&#39;tour-player&#39;);
-const source = document.getElementById(&#39;tour-source&#39;);
-const title = document.getElementById(&#39;tour-video-title&#39;);
-const desc = document.getElementById(&#39;tour-video-desc&#39;);
-const step = document.getElementById(&#39;tour-overlay-step&#39;);
-const badge = document.getElementById(&#39;tour-badge&#39;);
-const overlay = document.getElementById(&#39;video-overlay&#39;);
-const outroOverlay = document.getElementById(&#39;tour-outro-overlay&#39;);
-
-if (outroOverlay) outroOverlay.classList.add(&#39;hidden&#39;);
-
-if (source &amp;&amp; player) {
-player.pause();
-source.src = videoData.src;
-player.load();
-
-if (title) title.textContent = videoData.title;
-if (desc) desc.textContent = videoData.desc;
-if (step) step.textContent = `PARADA ${videoData.id} DE 10`;
-if (badge) badge.textContent = `Parada ${videoData.id}/10`;
-
-if (overlay) overlay.classList.remove(&#39;hidden&#39;);
-updatePlayBtn(false);
-}
-}
-
-function startCurrentVideo() {
-const player = document.getElementById(&#39;tour-player&#39;);
-const overlay = document.getElementById(&#39;video-overlay&#39;);
-if (player) {
-if (overlay) overlay.classList.add(&#39;hidden&#39;);
-player.play().catch(e =&gt; console.log(&quot;Interacción necesaria&quot;));
-updatePlayBtn(true);
-}
-}
-
-function toggleTourPlay() {
-const player = document.getElementById(&#39;tour-player&#39;);
-const overlay = document.getElementById(&#39;video-overlay&#39;);
-if (!player) return;
-
-if (player.paused) {
-if (overlay) overlay.classList.add(&#39;hidden&#39;);
-player.play();
-updatePlayBtn(true);
-} else {
-player.pause();
-
-updatePlayBtn(false);
-}
-}
-
-function updatePlayBtn(isPlaying) {
-const btn = document.getElementById(&#39;tour-play-btn&#39;);
-if (btn) {
-btn.innerHTML = isPlaying ? &#39;&lt;i class=&quot;fa-solid fa-pause&quot;&gt;&lt;/i&gt;&#39; : &#39;&lt;i class=&quot;fa-solid fa-
-play&quot;&gt;&lt;/i&gt;&#39;;
-}
-}
-
-function onTourVideoEnded() {
-if (currentTourIndex &lt; tourPlaylist.length - 1) {
-showTourDescription(currentTourIndex + 1);
-} else {
-showTourOutro();
-}
-}
-
-function nextTourStep() {
-if (currentTourIndex &lt; tourPlaylist.length - 1) {
-showTourDescription(currentTourIndex + 1);
-} else {
-showTourOutro();
-}
-
-}
-
-function prevTourStep() {
-if (currentTourIndex &gt; 0) {
-showTourDescription(currentTourIndex - 1);
-}
-}
-
-function showTourOutro() {
-const player = document.getElementById(&#39;tour-player&#39;);
-const outroOverlay = document.getElementById(&#39;tour-outro-overlay&#39;);
-if (player) player.pause();
-if (outroOverlay) outroOverlay.classList.remove(&#39;hidden&#39;);
-updatePlayBtn(false);
-}
-
-function restartTour() {
-showTourDescription(0);
-}
-
-function rewindTour(seconds) {
-const player = document.getElementById(&#39;tour-player&#39;);
-if (player) player.currentTime = Math.max(0, player.currentTime - seconds);
-}
-
-function forwardTour(seconds) {
-
-const player = document.getElementById(&#39;tour-player&#39;);
-if (player) player.currentTime = Math.min(player.duration || 0, player.currentTime +
-seconds);
-}
-
-function updateTourProgress() {
-const player = document.getElementById(&#39;tour-player&#39;);
-const progressBar = document.getElementById(&#39;tour-progress-bar&#39;);
-const timer = document.getElementById(&#39;tour-timer&#39;);
-if (!player) return;
-
-if (player.duration) {
-const pct = (player.currentTime / player.duration) * 100;
-if (progressBar) progressBar.style.width = `${pct}%`;
-if (timer) {
-timer.textContent = `${formatTime(player.currentTime)} /
-${formatTime(player.duration)}`;
-}
-} else {
-if (timer) timer.textContent = &quot;00:00 / 00:00&quot;;
-}
-}
-
-function seekTourVideo(e) {
-const player = document.getElementById(&#39;tour-player&#39;);
-if (!player || !player.duration) return;
-
-const rect = e.currentTarget.getBoundingClientRect();
-const clickX = e.clientX - rect.left;
-const pct = clickX / rect.width;
-player.currentTime = pct * player.duration;
-}
-
-function formatTime(seconds) {
-const mins = Math.floor(seconds / 60);
-const secs = Math.floor(seconds % 60);
-return `${mins.toString().padStart(2, &#39;0&#39;)}:${secs.toString().padStart(2, &#39;0&#39;)}`;
-}
-
-function toggleFullscreen() {
-const container = document.getElementById(&#39;tour-container&#39;);
-const icon = document.getElementById(&#39;fullscreen-icon&#39;);
-
-if (!document.fullscreenElement) {
-if (container.requestFullscreen) {
-container.requestFullscreen();
-} else if (container.webkitRequestFullscreen) {
-container.webkitRequestFullscreen();
-} else if (container.msRequestFullscreen) {
-container.msRequestFullscreen();
-}
-if (icon) {
-icon.classList.remove(&#39;fa-expand&#39;);
-
-icon.classList.add(&#39;fa-compress&#39;);
-}
-} else {
-if (document.exitFullscreen) {
-document.exitFullscreen();
-} else if (document.webkitExitFullscreen) {
-document.webkitExitFullscreen();
-} else if (document.msExitFullscreen) {
-document.msExitFullscreen();
-}
-if (icon) {
-icon.classList.remove(&#39;fa-compress&#39;);
-icon.classList.add(&#39;fa-expand&#39;);
-}
-}
-}
-
-document.addEventListener(&#39;fullscreenchange&#39;, () =&gt; {
-const icon = document.getElementById(&#39;fullscreen-icon&#39;);
-if (!document.fullscreenElement &amp;&amp; icon) {
-icon.classList.remove(&#39;fa-compress&#39;);
-icon.classList.add(&#39;fa-expand&#39;);
-}
-});
-&lt;/script&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoColón - Catálogo Exclusivo</title>
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#031a12',     // Verde Bosque Ultra Profundo
+                            medium: '#073b2b',   // Verde Oliva/Selva
+                            light: '#f4faf7',    // Blanco con matiz menta suave
+                            mint: '#0cf2a7',     // Color Menta Eléctrico
+                            mintHover: '#0ae09a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Personalización de la barra de desplazamiento */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #031a12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0cf2a7;
+            border-radius: 6px;
+            border: 3px solid #031a12;
+        }
+        /* Ocultar barra de scroll en el menú de navegación para celulares */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Cristal de menta translúcido */
+        .mint-glass {
+            background: rgba(3, 26, 18, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(12, 242, 167, 0.2);
+        }
+        /* Realce visual de imágenes */
+        .img-pro-card {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+        }
+        .group:hover .img-pro-card {
+            transform: scale(1.08);
+            filter: brightness(1.08) contrast(1.05);
+        }
+        @media (max-width: 400px) {
+            .hide-on-tiny {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-brand-light font-sans selection:bg-brand-mint selection:text-brand-dark overflow-y-auto overflow-x-hidden">
+    <div id="qr-modal" class="fixed inset-0 bg-brand-dark/90 z-[110] hidden flex-col items-center justify-center p-6 transition-all duration-500">
+        <div class="bg-brand-medium border-2 border-brand-mint p-6 rounded-3xl max-w-xs w-full text-center space-y-4 shadow-[0_0_50px_rgba(12,242,167,0.3)] relative">
+            <button onclick="toggleQRModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-lg font-extrabold text-white">Escanea el Catálogo</h3>
+            <p class="text-slate-300 text-xs">Comparte fácilmente el acceso al catálogo ecológico.</p>
+            <div class="bg-white p-4 rounded-2xl inline-block mx-auto">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180&data=https://ciencias.onrender.com" class="w-40 h-40" alt="Código QR EcoColón">
+            </div>
+            <p class="text-[10px] text-brand-mint font-semibold uppercase tracking-widest">ciencias.onrender.com</p>
+        </div>
+    </div>
+
+    <!-- Navegación Fija -->
+    <nav class="fixed top-0 left-0 w-full z-50 pt-3 px-3 sm:px-6">
+        <div class="mint-glass rounded-2xl sm:rounded-3xl px-3 sm:px-6 py-3 flex flex-row items-center justify-between gap-2 shadow-[0_15px_35px_rgba(0,0,0,0.6)] max-w-6xl mx-auto">
+            <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-brand-mint flex items-center justify-center text-brand-dark font-black text-xs sm:text-base">
+                    C
+                </div>
+                <span class="font-bold text-[10px] sm:text-sm tracking-[0.15em] sm:tracking-[0.25em] uppercase text-white hide-on-tiny">ECO<span class="text-brand-mint">COLÓN</span></span>
+            </div>
+            <div class="flex flex-row items-center gap-3 sm:gap-4 md:gap-6 overflow-x-auto no-scrollbar py-1">
+                <div class="relative flex items-center bg-brand-dark/50 border border-brand-mint/30 focus-within:border-brand-mint rounded-full px-2 py-1 text-xs shrink-0 transition-all duration-300">
+                    <button onclick="performSearch()" class="text-brand-mint hover:text-white text-[10px] sm:text-xs mr-1 transition-colors" title="Buscar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input type="text" id="site-search" oninput="handleSearchInput()" onkeydown="handleSearchKey(event)" placeholder="Buscar..." class="bg-transparent text-white placeholder-slate-400 font-medium outline-none w-14 sm:w-20 focus:w-24 sm:focus:w-32 transition-all duration-300 text-[10px] sm:text-xs">
+                    <button onclick="clearSearch()" class="hidden ml-1 text-slate-400 hover:text-white text-[10px]" id="clear-search-btn">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <a href="#inicio" onclick="resetToHome()" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Inicio</a>
+                <a href="#tour" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Tour</a>
+                <a href="#plantas" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Plantas</a>
+                <a href="#monumentos" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Monumentos</a>
+                <a href="#jugar" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Jugar</a>
+                <a href="#equipo" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Equipo</a>
+                <a href="#comentarios" class="nav-link text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:text-brand-mint transition-colors whitespace-nowrap">Comentarios</a>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+                <div class="relative group">
+                    <button onclick="toggleQRModal()" class="px-3 py-1.5 sm:py-2 bg-brand-medium border border-brand-mint/30 text-brand-mint rounded-full hover:bg-brand-mint hover:text-brand-dark transition-all duration-300 text-xs sm:text-sm">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal Adaptable -->
+    <main id="app-content" class="pt-16">
+        <!-- 1. SECCIÓN INICIO -->
+        <section id="inicio" class="relative min-h-screen pb-20 px-4 md:px-16 flex flex-col justify-between overflow-hidden">
+            <div id="hero-carousel" class="absolute inset-0 w-full h-full z-0">
+                <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-1000">
+                    <video class="w-full h-full object-cover object-center" autoplay muted loop playsinline>
+                        <source src="./video1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+                    <img src="./foto1.jpg" class="w-full h-full object-cover object-center" alt="Naturaleza">
+                </div>
+                <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+                    <video class="w-full h-full object-cover object-center" muted loop playsinline id="video-slide-2">
+                        <source src="./video2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="absolute inset-0 bg-brand-dark/25 z-10 pointer-events-none"></div>
+            <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-mint/10 rounded-full blur-[120px] pointer-events-none z-10"></div>
+            <div class="absolute bottom-20 right-0 w-96 h-96 bg-brand-mint/15 rounded-full blur-[150px] pointer-events-none z-10"></div>
+            <div class="relative z-20 max-w-7xl mx-auto w-full my-auto pt-24">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    <div class="lg:col-span-12" data-aos="fade-right">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-brand-medium border border-brand-mint/20 text-brand-mint text-[10px] font-extrabold tracking-[0.25em] uppercase shadow-lg">
+                            PROYECTO AMBIENTAL 2026
+                        </span>
+                        <h1 class="text-5xl md:text-8xl font-black leading-none text-white tracking-tighter mt-6 drop-shadow-md">
+                            Paseo <span class="font-serif italic font-light text-brand-mint">Colón</span>
+                        </h1>
+                        <p class="text-xs sm:text-sm text-white font-medium max-w-lg leading-relaxed mt-4 drop-shadow">
+                            Te damos la bienvenida a una experiencia digital única. Explora la riqueza natural e histórica del Paseo Colón desde la comodidad de tu pantalla, recorriendo cada rincón botánico y monumental a tu propio ritmo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SECCIÓN TOUR INTERACTIVO DE VIDEOS -->
+        <section id="tour" class="py-24 bg-brand-dark text-white relative overflow-hidden border-t border-brand-mint/10">
+            <div class="absolute -right-40 top-1/4 w-[500px] h-[500px] bg-brand-mint/5 rounded-full blur-[100px] pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-6 md:px-16">
+                <div class="relative rounded-[2.5rem] overflow-hidden border-2 border-brand-mint/40 h-auto py-12 md:py-16 max-w-5xl mx-auto shadow-[0_0_60px_rgba(12,242,167,0.15)] bg-brand-medium/40 backdrop-blur-md" data-aos="fade-up">
+                    <div class="relative z-10 px-6 md:px-12 text-center space-y-6 flex flex-col items-center">
+                        <span class="text-brand-mint font-extrabold tracking-[0.25em] text-xs uppercase">TOUR VIRTUAL EN VIDEO</span>
+                        <h2 class="text-4xl md:text-5xl font-black font-serif text-white tracking-tight leading-tight max-w-2xl">
+                            Descubre la esencia de Colón <br> <span class="italic text-brand-mint">en un entorno unificado.</span>
+                        </h2>
+                        <div class="w-16 h-1 bg-brand-mint rounded-full"></div>
+                        <p class="text-slate-300 text-sm md:text-base font-light max-w-2xl leading-relaxed">
+                            Acompáñanos en este recorrido guiado de 10 paradas. Revisa la descripción de cada parada y avanza mediante el botón interactivo.
+                        </p>
+
+                        <!-- REPRODUCTOR INTERACTIVO -->
+                        <div id="tour-container" class="w-full max-w-4xl mx-auto mt-6 bg-black rounded-3xl overflow-hidden border border-brand-mint/30 shadow-2xl relative group">
+                            <div class="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
+                                <video id="tour-player" class="w-full h-full object-cover" ontimeupdate="updateTourProgress()" onended="onTourVideoEnded()">
+                                    <source id="tour-source" src="" type="video/mp4">
+                                    Tu navegador no soporta el reproductor de video.
+                                </video>
+
+                                <div id="video-overlay" class="absolute inset-0 bg-black/95 flex flex-col items-center justify-center p-6 text-center z-10 space-y-4">
+                                    <span id="tour-overlay-step" class="text-brand-mint text-xs font-black uppercase tracking-[0.2em]">PARADA 1 DE 10</span>
+                                    <h4 id="tour-video-title" class="text-xl md:text-3xl font-black text-white tracking-wide">Punto de Entrada</h4>
+                                    
+                                    <div class="bg-brand-medium/50 border border-brand-mint/30 p-4 rounded-2xl max-w-lg">
+                                        <p id="tour-video-desc" class="text-xs md:text-sm text-slate-300 leading-relaxed font-light">
+                                            Descripción previa del video...
+                                        </p>
+                                    </div>
+
+                                    <button onclick="startCurrentVideo()" class="mt-2 px-8 py-3.5 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.4)] flex items-center gap-2">
+                                        <i class="fa-solid fa-play"></i> Comenzar Video
+                                    </button>
+                                </div>
+
+                                <div id="tour-outro-overlay" class="absolute inset-0 bg-brand-dark/95 hidden flex-col items-center justify-center p-6 text-center z-20 space-y-4">
+                                    <div class="w-16 h-16 rounded-full bg-brand-mint/20 border-2 border-brand-mint text-brand-mint flex items-center justify-center text-3xl mb-2">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                    </div>
+                                    <h4 class="text-2xl md:text-3xl font-black text-white">¡Tour Finalizado con Éxito!</h4>
+                                    <p class="text-xs md:text-sm text-slate-300 max-w-lg font-light leading-relaxed">
+                                        ¡Felicidades por completar el recorrido! Has aprendido sobre la biodiversidad, la riqueza arbórea y los monumentos históricos que adornan la travesía desde Calle 1 a Calle 16.
+                                    </p>
+                                    <button onclick="restartTour()" class="mt-2 px-8 py-3.5 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.4)] flex items-center gap-2">
+                                        <i class="fa-solid fa-rotate-right"></i> Reiniciar Tour
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="bg-brand-dark/95 border-t border-brand-mint/20 p-4 space-y-3">
+                                <div class="w-full bg-slate-800 h-2 rounded-full cursor-pointer relative overflow-hidden" onclick="seekTourVideo(event)">
+                                    <div id="tour-progress-bar" class="bg-brand-mint h-full w-0 transition-all duration-100"></div>
+                                </div>
+
+                                <div class="flex items-center justify-between gap-4 text-xs">
+                                    <div class="flex items-center gap-2 sm:gap-3">
+                                        <button onclick="prevTourStep()" class="p-2.5 rounded-full bg-brand-medium text-brand-mint hover:bg-brand-mint hover:text-brand-dark transition-all" title="Anterior">
+                                            <i class="fa-solid fa-backward-step"></i>
+                                        </button>
+                                        <button onclick="rewindTour(10)" class="p-2.5 rounded-full bg-brand-medium text-slate-300 hover:text-white transition-all" title="Atrasar 10s">
+                                            <i class="fa-solid fa-rotate-left"></i>
+                                        </button>
+                                        <button onclick="toggleTourPlay()" id="tour-play-btn" class="p-3.5 rounded-full bg-brand-mint text-brand-dark font-black hover:scale-105 transition-all" title="Play/Pausa">
+                                            <i class="fa-solid fa-play"></i>
+                                        </button>
+                                        <button onclick="forwardTour(10)" class="p-2.5 rounded-full bg-brand-medium text-slate-300 hover:text-white transition-all" title="Adelantar 10s">
+                                            <i class="fa-solid fa-rotate-right"></i>
+                                        </button>
+                                        <button onclick="nextTourStep()" class="p-2.5 rounded-full bg-brand-medium text-brand-mint hover:bg-brand-mint hover:text-brand-dark transition-all" title="Siguiente">
+                                            <i class="fa-solid fa-forward-step"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="flex items-center gap-2 sm:gap-4">
+                                        <span id="tour-timer" class="font-mono text-slate-400 text-[11px] sm:text-xs">00:00 / 00:00</span>
+                                        <span id="tour-badge" class="bg-brand-medium border border-brand-mint/40 text-brand-mint text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+                                            Parada 1/10
+                                        </span>
+                                        <button onclick="toggleFullscreen()" class="p-2.5 rounded-full bg-brand-medium text-brand-mint hover:bg-brand-mint hover:text-brand-dark transition-all" title="Pantalla Completa">
+                                            <i id="fullscreen-icon" class="fa-solid fa-expand"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SECCIÓN PLANTAS -->
+        <section id="plantas" class="py-32 bg-brand-light text-brand-dark relative z-10 rounded-t-[4rem] shadow-[-10px_0_40px_rgba(0,0,0,0.15)]">
+            <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-16">
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8" data-aos="fade-down">
+                    <div class="space-y-4 max-w-2xl">
+                        <span class="text-xs font-bold uppercase tracking-[0.25em] text-brand-medium border-l-4 border-brand-mint pl-3">Muestra Botánica</span>
+                        <h2 class="text-4xl md:text-6xl font-black font-serif text-brand-dark tracking-tight leading-tight">
+                            Fichas Taxonómicas e <span class="italic text-brand-medium">Información Natural.</span>
+                        </h2>
+                    </div>
+                    <p class="text-slate-600 text-sm max-w-md font-medium leading-relaxed">
+                        Hemos catalogado los árboles más representativos y plantas ornamentales de las avenidas y calles 1 a 16. Descubre la biodiversidad que coexiste en Colón.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="plantas-grid">
+                    <div class="searchable-card group bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-full" data-aos="fade-right">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="./numero7.jpeg" class="img-pro-card w-full h-full object-cover" alt="Planta 1">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="absolute top-4 left-4 bg-brand-mint text-brand-dark text-[9px] font-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-md z-10">Árbol Frondoso</span>
+                        </div>
+                        <div class="p-8 space-y-4 flex-grow">
+                            <h3 class="text-2xl font-black text-brand-dark tracking-tight">El Guayacán Real</h3>
+                            <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider italic">Guaiacum officinale</p>
+                            <p class="text-slate-600 text-sm font-light leading-relaxed">Famoso por su llamativa floración de color azul violáceo y su madera extremadamente resistente, aportando sombra densa en las aceras del paseo.</p>
+                        </div>
+                        <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-medium">
+                            <span>Ficha #01</span>
+                        </div>
+                    </div>
+                    <div class="searchable-card group bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-full" data-aos="fade-left">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="./corozo.jpeg" class="img-pro-card w-full h-full object-cover" alt="Planta 2">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="absolute top-4 left-4 bg-brand-mint text-brand-dark text-[9px] font-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-md z-10">Sombra y Estética</span>
+                        </div>
+                        <div class="p-8 space-y-4 flex-grow">
+                            <h3 class="text-2xl font-black text-brand-dark tracking-tight">El Almácigo Silvestre</h3>
+                            <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider italic">Bursera simaruba</p>
+                            <p class="text-slate-600 text-sm font-light leading-relaxed">Conocido por su corteza rojiza que se descama fácilmente. Un árbol nativo muy adaptado a la costa y el calor, ideal para control ecológico urbano.</p>
+                        </div>
+                        <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-medium">
+                            <span>Ficha #02</span>
+                        </div>
+                    </div>
+                    <div class="searchable-card group bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-full" data-aos="fade-right">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="./real.jpeg" class="img-pro-card w-full h-full object-cover" alt="Planta 3">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="absolute top-4 left-4 bg-brand-mint text-brand-dark text-[9px] font-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-md z-10">Palmera Ornamental</span>
+                        </div>
+                        <div class="p-8 space-y-4 flex-grow">
+                            <h3 class="text-2xl font-black text-brand-dark tracking-tight">Palma Real</h3>
+                            <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider italic">Roystonea regia</p>
+                            <p class="text-slate-600 text-sm font-light leading-relaxed">Elemento característico de las avenidas y bulevares clásicos, con un tronco esbelto que llega a alcanzar más de veinte metros de altura.</p>
+                        </div>
+                        <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-medium">
+                            <span>Ficha #03</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SECCIÓN MONUMENTOS Y GALERÍA -->
+        <section id="monumentos" class="py-32 bg-brand-dark text-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-20">
+                <div class="max-w-5xl mx-auto space-y-6">
+                    <span class="block text-center text-[10px] font-extrabold uppercase tracking-widest text-brand-mint">REGISTRO VISUAL ECOLÓGICO</span>
+                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+                        <div class="group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative" data-aos="fade-right">
+                            <img src="./cara2.jpg" class="img-pro-card w-full h-full object-cover" alt="Guayacán Real">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <span class="text-xs text-brand-mint font-bold">Registro #01</span>
+                            </div>
+                        </div>
+                        <div class="group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative" data-aos="fade-left">
+                            <img src="./china2.jpeg" class="img-pro-card w-full h-full object-cover" alt="Almácigo Silvestre">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <span class="text-xs text-brand-mint font-bold">Registro #02</span>
+                            </div>
+                        </div>
+                        <div class="group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative" data-aos="fade-right">
+                            <img src="./rosea.jpg" class="img-pro-card w-full h-full object-cover" alt="Palma Real">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <span class="text-xs text-brand-mint font-bold">Registro #03</span>
+                            </div>
+                        </div>
+                        <div class="group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative" data-aos="fade-left">
+                            <img src="./noni.jpeg" class="img-pro-card w-full h-full object-cover" alt="Entorno Forestal">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <span class="text-xs text-brand-mint font-bold">Registro #04</span>
+                            </div>
+                        </div>
+                        <div class="group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-brand-mint/30 h-32 sm:h-48 md:h-64 col-span-2 lg:col-span-1 shadow-xl relative" data-aos="fade-right">
+                            <img src="./navidad.jpeg" class="img-pro-card w-full h-full object-cover" alt="Costa Tropical">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <span class="text-xs text-brand-mint font-bold">Registro #05</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-4xl mx-auto bg-brand-medium/20 rounded-[2.5rem] p-8 md:p-12 border border-brand-mint/20 space-y-10 flex flex-col items-center" data-aos="fade-up">
+                    <h3 class="text-2xl md:text-3xl font-black font-serif text-brand-mint text-center tracking-tight">
+                        ¿Qué descubrirás en este Catálogo Digital?
+                    </h3>
+                    <div class="space-y-8 w-full">
+                        <div class="flex flex-col sm:flex-row items-start gap-4 p-4 rounded-2xl hover:bg-brand-medium/30 transition-colors duration-300">
+                            <div class="w-12 h-12 rounded-full bg-brand-mint text-brand-dark flex items-center justify-center text-xl shrink-0 shadow-lg">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-extrabold text-white mb-1">Botánica 100% de la Región</h4>
+                                <p class="text-slate-300 text-sm font-light leading-relaxed">Fichas de árboles e ingredientes naturales del suelo colonense que regulan el ecosistema urbano.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-start gap-4 p-4 rounded-2xl hover:bg-brand-medium/30 transition-colors duration-300">
+                            <div class="w-12 h-12 rounded-full bg-brand-mint text-brand-dark flex items-center justify-center text-xl shrink-0 shadow-lg">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-extrabold text-white mb-1">Entorno Urbano Inolvidable</h4>
+                                <p class="text-slate-300 text-sm font-light leading-relaxed">Explora interactivamente la ubicación exacta de las esculturas que decoran nuestro paseo principal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-4xl mx-auto relative rounded-[2.5rem] overflow-hidden border-2 border-brand-mint/30 h-auto min-h-[320px] flex flex-col items-center justify-center text-center p-8 md:p-12 shadow-[0_0_50px_rgba(12,242,167,0.15)]" data-aos="fade-up">
+                    <div class="absolute inset-0 bg-brand-dark/50 backdrop-blur-[1px] z-0"></div>
+                    <div class="relative z-10 space-y-6 max-w-2xl flex flex-col items-center">
+                        <span class="text-brand-mint text-[10px] font-extrabold uppercase tracking-[0.25em]">Patrimonio Histórico</span>
+                        <h3 class="text-2xl md:text-3xl font-black font-serif text-white tracking-tight">Galería de Esculturas</h3>
+                        <p class="text-slate-200 text-xs md:text-sm font-bold leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                            Te damos la bienvenida a nuestro recorrido histórico interactivo. Te invitamos a descubrir la majestuosidad de los monumentos históricos de Colón, adentrándote en las crónicas que definieron nuestra herencia.
+                        </p>
+                        <a href="./estatua-detalle.html" class="nav-dyn-link inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_30px_rgba(12,242,167,0.4)] hover:scale-105 mt-2">
+                            <i class="fa-solid fa-images text-sm"></i> Ver Monumentos
+                        </a>
+                    </div>
+                </div>
+                <div class="space-y-24 pt-10">
+                    <div class="searchable-card group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" data-aos="fade-right">
+                        <div class="lg:col-span-6 relative">
+                            <div class="rounded-[2.5rem] overflow-hidden border-4 border-brand-mint/20 aspect-video shadow-2xl relative">
+                                <img src="./colon2.jpeg" class="img-pro-card w-full h-full object-cover" alt="Monumento Histórico de Piedra">
+                            </div>
+                        </div>
+                        <div class="lg:col-span-6 space-y-6">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-brand-mint bg-brand-medium border border-brand-mint/30 px-3 py-1.5 rounded-full">Calle 3</span>
+                            <h3 class="text-3xl md:text-4xl font-extrabold text-white">El Monumento de Cristóbal Colón</h3>
+                            <p class="text-slate-400 text-sm font-light leading-relaxed">
+                                Una magnífica representación en bronce que conmemora el desembarco histórico. Se ubica como uno de los símbolos centrales de la ciudad de Colón.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="searchable-card group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" data-aos="fade-left">
+                        <div class="lg:col-span-6 lg:order-2">
+                            <div class="rounded-[2.5rem] overflow-hidden border-4 border-brand-mint/20 aspect-video shadow-2xl relative">
+                                <img src="./imagen12.jpg" class="img-pro-card w-full h-full object-cover" alt="Plaza Monumental">
+                            </div>
+                        </div>
+                        <div class="lg:col-span-6 space-y-6">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-brand-mint bg-brand-medium border border-brand-mint/30 px-3 py-1.5 rounded-full">Calle 11</span>
+                            <h3 class="text-3xl md:text-4xl font-extrabold text-white">Busto Conmemorativo del Centenario</h3>
+                            <p class="text-slate-400 text-sm font-light leading-relaxed">
+                                Escultura erigida para honrar a los próceres de nuestra patria y recordar la fecha fundamental de la soberanía.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SECCIÓN JUGAR -->
+        <section id="jugar" class="py-28 bg-brand-dark text-white relative z-20 border-t border-brand-mint/10">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-mint/5 rounded-full blur-[140px] pointer-events-none"></div>
+            
+            <div class="max-w-6xl mx-auto px-6 space-y-12 relative z-10" data-aos="fade-up">
+                <div class="text-center space-y-4 max-w-2xl mx-auto">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-medium border border-brand-mint/30 text-brand-mint text-[10px] font-extrabold tracking-[0.25em] uppercase shadow-lg">
+                        <i class="fa-solid fa-gamepad text-xs"></i> ZONA INTERACTIVA
+                    </span>
+                    <h2 class="text-4xl md:text-6xl font-black font-serif text-white tracking-tight">
+                        Aprende <span class="italic text-brand-mint">Jugando</span>
+                    </h2>
+                    <p class="text-slate-300 text-xs md:text-sm font-light leading-relaxed">
+                        Demuestra tus conocimientos sobre la flora, historia y monumentos del Paseo Colón en nuestro minijuego interactivo.
+                    </p>
+                </div>
+
+                <!-- Contenedor / Marco del Juego -->
+                <div class="max-w-4xl mx-auto bg-brand-medium/40 border-2 border-brand-mint/30 rounded-[2.5rem] p-4 md:p-8 backdrop-blur-md shadow-[0_0_50px_rgba(12,242,167,0.15)] relative overflow-hidden">
+                    <!-- Decoración visual tipo consola gamer -->
+                    <div class="flex items-center justify-between pb-4 border-b border-brand-mint/20 mb-6 px-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-brand-mint inline-block"></span>
+                            <span class="text-[10px] font-mono text-slate-400 ml-2 uppercase tracking-widest hidden sm:inline">EcoColón Arcade v1.0</span>
+                        </div>
+                        <div class="text-brand-mint text-xs font-mono font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-signal text-[10px] animate-pulse"></i>
+                            <span>LISTO PARA CONECTAR</span>
+                        </div>
+                    </div>
+
+                    <!-- Pantalla Principal / Canvas / Iframe del Juego -->
+                    <div id="game-container" class="w-full aspect-video bg-brand-dark/90 rounded-2xl border border-brand-mint/20 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-[radial-gradient(#0cf2a7_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+                        
+                        <!-- Estado actual: Proximamente / Espacio reservado para tu juego -->
+                        <div class="relative z-10 space-y-5 max-w-md">
+                            <div class="w-20 h-20 rounded-3xl bg-brand-medium border-2 border-brand-mint text-brand-mint flex items-center justify-center text-3xl mx-auto shadow-[0_0_25px_rgba(12,242,167,0.3)] group-hover:scale-110 transition-transform duration-300">
+                                <i class="fa-solid fa-dice-d20"></i>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-black text-white tracking-wide">
+                                ¡El Minijuego está en camino!
+                            </h3>
+                            <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed">
+                                Estamos finalizando el desarrollo del juego ecológico para esta sección. Pronto podrás jugar directamente desde esta pantalla.
+                            </p>
+                            <div class="pt-2">
+                                <button class="px-8 py-3 bg-brand-mint/20 border border-brand-mint text-brand-mint font-bold text-xs uppercase tracking-[0.2em] rounded-full cursor-not-allowed opacity-80 flex items-center gap-2 mx-auto">
+                                    <i class="fa-solid fa-hourglass-half text-xs"></i> Próximamente
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Barra inferior de controles / footer del marco -->
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4 border-t border-brand-mint/20 text-xs text-slate-400">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-gamepad text-brand-mint text-base"></i>
+                            <span>Compatible con Móviles y PC</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-brand-mint bg-brand-dark/60 px-3 py-1 rounded-full border border-brand-mint/20">
+                            Desarrollado para EcoColón
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. SECCIÓN EQUIPO -->
+        <section id="equipo" class="py-32 bg-brand-light text-brand-dark rounded-b-[4rem] relative z-10 shadow-[0_15px_40px_rgba(0,0,0,0.15)]">
+            <div class="max-w-7xl mx-auto px-6 md:px-16 space-y-16">
+                <div class="text-center space-y-4 max-w-3xl mx-auto" data-aos="fade-down">
+                    <span class="text-xs font-bold uppercase tracking-[0.25em] text-brand-medium">Investigación y Desarrollo</span>
+                    <h2 class="text-4xl md:text-6xl font-black font-serif text-brand-dark tracking-tight">
+                        El Equipo de Campo
+                    </h2>
+                    <p class="text-slate-600 text-sm">
+                        Estudiantes e investigadores dedicados al desarrollo, recolección de datos y diseño del catálogo.
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden border-4 border-brand-medium/20 shadow-2xl" data-aos="fade-up">
+                    <img src="./foto grupal.jpeg" alt="Foto del Equipo de Campo EcoColón" class="w-full h-auto object-cover">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-right">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-microscope"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Darlenys Mendoza</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Responsable del levantamiento vegetal de las avenidas y catalogación botánica.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">MUESTREO BOTÁNICO</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-up">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Ariel Donado</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Especialista en arquitectura frontend, transiciones dinámicas y buscador predictivo.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">DESARROLLO DE INTERFAZ</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-left">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-landmark"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Moisés Vargas</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Historiador local a cargo de rastrear y digitalizar las actas de monumentos públicos.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">HISTORIA Y ARCHIVO</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-right">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-camera-retro"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Aarón Forsythe</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Responsable del registro fotográfico, edición de los videos e integración aérea.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">MULTIMEDIA Y DRON</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-up">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Mackeiry Arroyo</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Investigadora botánica encargada de la clasificación biológica y documentación.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">INVESTIGACIÓN ECOLÓGICA</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-left">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Argimiro Fenton</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Coordinador de geolocalización y mapas interactivos del paseo urbano.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">GEOLOCALIZACIÓN</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-right">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-pen-nib"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Orlando Odreman</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Redactor técnico y curador de textos e información patrimonial.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">DOCUMENTACIÓN</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-up">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Armando Bannar</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Diseñador del sistema visual y estructuración de la experiencia de usuario.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">DISEÑO UX/UI</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-left">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Junior Cedeño</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Gestor de base de datos y optimización de contenido dinámico para la web.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">GESTIÓN DE DATOS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. SECCIÓN DE COMENTARIOS REVISADA -->
+        <section id="comentarios" class="py-24 bg-brand-dark text-white relative z-20">
+            <div class="max-w-4xl mx-auto px-6 space-y-12" data-aos="fade-up">
+                <div class="text-center space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-[0.25em] text-brand-mint">Participación Ciudadana</span>
+                    <h2 class="text-4xl md:text-5xl font-black font-serif text-white tracking-tight">Comentarios y Opiniones</h2>
+                    <p class="text-slate-400 text-xs md:text-sm max-w-lg mx-auto">Deja tu comentario sobre el proyecto o comparte tus vivencias en el Paseo Colón.</p>
+                </div>
+
+                <!-- Formulario de Comentario -->
+                <form id="comment-form" onsubmit="handleCommentSubmit(event)" class="bg-brand-medium/40 border border-brand-mint/20 rounded-[2rem] p-6 md:p-8 space-y-4 backdrop-blur-md">
+                    <input type="hidden" id="editing-comment-id" value="">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="author-name" class="block text-xs font-bold text-brand-mint uppercase tracking-wider mb-2">Nombre</label>
+                            <input type="text" id="author-name" required placeholder="Tu nombre" class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors">
+                        </div>
+                        <div>
+                            <label for="author-role" class="block text-xs font-bold text-brand-mint uppercase tracking-wider mb-2">
+                                Rol o Ciudad <span class="text-slate-400 font-normal lowercase">(opcional)</span>
+                            </label>
+                            <input type="text" id="author-role" placeholder="Ej. Visitante, Residente Colón" class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <label for="comment-text" class="block text-xs font-bold text-brand-mint uppercase tracking-wider">Comentario</label>
+                            <span id="char-counter" class="text-[10px] text-slate-400 font-mono">0 / 500</span>
+                        </div>
+                        <textarea id="comment-text" rows="4" maxlength="500" required oninput="updateCharCount()" placeholder="Escribe tu mensaje aquí (máximo 500 caracteres)..." class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors"></textarea>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button type="submit" id="submit-comment-btn" class="w-full sm:w-auto px-8 py-3.5 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.3)]">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Publicar Comentario
+                        </button>
+                        <button type="button" id="cancel-edit-btn" onclick="cancelEdit()" class="hidden px-6 py-3.5 bg-slate-700 text-white font-bold text-xs uppercase tracking-[0.1em] rounded-full hover:bg-slate-600 transition-all">
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Lista de Comentarios Publicados -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-comments text-brand-mint"></i>
+                        Comentarios Guardados (<span id="comments-count">0</span>)
+                    </h3>
+                    <div id="comments-container" class="space-y-4">
+                        <!-- Se cargan dinámicamente desde Firestore -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-brand-dark py-16 text-center text-xs text-slate-500 font-medium relative z-30">
+        <div class="max-w-5xl mx-auto space-y-4 px-6">
+            <div class="font-bold text-white text-base tracking-[0.25em] uppercase">ECO<span class="text-brand-mint">COLÓN</span></div>
+            <p class="font-bold text-slate-400 text-sm font-sans">&copy; 2026 Eco-Museo Colón. Todos los derechos reservados.</p>
+            <p class="font-light tracking-wider text-slate-600">Diseñado con un enfoque de divulgación socioambiental de vanguardia para Calles 1 a 16.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- SDK Firebase para Base de Datos Global Multidispositivo -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // CONFIGURACIÓN DE FIREBASE (Reemplazar con tus credenciales de proyecto)
+        const firebaseConfig = {
+            apiKey: "AIzaSyYourApiKeyHere",
+            authDomain: "ecocolon-project.firebaseapp.com",
+            projectId: "ecocolon-project",
+            storageBucket: "ecocolon-project.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef123456"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Identificador de usuario guardado en navegador para saber cuáles son "mis" comentarios
+        let myUserId = localStorage.getItem('ecocolon_user_id');
+        if (!myUserId) {
+            myUserId = 'user_' + Math.random().toString(36).substring(2, 9);
+            localStorage.setItem('ecocolon_user_id', myUserId);
+        }
+
+        window.db = db;
+        window.myUserId = myUserId;
+        window.firestoreOps = { collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, serverTimestamp, query, orderBy };
+        
+        // Carga inicial
+        initFirestoreComments();
+    </script>
+
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        let homeOriginalContent = "";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            homeOriginalContent = document.getElementById('app-content').innerHTML;
+            bindDynamicLinks();
+            initTourPlayer();
+            initActiveNavObserver();
+        });
+
+        // --- SISTEMA DE NAVEGACIÓN ACTIVA (SCROLLSPY) ---
+        function initActiveNavObserver() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const currentId = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            const href = link.getAttribute('href');
+                            if (href === `#${currentId}`) {
+                                link.classList.add('text-brand-mint');
+                                link.classList.remove('text-white');
+                            } else {
+                                link.classList.remove('text-brand-mint');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        // --- SISTEMA BÚSQUEDA Y NAVEGACIÓN ---
+        function handleSearchInput() {
+            const input = document.getElementById('site-search');
+            const clearBtn = document.getElementById('clear-search-btn');
+            if (input.value.trim() !== "") {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+        }
+
+        function handleSearchKey(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                performSearch();
+            }
+        }
+
+        function performSearch() {
+            const query = document.getElementById('site-search').value.toLowerCase().trim();
+            if (query === "") return;
+
+            const sections = document.querySelectorAll('section[id]');
+            let matchedSection = null;
+
+            sections.forEach(section => {
+                const sectionId = section.id.toLowerCase();
+                const sectionText = section.textContent.toLowerCase();
+                if (sectionId.includes(query) || sectionText.includes(query)) {
+                    if (!matchedSection) matchedSection = section;
+                }
+            });
+
+            if (matchedSection) {
+                matchedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('site-search');
+            if (input) input.value = "";
+            const clearBtn = document.getElementById('clear-search-btn');
+            if (clearBtn) clearBtn.classList.add('hidden');
+        }
+
+        function toggleQRModal() {
+            const modal = document.getElementById('qr-modal');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+        }
+
+        // --- MANEJO DINÁMICO DE COMENTARIOS ---
+        let currentComments = [];
+
+        function updateCharCount() {
+            const textarea = document.getElementById('comment-text');
+            const counter = document.getElementById('char-counter');
+            if (textarea && counter) {
+                counter.textContent = `${textarea.value.length} / 500`;
+            }
+        }
+
+        function initFirestoreComments() {
+            if (!window.db || !window.firestoreOps) {
+                setTimeout(initFirestoreComments, 300);
+                return;
+            }
+
+            const { collection, onSnapshot, query, orderBy } = window.firestoreOps;
+            const commentsRef = collection(window.db, "comentarios");
+            const q = query(commentsRef, orderBy("timestamp", "desc"));
+
+            onSnapshot(q, (snapshot) => {
+                currentComments = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                renderComments();
+            }, (error) => {
+                console.warn("Error leyendo la base de datos de comentarios:", error);
+            });
+        }
+
+        function renderComments() {
+            const container = document.getElementById('comments-container');
+            const countLabel = document.getElementById('comments-count');
+            if (!container) return;
+
+            if (countLabel) countLabel.textContent = currentComments.length;
+
+            if (currentComments.length === 0) {
+                container.innerHTML = '<p class="text-slate-400 text-sm italic text-center py-6">Aún no hay comentarios. ¡Sé el primero en publicar!</p>';
+                return;
+            }
+
+            container.innerHTML = currentComments.map(c => {
+                const isMine = c.userId === window.myUserId;
+                const formattedDate = c.timestamp ? new Date(c.timestamp.seconds * 1000).toLocaleDateString('es-ES') : 'Reciente';
+
+                return `
+                <div class="relative bg-brand-medium/30 border border-brand-mint/20 rounded-2xl p-5 space-y-3 transition-all hover:border-brand-mint/50">
+                    <div class="flex items-start justify-between gap-4">
+                        <div>
+                            <h4 class="font-extrabold text-white text-sm flex items-center gap-2">
+                                ${escapeHTML(c.name)}
+                                ${isMine ? '<span class="bg-brand-mint/20 text-brand-mint text-[9px] px-2 py-0.5 rounded-full border border-brand-mint/30 font-bold">Tú</span>' : ''}
+                            </h4>
+                            ${c.role ? `<span class="text-[10px] text-brand-mint font-semibold uppercase tracking-wider block mt-0.5">${escapeHTML(c.role)}</span>` : ''}
+                        </div>
+                        <span class="text-[10px] text-slate-400 font-mono">${formattedDate}</span>
+                    </div>
+
+                    <p class="text-slate-300 text-xs md:text-sm font-light leading-relaxed">
+                        ${escapeHTML(c.text)}
+                        ${c.edited ? '<span class="text-[10px] text-slate-400 italic font-mono ml-1.5">(editado)</span>' : ''}
+                    </p>
+
+                    ${isMine ? `
+                        <div class="flex items-center gap-3 pt-2 border-t border-brand-mint/10 text-xs">
+                            <button onclick="editComment('${c.id}')" class="text-brand-mint hover:underline flex items-center gap-1 text-[11px]">
+                                <i class="fa-solid fa-pen"></i> Editar
+                            </button>
+                            <button onclick="deleteComment('${c.id}')" class="text-rose-400 hover:underline flex items-center gap-1 text-[11px]">
+                                <i class="fa-solid fa-trash"></i> Eliminar comentario
+                            </button>
+                        </div>
+                    ` : ''}
+                </div>
+            `}).join('');
+        }
+
+        async function handleCommentSubmit(event) {
+            event.preventDefault();
+
+            const nameInput = document.getElementById('author-name');
+            const roleInput = document.getElementById('author-role');
+            const textInput = document.getElementById('comment-text');
+            const editIdInput = document.getElementById('editing-comment-id');
+
+            const name = nameInput.value.trim();
+            const role = roleInput.value.trim();
+            const text = textInput.value.trim();
+            const editId = editIdInput.value;
+
+            if (!name || !text) return;
+
+            const { collection, addDoc, doc, updateDoc, serverTimestamp } = window.firestoreOps;
+
+            if (editId) {
+                // Modo Edición
+                const commentRef = doc(window.db, "comentarios", editId);
+                await updateDoc(commentRef, {
+                    name: name,
+                    role: role,
+                    text: text,
+                    edited: true
+                });
+                cancelEdit();
+            } else {
+                // Nuevo Comentario
+                await addDoc(collection(window.db, "comentarios"), {
+                    name: name,
+                    role: role,
+                    text: text,
+                    userId: window.myUserId,
+                    edited: false,
+                    timestamp: serverTimestamp()
+                });
+
+                nameInput.value = '';
+                roleInput.value = '';
+                textInput.value = '';
+                updateCharCount();
+            }
+        }
+
+        function editComment(id) {
+            const comment = currentComments.find(c => c.id === id);
+            if (!comment) return;
+
+            document.getElementById('editing-comment-id').value = id;
+            document.getElementById('author-name').value = comment.name;
+            document.getElementById('author-role').value = comment.role || '';
+            document.getElementById('comment-text').value = comment.text;
+
+            const submitBtn = document.getElementById('submit-comment-btn');
+            const cancelBtn = document.getElementById('cancel-edit-btn');
+
+            if (submitBtn) submitBtn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Guardar Cambios';
+            if (cancelBtn) cancelBtn.classList.remove('hidden');
+
+            updateCharCount();
+            document.getElementById('comment-form').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function cancelEdit() {
+            document.getElementById('editing-comment-id').value = '';
+            document.getElementById('author-name').value = '';
+            document.getElementById('author-role').value = '';
+            document.getElementById('comment-text').value = '';
+
+            const submitBtn = document.getElementById('submit-comment-btn');
+            const cancelBtn = document.getElementById('cancel-edit-btn');
+
+            if (submitBtn) submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i> Publicar Comentario';
+            if (cancelBtn) cancelBtn.classList.add('hidden');
+
+            updateCharCount();
+        }
+
+        async function deleteComment(id) {
+            if (confirm("¿Seguro que deseas eliminar este comentario? Desaparecerá para siempre.")) {
+                const { doc, deleteDoc } = window.firestoreOps;
+                await deleteDoc(doc(window.db, "comentarios", id));
+            }
+        }
+
+        function escapeHTML(str) {
+            if (!str) return '';
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+
+        // --- SPA CARGADOR Y CARRUSEL ---
+        async function loadPage(url) {
+            const contentDiv = document.getElementById('app-content');
+            contentDiv.innerHTML = `
+                <div class="min-h-screen flex flex-col items-center justify-center bg-brand-dark text-center p-6 space-y-4">
+                    <i class="fa-solid fa-circle-notch fa-spin text-5xl text-brand-mint"></i>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-300">Cargando catálogo...</p>
+                </div>`;
+            try {
+                const cleanUrl = url.startsWith('./') ? url : `./${url}`;
+                const response = await fetch(cleanUrl);
+                if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+               
+                const htmlText = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlText, 'text/html');
+               
+                const newContent = doc.querySelector('main') ? doc.querySelector('main').innerHTML : doc.body.innerHTML;
+                contentDiv.innerHTML = newContent;
+                if (window.AOS) AOS.refresh();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+               
+                bindDynamicLinks();
+                initTourPlayer();
+                initActiveNavObserver();
+            } catch (error) {
+                window.location.href = url;
+            }
+        }
+
+        function resetToHome() {
+            if (homeOriginalContent) {
+                document.getElementById('app-content').innerHTML = homeOriginalContent;
+                if (window.AOS) AOS.refresh();
+                bindDynamicLinks();
+                initTourPlayer();
+                initActiveNavObserver();
+            } else {
+                window.location.reload();
+            }
+        }
+
+        function bindDynamicLinks() {
+            document.querySelectorAll('.nav-dyn-link, a[href$=".html"]').forEach(link => {
+                link.onclick = (e) => {
+                    const pageUrl = link.getAttribute('href');
+                    if (pageUrl && pageUrl.endsWith('.html')) {
+                        e.preventDefault();
+                        loadPage(pageUrl);
+                    }
+                };
+            });
+        }
+
+        const slides = document.querySelectorAll('.hero-slide');
+        let slideIndex = 0;
+        function playCarousel() {
+            if (slides.length === 0) return;
+            slides[slideIndex].classList.replace('opacity-100', 'opacity-0');
+            const oldVideo = slides[slideIndex].querySelector('video');
+            if (oldVideo) { oldVideo.pause(); oldVideo.currentTime = 0; }
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].classList.replace('opacity-0', 'opacity-100');
+            const nextVideo = slides[slideIndex].querySelector('video');
+            if (nextVideo) { nextVideo.play().catch(e => console.log(e)); }
+        }
+        setInterval(playCarousel, 4000);
+
+        // --- SISTEMA DE TOUR VIRTUAL ---
+        const tourPlaylist = [
+            { id: 1, title: "Parada #1: Bienvenida al Paseo Colón", desc: "En este primer video iniciaremos el recorrido desde Calle 1, observando la estructura general del bulevar y el entorno arquitectónico de la avenida.", src: "./tour1.mp4" },
+            { id: 2, title: "Parada #2: Árboles Frondosos de Sombra", desc: "Aprenderás cómo los árboles frondosos regulan la temperatura ambiental en las aceras peatonales de Colón y brindan sombra vital.", src: "./tour2.mp4" },
+            { id: 3, title: "Parada #3: Muestra de Guayacán Real", desc: "Observaremos las características del Guayacán Real (Guaiacum officinale), su majestuosa floración y la firmeza de su madera nativa.", src: "./tour3.mp4" },
+            { id: 4, title: "Parada #4: Bulevar de las Palmeras", desc: "Recorreremos la sección alineada con Palmas Reales (Roystonea regia), identificando su rol de valor paisajístico y ornamental.", src: "./tour4.mp4" },
+            { id: 5, title: "Parada #5: Flora de Costa y Almácigo", desc: "Conoceremos la adaptación ecológica del Almácigo Silvestre y su corteza particular en ambientes tropicales costeros.", src: "./tour5.mp4" },
+            { id: 6, title: "Parada #6: Esculturas de Calle 3", desc: "Adentrándonos en Calle 3, analizaremos los monumentos históricos dedicados a Cristóbal Colón y su trascendencia histórica.", src: "./tour6.mp4" },
+            { id: 7, title: "Parada #7: Registros de la Centuria", desc: "Visualizaremos las placas y bustos conmemorativos que rinden tributo a las gestas de la soberanía nacional en la ciudad.", src: "./tour7.mp4" },
+            { id: 8, title: "Parada #8: Bulevar Central y Jardinería", desc: "Observaremos la distribución de la flora ornamental pequeña y arbustos situados a lo largo de las aceras centrales.", src: "./tour8.mp4" },
+            { id: 9, title: "Parada #9: Trayecto Intermedio Calle 11 a 14", desc: "Un paseo continuo por los tramos centrales del corredor que unen las áreas históricas con zonas comerciales históricas.", src: "./tour9.mp4" },
+            { id: 10, title: "Parada #10: Cierre del Recorrido en Calle 16", desc: "Llegamos al tramo final en Calle 16, contemplando una panorámica unificada que integra el valor natural y monumental de Colón.", src: "./tour10.mp4" }
+        ];
+
+        let currentTourIndex = 0;
+
+        function initTourPlayer() {
+            const player = document.getElementById('tour-player');
+            if (!player) return;
+            showTourDescription(0);
+        }
+
+        function showTourDescription(index) {
+            currentTourIndex = index;
+            const videoData = tourPlaylist[currentTourIndex];
+            const player = document.getElementById('tour-player');
+            const source = document.getElementById('tour-source');
+            const title = document.getElementById('tour-video-title');
+            const desc = document.getElementById('tour-video-desc');
+            const step = document.getElementById('tour-overlay-step');
+            const badge = document.getElementById('tour-badge');
+            const overlay = document.getElementById('video-overlay');
+            const outroOverlay = document.getElementById('tour-outro-overlay');
+
+            if (outroOverlay) outroOverlay.classList.add('hidden');
+
+            if (source && player) {
+                player.pause();
+                source.src = videoData.src;
+                player.load();
+
+                if (title) title.textContent = videoData.title;
+                if (desc) desc.textContent = videoData.desc;
+                if (step) step.textContent = `PARADA ${videoData.id} DE 10`;
+                if (badge) badge.textContent = `Parada ${videoData.id}/10`;
+
+                if (overlay) overlay.classList.remove('hidden');
+                updatePlayBtn(false);
+            }
+        }
+
+        function startCurrentVideo() {
+            const player = document.getElementById('tour-player');
+            const overlay = document.getElementById('video-overlay');
+            if (player) {
+                if (overlay) overlay.classList.add('hidden');
+                player.play().catch(e => console.log("Interacción necesaria"));
+                updatePlayBtn(true);
+            }
+        }
+
+        function toggleTourPlay() {
+            const player = document.getElementById('tour-player');
+            const overlay = document.getElementById('video-overlay');
+            if (!player) return;
+
+            if (player.paused) {
+                if (overlay) overlay.classList.add('hidden');
+                player.play();
+                updatePlayBtn(true);
+            } else {
+                player.pause();
+                updatePlayBtn(false);
+            }
+        }
+
+        function updatePlayBtn(isPlaying) {
+            const btn = document.getElementById('tour-play-btn');
+            if (btn) {
+                btn.innerHTML = isPlaying ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
+            }
+        }
+
+        function onTourVideoEnded() {
+            if (currentTourIndex < tourPlaylist.length - 1) {
+                showTourDescription(currentTourIndex + 1);
+            } else {
+                showTourOutro();
+            }
+        }
+
+        function nextTourStep() {
+            if (currentTourIndex < tourPlaylist.length - 1) {
+                showTourDescription(currentTourIndex + 1);
+            } else {
+                showTourOutro();
+            }
+        }
+
+        function prevTourStep() {
+            if (currentTourIndex > 0) {
+                showTourDescription(currentTourIndex - 1);
+            }
+        }
+
+        function showTourOutro() {
+            const player = document.getElementById('tour-player');
+            const outroOverlay = document.getElementById('tour-outro-overlay');
+            if (player) player.pause();
+            if (outroOverlay) outroOverlay.classList.remove('hidden');
+            updatePlayBtn(false);
+        }
+
+        function restartTour() {
+            showTourDescription(0);
+        }
+
+        function rewindTour(seconds) {
+            const player = document.getElementById('tour-player');
+            if (player) player.currentTime = Math.max(0, player.currentTime - seconds);
+        }
+
+        function forwardTour(seconds) {
+            const player = document.getElementById('tour-player');
+            if (player) player.currentTime = Math.min(player.duration || 0, player.currentTime + seconds);
+        }
+
+        function updateTourProgress() {
+            const player = document.getElementById('tour-player');
+            const progressBar = document.getElementById('tour-progress-bar');
+            const timer = document.getElementById('tour-timer');
+            if (!player) return;
+
+            if (player.duration) {
+                const pct = (player.currentTime / player.duration) * 100;
+                if (progressBar) progressBar.style.width = `${pct}%`;
+                if (timer) {
+                    timer.textContent = `${formatTime(player.currentTime)} / ${formatTime(player.duration)}`;
+                }
+            } else {
+                if (timer) timer.textContent = "00:00 / 00:00";
+            }
+        }
+
+        function seekTourVideo(e) {
+            const player = document.getElementById('tour-player');
+            if (!player || !player.duration) return;
+            const rect = e.currentTarget.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const pct = clickX / rect.width;
+            player.currentTime = pct * player.duration;
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function toggleFullscreen() {
+            const container = document.getElementById('tour-container');
+            const icon = document.getElementById('fullscreen-icon');
+            
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                if (icon) {
+                    icon.classList.remove('fa-expand');
+                    icon.classList.add('fa-compress');
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                if (icon) {
+                    icon.classList.remove('fa-compress');
+                    icon.classList.add('fa-expand');
+                }
+            }
+        }
+
+        document.addEventListener('fullscreenchange', () => {
+            const icon = document.getElementById('fullscreen-icon');
+            if (!document.fullscreenElement && icon) {
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+            }
+        });
+    </script>
+</body>
+</html>
