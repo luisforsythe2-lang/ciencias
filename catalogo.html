@@ -4,7 +4,6 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Catálogo Socioambiental - EcoColón</title>
-    <!-- CORREGIDO: Se cerraron bien las etiquetas de script -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
     <script>
@@ -58,9 +57,8 @@
             <i class="fa-solid fa-monument"></i> Estatuas
         </button>
     </div>
-
     <!-- Panel Árboles -->
-    <div class="tab-panel space-y-10 hidden" id="panel-arboles">
+    <div class="tab-panel space-y-10" id="panel-arboles">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Almendro -->
             <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
@@ -480,9 +478,8 @@
             </div>
         </div>
     </div>
-
     <!-- Panel Estatuas -->
-    <div class="tab-panel space-y-10 " id="panel-estatuas">
+    <div class="tab-panel space-y-10 hidden" id="panel-estatuas">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
                 <img alt="Monumento al Cristo Redentor" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./foto2.jpeg"/>
@@ -492,7 +489,7 @@
                         <span>Granito y Cemento</span>
                         <span class="text-zinc-300">Calle 1, Ave. Central</span>
                     </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Cristo Redentor</h3>
+                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Cristóbal Redentor</h3>
                     <p class="text-zinc-300 text-xs font-light line-clamp-2">Símbolo de paz y hospitalidad que vigila la entrada del Canal de Panamá al final de la Avenida Central.</p>
                     <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=cristo">
                         Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
@@ -772,7 +769,6 @@
         </div>
     </div>
 </main>
-
 <footer class="border-t border-zinc-900 bg-black py-6 px-6 text-center text-xs text-zinc-500 font-medium">
     <p>© 2026 Catálogo Socioambiental de Colón. Todos los derechos reservados.</p>
 </footer>
@@ -782,7 +778,6 @@
     const panelEstatuas = document.getElementById('panel-estatuas');
     const btnArboles = document.getElementById('btn-arboles');
     const btnEstatuas = document.getElementById('btn-estatuas');
-
     if (tabName === 'arboles') {
       if (panelArboles) panelArboles.classList.remove('hidden');
       if (panelEstatuas) panelEstatuas.classList.add('hidden');
