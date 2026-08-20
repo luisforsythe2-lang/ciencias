@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- ¡AQUÍ ESTÁ LA LÍNEA QUE FALTABA! -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,10 +21,10 @@
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#031a12',   
-                            medium: '#073b2b',   
-                            light: '#f4faf7',    
-                            mint: '#0cf2a7',     
+                            dark: '#031a12',   // Verde Bosque Ultra Profundo
+                            medium: '#073b2b',   // Verde Oliva/Selva
+                            light: '#f4faf7',    // Blanco con matiz menta suave
+                            mint: '#0cf2a7',     // Color Menta Eléctrico
                             mintHover: '#0ae09a'
                         }
                     },
@@ -35,6 +36,7 @@
             }
         }
     </script>
+</head>
     <style>
         /* Personalización de la barra de desplazamiento */
         ::-webkit-scrollbar {
@@ -48,6 +50,7 @@
             border-radius: 6px;
             border: 3px solid #031a12;
         }
+        /* Ocultar barra de scroll en el menú de navegación para celulares */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -55,12 +58,14 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        /* Cristal de menta translúcido */
         .mint-glass {
             background: rgba(3, 26, 18, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(12, 242, 167, 0.2);
         }
+        /* Realce visual de imágenes */
         .img-pro-card {
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
         }
@@ -111,15 +116,13 @@
                     </button>
                 </div>
                <nav class="flex flex-row items-center gap-4 md:gap-6 text-sm font-medium text-slate-300">
-                    <a href="index.html" class="hover:text-brand-mint transition-colors">INICIO</a>
-                    <a href="catalogo.html" class="hover:text-brand-mint transition-colors">CATÁLOGO</a>
-                    <a href="index.html#tour" class="hover:text-brand-mint transition-colors">TOUR</a>
-                    <a href="index.html#jugar" class="hover:text-brand-mint transition-colors">JUGAR</a>
-                    <a href="index.html#equipo" class="hover:text-brand-mint transition-colors">EQUIPO</a>
-                    <a href="index.html#comentarios" class="hover:text-brand-mint transition-colors">COMENTARIOS</a>
-                </nav>
-            </div>
-            <div class="flex items-center gap-2 shrink-0">
+  <a href="index.html" class="hover:text-brand-mint transition-colors">INICIO</a>
+  <a href="catalogo.html" class="hover:text-brand-mint transition-colors">CATÁLOGO</a>
+  <a href="index.html#tour" class="hover:text-brand-mint transition-colors">TOUR</a>
+  <a href="index.html#jugar" class="hover:text-brand-mint transition-colors">JUGAR</a>
+  <a href="index.html#equipo" class="hover:text-brand-mint transition-colors">EQUIPO</a>
+  <a href="index.html#comentarios" class="hover:text-brand-mint transition-colors">COMENTARIOS</a>
+</nav>      <div class="flex items-center gap-2 shrink-0">
                 <div class="relative group">
                     <button onclick="toggleQRModal()" class="px-3 py-1.5 sm:py-2 bg-brand-medium border border-brand-mint/30 text-brand-mint rounded-full hover:bg-brand-mint hover:text-brand-dark transition-all duration-300 text-xs sm:text-sm">
                         <i class="fa-solid fa-qrcode"></i>
@@ -160,7 +163,7 @@
                             Paseo <span class="font-serif italic font-light text-brand-mint">Colón</span>
                         </h1>
                         <p class="text-xs sm:text-sm text-white font-medium max-w-lg leading-relaxed mt-4 drop-shadow">
-                            Te damos la bienvenida a una experiencia digital única. Explora la riqueza natural e histórica del Paseo Colón desde la comodidad de tu pantalla.
+                            Te damos la bienvenida a una experiencia digital única. Explora la riqueza natural e histórica del Paseo Colón desde la comodidad de tu pantalla, recorriendo cada rincón botánico y monumental a tu propio ritmo.
                         </p>
                     </div>
                 </div>
@@ -206,7 +209,7 @@
                                     </div>
                                     <h4 class="text-2xl md:text-3xl font-black text-white">¡Tour Finalizado con Éxito!</h4>
                                     <p class="text-xs md:text-sm text-slate-300 max-w-lg font-light leading-relaxed">
-                                        ¡Felicidades por completar el recorrido! Has aprendido sobre la biodiversidad, la riqueza arbórea y los monumentos históricos.
+                                        ¡Felicidades por completar el recorrido! Has aprendido sobre la biodiversidad, la riqueza arbórea y los monumentos históricos que adornan la travesía desde Calle 1 a Calle 16.
                                     </p>
                                     <button onclick="restartTour()" class="mt-2 px-8 py-3.5 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.4)] flex items-center gap-2">
                                         <i class="fa-solid fa-rotate-right"></i> Reiniciar Tour
@@ -262,19 +265,20 @@
                         </h2>
                     </div>
                     <p class="text-slate-600 text-sm max-w-md font-medium leading-relaxed">
-                        Hemos catalogado los árboles más representativos y plantas ornamentales de las avenidas y calles 1 a 16.
+                        Hemos catalogado los árboles más representativos y plantas ornamentales de las avenidas y calles 1 a 16. Descubre la biodiversidad que coexiste en Colón.
                     </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="plantas-grid">
                     <a href="planta-detalle.html" class="nav-dyn-link searchable-card group bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-full" data-aos="fade-right">
                         <div class="relative h-64 overflow-hidden">
                             <img src="./numero7.jpeg" class="img-pro-card w-full h-full object-cover" alt="Planta 1">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <span class="absolute top-4 left-4 bg-brand-mint text-brand-dark text-[9px] font-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-md z-10">Árbol Frondoso</span>
                         </div>
                         <div class="p-8 space-y-4 flex-grow">
                             <h3 class="text-2xl font-black text-brand-dark tracking-tight">El Guayacán Real</h3>
                             <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider italic">Guaiacum officinale</p>
-                            <p class="text-slate-600 text-sm font-light leading-relaxed">Famoso por su llamativa floración de color azul violáceo y su madera extremadamente resistente.</p>
+                            <p class="text-slate-600 text-sm font-light leading-relaxed">Famoso por su llamativa floración de color azul violáceo y su madera extremadamente resistente, aportando sombra densa en las aceras del paseo.</p>
                         </div>
                         <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-medium">
                             <span>Ficha #01</span>
@@ -284,12 +288,13 @@
                     <div class="searchable-card group bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-full" data-aos="fade-left">
                         <div class="relative h-64 overflow-hidden">
                             <img src="./corozo.jpeg" class="img-pro-card w-full h-full object-cover" alt="Planta 2">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <span class="absolute top-4 left-4 bg-brand-mint text-brand-dark text-[9px] font-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-md z-10">Sombra y Estética</span>
                         </div>
                         <div class="p-8 space-y-4 flex-grow">
                             <h3 class="text-2xl font-black text-brand-dark tracking-tight">El Almácigo Silvestre</h3>
                             <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider italic">Bursera simaruba</p>
-                            <p class="text-slate-600 text-sm font-light leading-relaxed">Conocido por su corteza rojiza que se descama fácilmente. Muy adaptado a la costa.</p>
+                            <p class="text-slate-600 text-sm font-light leading-relaxed">Conocido por su corteza rojiza que se descama fácilmente. Un árbol nativo muy adaptado a la costa y el calor, ideal para control ecológico urbano.</p>
                         </div>
                         <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-medium">
                             <span>Ficha #02</span>
@@ -298,12 +303,13 @@
                     <div class="searchable-card group bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-full" data-aos="fade-right">
                         <div class="relative h-64 overflow-hidden">
                             <img src="./real.jpeg" class="img-pro-card w-full h-full object-cover" alt="Planta 3">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <span class="absolute top-4 left-4 bg-brand-mint text-brand-dark text-[9px] font-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-md z-10">Palmera Ornamental</span>
                         </div>
                         <div class="p-8 space-y-4 flex-grow">
                             <h3 class="text-2xl font-black text-brand-dark tracking-tight">Palma Real</h3>
                             <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider italic">Roystonea regia</p>
-                            <p class="text-slate-600 text-sm font-light leading-relaxed">Elemento característico de las avenidas y bulevares clásicos, con un tronco esbelto.</p>
+                            <p class="text-slate-600 text-sm font-light leading-relaxed">Elemento característico de las avenidas y bulevares clásicos, con un tronco esbelto que llega a alcanzar más de veinte metros de altura.</p>
                         </div>
                         <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-medium">
                             <span>Ficha #03</span>
@@ -320,18 +326,58 @@
                     <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
                         <div class="group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative" data-aos="fade-right">
                             <img src="./cara2.jpg" class="img-pro-card w-full h-full object-cover" alt="Guayacán Real">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <span class="text-xs text-brand-mint font-bold">Registro #01</span>
+                            </div>
                         </div>
                         <div class="group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative" data-aos="fade-left">
                             <img src="./china2.jpeg" class="img-pro-card w-full h-full object-cover" alt="Almácigo Silvestre">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <span class="text-xs text-brand-mint font-bold">Registro #02</span>
+                            </div>
                         </div>
                         <div class="group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative" data-aos="fade-right">
                             <img src="./rosea.jpg" class="img-pro-card w-full h-full object-cover" alt="Palma Real">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <span class="text-xs text-brand-mint font-bold">Registro #03</span>
+                            </div>
                         </div>
                         <div class="group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-brand-mint/30 h-32 sm:h-48 md:h-64 shadow-xl relative" data-aos="fade-left">
                             <img src="./noni.jpeg" class="img-pro-card w-full h-full object-cover" alt="Entorno Forestal">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <span class="text-xs text-brand-mint font-bold">Registro #04</span>
+                            </div>
                         </div>
                         <div class="group rounded-2xl md:rounded-3xl overflow-hidden border-2 border-brand-mint/30 h-32 sm:h-48 md:h-64 col-span-2 lg:col-span-1 shadow-xl relative" data-aos="fade-right">
                             <img src="./navidad.jpeg" class="img-pro-card w-full h-full object-cover" alt="Costa Tropical">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <span class="text-xs text-brand-mint font-bold">Registro #05</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-4xl mx-auto bg-brand-medium/20 rounded-[2.5rem] p-8 md:p-12 border border-brand-mint/20 space-y-10 flex flex-col items-center" data-aos="fade-up">
+                    <h3 class="text-2xl md:text-3xl font-black font-serif text-brand-mint text-center tracking-tight">
+                        ¿Qué descubrirás en este Catálogo Digital?
+                    </h3>
+                    <div class="space-y-8 w-full">
+                        <div class="flex flex-col sm:flex-row items-start gap-4 p-4 rounded-2xl hover:bg-brand-medium/30 transition-colors duration-300">
+                            <div class="w-12 h-12 rounded-full bg-brand-mint text-brand-dark flex items-center justify-center text-xl shrink-0 shadow-lg">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-extrabold text-white mb-1">Botánica 100% de la Región</h4>
+                                <p class="text-slate-300 text-sm font-light leading-relaxed">Fichas de árboles e ingredientes naturales del suelo colonense que regulan el ecosistema urbano.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-start gap-4 p-4 rounded-2xl hover:bg-brand-medium/30 transition-colors duration-300">
+                            <div class="w-12 h-12 rounded-full bg-brand-mint text-brand-dark flex items-center justify-center text-xl shrink-0 shadow-lg">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-extrabold text-white mb-1">Entorno Urbano Inolvidable</h4>
+                                <p class="text-slate-300 text-sm font-light leading-relaxed">Explora interactivamente la ubicación exacta de las esculturas que decoran nuestro paseo principal.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -341,17 +387,49 @@
                         <span class="text-brand-mint text-[10px] font-extrabold uppercase tracking-[0.25em]">Patrimonio Histórico</span>
                         <h3 class="text-2xl md:text-3xl font-black font-serif text-white tracking-tight">Galería de Esculturas</h3>
                         <p class="text-slate-200 text-xs md:text-sm font-bold leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                            Te damos la bienvenida a nuestro recorrido histórico interactivo. Descubre la majestuosidad de los monumentos.
+                            Te damos la bienvenida a nuestro recorrido histórico interactivo. Te invitamos a descubrir la majestuosidad de los monumentos históricos de Colón, adentrándote en las crónicas que definieron nuestra herencia.
                         </p>
                         <a href="./estatua-detalle.html" class="nav-dyn-link inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_30px_rgba(12,242,167,0.4)] hover:scale-105 mt-2">
                             <i class="fa-solid fa-images text-sm"></i> Ver Monumentos
                         </a>
                     </div>
                 </div>
+                <div class="space-y-24 pt-10">
+                    <div class="searchable-card group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" data-aos="fade-right">
+                        <div class="lg:col-span-6 relative">
+                            <div class="rounded-[2.5rem] overflow-hidden border-4 border-brand-mint/20 aspect-video shadow-2xl relative">
+                                <img src="./colon2.jpeg" class="img-pro-card w-full h-full object-cover" alt="Monumento Histórico de Piedra">
+                            </div>
+                        </div>
+                        <div class="lg:col-span-6 space-y-6">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-brand-mint bg-brand-medium border border-brand-mint/30 px-3 py-1.5 rounded-full">Calle 3</span>
+                            <h3 class="text-3xl md:text-4xl font-extrabold text-white">El Monumento de Cristóbal Colón</h3>
+                            <p class="text-slate-400 text-sm font-light leading-relaxed">
+                                Una magnífica representación en bronce que conmemora el desembarco histórico. Se ubica como uno de los símbolos centrales de la ciudad de Colón.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="searchable-card group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" data-aos="fade-left">
+                        <div class="lg:col-span-6 lg:order-2">
+                            <div class="rounded-[2.5rem] overflow-hidden border-4 border-brand-mint/20 aspect-video shadow-2xl relative">
+                                <img src="./imagen12.jpg" class="img-pro-card w-full h-full object-cover" alt="Plaza Monumental">
+                            </div>
+                        </div>
+                        <div class="lg:col-span-6 space-y-6">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-brand-mint bg-brand-medium border border-brand-mint/30 px-3 py-1.5 rounded-full">Calle 11</span>
+                            <h3 class="text-3xl md:text-4xl font-extrabold text-white">Busto Conmemorativo del Centenario</h3>
+                            <p class="text-slate-400 text-sm font-light leading-relaxed">
+                                Escultura erigida para honrar a los próceres de nuestra patria y recordar la fecha fundamental de la soberanía.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <!-- 5. SECCIÓN JUGAR -->
         <section id="jugar" class="py-28 bg-brand-dark text-white relative z-20 border-t border-brand-mint/10">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-mint/5 rounded-full blur-[140px] pointer-events-none"></div>
+            
             <div class="max-w-6xl mx-auto px-6 space-y-12 relative z-10" data-aos="fade-up">
                 <div class="text-center space-y-4 max-w-2xl mx-auto">
                     <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-medium border border-brand-mint/30 text-brand-mint text-[10px] font-extrabold tracking-[0.25em] uppercase shadow-lg">
@@ -360,20 +438,56 @@
                     <h2 class="text-4xl md:text-6xl font-black font-serif text-white tracking-tight">
                         Aprende <span class="italic text-brand-mint">Jugando</span>
                     </h2>
+                    <p class="text-slate-300 text-xs md:text-sm font-light leading-relaxed">
+                        Demuestra tus conocimientos sobre la flora, historia y monumentos del Paseo Colón en nuestro minijuego interactivo.
+                    </p>
                 </div>
+                <!-- Contenedor / Marco del Juego -->
                 <div class="max-w-4xl mx-auto bg-brand-medium/40 border-2 border-brand-mint/30 rounded-[2.5rem] p-4 md:p-8 backdrop-blur-md shadow-[0_0_50px_rgba(12,242,167,0.15)] relative overflow-hidden">
+                    <!-- Decoración visual tipo consola gamer -->
+                    <div class="flex items-center justify-between pb-4 border-b border-brand-mint/20 mb-6 px-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-brand-mint inline-block"></span>
+                            <span class="text-[10px] font-mono text-slate-400 ml-2 uppercase tracking-widest hidden sm:inline">EcoColón Arcade v1.0</span>
+                        </div>
+                        <div class="text-brand-mint text-xs font-mono font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-signal text-[10px] animate-pulse"></i>
+                            <span>LISTO PARA CONECTAR</span>
+                        </div>
+                    </div>
+                    <!-- Pantalla Principal / Canvas / Iframe del Juego -->
                     <div id="game-container" class="w-full aspect-video bg-brand-dark/90 rounded-2xl border border-brand-mint/20 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-[radial-gradient(#0cf2a7_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+                        
+                        <!-- Estado actual: Proximamente / Espacio reservado para tu juego -->
                         <div class="relative z-10 space-y-5 max-w-md">
-                            <div class="w-20 h-20 rounded-3xl bg-brand-medium border-2 border-brand-mint text-brand-mint flex items-center justify-center text-3xl mx-auto shadow-[0_0_25px_rgba(12,242,167,0.3)]">
+                            <div class="w-20 h-20 rounded-3xl bg-brand-medium border-2 border-brand-mint text-brand-mint flex items-center justify-center text-3xl mx-auto shadow-[0_0_25px_rgba(12,242,167,0.3)] group-hover:scale-110 transition-transform duration-300">
                                 <i class="fa-solid fa-dice-d20"></i>
                             </div>
                             <h3 class="text-2xl md:text-3xl font-black text-white tracking-wide">
                                 ¡El Minijuego está en camino!
                             </h3>
-                            <button class="px-8 py-3 bg-brand-mint/20 border border-brand-mint text-brand-mint font-bold text-xs uppercase tracking-[0.2em] rounded-full cursor-not-allowed opacity-80 flex items-center gap-2 mx-auto">
-                                <i class="fa-solid fa-hourglass-half text-xs"></i> Próximamente
-                            </button>
+                            <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed">
+                                Estamos finalizando el desarrollo del juego ecológico para esta sección. Pronto podrás jugar directamente desde esta pantalla.
+                            </p>
+                            <div class="pt-2">
+                                <button class="px-8 py-3 bg-brand-mint/20 border border-brand-mint text-brand-mint font-bold text-xs uppercase tracking-[0.2em] rounded-full cursor-not-allowed opacity-80 flex items-center gap-2 mx-auto">
+                                    <i class="fa-solid fa-hourglass-half text-xs"></i> Próximamente
+                                </button>
+                            </div>
                         </div>
+                    </div>
+                    <!-- Barra inferior de controles / footer del marco -->
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4 border-t border-brand-mint/20 text-xs text-slate-400">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-gamepad text-brand-mint text-base"></i>
+                            <span>Compatible con Móviles y PC</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-brand-mint bg-brand-dark/60 px-3 py-1 rounded-full border border-brand-mint/20">
+                            Desarrollado para EcoColón
+                        </span>
                     </div>
                 </div>
             </div>
@@ -386,29 +500,128 @@
                     <h2 class="text-4xl md:text-6xl font-black font-serif text-brand-dark tracking-tight">
                         El Equipo de Campo
                     </h2>
+                    <p class="text-slate-600 text-sm">
+                        Estudiantes e investigadores dedicados al desarrollo, recolección de datos y diseño del catálogo.
+                    </p>
                 </div>
                 <div class="max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden border-4 border-brand-medium/20 shadow-2xl" data-aos="fade-up">
                     <img src="./foto grupal.jpeg" alt="Foto del Equipo de Campo EcoColón" class="w-full h-auto object-cover">
                 </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-right">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-microscope"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Darlenys Mendoza</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Responsable del levantamiento vegetal de las avenidas y catalogación botánica.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">MUESTREO BOTÁNICO</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-up">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Ariel Donado</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Especialista en arquitectura frontend, transiciones dinámicas y buscador predictivo.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">DESARROLLO DE INTERFAZ</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-left">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-landmark"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Moisés Vargas</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Historiador local a cargo de rastrear y digitalizar las actas de monumentos públicos.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">HISTORIA Y ARCHIVO</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-right">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-camera-retro"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Aarón Forsythe</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Responsable del registro fotográfico, edición de los videos e integración aérea.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">MULTIMEDIA Y DRON</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-up">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Mackeiry Arroyo</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Investigadora botánica encargada de la clasificación biológica y documentación.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">INVESTIGACIÓN ECOLÓGICA</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-left">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Argimiro Fenton</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Coordinador de geolocalización y mapas interactivos del paseo urbano.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">GEOLOCALIZACIÓN</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-right">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-pen-nib"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Orlando Odreman</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Redactor técnico y curador de textos e información patrimonial.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">DOCUMENTACIÓN</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-up">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Armando Bannar</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Diseñador del sistema visual y estructuración de la experiencia de usuario.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">DISEÑO UX/UI</span>
+                    </div>
+                    <div class="searchable-card bg-white border border-slate-100 p-8 rounded-[2rem] flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-left">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark text-brand-mint flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-brand-dark leading-tight">Junior Cedeño</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-light">Gestor de base de datos y optimización de contenido dinámico para la web.</p>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100 self-start">GESTIÓN DE DATOS</span>
+                    </div>
+                </div>
             </div>
         </section>
-        <!-- 7. SECCIÓN DE COMENTARIOS -->
+        <!-- 7. SECCIÓN DE COMENTARIOS REVISADA -->
         <section id="comentarios" class="py-24 bg-brand-dark text-white relative z-20">
             <div class="max-w-4xl mx-auto px-6 space-y-12" data-aos="fade-up">
                 <div class="text-center space-y-3">
                     <span class="text-xs font-bold uppercase tracking-[0.25em] text-brand-mint">Participación Ciudadana</span>
                     <h2 class="text-4xl md:text-5xl font-black font-serif text-white tracking-tight">Comentarios y Opiniones</h2>
+                    <p class="text-slate-400 text-xs md:text-sm max-w-lg mx-auto">Deja tu comentario sobre el proyecto o comparte tus vivencias en el Paseo Colón.</p>
                 </div>
+                <!-- Formulario de Comentario -->
                 <form id="comment-form" onsubmit="handleCommentSubmit(event)" class="bg-brand-medium/40 border border-brand-mint/20 rounded-[2rem] p-6 md:p-8 space-y-4 backdrop-blur-md">
                     <input type="hidden" id="editing-comment-id" value="">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label for="author-name" class="block text-xs font-bold text-brand-mint uppercase tracking-wider mb-2">Nombre</label>
-                            <input type="text" id="author-name" required placeholder="Tu nombre" class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-mint">
+                            <input type="text" id="author-name" required placeholder="Tu nombre" class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors">
                         </div>
                         <div>
-                            <label for="author-role" class="block text-xs font-bold text-brand-mint uppercase tracking-wider mb-2">Rol o Ciudad</label>
-                            <input type="text" id="author-role" placeholder="Ej. Visitante, Residente Colón" class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-mint">
+                            <label for="author-role" class="block text-xs font-bold text-brand-mint uppercase tracking-wider mb-2">
+                                Rol o Ciudad <span class="text-slate-400 font-normal lowercase">(opcional)</span>
+                            </label>
+                            <input type="text" id="author-role" placeholder="Ej. Visitante, Residente Colón" class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors">
                         </div>
                     </div>
                     <div>
@@ -416,22 +629,26 @@
                             <label for="comment-text" class="block text-xs font-bold text-brand-mint uppercase tracking-wider">Comentario</label>
                             <span id="char-counter" class="text-[10px] text-slate-400 font-mono">0 / 500</span>
                         </div>
-                        <textarea id="comment-text" rows="4" maxlength="500" required oninput="updateCharCount()" placeholder="Escribe tu mensaje aquí..." class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-brand-mint"></textarea>
+                        <textarea id="comment-text" rows="4" maxlength="500" required oninput="updateCharCount()" placeholder="Escribe tu mensaje aquí (máximo 500 caracteres)..." class="w-full bg-brand-dark/80 border border-brand-mint/30 rounded-xl p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-mint transition-colors"></textarea>
                     </div>
                     <div class="flex items-center gap-3">
-                        <button type="submit" id="submit-comment-btn" class="w-full sm:w-auto px-8 py-3.5 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300">
+                        <button type="submit" id="submit-comment-btn" class="w-full sm:w-auto px-8 py-3.5 bg-brand-mint text-brand-dark font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all duration-300 shadow-[0_10px_25px_rgba(12,242,167,0.3)]">
                             <i class="fa-solid fa-paper-plane mr-2"></i> Publicar Comentario
                         </button>
-                        <button type="button" id="cancel-edit-btn" onclick="cancelEdit()" class="hidden px-6 py-3.5 bg-slate-700 text-white font-bold text-xs uppercase tracking-[0.1em] rounded-full">
+                        <button type="button" id="cancel-edit-btn" onclick="cancelEdit()" class="hidden px-6 py-3.5 bg-slate-700 text-white font-bold text-xs uppercase tracking-[0.1em] rounded-full hover:bg-slate-600 transition-all">
                             Cancelar
                         </button>
                     </div>
                 </form>
+                <!-- Lista de Comentarios Publicados -->
                 <div class="space-y-6">
                     <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-comments text-brand-mint"></i> Comentarios Guardados (<span id="comments-count">0</span>)
+                        <i class="fa-solid fa-comments text-brand-mint"></i>
+                        Comentarios Guardados (<span id="comments-count">0</span>)
                     </h3>
-                    <div id="comments-container" class="space-y-4"></div>
+                    <div id="comments-container" class="space-y-4">
+                        <!-- Se cargan dinámicamente desde Firestore -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -440,6 +657,7 @@
         <div class="max-w-5xl mx-auto space-y-4 px-6">
             <div class="font-bold text-white text-base tracking-[0.25em] uppercase">ECO<span class="text-brand-mint">COLÓN</span></div>
             <p class="font-bold text-slate-400 text-sm font-sans">&copy; 2026 Eco-Museo Colón. Todos los derechos reservados.</p>
+            <p class="font-light tracking-wider text-slate-600">Diseñado con un enfoque de divulgación socioambiental de vanguardia para Calles 1 a 16.</p>
         </div>
     </footer>
     <script>
@@ -451,17 +669,24 @@
             initTourPlayer();
             initActiveNavObserver();
         });
+        // --- SISTEMA DE NAVEGACIÓN ACTIVA (SCROLLSPY) ---
         function initActiveNavObserver() {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
-            const observerOptions = { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 };
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const currentId = entry.target.getAttribute('id');
                         navLinks.forEach(link => {
-                            if (link.getAttribute('href') === `#${currentId}`) {
+                            const href = link.getAttribute('href');
+                            if (href === `#${currentId}`) {
                                 link.classList.add('text-brand-mint');
+                                link.classList.remove('text-white');
                             } else {
                                 link.classList.remove('text-brand-mint');
                             }
@@ -471,6 +696,7 @@
             }, observerOptions);
             sections.forEach(section => observer.observe(section));
         }
+        // --- SISTEMA BÚSQUEDA Y NAVEGACIÓN ---
         function handleSearchInput() {
             const input = document.getElementById('site-search');
             const clearBtn = document.getElementById('clear-search-btn');
@@ -492,7 +718,9 @@
             const sections = document.querySelectorAll('section[id]');
             let matchedSection = null;
             sections.forEach(section => {
-                if (section.id.toLowerCase().includes(query) || section.textContent.toLowerCase().includes(query)) {
+                const sectionId = section.id.toLowerCase();
+                const sectionText = section.textContent.toLowerCase();
+                if (sectionId.includes(query) || sectionText.includes(query)) {
                     if (!matchedSection) matchedSection = section;
                 }
             });
@@ -511,6 +739,7 @@
             modal.classList.toggle('hidden');
             modal.classList.toggle('flex');
         }
+        // --- MANEJO DINÁMICO DE COMENTARIOS ---
         let currentComments = [];
         function updateCharCount() {
             const textarea = document.getElementById('comment-text');
@@ -519,32 +748,194 @@
                 counter.textContent = `${textarea.value.length} / 500`;
             }
         }
+        function initFirestoreComments() {
+            if (!window.db || !window.firestoreOps) {
+                setTimeout(initFirestoreComments, 300);
+                return;
+            }
+            const { collection, onSnapshot, query, orderBy } = window.firestoreOps;
+            const commentsRef = collection(window.db, "comentarios");
+            const q = query(commentsRef, orderBy("timestamp", "desc"));
+            onSnapshot(q, (snapshot) => {
+                currentComments = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                renderComments();
+            }, (error) => {
+                console.warn("Error leyendo la base de datos de comentarios:", error);
+            });
+        }
+        function renderComments() {
+            const container = document.getElementById('comments-container');
+            const countLabel = document.getElementById('comments-count');
+            if (!container) return;
+            if (countLabel) countLabel.textContent = currentComments.length;
+            if (currentComments.length === 0) {
+                container.innerHTML = '<p class="text-slate-400 text-sm italic text-center py-6">Aún no hay comentarios. ¡Sé el primero en publicar!</p>';
+                return;
+            }
+            container.innerHTML = currentComments.map(c => {
+                const isMine = c.userId === window.myUserId;
+                const formattedDate = c.timestamp ? new Date(c.timestamp.seconds * 1000).toLocaleDateString('es-ES') : 'Reciente';
+                return `
+                <div class="relative bg-brand-medium/30 border border-brand-mint/20 rounded-2xl p-5 space-y-3 transition-all hover:border-brand-mint/50">
+                    <div class="flex items-start justify-between gap-4">
+                        <div>
+                            <h4 class="font-extrabold text-white text-sm flex items-center gap-2">
+                                ${escapeHTML(c.name)}
+                                ${isMine ? '<span class="bg-brand-mint/20 text-brand-mint text-[9px] px-2 py-0.5 rounded-full border border-brand-mint/30 font-bold">Tú</span>' : ''}
+                            </h4>
+                            ${c.role ? `<span class="text-[10px] text-brand-mint font-semibold uppercase tracking-wider block mt-0.5">${escapeHTML(c.role)}</span>` : ''}
+                        </div>
+                        <span class="text-[10px] text-slate-400 font-mono">${formattedDate}</span>
+                    </div>
+                    <p class="text-slate-300 text-xs md:text-sm font-light leading-relaxed">
+                        ${escapeHTML(c.text)}
+                        ${c.edited ? '<span class="text-[10px] text-slate-400 italic font-mono ml-1.5">(editado)</span>' : ''}
+                    </p>
+                    ${isMine ? `
+                        <div class="flex items-center gap-3 pt-2 border-t border-brand-mint/10 text-xs">
+                            <button onclick="editComment('${c.id}')" class="text-brand-mint hover:underline flex items-center gap-1 text-[11px]">
+                                <i class="fa-solid fa-pen"></i> Editar
+                            </button>
+                            <button onclick="deleteComment('${c.id}')" class="text-rose-400 hover:underline flex items-center gap-1 text-[11px]">
+                                <i class="fa-solid fa-trash"></i> Eliminar comentario
+                            </button>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+            }).join('');
+        }
+        async function handleCommentSubmit(event) {
+            event.preventDefault();
+            const nameInput = document.getElementById('author-name');
+            const roleInput = document.getElementById('author-role');
+            const textInput = document.getElementById('comment-text');
+            const editIdInput = document.getElementById('editing-comment-id');
+            const name = nameInput.value.trim();
+            const role = roleInput.value.trim();
+            const text = textInput.value.trim();
+            const editId = editIdInput.value;
+            if (!name || !text) return;
+            const { collection, addDoc, doc, updateDoc, serverTimestamp } = window.firestoreOps;
+            if (editId) {
+                // Modo Edición
+                const commentRef = doc(window.db, "comentarios", editId);
+                await updateDoc(commentRef, {
+                    name: name,
+                    role: role,
+                    text: text,
+                    edited: true
+                });
+                cancelEdit();
+            } else {
+                // Nuevo Comentario
+                await addDoc(collection(window.db, "comentarios"), {
+                    name: name,
+                    role: role,
+                    text: text,
+                    userId: window.myUserId,
+                    edited: false,
+                    timestamp: serverTimestamp()
+                });
+                nameInput.value = '';
+                roleInput.value = '';
+                textInput.value = '';
+                updateCharCount();
+            }
+        }
+        function editComment(id) {
+            const comment = currentComments.find(c => c.id === id);
+            if (!comment) return;
+            document.getElementById('editing-comment-id').value = id;
+            document.getElementById('author-name').value = comment.name;
+            document.getElementById('author-role').value = comment.role || '';
+            document.getElementById('comment-text').value = comment.text;
+            const submitBtn = document.getElementById('submit-comment-btn');
+            const cancelBtn = document.getElementById('cancel-edit-btn');
+            if (submitBtn) submitBtn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Guardar Cambios';
+            if (cancelBtn) cancelBtn.classList.remove('hidden');
+            updateCharCount();
+            document.getElementById('comment-form').scrollIntoView({ behavior: 'smooth' });
+        }
+        function cancelEdit() {
+            document.getElementById('editing-comment-id').value = '';
+            document.getElementById('author-name').value = '';
+            document.getElementById('author-role').value = '';
+            document.getElementById('comment-text').value = '';
+            const submitBtn = document.getElementById('submit-comment-btn');
+            const cancelBtn = document.getElementById('cancel-edit-btn');
+            if (submitBtn) submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i> Publicar Comentario';
+            if (cancelBtn) cancelBtn.classList.add('hidden');
+            updateCharCount();
+        }
+        async function deleteComment(id) {
+            if (confirm("¿Seguro que deseas eliminar este comentario? Desaparecerá para siempre.")) {
+                const { doc, deleteDoc } = window.firestoreOps;
+                await deleteDoc(doc(window.db, "comentarios", id));
+            }
+        }
         function escapeHTML(str) {
             if (!str) return '';
-            return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
         }
+        // --- SPA CARGADOR Y CARRUSEL ---
         async function loadPage(url) {
             const contentDiv = document.getElementById('app-content');
-            contentDiv.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center bg-brand-dark text-center p-6 space-y-4"><i class="fa-solid fa-circle-notch fa-spin text-5xl text-brand-mint"></i><p class="text-xs font-bold uppercase tracking-widest text-slate-300">Cargando catálogo...</p></div>`;
+            contentDiv.innerHTML = `
+                <div class="min-h-screen flex flex-col items-center justify-center bg-brand-dark text-center p-6 space-y-4">
+                    <i class="fa-solid fa-circle-notch fa-spin text-5xl text-brand-mint"></i>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-300">Cargando catálogo...</p>
+                </div>`;
             try {
-                const response = await fetch(url.startsWith('./') ? url : `./${url}`);
+                const cleanUrl = url.startsWith('./') ? url : `./${url}`;
+                const response = await fetch(cleanUrl);
                 if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+               
                 const htmlText = await response.text();
-                const doc = new DOMParser().parseFromString(htmlText, 'text/html');
-                contentDiv.innerHTML = doc.querySelector('main') ? doc.querySelector('main').innerHTML : doc.body.innerHTML;
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlText, 'text/html');
+               
+                const newContent = doc.querySelector('main') ? doc.querySelector('main').innerHTML : doc.body.innerHTML;
+                contentDiv.innerHTML = newContent;
                 if (window.AOS) AOS.refresh();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+               
                 bindDynamicLinks();
                 initTourPlayer();
+                initActiveNavObserver();
             } catch (error) {
                 window.location.href = url;
+            }
+        }
+        function resetToHome() {
+            if (homeOriginalContent) {
+                document.getElementById('app-content').innerHTML = homeOriginalContent;
+                if (window.AOS) AOS.refresh();
+                bindDynamicLinks();
+                initTourPlayer();
+                initActiveNavObserver();
+            } else {
+                window.location.reload();
             }
         }
         function bindDynamicLinks() {
             document.querySelectorAll('.nav-dyn-link, a[href$=".html"]').forEach(link => {
                 link.onclick = (e) => {
                     const pageUrl = link.getAttribute('href');
-                    if (pageUrl === 'index.html' || pageUrl === './index.html') return;
+                    if (pageUrl === 'index.html' || pageUrl === './index.html') {
+                        return; // Permite que el enlace a index.html funcione con naturalidad
+                    }
                     if (pageUrl && pageUrl.endsWith('.html')) {
                         e.preventDefault();
                         loadPage(pageUrl);
@@ -565,57 +956,192 @@
             if (nextVideo) { nextVideo.play().catch(e => console.log(e)); }
         }
         setInterval(playCarousel, 4000);
+        // --- SISTEMA DE TOUR VIRTUAL ---
         const tourPlaylist = [
-            { id: 1, title: "Parada #1: Bienvenida al Paseo Colón", desc: "Iniciamos el recorrido desde Calle 1.", src: "./tour1.mp4" },
-            { id: 2, title: "Parada #2: Árboles Frondosos", desc: "Regulación ambiental en las aceras.", src: "./tour2.mp4" }
+            { id: 1, title: "Parada #1: Bienvenida al Paseo Colón", desc: "En este primer video iniciaremos el recorrido desde Calle 1, observando la estructura general del bulevar y el entorno arquitectónico de la avenida.", src: "./tour1.mp4" },
+            { id: 2, title: "Parada #2: Árboles Frondosos de Sombra", desc: "Aprenderás cómo los árboles frondosos regulan la temperatura ambiental en las aceras peatonales de Colón y brindan sombra vital.", src: "./tour2.mp4" },
+            { id: 3, title: "Parada #3: Muestra de Guayacán Real", desc: "Observaremos las características del Guayacán Real (Guaiacum officinale), su majestuosa floración y la firmeza de su madera nativa.", src: "./tour3.mp4" },
+            { id: 4, title: "Parada #4: Bulevar de las Palmeras", desc: "Recorreremos la sección alineada con Palmas Reales (Roystonea regia), identificando su rol de valor paisajístico y ornamental.", src: "./tour4.mp4" },
+            { id: 5, title: "Parada #5: Flora de Costa y Almácigo", desc: "Conoceremos la adaptación ecológica del Almácigo Silvestre y su corteza particular en ambientes tropicales costeros.", src: "./tour5.mp4" },
+            { id: 6, title: "Parada #6: Esculturas de Calle 3", desc: "Adentrándonos en Calle 3, analizaremos los monumentos históricos dedicados a Cristóbal Colón y su trascendencia histórica.", src: "./tour6.mp4" },
+            { id: 7, title: "Parada #7: Registros de la Centuria", desc: "Visualizaremos las placas y bustos conmemorativos que rinden tributo a las gestas de la soberanía nacional en la ciudad.", src: "./tour7.mp4" },
+            { id: 8, title: "Parada #8: Bulevar Central y Jardinería", desc: "Observaremos la distribución de la flora ornamental pequeña y arbustos situados a lo largo de las aceras centrales.", src: "./tour8.mp4" },
+            { id: 9, title: "Parada #9: Trayecto Intermedio Calle 11 a 14", desc: "Un paseo continuo por los tramos centrales del corredor que unen las áreas históricas con zonas comerciales históricas.", src: "./tour9.mp4" },
+            { id: 10, title: "Parada #10: Cierre del Recorrido en Calle 16", desc: "Llegamos al tramo final en Calle 16, contemplando una panorámica unificada que integra el valor natural y monumental de Colón.", src: "./tour10.mp4" }
         ];
         let currentTourIndex = 0;
         function initTourPlayer() {
-            if (!document.getElementById('tour-player')) return;
+            const player = document.getElementById('tour-player');
+            if (!player) return;
             showTourDescription(0);
         }
         function showTourDescription(index) {
             currentTourIndex = index;
-            const videoData = tourPlaylist[currentTourIndex] || tourPlaylist[0];
+            const videoData = tourPlaylist[currentTourIndex];
             const player = document.getElementById('tour-player');
             const source = document.getElementById('tour-source');
+            const title = document.getElementById('tour-video-title');
+            const desc = document.getElementById('tour-video-desc');
+            const step = document.getElementById('tour-overlay-step');
+            const badge = document.getElementById('tour-badge');
+            const overlay = document.getElementById('video-overlay');
+            const outroOverlay = document.getElementById('tour-outro-overlay');
+            if (outroOverlay) outroOverlay.classList.add('hidden');
             if (source && player) {
                 player.pause();
                 source.src = videoData.src;
                 player.load();
-                document.getElementById('tour-video-title').textContent = videoData.title;
-                document.getElementById('tour-video-desc').textContent = videoData.desc;
-                document.getElementById('video-overlay').classList.remove('hidden');
+                if (title) title.textContent = videoData.title;
+                if (desc) desc.textContent = videoData.desc;
+                if (step) step.textContent = `PARADA ${videoData.id} DE 10`;
+                if (badge) badge.textContent = `Parada ${videoData.id}/10`;
+                if (overlay) overlay.classList.remove('hidden');
+                updatePlayBtn(false);
             }
         }
         function startCurrentVideo() {
-            document.getElementById('video-overlay').classList.add('hidden');
-            document.getElementById('tour-player').play().catch(e => console.log(e));
+            const player = document.getElementById('tour-player');
+            const overlay = document.getElementById('video-overlay');
+            if (player) {
+                if (overlay) overlay.classList.add('hidden');
+                player.play().catch(e => console.log("Interacción necesaria"));
+                updatePlayBtn(true);
+            }
         }
         function toggleTourPlay() {
             const player = document.getElementById('tour-player');
-            if (player.paused) { player.play(); } else { player.pause(); }
+            const overlay = document.getElementById('video-overlay');
+            if (!player) return;
+            if (player.paused) {
+                if (overlay) overlay.classList.add('hidden');
+                player.play();
+                updatePlayBtn(true);
+            } else {
+                player.pause();
+                updatePlayBtn(false);
+            }
         }
-        function updateTourProgress() {
-            const player = document.getElementById('tour-player');
-            if (player && player.duration) {
-                const pct = (player.currentTime / player.duration) * 100;
-                document.getElementById('tour-progress-bar').style.width = `${pct}%`;
+        function updatePlayBtn(isPlaying) {
+            const btn = document.getElementById('tour-play-btn');
+            if (btn) {
+                btn.innerHTML = isPlaying ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
             }
         }
         function onTourVideoEnded() {
             if (currentTourIndex < tourPlaylist.length - 1) {
                 showTourDescription(currentTourIndex + 1);
             } else {
-                document.getElementById('tour-outro-overlay').classList.remove('hidden');
+                showTourOutro();
             }
+        }
+        function nextTourStep() {
+            if (currentTourIndex < tourPlaylist.length - 1) {
+                showTourDescription(currentTourIndex + 1);
+            } else {
+                showTourOutro();
+            }
+        }
+        function prevTourStep() {
+            if (currentTourIndex > 0) {
+                showTourDescription(currentTourIndex - 1);
+            }
+        }
+        function showTourOutro() {
+            const player = document.getElementById('tour-player');
+            const outroOverlay = document.getElementById('tour-outro-overlay');
+            if (player) player.pause();
+            if (outroOverlay) outroOverlay.classList.remove('hidden');
+            updatePlayBtn(false);
+        }
+        function restartTour() {
+            showTourDescription(0);
+        }
+        function rewindTour(seconds) {
+            const player = document.getElementById('tour-player');
+            if (player) player.currentTime = Math.max(0, player.currentTime - seconds);
+        }
+        function forwardTour(seconds) {
+            const player = document.getElementById('tour-player');
+            if (player) player.currentTime = Math.min(player.duration || 0, player.currentTime + seconds);
+        }
+        function updateTourProgress() {
+            const player = document.getElementById('tour-player');
+            const progressBar = document.getElementById('tour-progress-bar');
+            const timer = document.getElementById('tour-timer');
+            if (!player) return;
+            if (player.duration) {
+                const pct = (player.currentTime / player.duration) * 100;
+                if (progressBar) progressBar.style.width = `${pct}%`;
+                if (timer) {
+                    timer.textContent = `${formatTime(player.currentTime)} / ${formatTime(player.duration)}`;
+                }
+            } else {
+                if (timer) timer.textContent = "00:00 / 00:00";
+            }
+        }
+        function seekTourVideo(e) {
+            const player = document.getElementById('tour-player');
+            if (!player || !player.duration) return;
+            const rect = e.currentTarget.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const pct = clickX / rect.width;
+            player.currentTime = pct * player.duration;
+        }
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
         function toggleFullscreen() {
             const container = document.getElementById('tour-container');
+            const icon = document.getElementById('fullscreen-icon');
+            
             if (!document.fullscreenElement) {
-                container.requestFullscreen?.();
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                if (icon) {
+                    icon.classList.remove('fa-expand');
+                    icon.classList.add('fa-compress');
+                }
             } else {
-                document.exitFullscreen?.();
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                if (icon) {
+                    icon.classList.remove('fa-compress');
+                    icon.classList.add('fa-expand');
+                }
+            }
+        }
+        document.addEventListener('fullscreenchange', () => {
+            const icon = document.getElementById('fullscreen-icon');
+            if (!document.fullscreenElement && icon) {
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+            }
+        });
+        
+        // --- FUNCIÓN SHOWTAB AÑADIDA ---
+        function showTab(tabName) {
+            // Ocultar todas las secciones de pestañas
+            const tabs = document.querySelectorAll('.tab-content');
+            if (tabs.length > 0) {
+                tabs.forEach(tab => tab.classList.add('hidden'));
+            }
+            
+            // Mostrar la pestaña seleccionada si existe
+            const targetTab = document.getElementById(tabName);
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
             }
         }
     </script>
