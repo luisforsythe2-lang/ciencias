@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Catálogo Socioambiental - EcoColón</title>
-    <!-- CORREGIDO: Se cerraron bien las etiquetas de script -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Botánico - EcoColón</title>
+    
+    <!-- TAILWIND CSS Y FONTAWESOME -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -22,779 +24,282 @@
             }
         }
     </script>
-    <style>
-        .tab-active {
-            border-color: #22C55E !important;
-            color: white !important;
-            background-color: rgba(34, 197, 94, 0.1) !important;
-        }
-        .hidden { display: none !important; }
-    </style>
 </head>
 <body class="bg-zinc-950 text-white font-sans antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
-<header class="w-full border-b border-white/10 bg-black/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
-    <a class="flex items-center gap-2 text-white hover:text-science-neon transition-colors" href="index.html">
-        <i class="fa-solid fa-arrow-left text-sm"></i>
-        <span class="text-xs font-bold uppercase tracking-widest">Volver al Inicio</span>
-    </a>
-    <div class="font-black text-science-neon tracking-normal text-sm">
-        ECO<span class="text-white">COLÓN</span>
-    </div>
-</header>
-<main class="max-w-7xl mx-auto px-6 py-10 md:py-16 w-full space-y-12">
-    <div class="space-y-2 border-b border-zinc-800 pb-6 text-center">
-        <h1 class="text-3xl md:text-5xl font-black uppercase text-white tracking-tight">
-            Catálogo Socioambiental
-        </h1>
-        <p class="text-zinc-400 text-sm md:text-base font-medium max-w-2xl mx-auto">
-            Explora el inventario completo de especies botánicas y monumentos históricos que forman parte del patrimonio ecológico y cultural de Colón.
-        </p>
-    </div>
-    <div class="flex justify-center border border-zinc-800 rounded-full p-1 max-w-sm mx-auto bg-black">
-        <button class="tab-active flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-zinc-400 transition-all hover:text-white" id="btn-arboles" onclick="showTab('arboles')">
-            <i class="fa-solid fa-tree"></i> Árboles
-        </button>
-        <button id="btn-estatuas" onclick="showTab('estatuas')" class="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-zinc-400 transition-all hover:text-white">
-            <i class="fa-solid fa-monument"></i> Estatuas
-        </button>
-    </div>
-
-    <!-- Panel Árboles -->
-    <div class="tab-panel space-y-10" id="panel-arboles">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Almendro -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Almendro" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./almendro.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Combretaceae</span>
-                        <span class="text-zinc-300">Terminalia catappa L.</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Almendro</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol frondoso con ramas en pisos y hojas grandes que tornan rojas/amarillas. Brinda sombra densa y soporta salinidad.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=almendro">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Árbol orquídea -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Árbol orquídea" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./orquidea.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Fabaceae</span>
-                        <span class="text-zinc-300">Bauhinia monandra Kurz</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Árbol orquídea</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Arbolito de hojas bilobuladas con forma de pezuña y grandes flores rosado-purpúreas con aspecto de orquídea.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=orquidea">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Caracucha -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Caracucha" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./cara5.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Apocynaceae</span>
-                        <span class="text-zinc-300">Plumeria rubra L.</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Caracucha</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Arbusto suculento de flores muy fragantes de 5 pétalos. Planta ornamental altamente resistente al sol directo.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=caracucha">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Ficus -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Ficus" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./ficus.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Moraceae</span>
-                        <span class="text-zinc-300">Ficus kurzii King</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Ficus</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de gran porte con raíces aéreas y copa espesa verde oscura. Ayuda a reducir la temperatura urbana.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=ficus">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Flamboyán -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Flamboyán" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./flamboyan.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Fabaceae</span>
-                        <span class="text-zinc-300">Delonix regia</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Flamboyán</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de copa en sombrilla extendida con follaje plumoso y espectacular floración masiva de color rojo-anaranjado.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=flamboyan">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Mamón -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Mamón" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./mamon.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Sapindaceae</span>
-                        <span class="text-zinc-300">Melicoccus bijugatus</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Mamón</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol frutal tradicional de gran tamaño con copa tupida que produce racimos de frutos verdes con pulpa agridulce.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=mamon">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- María -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="María" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./maria.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Calophyllaceae</span>
-                        <span class="text-zinc-300">Calophyllum inophyllum</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">María</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Especie robusta de hojas verde oscuro brillante y flores blancas aromáticas. Funciona como excelente barrera rompevientos.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=maria">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Nim o Neem -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Nim o Neem" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./nim2.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Meliaceae</span>
-                        <span class="text-zinc-300">Azadirachta indica</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Nim / Neem</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de crecimiento rápido y copa densa. Funciona como repelente natural ecológico y tolera la contaminación.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=neem">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Astromelia -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Astromelia" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./astro.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Lythraceae</span>
-                        <span class="text-zinc-300">Lagerstroemia speciosa</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Astromelia</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol mediano reconocido por sus llamativas panículas florales de pétalos rizados en tonos rosa, lila y púrpura.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=astromelia">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Bouquet de Novia -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Bouquet de novia rojo" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./rojo.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Rubiaceae</span>
-                        <span class="text-zinc-300">Ixora coccinea L.</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Bouquet de Novia</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Arbusto bajo siempreverde con ramilletes globosos de flores tubulares color rojo vivo. Ideal para bordes de caminos.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=ixora">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Clavellino -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Clavellino" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./clave.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Fabaceae</span>
-                        <span class="text-zinc-300">Caesalpinia pulcherrima</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Clavellino</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Arbusto espinoso con flores en racimos amarillos y rojos de largos estambres que atraen colibríes y mariposas.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=clavellino">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Ilang-Ilang -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Ilang-Ilang" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./llang.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Annonaceae</span>
-                        <span class="text-zinc-300">Cananga odorata</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Ilang-Ilang</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol mediano de ramas péndulas y flores amarillentas de pétalos largos extremadamente aromáticos.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=ylang">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Guayacán -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Guayacán" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./numero7.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Bignoniaceae</span>
-                        <span class="text-zinc-300">Handroanthus sp.</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Guayacán</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de gran porte que pierde sus hojas para cubrirse totalmente de deslumbrantes flores acampanadas.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=guayacan">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Frijolillo -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Frijolillo" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./fijo.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Fabaceae</span>
-                        <span class="text-zinc-300">Clitoria fairchildiana</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Frijolillo</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de copa tupida y ancha con vistosas flores violetas péndulas. Ayuda al enriquecimiento de nitrógeno en el suelo.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=frijolillo">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Guaje / Leucaena -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Leucaena" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./guaje.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Fabaceae</span>
-                        <span class="text-zinc-300">Leucaena esculenta</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Guaje / Leucaena</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol mediano con hojas muy finas y flores en cabezuelas blancas globosas. Especie rústica de alta adaptabilidad.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=leucaena">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Syzygium -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Syzygium" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./lloron.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Myrtaceae</span>
-                        <span class="text-zinc-300">Syzygium syzygioides</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Syzygium</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol de ramas delgadas péndulas y hojas aromáticas elípticas. Aporta una textura vegetal fina al paisaje.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=syzygium">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Flamboyán Dorado -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Flamboyán Dorado" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./dorado.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Fabaceae</span>
-                        <span class="text-zinc-300">Peltophorum pterocarpum</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Flamboyán Dorado</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol grande con copa en parasol y densas espigas de flores amarillo brillante que brindan amplia sombra.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=flamboyan-dorado">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Noni -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Noni" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./noni.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Rubiaceae</span>
-                        <span class="text-zinc-300">Morinda citrifolia L.</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Noni</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Arbusto de grandes hojas brillantes y frutos rugosos característicos. Reconocido por sus usos medicinales tradicionales.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=noni">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Palma Amarilla -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Palma Amarilla" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./amarillo.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Arecaceae</span>
-                        <span class="text-zinc-300">Dypsis lutescens</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Palma Amarilla</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma multicaule de troncos anillados verdosos y frondas amarillentas arqueadas. Especie ornamental muy elegante.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=palma-amarilla">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Palma Real -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Palma Real" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./real.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Arecaceae</span>
-                        <span class="text-zinc-300">Roystonea regia</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Palma Real</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma majestuosa de gran altura con tronco liso gris abultado y capitel verde prominente. Eje visual monumental.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=palma-real">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Corozo -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Corozo" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./corozo.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Arecaceae</span>
-                        <span class="text-zinc-300">Acrocomia aculeata</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Corozo</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma solitaria provista de espinas negras agudas en su tronco. De alto valor etnobotánico y atracción de fauna.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=corozo">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Palma Abanico China -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Palma Abanico China" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./china.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Arecaceae</span>
-                        <span class="text-zinc-300">Livistona chinensis</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Palma Abanico China</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma caracterizada por sus grandes hojas palmeadas en abanico cuyos extremos cuelgan con elegancia.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=palma-china">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Cola de Pescado -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Palma Cola de Pescado" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./caryota.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Arecaceae</span>
-                        <span class="text-zinc-300">Caryota sp.</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Cola de Pescado</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma única de hojas bipinnadas con folíolos cortados en forma de aleta de pez. Elemento botánico singular.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=caryota">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Palma de Navidad -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Palma de Navidad" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./navidad.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Arecaceae</span>
-                        <span class="text-zinc-300">Adonidia merrillii</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Palma de Navidad</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma pequeña ornamental con racimos colgantes de frutos que cambian a un rojo intenso brillante en invierno.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=navidad">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Palma Bambú -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Palma Bambú" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./bambu.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Arecaceae</span>
-                        <span class="text-zinc-300">Rhapis sp.</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Palma Bambú</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Palma enana multicaule de tallos delgados tipo caña de bambú.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=36">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Roble -->
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Roble" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./rosea.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Bignoniaceae</span>
-                        <span class="text-zinc-300">Tabebuia rosea</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Roble</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Árbol majestuoso de gran tamaño caracterizado por su hermosa floración rosada o blanca.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="botanica.html?id=37">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
+    <!-- HEADER / NAV -->
+    <header class="w-full border-b border-white/10 bg-black/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+        <a href="catalogo.html" class="flex items-center gap-2 text-white hover:text-science-neon transition-colors">
+            <i class="fa-solid fa-arrow-left text-sm"></i>
+            <span class="text-xs font-bold uppercase tracking-widest">Volver al Catálogo</span>
+        </a>
+        <div class="font-black text-science-neon tracking-normal text-sm">
+            ECO<span class="text-white">COLÓN</span>
         </div>
-    </div>
+    </header>
 
-    <!-- Panel Estatuas -->
-    <div class="tab-panel space-y-10 hidden" id="panel-estatuas">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Monumento al Cristo Redentor" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./foto2.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Granito y Cemento</span>
-                        <span class="text-zinc-300">Calle 1, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Cristo Redentor</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Símbolo de paz y hospitalidad que vigila la entrada del Canal de Panamá al final de la Avenida Central.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=cristo">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Monumento al Club de Leones" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./leon1.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Estilo Art Déco</span>
-                        <span class="text-zinc-300">Calle 1, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Club de Leones</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Figura de un león sobre pedestal Art Déco que simboliza el liderazgo, la solidaridad y la vocación de servicio.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=leones">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Monumento a la Madre" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./madre.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Bronce Macizo</span>
-                        <span class="text-zinc-300">Calle 1, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Monumento a la Madre</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Escultura en bronce de una madre sosteniendo a su hijo, honrando el amor incondicional y la protección familiar.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=madre">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Monumento al Cristóbal Colón" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./colon2.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Bronce y Mármol</span>
-                        <span class="text-zinc-300">Calle 2–3, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Cristóbal Colón</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Joya histórica donada por la Emperatriz Eugenia de Montijo en 1870 que simboliza el encuentro de dos mundos.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=colon">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Monumento al Cacique Quibián" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./ca2.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Bronce Esculpido</span>
-                        <span class="text-zinc-300">Calle 3, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Cacique Quibián</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Homenaje al líder originario Guaymí con su hacha en alto, representando la valentía y la soberanía indígena.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=quibian">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Busto de Ferdinand de Lesseps" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./canal2.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Bronce Decimonónico</span>
-                        <span class="text-zinc-300">Calle 3, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Ferdinand de Lesseps</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Busto en honor al diplomático francés que lideró el primer esfuerzo de excavación del canal interoceánico.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=lesseps">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="San Juan Bautista de La Salle" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./salle4.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Arte Sacro en Bronce</span>
-                        <span class="text-zinc-300">Calle 4, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">San Juan Bautista de La Salle</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Conjunto de bronce del patrono de los educadores guiando a dos niños, resaltando el valor de la enseñanza.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=lasalle">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Plaza del Sesquicentenario" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./plaza3.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Monumento Conmemorativo</span>
-                        <span class="text-zinc-300">Calle 5, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Plaza Sesquicentenario</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Espacio público y monumento emblemático en conmemoración de la historia colonense y panameña.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=sesquicentenario">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Prócer de la Separación de 1903" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./amador1.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Bronce Republicano</span>
-                        <span class="text-zinc-300">Calle 6–7, Av. Amador Guerrero</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Manuel Amador Guerrero</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-2">Busto de Manuel Amador Guerrero, uno de los gestores de la separación de Panamá y primer presidente.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=procer">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Proyecto Libro Abierto" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./libro.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Instalación Cultural</span>
-                        <span class="text-zinc-300">Calle 8, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Libro Abierto</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-3">Iniciativa de biblioteca al aire libre, promoviendo la lectura y dinamizando el espacio peatonal a través de la participación ciudadana.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=libro">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Busto de Francisco Arias Paredes" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./paredes1.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Dirigente Político</span>
-                        <span class="text-zinc-300">Calle 8–9, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Francisco Arias P.</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-3">Apodado 'El Caballero de la Política'. Filántropo y líder social con profundo impacto comunitario en la sociedad colonense.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=arias">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Obelisco a los Bomberos Mártires" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./bomberos3.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Obelisco Cívico</span>
-                        <span class="text-zinc-300">Calle 10, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Bomberos Mártires</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-3">Estructura de obelisco cívico con placa de honor en memoria de los camisas rojas caídos en servicio heroico y sacrificio.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=bomberos">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Busto de Aminta Meléndez" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./aminta1.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Escultor: E. Ambullo (1954)</span>
-                        <span class="text-zinc-300">Calle 9–10, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Aminta Meléndez</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-3">Prócer del Movimiento Separatista de 1903. Reconocida como 'El Alma de los Movimientos de Colón' y 'Correo de Gabinete'.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=aminta">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Mobiliario Urbano Estantería" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./mobiliario.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Arte Público</span>
-                        <span class="text-zinc-300">Calle 11, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Estantería Abierta</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-3">Módulo metálico que combina el arte público con el urbanismo táctico, funcionando como estantería abierta para el intercambio libre de libros.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=mobiliario">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Busto de Juan Demóstenes Arosemena" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./arosemena2.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Presidente (1936-39)</span>
-                        <span class="text-zinc-300">Calle 10–11, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Juan D. Arosemena</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-3">Presidente de Panamá y Gobernador de Colón. Gran promotor educativo y figura que da el nombre oficial a este paseo.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=arosemena">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Busto de José Dominador Bazán" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./bazan.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Alcalde Histórico</span>
-                        <span class="text-zinc-300">Calle 11–12, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Dominador Bazán</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-3">Vicepresidente y Alcalde. Impulsor clave de la ley de creación de la Zona Libre de Colón (1948) y modernizador local.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=bazan">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Busto de Thelma King" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./king.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Diputada (1921-1993)</span>
-                        <span class="text-zinc-300">Calle 12–13, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Thelma King H.</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-3">Primera mujer diputada por la provincia de Colón. Heroína soberana en las gestas patrióticas y defensora de los derechos.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=thelma">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Busto de José Antonio Remón Cantera" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./cantera.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Presidente (1952-55)</span>
-                        <span class="text-zinc-300">Calle 14–15, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">J. A. Remón Cantera</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-3">Presidente de Panamá. Impulsó el Tratado Remón-Eisenhower de 1955 para lograr reivindicaciones económicas del Canal.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=remon">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl aspect-[3/4] flex flex-col justify-end transition-all hover:border-science-neon/50 hover:shadow-2xl">
-                <img alt="Monumento a la Cruz Blanca" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" src="./cruz.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="relative p-6 space-y-3 z-10">
-                    <div class="flex items-center justify-between text-[11px] font-bold text-science-neon uppercase tracking-wider">
-                        <span>Símbolo Cívico</span>
-                        <span class="text-zinc-300">Calle 16, Ave. Central</span>
-                    </div>
-                    <h3 class="text-2xl font-black text-white uppercase tracking-tight leading-none">Monumento a la Cruz</h3>
-                    <p class="text-zinc-300 text-xs font-light line-clamp-3">Elevada cruz monumental de hormigón colocada sobre el paseo como un poderoso símbolo cívico y espiritual de la ciudad.</p>
-                    <a class="inline-flex items-center gap-2 text-science-neon text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all pt-1" href="estatua-detalle.html?id=cruz">
-                        Ver Ficha Completa <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
+    <!-- CONTENIDO DINÁMICO -->
+    <main id="main-content" class="max-w-6xl mx-auto px-6 py-10 md:py-16 w-full space-y-10">
+        <!-- Inyección vía JavaScript -->
+    </main>
 
-<footer class="border-t border-zinc-900 bg-black py-6 px-6 text-center text-xs text-zinc-500 font-medium">
-    <p>© 2026 Catálogo Socioambiental de Colón. Todos los derechos reservados.</p>
-</footer>
-<script>
-  function showTab(tabName) {
-    const panelArboles = document.getElementById('panel-arboles');
-    const panelEstatuas = document.getElementById('panel-estatuas');
-    const btnArboles = document.getElementById('btn-arboles');
-    const btnEstatuas = document.getElementById('btn-estatuas');
+    <!-- FOOTER -->
+    <footer class="border-t border-zinc-900 bg-black py-6 px-6 text-center text-xs text-zinc-500 font-medium">
+        <p>&copy; 2026 Catálogo Socioambiental de Colón. Todos los derechos reservados.</p>
+    </footer>
 
-    if (tabName === 'arboles') {
-      if (panelArboles) panelArboles.classList.remove('hidden');
-      if (panelEstatuas) panelEstatuas.classList.add('hidden');
-      if (btnArboles) btnArboles.classList.add('tab-active');
-      if (btnEstatuas) btnEstatuas.classList.remove('tab-active');
-    } else if (tabName === 'estatuas') {
-      if (panelArboles) panelArboles.classList.add('hidden');
-      if (panelEstatuas) panelEstatuas.classList.remove('hidden');
-      if (btnArboles) btnArboles.classList.remove('tab-active');
-      if (btnEstatuas) btnEstatuas.classList.add('tab-active');
-    }
-  }
-</script>
+    <!-- BASE DE DATOS MAESTRA BLINDADA -->
+    <script>
+        const botanicaDB = {
+            "1": { name: "Almendro", sciName: "Terminalia catappa L.", family: "Combretaceae", desc: "Árbol frondoso de gran tamaño con ramas horizontales en pisos y excelente resistencia a la salinidad costera.", images: ["./almendro.jpeg", "./almendro1.jpeg", "./almendro2.jpeg"] },
+            "almendro": { name: "Almendro", sciName: "Terminalia catappa L.", family: "Combretaceae", desc: "Árbol frondoso de gran tamaño con ramas horizontales en pisos y excelente resistencia a la salinidad costera.", images: ["./almendro.jpeg", "./almendro1.jpeg", "./almendro2.jpeg"] },
+            
+            "2": { name: "Árbol Orquídea", sciName: "Bauhinia monandra", family: "Fabaceae", desc: "Arbolito de hojas bilobuladas con flores grandes rosadas y púrpuras muy vistosas.", images: ["./orquidea.jpeg"] },
+            "arbol-orquidea": { name: "Árbol Orquídea", sciName: "Bauhinia monandra", family: "Fabaceae", desc: "Arbolito de hojas bilobuladas con flores grandes rosadas y púrpuras muy vistosas.", images: ["./orquidea.jpeg"] },
+            
+            "3": { name: "Caracucha", sciName: "Plumeria rubra", family: "Apocynaceae", desc: "Arbusto o árbol pequeño de ramas suculentas y flores intensamente aromáticas.", images: ["./cara.jpg", "./cara1.jpeg", "./cara2.jpg", "./cara3.jpg", "./cara4.jpg", "./cara5.jpeg"] },
+            "caracucha": { name: "Caracucha", sciName: "Plumeria rubra", family: "Apocynaceae", desc: "Arbusto o árbol pequeño de ramas suculentas y flores intensamente aromáticas.", images: ["./cara.jpg", "./cara1.jpeg", "./cara2.jpg", "./cara3.jpg", "./cara4.jpg", "./cara5.jpeg"] },
+            
+            "4": { name: "Ficus", sciName: "Ficus kurzii King", family: "Moraceae", desc: "Árbol de porte majestuoso con denso follaje siempreverde y raíces aéreas.", images: ["./ficus.jpeg", "./ficus1.jpeg", "./ficus2.jpeg", "./ficus3.jpeg"] },
+            "ficus": { name: "Ficus", sciName: "Ficus kurzii King", family: "Moraceae", desc: "Árbol de porte majestuoso con denso follaje siempreverde y raíces aéreas.", images: ["./ficus.jpeg", "./ficus1.jpeg", "./ficus2.jpeg", "./ficus3.jpeg"] },
+            
+            "5": { name: "Flamboyán", sciName: "Delonix regia (bojer ex hook.) raf.", family: "Fabaceae", desc: "Árbol de copa extendida en sombrilla con espectacular floración roja-anaranjada.", images: ["./flamboyan.jpeg", "./flamboyan1.jpeg", "./flamboyan2.jpeg", "./flamboyan3.jpeg"] },
+            "flamboyan": { name: "Flamboyán", sciName: "Delonix regia (bojer ex hook.) raf.", family: "Fabaceae", desc: "Árbol de copa extendida en sombrilla con espectacular floración roja-anaranjada.", images: ["./flamboyan.jpeg"] },
+            
+            "6": { name: "Mamón Criollo", sciName: "Melicoccus bijugatus", family: "Sapindaceae", desc: "Árbol frutal de tronco fuerte que produce racimos de frutos globosos verdes de pulpa dulce.", images: ["./mamon.jpg", "./mamon1.jpg", "./mamon2.jpg", "./mamon3.jpg"] },
+            "mamon-criollo": { name: "Mamón Criollo", sciName: "Melicoccus bijugatus", family: "Sapindaceae", desc: "Árbol frutal de tronco fuerte que produce racimos de frutos globosos verdes de pulpa dulce.", images: ["./mamon.jpg", "./mamon1.jpg", "./mamon2.jpg", "./mamon3.jpg"] },
+            
+            "7": { name: "María", sciName: "Calophyllum inophyllum", family: "Calophyllaceae", desc: "Árbol perennifolio de hojas coriáceas verde oscuro y flores blancas muy perfumadas.", images: ["./maria.jpeg", "./maria1.jpeg", "./maria2.jpg", "./maria3.jpg", "./maria4.jpg", "./maria5.jpg"] },
+            "maria": { name: "María", sciName: "Calophyllum inophyllum", family: "Calophyllaceae", desc: "Árbol perennifolio de hojas coriáceas verde oscuro y flores blancas muy perfumadas.", images: ["./maria.jpeg", "./maria1.jpeg", "./maria2.jpg", "./maria3.jpg", "./maria4.jpg", "./maria5.jpg"] },
+            
+            "8": { name: "Nim / Neem", sciName: "Azadirachta indica A. Juss.", family: "Meliaceae", desc: "Árbol de rápido crecimiento resistente a la contaminación urbana y purificador ambiental.", images: ["./nim.jpg", "./nim1.jpg", "./nim2.jpg", "./nim3.jpg"] },
+            "nim": { name: "Nim / Neem", sciName: "Azadirachta indica A. Juss.", family: "Meliaceae", desc: "Árbol de rápido crecimiento resistente a la contaminación urbana y purificador ambiental.", images: ["./nim.jpg", "./nim1.jpg", "./nim2.jpg", "./nim3.jpg"] },
+            
+            "9": { name: "Astromelia", sciName: "Lagerstroemia speciosa (L.) Pers", family: "Lythraceae", desc: "Árbol mediano decorativo con vistosos racimos verticales de flores rizadas lila y rosado.", images: ["./astro.jpeg", "./astro1.jpeg", "./astro2.jpeg", "./astro3.jpeg"] },
+            "astromelia": { name: "Astromelia", sciName: "Lagerstroemia speciosa (L.) Pers", family: "Lythraceae", desc: "Árbol mediano decorativo con vistosos racimos verticales de flores rizadas lila y rosado.", images: ["./astro.jpeg", "./astro1.jpeg", "./astro2.jpeg", "./astro3.jpeg"] },
+            
+            "10": { name: "Bouquet de Novia Rojo", sciName: "Ixora coccinea L.", family: "Rubiaceae", desc: "Arbusto tupido de flores tubulares color rojo brillante agrupadas en esferas compactas.", images: ["./rojo.jpeg", "./rojo1.jpeg", "./rojo2.jpeg"] },
+            "ixora": { name: "Bouquet de Novia Rojo", sciName: "Ixora coccinea L.", family: "Rubiaceae", desc: "Arbusto tupido de flores tubulares color rojo brillante agrupadas en esferas compactas.", images: ["./rojo.jpeg", "./rojo1.jpeg", "./rojo2.jpeg"] },
+            
+            "12": { name: "Cativo", sciName: "Prioria copaifera", family: "Fabaceae", desc: "Árbol nativo de bosques tropicales húmedos característico de zonas cenagosas.", images: ["./placeholder.jpeg"] },
+            "cativo": { name: "Cativo", sciName: "Prioria copaifera", family: "Fabaceae", desc: "Árbol nativo de bosques tropicales húmedos característico de zonas cenagosas.", images: ["./placeholder.jpeg"] },
+            
+            "13": { name: "Clavellino", sciName: "Caesalpinia pulcherrima", family: "Fabaceae", desc: "Arbusto de flores rojas y amarillas con estambres largos que atraen polinizadores.", images: ["./clave.jpeg", "./clave1.jpeg", "./clave2.jpeg"] },
+            "clavellino": { name: "Clavellino", sciName: "Caesalpinia pulcherrima", family: "Fabaceae", desc: "Arbusto de flores rojas y amarillas con estambres largos que atraen polinizadores.", images: ["./clave.jpeg", "./clave1.jpeg", "./clave2.jpeg"] },
+            
+            "14": { name: "Ilang-Ilang", sciName: "Cananga odorata", family: "Annonaceae", desc: "Árbol de flores verdosas-amarillas de altísimo valor aromático y medicinal.", images: ["./llang.jpeg"] },
+            "ilang-ilang": { name: "Ilang-Ilang", sciName: "Cananga odorata", family: "Annonaceae", desc: "Árbol de flores verdosas-amarillas de altísimo valor aromático y medicinal.", images: ["./llang.jpeg", "./llang1.jpeg"] },
+            "ylang": { name: "Ilang-Ilang", sciName: "Cananga odorata", family: "Annonaceae", desc: "Árbol de flores verdosas-amarillas de altísimo valor aromático y medicinal.", images: ["./llang.jpeg", "./llang1.jpeg"] },
+            
+            "15": { name: "Guayacán Real", sciName: "Handroanthus sp", family: "Bignoniaceae", desc: "Árbol nativo frondoso con majestuosa floración rosada durante la época seca.", images: ["./numero7.jpeg"] },
+            "guayacan-rosado": { name: "Guayacán Rosado", sciName: "Handroanthus sp", family: "Bignoniaceae", desc: "Árbol nativo frondoso con majestuosa floración rosada durante la época seca.", images: ["./numero7.jpeg"] },
+            
+            "17": { name: "Frijolillo", sciName: "Clitoria fairchildiana R.A. Howard", family: "Fabaceae", desc: "Árbol frondoso de flores lilas péndulas que enriquece el suelo urbano.", images: ["./fijo.jpeg", "./fijo1.jpeg", "./fijo2.jpeg"] },
+            "frijolillo": { name: "Frijolillo", sciName: "Clitoria fairchildiana R.A. Howard", family: "Fabaceae", desc: "Árbol frondoso de flores lilas péndulas que enriquece el suelo urbano.", images: ["./fijo.jpeg", "./fijo1.jpeg", "./fijo2.jpeg"] },
+            
+            "18": { name: "Marañón Curat", sciName: "Anacardium occidentale", family: "Anacardiaceae", desc: "Árbol frutal tropical reconocido por su fruto característico y su pseudofruto carnoso.", images: ["./cortes.jpeg"] },
+            "maranon-curat": { name: "Marañón Curat", sciName: "Anacardium occidentale", family: "Anacardiaceae", desc: "Árbol frutal tropical reconocido por su fruto característico y su pseudofruto carnoso.", images: ["./cortes.jpeg"] },
+            
+            "20": { name: "Guaba de Mico", sciName: "Inga edulis", family: "Fabaceae", desc: "Árbol leguminoso de rápido crecimiento utilizado para dar sombra y restaurar suelos.", images: ["./inga.jpeg"] },
+            "guaba-de-mico": { name: "Guaba de Mico", sciName: "Inga edulis", family: "Fabaceae", desc: "Árbol leguminoso de rápido crecimiento utilizado para dar sombra y restaurar suelos.", images: ["./inga.jpeg"] },
+            
+            "21": { name: "Acacia Mangium", sciName: "Acacia mangium", family: "Fabaceae", desc: "Árbol robusto de rápido desarrollo adaptado a suelos tropicales ácidos.", images: ["./acacia.jpeg"] },
+            "acacia-mangium": { name: "Acacia Mangium", sciName: "Acacia mangium", family: "Fabaceae", desc: "Árbol robusto de rápido desarrollo adaptado a suelos tropicales ácidos.", images: ["./acacia.jpeg"] },
+            
+            "22": { name: "Leucaena", sciName: "Leucaena esculenta", family: "Fabaceae", desc: "Árbol de hojas finas plumosas y gran adaptabilidad ecológica.", images: ["./guaje.jpeg", "./guaje1.jpeg"] },
+            "leucaena": { name: "Leucaena", sciName: "Leucaena esculenta", family: "Fabaceae", desc: "Árbol de hojas finas plumosas y gran adaptabilidad ecológica.", images: ["./guaje.jpeg", "./guaje1.jpeg"] },
+            
+            "23": { name: "Sauce Llorón", sciName: "Syzygium syzygioides (Miq.) Merr. & L.M. Perry", family: "Bignoniaceae", desc: "Registro botánico de follaje denso y porte característico ubicado en el parque.", images: ["./lloron.jpeg"] },
+            "syzygium": { name: "Sauce Llorón", sciName: "Syzygium syzygioides (Miq.) Merr. & L.M. Perry", family: "Bignoniaceae", desc: "Registro botánico de follaje denso y porte característico ubicado en el parque.", images: ["./lloron.jpeg"] },
+            "sauce-lloron": { name: "Sauce Llorón", sciName: "Syzygium syzygioides (Miq.) Merr. & L.M. Perry", family: "Bignoniaceae", desc: "Registro botánico de follaje denso y porte característico ubicado en el parque.", images: ["./lloron.jpeg"] },
+            
+            "25": { name: "Flamboyán Dorado", sciName: "Peltophorum pterocarpum (DC.) Backer ex K.Heyne", family: "Fabaceae", desc: "Árbol imponente con erguidas pirámides de flores amarillo brillante.", images: ["./dorado.jpeg"] },
+            "flamboyan-dorado": { name: "Flamboyán Dorado", sciName: "Peltophorum pterocarpum (DC.) Backer ex K.Heyne", family: "Fabaceae", desc: "Árbol imponente con erguidas pirámides de flores amarillo brillante.", images: ["./dorado.jpeg"] },
+            
+            "29": { name: "Noni", sciName: "Morinda citrifolia L.", family: "Rubiaceae", desc: "Arbusto tropical de hojas anchas y frutos amarillentos rugosos de uso tradicional.", images: ["./noni.jpeg", "./noni1.jpg"] },
+            "noni": { name: "Noni", sciName: "Morinda citrifolia L.", family: "Rubiaceae", desc: "Arbusto tropical de hojas anchas y frutos amarillentos rugosos de uso tradicional.", images: ["./noni.jpeg", "./noni1.jpg"] },
+            
+            "30": { name: "Palma Amarilla", sciName: "Chrysalidocarpus lutescens H. Wendl", family: "Arecaceae", desc: "Palma multicaule de tallos anillados amarillos y frondas verdes curvadas.", images: ["./palma amarilla.jpeg"] },
+            "palma-amarilla": { name: "Palma Amarilla", sciName: "Chrysalidocarpus lutescens H. Wendl", family: "Arecaceae", desc: "Palma multicaule de tallos anillados amarillos y frondas verdes curvadas.", images: ["./amarillo.jpeg"] },
+            
+            "31": { name: "Palma Real", sciName: "Roystonea regia (Kunth) O.F. Cook", family: "Arecaceae", desc: "Palma elegante de tronco liso grisáceo y capitel verde de gran altura.", images: ["./real.jpeg"] },
+            "palma-real": { name: "Palma Real", sciName: "Roystonea regia (Kunth) O.F. Cook", family: "Arecaceae", desc: "Palma elegante de tronco liso grisáceo y capitel verde de gran altura.", images: ["./real.jpeg"] },
+            
+            "32": { name: "Corozo", sciName: "Acrocomia aculeata", family: "Arecaceae", desc: "Palma autóctona provista de espinas en su tronco y frutos ricos en aceites.", images: ["./corozo.jpeg"] },
+            "corozo": { name: "Corozo", sciName: "Acrocomia aculeata", family: "Arecaceae", desc: "Palma autóctona provista de espinas en su tronco y frutos ricos en aceites.", images: ["./corozo.jpeg"] },
+            
+            "33": { name: "Palma Abanico China", sciName: "Livistona chinensis (Jacq.) R.Br. ex Mart.", family: "Arecaceae", desc: "Palma de frondas en abanico con extremos de los folíolos caídos.", images: ["./china.jpeg", "./china2.jpeg", "./china3.jpeg"] },
+            "palma-china": { name: "Palma Abanico China", sciName: "Livistona chinensis (Jacq.) R.Br. ex Mart.", family: "Arecaceae", desc: "Palma de frondas en abanico con extremos de los folíolos caídos.", images: ["./china.jpeg", "./china2.jpeg", "./china3.jpeg"] },
+            
+            "34": { name: "Palma Cola de Pescado", sciName: "Caryota sp.", family: "Arecaceae", desc: "Palma exótica caracterizada por folíolos cortados en forma de aleta de pez.", images: ["./caryota.jpeg"] },
+            "palma-cola-de-pescado": { name: "Palma Cola de Pescado", sciName: "Caryota sp.", family: "Arecaceae", desc: "Palma exótica caracterizada por folíolos cortados en forma de aleta de pez.", images: ["./caryota.jpeg"] },
+            "caryota": { name: "Palma Cola de Pescado", sciName: "Caryota sp.", family: "Arecaceae", desc: "Palma exótica caracterizada por folíolos cortados en forma de aleta de pez.", images: ["./caryota.jpeg"] },
+            
+            "35": { name: "Palma de Navidad", sciName: "Veitchia merrillii (Becc.) H.E. Moore", family: "Arecaceae", desc: "Palma de porte medio con vistosos racimos de frutos rojo carmesí.", images: ["./navidad.jpeg"] },
+            "palma-de-navidad": { name: "Palma de Navidad", sciName: "Veitchia merrillii (Becc.) H.E. Moore", family: "Arecaceae", desc: "Palma de porte medio con vistosos racimos de frutos rojo carmesí.", images: ["./navidad.jpeg"] },
+            "adonidia": { name: "Palma de Navidad", sciName: "Veitchia merrillii (Becc.) H.E. Moore", family: "Arecaceae", desc: "Palma de porte medio con vistosos racimos de frutos rojo carmesí.", images: ["./navidad.jpeg"] },
+            
+           "36": { name: "Palma Bambú", sciName: "Rhapis sp.", family: "Arecaceae", desc: "Palma enana multicaule de tallos delgados tipo caña de bambú.", images: ["./bambu.jpeg"] },
+        "bambu": { name: "Palma Bambú", sciName: "Rhapis sp.", family: "Arecaceae", desc: "Palma enana multicaule de tallos delgados tipo caña de bambú.", images: ["./bambu.jpeg"] },
+        "rhapis": { name: "Palma Bambú", sciName: "Rhapis sp.", family: "Arecaceae", desc: "Palma enana multicaule de tallos delgados tipo caña de bambú.", images: ["./bambu.jpeg"] },
+
+        "37": { name: "Roble", sciName: "Tabebuia rosea", family: "Bignoniaceae", desc: "Árbol majestuoso de gran tamaño caracterizado por su hermosa floración rosada o blanca.", images: ["./rosea.jpeg"] },
+        "roble": { name: "Roble", sciName: "Tabebuia rosea", family: "Bignoniaceae", desc: "Árbol majestuoso de gran tamaño caracterizado por su hermosa floración rosada o blanca.", images: ["./rosea.jpeg"] }
+    };
+        // BÚSQUEDA BLINDADA CONTRA ERRORES
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            let rawId = params.get('id');
+
+            // CORRECCIÓN: Si no hay ID o está vacío, asignamos por defecto la planta "1" (Almendro)
+            if (!rawId || rawId.trim() === "") {
+                rawId = "1";
+            }
+
+            const queryKey = rawId.toString().trim();
+
+            const normalizeStr = (str) => {
+                return str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[-_\s]+/g, "").trim() : "";
+            };
+
+            const normalizedQuery = normalizeStr(queryKey);
+            let item = null;
+            const keys = Object.keys(botanicaDB);
+
+            if (normalizedQuery) {
+                let matchedKey = keys.find(k => normalizeStr(k) === normalizedQuery || normalizeStr(botanicaDB[k].name) === normalizedQuery);
+
+                if (!matchedKey) {
+                    matchedKey = keys.find(k => {
+                        const obj = botanicaDB[k];
+                        const nKey = normalizeStr(k);
+                        const nName = normalizeStr(obj.name);
+                        return nKey.includes(normalizedQuery) || normalizedQuery.includes(nKey) ||
+                                     nName.includes(normalizedQuery) || normalizedQuery.includes(nName);
+                    });
+                }
+
+                if (matchedKey) {
+                    item = botanicaDB[matchedKey];
+                }
+            }
+
+            const main = document.getElementById('main-content');
+
+            if (!item) {
+                main.innerHTML = `
+                    <div class="bg-zinc-900 border border-red-500/30 rounded-3xl p-8 md:p-12 text-center space-y-6 max-w-xl mx-auto my-12 shadow-2xl">
+                        <div class="w-16 h-16 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center mx-auto text-2xl border border-red-500/20">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <h1 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight">Planta no encontrada</h1>
+                            <p class="text-zinc-400 text-sm md:text-base leading-relaxed">
+                                No se encontró el registro para <code class="text-science-neon font-mono bg-black/60 px-2 py-1 rounded border border-zinc-800">id=${rawId || '(vacío)'}</code>.
+                            </p>
+                        </div>
+                        <div class="pt-2">
+                            <a href="catalogo.html" class="inline-flex items-center gap-2 bg-white text-black font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-2xl hover:bg-science-neon transition-colors shadow-lg">
+                                <i class="fa-solid fa-arrow-left"></i> Volver al Catálogo
+                            </a>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            let imgList = item.images && Array.isArray(item.images) && item.images.length > 0 
+                ? item.images.filter(img => img && img.trim() !== "") 
+                : [];
+            
+            let primaryImg = imgList.length > 0 ? imgList[0] : '';
+
+            let primaryDisplayHTML = primaryImg ? 
+                `<img id="main-product-img" src="${primaryImg}" alt="${item.name}" class="w-full h-full object-cover transition-opacity duration-300" onerror="this.style.display='none'; document.getElementById('img-error-fallback').style.display='flex';">
+                 <div id="img-error-fallback" style="display:none;" class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900 text-zinc-500 gap-2 p-4 text-center">
+                    <i class="fa-solid fa-image-slash text-3xl text-zinc-600"></i>
+                    <span class="text-xs font-mono">Imagen local no encontrada (${primaryImg})</span>
+                 </div>` :
+                `<div class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900 text-zinc-500 gap-2 p-4 text-center">
+                    <i class="fa-solid fa-image-slash text-3xl text-zinc-600"></i>
+                    <span class="text-xs font-mono">Sin imagen asignada</span>
+                 </div>`;
+
+            let galleryHTML = '';
+            if (imgList.length > 1) {
+                galleryHTML = `<div class="grid grid-cols-3 gap-3 pt-3">` + 
+                    imgList.map((img, index) => `
+                        <div onclick="cambiarImagenPrincipal('${img}', this)" 
+                             class="thumbnail-item rounded-2xl overflow-hidden border ${index === 0 ? 'border-science-neon ring-2 ring-science-neon/50' : 'border-zinc-800'} aspect-square bg-zinc-900 cursor-pointer transition-all hover:opacity-80 relative flex items-center justify-center">
+                            <img src="${img}" class="w-full h-full object-cover" onerror="this.style.display='none';">
+                        </div>
+                    `).join('') +
+                    `</div>`;
+            }
+
+            main.innerHTML = `
+                <div class="space-y-3">
+                    <h1 class="text-3xl md:text-5xl font-black uppercase text-white tracking-tight">
+                        ${item.name}
+                    </h1>
+                    <p class="text-zinc-400 text-lg italic font-serif">
+                        ${item.sciName}
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start pt-4">
+                    <div class="space-y-3">
+                        <div class="rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 aspect-[4/3] shadow-2xl relative">
+                            ${primaryDisplayHTML}
+                        </div>
+                        ${galleryHTML}
+                    </div>
+
+                    <div class="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-6 md:p-8 space-y-6">
+                        <h2 class="text-xl font-bold text-white border-b border-zinc-800 pb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-leaf text-science-neon"></i> Ficha Técnica Completa
+                        </h2>
+
+                        <p class="text-zinc-300 text-sm md:text-base font-light leading-relaxed">
+                            ${item.desc}
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-black/50 p-4 rounded-2xl border border-zinc-800">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">Nombre Científico</span>
+                                <span class="text-sm font-semibold text-white italic">${item.sciName}</span>
+                            </div>
+                            <div class="bg-black/50 p-4 rounded-2xl border border-zinc-800">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">Familia Botánica</span>
+                                <span class="text-sm font-semibold text-white">${item.family}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        function cambiarImagenPrincipal(imgSrc, element) {
+            const mainImg = document.getElementById('main-product-img');
+            const fallback = document.getElementById('img-error-fallback');
+            if (mainImg) {
+                mainImg.style.opacity = '0';
+                setTimeout(() => {
+                    mainImg.src = imgSrc;
+                    if(fallback) fallback.style.display = 'none';
+                    mainImg.style.display = 'block';
+                    mainImg.style.opacity = '1';
+                }, 150);
+            }
+
+            const thumbnails = document.querySelectorAll('.thumbnail-item');
+            thumbnails.forEach(thumb => {
+                thumb.classList.remove('border-science-neon', 'ring-2', 'ring-science-neon/50');
+                thumb.classList.add('border-zinc-800');
+            });
+
+            element.classList.remove('border-zinc-800');
+            element.classList.add('border-science-neon', 'ring-2', 'ring-science-neon/50');
+        }
+    </script>
 </body>
 </html>
